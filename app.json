@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/tourBooking/tourBooking",
+    "pages/qualityTouristRoutes/qualityTouristRoutes",
+    "pages/mine/mine",
+    "pages/serve/serve",
+    "pages/destination/destination"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "ectrip",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#2ba5ff",
+    "backgroundColor": "white",
+    "list": [
+      {
+        "selectedIconPath": "./static/icon/indexSelected.png",
+        "iconPath": "./static/icon/index.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "./static/icon/destinationSelected.png",
+        "iconPath": "./static/icon/destination.png",
+        "pagePath": "pages/destination/destination",
+        "text": "目的地"
+      },
+      {
+        "selectedIconPath": "./static/icon/serveSelected.png",
+        "iconPath": "./static/icon/serve.png",
+        "pagePath": "pages/serve/serve",
+        "text": "服务"
+      },
+      {
+        "selectedIconPath": "./static/icon/mineSelected.png",
+        "iconPath": "./static/icon/mine.png",
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
+      }
+    ]
+  }
+}

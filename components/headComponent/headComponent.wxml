@@ -1,0 +1,8 @@
+<view class="container">
+    <view class="tip"></view>
+    <text>{{title}}</text>
+    <view class="changeContent">
+        <text>{{changeContent1}}</text>
+        <text>{{changeContent2}}</text>
+    </view>
+</view>

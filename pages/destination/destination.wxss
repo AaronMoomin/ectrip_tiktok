@@ -1,0 +1,145 @@
+.container {
+    padding: 30rpx;
+}
+
+.topBox {
+    display: flex;
+    width: 100%;
+    height: 60rpx;
+    line-height: 60rpx;
+}
+
+.topBox .title {
+    font-size: 34rpx;
+    /*font-weight: bold;*/
+    letter-spacing: 5rpx;
+}
+
+.topBox .searchBox {
+    display: flex;
+    flex: 1;
+    margin-left: 20rpx;
+    background: #f3f3f3;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 30rpx;
+}
+
+.searchBox .search {
+    margin-left: 20rpx;
+}
+
+.searchBox input {
+    flex: 1;
+    height: 60rpx;
+    margin-left: 20rpx;
+}
+
+.titleShow {
+    margin-top: 40rpx;
+    width: 100%;
+    height: 300rpx;
+    border-radius: 30rpx;
+}
+
+.titleShow image {
+    width: 100%;
+    height: 300rpx;
+    border-radius: 30rpx;
+}
+
+.btnContainer {
+    width: 100%;
+    margin-top: 30rpx;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btnContainer .btnItem {
+    display: flex;
+    flex-direction: column;
+    width: 100rpx;
+    text-align: center;
+}
+
+.btnContainer .btnItem image {
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.btnContainer .btnItem text {
+    font-size: 24rpx;
+}
+
+.hotRecommend {
+    width: 100%;
+    padding: 20rpx;
+}
+
+.hotRecommend .hotHead {
+    display: flex;
+    margin-bottom: 20rpx;
+}
+
+.hotRecommend .hotHead .title {
+    font-weight: bold;
+    letter-spacing: 5rpx;
+    margin-right: 30rpx;
+}
+
+.hotRecommend .hotHead .instruction text {
+    font-size: 24rpx;
+    color: #797979;
+    margin-right: 30rpx;
+    letter-spacing: 3rpx;
+}
+
+.hotContent {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.hotContent .hotItem {
+    width: 45%;
+    margin: 20rpx 10rpx 10rpx 15rpx;
+    border-radius: 10rpx;
+    border: 1px solid #ebf7fa;
+}
+
+.hotContent .hotItem image {
+    width: 100%;
+    height: 200rpx;
+    border-top-left-radius: 10rpx;
+    border-top-right-radius: 10rpx;
+}
+
+.hotItem .instruction {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 20rpx;
+}
+
+.hotItem .instruction .name {
+    font-weight: bold;
+    font-size: 28rpx;
+}
+
+.hotItem .instruction .priceItem {
+    position: relative;
+    display: flex;
+    font-size: 24rpx;
+    margin-top: 20rpx;
+}
+
+.priceItem .price {
+    color: red;
+}
+
+.priceItem .comment {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #797979;
+}

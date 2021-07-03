@@ -1,0 +1,30 @@
+.container {
+    margin: 40rpx 0 20rpx 0;
+    padding-left: 25rpx;
+    padding-right: 35rpx;
+    display: flex;
+    height: 30rpx;
+    line-height: 30rpx;
+}
+
+.tip {
+    width: 6rpx;
+    height: 30rpx;
+    background: #509bfc;
+    margin-right: 20rpx;
+    border-radius: 10rpx;
+}
+
+.container text {
+    letter-spacing: 5rpx;
+}
+
+.changeContent {
+    font-size: 24rpx;
+    color: #a3a3a3;
+    margin-left: 40rpx;
+}
+
+.changeContent text {
+    margin-right: 40rpx;
+}

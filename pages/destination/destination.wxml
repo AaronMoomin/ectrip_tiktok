@@ -1,0 +1,109 @@
+<view class="container">
+    <view class="topBox">
+        <text class="title">福州</text>
+        <view class="searchBox">
+            <text class="iconfont icon-sousuo search"></text>
+            <input type="text" placeholder="搜索景区, 门票, 酒店"></input>
+        </view>
+    </view>
+    <!--  图片  -->
+    <view class="titleShow">
+        <image src="../../static/images/海.png"></image>
+    </view>
+    <!--  按钮  -->
+    <view class="btnContainer">
+        <view class="btnItem">
+            <image src="../../static/images/ticket1.png"></image>
+            <text>门票</text>
+        </view>
+        <view class="btnItem">
+            <image src="../../static/images/hotel1.png"></image>
+            <text>酒店</text>
+        </view>
+        <view class="btnItem">
+            <image src="../../static/images/way.png"></image>
+            <text>线路</text>
+        </view>
+        <view class="btnItem">
+            <image src="../../static/images/zbtj.png"></image>
+            <text>周边推荐</text>
+        </view>
+        <view class="btnItem">
+            <image src="../../static/images/city.png"></image>
+            <text>城市介绍</text>
+        </view>
+    </view>
+<!--  热门推荐  -->
+    <view class="hotRecommend">
+        <view class="hotHead">
+            <text class="title">热门推荐</text>
+            <view class="instruction">
+                <text>寻味福建</text>
+                <text>休闲度假</text>
+            </view>
+        </view>
+        <view class="hotContent">
+            <view class="hotItem">
+                <image src="/static/images/高北土楼.jpg"></image>
+                <view class="instruction">
+                    <text class="name">福建平潭岛</text>
+                    <view class="priceItem">
+                        <text class="price">￥564起</text>
+                        <text class="comment">5642条点评</text>
+                    </view>
+                </view>
+            </view>
+            <view class="hotItem">
+                <image src="/static/images/高北土楼.jpg"></image>
+                <view class="instruction">
+                    <text class="name">福建平潭岛</text>
+                    <view class="priceItem">
+                        <text class="price">￥564起</text>
+                        <text class="comment">5642条点评</text>
+                    </view>
+                </view>
+            </view>
+            <view class="hotItem">
+                <image src="/static/images/高北土楼.jpg"></image>
+                <view class="instruction">
+                    <text class="name">福建平潭岛</text>
+                    <view class="priceItem">
+                        <text class="price">￥564起</text>
+                        <text class="comment">5642条点评</text>
+                    </view>
+                </view>
+            </view>
+            <view class="hotItem">
+                <image src="/static/images/高北土楼.jpg"></image>
+                <view class="instruction">
+                    <text class="name">福建平潭岛</text>
+                    <view class="priceItem">
+                        <text class="price">￥564起</text>
+                        <text class="comment">5642条点评</text>
+                    </view>
+                </view>
+            </view>
+            <view class="hotItem">
+                <image src="/static/images/高北土楼.jpg"></image>
+                <view class="instruction">
+                    <text class="name">福建平潭岛</text>
+                    <view class="priceItem">
+                        <text class="price">￥564起</text>
+                        <text class="comment">5642条点评</text>
+                    </view>
+                </view>
+            </view>
+            <view class="hotItem">
+                <image src="/static/images/高北土楼.jpg"></image>
+                <view class="instruction">
+                    <text class="name">福建平潭岛</text>
+                    <view class="priceItem">
+                        <text class="price">￥564起</text>
+                        <text class="comment">5642条点评</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <footerComponent></footerComponent>
+    </view>
+</view>
