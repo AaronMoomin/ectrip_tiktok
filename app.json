@@ -1,12 +1,21 @@
 {
   "pages": [
+    "pages/hotel/hotel",
     "pages/index/index",
+    "pages/ticket/ticket",
     "pages/tourBooking/tourBooking",
     "pages/qualityTouristRoutes/qualityTouristRoutes",
     "pages/mine/mine",
     "pages/serve/serve",
-    "pages/destination/destination"
+    "pages/destination/destination",
+    "pages/CheckInConditions/CheckInConditions"
   ],
+  "plugins": {
+    "calendar": {
+      "version": "1.1.3",
+      "provider": "wx92c68dae5a8bb046"
+    }
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

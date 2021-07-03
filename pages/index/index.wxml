@@ -17,11 +17,11 @@
                     <image src="../../static/images/date.png"></image>
                     <text>文旅预约</text>
                 </view>
-                <view class="item">
+                <view class="item" bind:tap="toTicket">
                     <image src="../../static/images/ticket.png"></image>
                     <text>门票</text>
                 </view>
-                <view class="item">
+                <view class="item" bind:tap="toHotel">
                     <image src="../../static/images/hotel.png"></image>
                     <text>酒店</text>
                 </view>

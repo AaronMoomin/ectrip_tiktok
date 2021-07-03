@@ -21,5 +21,17 @@ Page({
     wx.navigateTo({
       url: "/pages/tourBooking/tourBooking"
     })
+  },
+  // 跳转门票
+  toTicket(){
+    wx.navigateTo({
+      url: "/pages/ticket/ticket"
+    })
+  },
+  // 跳转酒店
+  toHotel(){
+    wx.navigateTo({
+      url: "/pages/hotel/hotel"
+    })
   }
 })

@@ -1,0 +1,182 @@
+.container {
+    overflow: hidden;
+}
+.TopInputBox{
+    width: 100%;
+    height: 60rpx;
+    display: flex;
+    padding: 30rpx 0;
+}
+.TopInputBox .select{
+    width: 180rpx;
+    padding-left: 20rpx;
+}
+.TopInputBox .inputBox{
+    flex:1;
+    margin: 0 20rpx;
+    padding-left: 20rpx;
+    background:#f2f2f2;
+    line-height:60rpx;
+    border-radius: 20rpx;
+    display: flex;
+}
+.TopInputBox .inputBox text{
+    color: #797979;
+}
+.TopInputBox .inputBox input{
+    margin-left: 20rpx;
+    height: 60rpx;
+}
+.headImg {
+    margin-top: 20rpx;
+    width: 100%;
+    display: flex;
+    border-radius: 10rpx;
+    justify-content: space-around;
+}
+
+.headImg image {
+    background: #eee;
+    width: 90%;
+    border-radius: 10rpx;
+    height: 260rpx;
+}
+.btnContainer {
+    display: flex;
+    justify-content: space-around;
+    padding: 30rpx;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+}
+
+.btnContainer .btnItem {
+    width: 100rpx;
+    text-align: center;
+}
+
+.btnContainer .btnItem image {
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.btnContainer .btnItem text {
+    font-size: 24rpx;
+}
+.scrollContainer{
+    width: 100%;
+    margin: 20rpx;
+    height: 350rpx;
+}
+.scrollContainer .scrollHead{
+    margin-left: 30rpx;
+    margin-bottom: 20rpx;
+    letter-spacing: 5rpx;
+}
+
+.scrollContainer .scrollNav {
+    font-size:24rpx;
+    height: 350rpx;
+    margin-left: 30rpx;
+}
+
+.scrollContainer .scrollNav .scrollItem {
+    position: relative;
+    height: 100%;
+}
+
+.scrollNav .scrollItem image {
+    width: 250rpx;
+    height: 250rpx;
+    border-top-left-radius: 10rpx;
+    border-top-right-radius: 10rpx;
+}
+.scrollItem .instruction{
+    position: absolute;
+    bottom: 90rpx;
+    background:#fff;
+    padding: 10rpx 0 10rpx 10rpx;
+    width: 236rpx;
+    display: flex;
+    flex-direction: column;
+    border: 2rpx solid #eee;
+    border-bottom-left-radius: 10rpx;
+    border-bottom-right-radius: 10rpx;
+}
+.scrollItem .instruction .priceItem{
+    font-size: 18rpx;
+    display:flex;
+    justify-content: space-between;
+    margin-top: 20rpx;
+}
+.scrollItem .instruction .priceItem .price{
+    color: #f10000;
+}
+.scrollItem .instruction .priceItem .comment{
+    color:#797979;
+}
+
+.hotRecommend {
+    width: 100%;
+    padding: 20rpx;
+}
+
+.hotRecommend .hotHead {
+    display: flex;
+    margin-bottom: 20rpx;
+    margin-left: 20rpx;
+}
+
+.hotRecommend .hotHead .title {
+    letter-spacing: 5rpx;
+}
+
+.hotContent {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20rpx;
+}
+
+.hotContent .hotItem {
+    width: 43%;
+    margin: 20rpx 10rpx 10rpx 15rpx;
+    border-radius: 10rpx;
+    border: 1px solid #ebf7fa;
+}
+
+.hotContent .hotItem image {
+    width: 100%;
+    height: 200rpx;
+    border-top-left-radius: 10rpx;
+    border-top-right-radius: 10rpx;
+}
+
+.hotItem .instruction {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 20rpx;
+}
+
+.hotItem .instruction .name {
+    font-weight: bold;
+    font-size: 28rpx;
+}
+
+.hotItem .instruction .priceItem {
+    position: relative;
+    display: flex;
+    font-size: 24rpx;
+    margin-top: 20rpx;
+}
+
+.hotItem .instruction .priceItem .price {
+    color: #f10000;
+}
+
+.hotItem .instruction .priceItem .comment {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #797979;
+}
