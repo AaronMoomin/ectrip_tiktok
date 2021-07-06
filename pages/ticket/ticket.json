@@ -2,5 +2,6 @@
   "usingComponents": {
     "select": "/components/select/select",
     "footer": "/components/footer/footer"
-  }
+  },
+  "navigationBarTitleText": "门票"
 }

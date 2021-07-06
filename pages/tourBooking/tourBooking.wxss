@@ -66,6 +66,7 @@
     background: #4a6a7d;
     color: #fff;
     font-size: 24rpx;
+    border-top-right-radius: 10rpx;
 }
 
 .showcaseItem .info {
@@ -74,6 +75,7 @@
     height: 200rpx;
     border: 2rpx solid #eee;
     font-size: 24rpx;
+    padding-top: 10rpx;
 }
 
 .showcaseItem .info .name {

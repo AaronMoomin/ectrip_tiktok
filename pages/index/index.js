@@ -10,6 +10,16 @@ Page({
   onLoad() {
     
   },
+  handleScan(){
+    wx.scanCode({
+      success:(res)=>{
+        console.log(res);
+      },
+      fail:(err)=>{
+        console.log(err);
+      }
+    })
+  },
   // 跳转精品路线
   toQualityTouristRoutes(){
     wx.navigateTo({
