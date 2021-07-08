@@ -1,0 +1,7 @@
+<view class="indexContainer">
+    <button disabled="{{isDisabled}}" bind:tap="jian">-</button>
+    <text class="line">|</text>
+    <text>{{index}}</text>
+    <text class="line">|</text>
+    <button bind:tap="jia">+</button>
+</view>

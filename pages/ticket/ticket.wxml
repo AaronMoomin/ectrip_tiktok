@@ -40,7 +40,7 @@
                 display-multiple-items="2"
                 next-margin="200rpx"
                 >
-            <swiper-item class="scrollItem">
+            <swiper-item class="scrollItem" bind:tap="toTicketDetail" data-name="福建平潭岛">
                 <image src="/static/images/高北土楼.jpg"></image>
                 <view class="instruction">
                     <text class="name">福建平潭岛</text>
@@ -50,7 +50,7 @@
                     </view>
                 </view>
             </swiper-item>
-            <swiper-item class="scrollItem">
+            <swiper-item class="scrollItem" bind:tap="toTicketDetail" data-name="绝绝子">
                 <image src="/static/images/高北土楼.jpg"></image>
                 <view class="instruction">
                     <text class="name">福建平潭岛</text>
@@ -60,7 +60,7 @@
                     </view>
                 </view>
             </swiper-item>
-            <swiper-item class="scrollItem">
+            <swiper-item class="scrollItem" bind:tap="toTicketDetail" data-name="测试3">
                 <image src="/static/images/高北土楼.jpg"></image>
                 <view class="instruction">
                     <text class="name">福建平潭岛</text>
@@ -70,7 +70,7 @@
                     </view>
                 </view>
             </swiper-item>
-            <swiper-item class="scrollItem">
+            <swiper-item class="scrollItem" bind:tap="toTicketDetail">
                 <image src="/static/images/高北土楼.jpg"></image>
                 <view class="instruction">
                     <text class="name">福建平潭岛</text>
@@ -88,7 +88,7 @@
             <text class="title">全部门票</text>
         </view>
         <view class="hotContent">
-            <view class="hotItem">
+            <view class="hotItem" bind:tap="toTicketDetail">
                 <image src="/static/images/高北土楼.jpg"></image>
                 <view class="instruction">
                     <text class="name">福建平潭岛</text>

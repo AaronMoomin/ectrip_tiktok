@@ -1,7 +1,6 @@
 {
   "usingComponents": {
-    "calendar":"plugin://calendar/calendar",
-    "footer": "/components/footer/footer"
+    "footer": "/pages/components/footer/footer"
   },
   "navigationBarTitleText": "酒店"
 }

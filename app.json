@@ -1,8 +1,10 @@
 {
   "pages": [
+    "pages/reserve/reserve",
+    "pages/ticketDetail/ticketDetail",
+    "pages/ticket/ticket",
     "pages/index/index",
     "pages/hotel/hotel",
-    "pages/ticket/ticket",
     "pages/tourBooking/tourBooking",
     "pages/qualityTouristRoutes/qualityTouristRoutes",
     "pages/mine/mine",
@@ -16,7 +18,7 @@
     }
   },
   "permission": {
-    "scope.userLocation":{
+    "scope.userLocation": {
       "desc": "你的位置将用于小程序位置接口的效果展示"
     }
   },

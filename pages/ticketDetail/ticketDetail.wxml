@@ -1,0 +1,91 @@
+<view class="ticketContainer">
+    <view class="imgShow">
+        <swiper class="scrollNav"
+                indicator-dots
+                circular
+                indicator-active-color="#fff"
+        >
+            <swiper-item class="scrollItem">
+                <image src="/static/images/海.png"></image>
+            </swiper-item>
+            <swiper-item class="scrollItem">
+                <image src="/static/images/高北土楼.jpg"></image>
+            </swiper-item>
+            <swiper-item class="scrollItem">
+                <image src="/static/images/高北土楼.jpg"></image>
+            </swiper-item>
+        </swiper>
+    </view>
+    <view class="contentContainer">
+        <view class="title">
+            {{name}}
+        </view>
+        <view class="infoContainer">
+            <view class="infoItem">
+                <text class="iconfont icon-shijian"></text>
+                <view class="yyTime">营业时间:
+                    <text class="time">7月1日隆重上演</text>
+                </view>
+                <text class="iconfont icon-tiaozhuan tz" bind:tap="open"></text>
+            </view>
+            <view class="infoItem">
+                <text class="iconfont icon-travel"></text>
+                <text>武乡县下关村龙湖北岸</text>
+                <text class="iconfont icon-tiaozhuan tz" bind:tap="handleLocation"></text>
+            </view>
+            <view class="infoItem">
+                <text class="iconfont icon-zhengce1"></text>
+                <text class="instruction">优待政策: 儿童身高1.2米一下(不占座)可免除门票费用</text>
+                <text class="iconfont icon-tiaozhuan tz" bind:tap="open"></text>
+            </view>
+        </view>
+        <view class="ticketContent">
+            <view class="innerTicket">
+                <text class="title">一日票</text>
+                <view class="info">
+                    <view class="left">
+                        <text class="name">《太行山》大型实景演艺门票不限人群</text>
+                        <text class="desc">19:00前可订今日门票 未使用随时可退</text>
+                        <view class="know">
+                            <text>预定须知</text>
+                            <text class="iconfont icon-tiaozhuan tz"></text>
+                        </view>
+                    </view>
+                    <view class="right">
+                        <text class="priceBox"><text class="red">￥<text class="price">218 </text></text>起</text>
+                        <button class="reserve" bind:tap="toReserve">预定</button>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="ContentInstruction" style="height:{{contentHeight}}">
+            <text class="title">景区介绍</text>
+            <view class="content">
+                <view class="name">大型实景演艺《太行山上》</view>
+                <view class="desc">日军占领太原城。已经取得良好开端的抗日形势发生了逆转，八路军奉中央之命向南转移，八路军放手发动群众，建立敌后根据地，主力部队跳到外线打击敌人。朱德、彭德怀、左权等只带少数警卫连队与敌周旋，处境十分险恶，几次与敌遭遇，但都化险为夷。在敌人后方，一间普通的教室内。东路军将领会议成功召开。衣着反差鲜明、战略意识也不同的国共将领，由交手而未见面变为见面而不交手，共商抗日大计。朱德总司令的幽默和深刻，不时博得双方将领的掌声，连满怀敌意的朱怀冰也不得已而为之。塞外张家口，“塞樱阁御料理”内正在举行欢迎酒会。不甘失败的日本侵略者将希望寄托于山地战专家——刚刚跃升中将的“名将之花”阿部规秀。寺内寿一大将举杯：“阿部中将及诸君此次出师，一定会连战连胜，马到成功”。身负重任、气焰嚣张的阿部规秀，掘墓焚尸；不仅残杀捕获的抗日游击队战士，还向被八路军释放的同胞举起屠刀。
+                    河北黄土岭。八路军与阿部规秀率领的日军激战正酣。阿部规秀这棵大日本帝国的“名将之花”连自己都保护不了，在太行山腹地，我军与日军的激烈炮战中，被我军密集炮火击毙。噩耗传来，日军朝野震惊，侵华日军华北方面军总司令多田峻哀叹道：“名将之花凋谢在太行山上。”胜利后的八路军，在太行山区站稳脚跟，建立起巩固的革命根据地，使这块战略要地真正成为中华民族的脊背。</view>
+            </view>
+            <view class="btnNav" bind:tap="handleSlide" style="display:{{displayed}}">
+                <text>展开详细</text>
+                <text class="iconfont icon-add add"></text>
+            </view>
+            <view class="cover" style="display:{{displayed}}"></view>
+        </view>
+    </view>
+    <view class="fadeIn" wx:if="{{dialog1}}">
+        <view class="weui-mask" bindtap="close"></view>
+        <view class="weui-half-screen-dialog">
+            <view class="weui-half-screen-dialog__hd">
+                <view class="weui-half-screen-dialog__hd__side" bindtap="close">
+                    <view class="weui-icon-btn">关闭<text class="weui-icon-close-thin"></text></view>
+                </view>
+                <view class="weui-half-screen-dialog__hd__main">
+                    <text class="weui-half-screen-dialog__title">购票须知</text>
+                </view>
+            </view>
+            <view class="weui-half-screen-dialog__bd" style="padding-top:32rpx;height:500rpx;">
+                购票须知
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,33 +1,52 @@
-// pages/ticket/ticket.js
+// pages/ticketDetail/ticketDetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    options: [{
-      id: '001',
-      name: '厦门'
-    }, {
-      id: '002',
-      name: '上海'
-    }, {
-      id: '003',
-      name: '深圳'
-    }]
+    name:'测试3',//商品名称
+    contentHeight:'550rpx',//介绍的高度
+    displayed:'block',//显示
+    dialog1: false,
   },
-  //跳转门票详情
-  toTicketDetail(e){
-    let name = e.currentTarget.dataset.name
+  toReserve(){
     wx.navigateTo({
-      url: `/pages/ticketDetail/ticketDetail?name=${name}`
+      url:'/pages/reserve/reserve'
+    })
+  },
+  handleLocation(){
+    wx.showToast({
+      title:'暂无经纬度信息',
+      icon:'none'
+    })
+  },
+  open(){
+    this.setData({
+      dialog1:true
+    })
+  },
+  close(){
+    this.setData({
+      dialog1: false
+    })
+  },
+  handleSlide(){
+    this.setData({
+      contentHeight:'auto',
+      displayed:'none',
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.setNavigationBarTitle({
+      title:options.name
+    })
+    this.setData({
+      name:options.name
+    })
   },
 
   /**

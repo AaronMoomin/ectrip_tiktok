@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "headComponent": "/components/headComponent/headComponent",
-    "footerComponent": "/components/footer/footer"
+    "headComponent": "/pages/components/headComponent/headComponent",
+    "footerComponent": "/pages/components/footer/footer"
   }
 }

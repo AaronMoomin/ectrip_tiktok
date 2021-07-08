@@ -1,0 +1,26 @@
+.indexContainer{
+    display: flex;
+    width: 300rpx;
+    line-height: 70rpx;
+    justify-content: space-around;
+}
+.indexContainer .line{
+    color:#cccccc;
+    margin: 0 20rpx;
+}
+.indexContainer button{
+    font-size:50rpx;
+    width: 100rpx;
+    height: 60rpx;
+    border:none;
+    background:none;
+    margin:0;
+    padding: 0;
+    color:#3f86e9;
+}
+.indexContainer button[disabled]{
+    border:none;
+    background:none;
+    margin:0;
+    padding: 0;
+}

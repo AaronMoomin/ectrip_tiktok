@@ -61,7 +61,7 @@ Component({
       }
       this.setData({
         current: Object.assign({}, this.data.defaultOption),
-        result: result
+        result: this.data.options
       })
     }
   }

@@ -1,4 +1,4 @@
-.container {
+.hcontainer {
     margin: 40rpx 0 20rpx 0;
     padding-left: 25rpx;
     padding-right: 35rpx;
@@ -15,7 +15,7 @@
     border-radius: 10rpx;
 }
 
-.container text {
+.hcontainer text {
     letter-spacing: 5rpx;
 }
 
