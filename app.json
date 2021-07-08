@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/reserve/reserve",
     "pages/ticketDetail/ticketDetail",
     "pages/ticket/ticket",
-    "pages/index/index",
     "pages/hotel/hotel",
     "pages/tourBooking/tourBooking",
     "pages/qualityTouristRoutes/qualityTouristRoutes",

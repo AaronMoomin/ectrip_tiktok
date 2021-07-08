@@ -6,6 +6,8 @@ Page({
      * 页面的初始数据
      */
     data: {
+        needToKnow: false,
+        needKnow: [],
         yesterday: '',
         today: '',
         tomorrow: '',
@@ -13,7 +15,8 @@ Page({
         showYesterday: false,
         showDay: true,
         showTomorrow: true,
-        timeChooser: [],
+        timeChooser: [{start: '20:30', end: '21:40', session: '20:30场', isSelect: false},
+            {start: '08:30', end: '10:40', session: '08:30场', isSelect: false}],
         dialog: false,//时间dialog
         dialog2: false,//新增dialog
         dialog3: false,//编辑dialog
@@ -46,6 +49,92 @@ Page({
         nameWarnMessage: '',
         hasUser: false,
         iosDialog: false,//确认删除
+        voteNum: 1,
+    },
+    //获取票数
+    getIndex(e) {
+        const {index} = e.detail
+        let {voteNum} = this.data
+        voteNum = index
+        this.setData({
+            voteNum
+        })
+    },
+    //最终提交
+    allConfirm() {
+        let {
+            selectDay,
+            timeChooser,
+            voteNum,
+            userNameShow,
+            phoneShow,
+            sexShow,
+            array,
+            value1Show,
+            idCardShow,
+            currentValue,
+            needKnow,
+            users
+        } = this.data
+        let time = []
+        timeChooser.forEach(item => {
+            if (item.isSelect == true) {
+                time.push(item.session)
+            }
+        })
+        if (time.length === 0) {
+            wx.showToast({
+                title: '未选择场次',
+                icon: 'error'
+            })
+            return
+        }
+        if (users.length === 0) {
+            wx.showToast({
+                title: '游玩人不能为空',
+                icon: 'error'
+            })
+            return
+        }
+        if (currentValue === '') {
+            wx.showToast({
+                title: '手机不能为空',
+                icon: 'error'
+            })
+            return
+        }
+        if (needKnow.length === 0) {
+            wx.showToast({
+                title: '请同意条约',
+                icon: 'error'
+            })
+            return
+        }
+        wx.showToast({
+            title: '购票成功',
+            icon: 'success'
+        })
+        console.log(`日期:${selectDay},
+                    场次:${time},
+                    票数:${voteNum},
+                    游玩人:${userNameShow},
+                    电话:${phoneShow},
+                    性别:${sexShow},
+                    证件类型:${array[value1Show]},
+                    证件号码:${idCardShow},
+                    联系电话:${currentValue}`)
+    },
+    //选择时间段
+    checkSession(e) {
+        let {timeChooser} = this.data
+        timeChooser.forEach(item => {
+            if (item.session === e.currentTarget.dataset.session) {
+                item.isSelect = !item.isSelect
+            }
+        })
+        this.setData({
+            timeChooser
+        })
     },
     confirm() {
         let {
@@ -62,7 +151,7 @@ Page({
             idCardShow,
             users
         } = this.data
-        console.log(`${userName}-${phone}-${sex}-${array[value1]}-${idCard}`)
+        // console.log(`${userName}-${phone}-${sex}-${array[value1]}-${idCard}`)
         let idType = array[value1]
         if (userName === '') {
             this.setData({
@@ -266,14 +355,33 @@ Page({
         })
     },
     deleteItem() {
-        let {users, userNameShow} = this.data
+        let {users, userNameShow, phoneShow, idCardShow} = this.data
         for (let index in users) {
             if (users[index].userName === userNameShow) {
                 users.splice(index, 1)
+                if (users.length===0){
+                    this.setData({
+                        userNameShow:'',
+                        phoneShow:'',
+                        idCardShow:'',
+                    })
+                }else {
+                    users[0].isSelect = true
+                }
             }
         }
+        users.forEach(item => {
+            if (item.isSelect) {
+                userNameShow = item.userName
+                phoneShow = item.phone
+                idCardShow = item.idCard
+            }
+        })
         this.setData({
             users,
+            userNameShow,
+            phoneShow,
+            idCardShow,
             iosDialog: false
         })
     },
@@ -289,15 +397,25 @@ Page({
     },
     //性别
     radioChange(e) {
-        console.log(e.detail.value);
         this.setData({
             sex: e.detail.value
         })
     },
+    checkboxChange(e) {
+        this.setData({
+            needKnow: e.detail.value
+        })
+    },
     onCurrentInput(e) {
-        const currentValue = e.detail.value;
+        let currentValue = e.detail.value;
         let myReg = /^[1][3,4,5,7,8,9][0-9]{9}$/;
-        if (!myReg.test(currentValue)) {
+        if (currentValue === '') {
+            this.setData({
+                isCurrentWaring: true,
+                warnMessage: '手机号不能为空',
+                currentValue: ''
+            });
+        } else if (!myReg.test(currentValue)) {
             this.setData({
                 isCurrentWaring: true,
                 warnMessage: '输入手机号格式不正确'
@@ -305,6 +423,7 @@ Page({
         } else {
             this.setData({
                 isCurrentWaring: false,
+                currentValue
             });
         }
     },
@@ -374,6 +493,11 @@ Page({
             dialog2: true
         })
     },
+    open2() {
+        this.setData({
+            needToKnow: true
+        })
+    },
     close() {
         this.setData({
             dialog: false
@@ -389,6 +513,11 @@ Page({
             dialog3: false
         })
     },
+    close3() {
+        this.setData({
+            needToKnow: false
+        })
+    },
     dayClick(e) {
         //设置只能选一天
         this.setData({
@@ -399,7 +528,6 @@ Page({
         let str = util.GetDateStr(0)
         //下一天
         let preStr = util.GetDateStr1(str, -1)
-        console.log(e.detail.day);
         days_style.push({month: 'current', day: e.detail.day, color: 'white', background: '#aad4f5'},)
         selectDay = `${e.detail.year}-${(e.detail.month + '').padStart(2, '0')}-${(e.detail.day + '').padStart(2, '0')}`
         yesterday = util.GetWeekStr(selectDay, -1)
@@ -473,7 +601,6 @@ Page({
         let {selectDay, today, yesterday, tomorrow, days_style} = this.data
         let str = util.GetDateStr(0)
         selectDay = util.GetDateStr1(selectDay, 1)
-        console.log(selectDay);
         yesterday = util.GetWeekStr(selectDay, -1)
         today = util.GetWeekStr(selectDay, 0)
         tomorrow = util.GetWeekStr(selectDay, 1)

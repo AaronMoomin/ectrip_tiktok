@@ -17,3 +17,12 @@ radio .wx-radio-input.wx-radio-input-checked{
   border: none;
   background: #3e86e9 !important;
 }
+checkbox .wx-checkbox-input{
+  border-radius: 50%;/* 圆角 */
+  width: 30rpx;
+  height: 30rpx;
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked{
+  border: none;
+  background: #3e86e9 !important;
+}

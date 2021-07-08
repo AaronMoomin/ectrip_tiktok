@@ -28,6 +28,7 @@ Component({
                     isDisabled: true
                 })
             }
+            this.triggerEvent("itemIndex",{index})
         },
         jia() {
             let {index} = this.data
@@ -36,6 +37,7 @@ Component({
                 index,
                 isDisabled: false
             })
+            this.triggerEvent("itemIndex",{index})
         }
     },
     lifetimes: {

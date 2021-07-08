@@ -104,5 +104,7 @@
             </view>
         </view>
     </view>
-    <footerComponent></footerComponent>
+    <view class="weui-footer">
+        <view class="weui-footer__text">我也是有底线的喔</view>
+    </view>
 </view>

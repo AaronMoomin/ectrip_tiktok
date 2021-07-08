@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "footerComponent":"/pages/components/footer/footer"
+    "footerComponent":"/components/footer/footer"
   },
   "navigationBarTitleText": "发现"
 }

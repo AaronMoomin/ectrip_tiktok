@@ -107,6 +107,10 @@
     border-radius: 20rpx;
 }
 
+.detailContainer .addressChooser .select {
+    border: 4rpx solid #3d84e7;
+}
+
 .detailContainer .addressChooser .address text:nth-child(1) {
     flex: 1;
 }
@@ -240,39 +244,57 @@
     line-height: 45rpx;
     font-size: 20rpx;
 }
-.userInfo .userBox .more text:nth-child(1){
+
+.userInfo .userBox .more text:nth-child(1) {
     width: 70rpx;
-    font-size:25rpx;
+    font-size: 25rpx;
 }
-.userInfo .userBox .more text:nth-child(2){
+
+.userInfo .userBox .more text:nth-child(2) {
     color: #3e86e9;
     margin-top: 20rpx;
 }
-.userDetails{
+
+.userDetails {
     display: flex;
-    background:#f2f8fd;
-    border-radius:10rpx;
+    background: #f2f8fd;
+    border-radius: 10rpx;
     margin-top: 20rpx;
     padding: 10rpx;
 }
-.userDetails .iconfont{
+
+.userDetails .iconfont {
     color: #3e86e9;
     width: 60rpx;
     height: 100rpx;
-    font-size:35rpx;
+    font-size: 35rpx;
     margin-top: 80rpx;
     text-align: center;
 }
-.userDetails .user{
+
+.userDetails .user {
     display: flex;
-    flex:1;
+    flex: 1;
     margin: 20rpx;
     flex-direction: column;
 }
-.userDetails .user .userItem .lead{
+
+.userDetails .user .userItem .lead {
     color: #797979;
     margin-right: 20rpx;
 }
-.userDetails .user .userItem .name{
+
+.userDetails .user .userItem .name {
     font-weight: bold;
+}
+
+.confirmContainer {
+    margin-top: 20rpx;
+}
+
+.checkboxContainer {
+    display: flex;
+    padding-top: 10rpx;
+    margin: 0 auto;
+    font-size: 24rpx;
 }
