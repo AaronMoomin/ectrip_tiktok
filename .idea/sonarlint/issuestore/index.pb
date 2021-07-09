@@ -98,6 +98,6 @@ R
 R
 "pages/tourBooking/tourBooking.wxml,d\3\d35f6cdc084d78066a08fd4bdf62f51a88520185
 8
-app.json,6\5\65596286f14dbaba6a5081a2edaae69700cc3c3b
-8
 app.wxss,a\f\af601df16cec8540397818893dd64d837f4879ee
+H
+pages/reserve/reserve.js,b\5\b54c13b70c4a5bd412e2553bdbc75ce758b99034
