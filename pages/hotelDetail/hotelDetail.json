@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "calendar": "/components/hotelCalendar/hotelCalendar",
+    "operation": "/components/operation/operation"
+  },
+  "navigationBarTitleText": ""
+}

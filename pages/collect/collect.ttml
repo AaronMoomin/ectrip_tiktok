@@ -1,0 +1,130 @@
+<view class="collectContainer">
+    <view class="topChoose">
+        <text bind:tap="handleSelect" class="{{isSelect[0]?'select':''}}" data-index="0">景点</text>
+        <text bind:tap="handleSelect" class="{{isSelect[1]?'select':''}}" data-index="1">酒店</text>
+        <text bind:tap="handleSelect" class="{{isSelect[2]?'select':''}}" data-index="2">线路</text>
+    </view>
+    <view class="scenicContainer" tt:if="{{isSelect[0]}}">
+        <view class="timer">
+            <text>收藏时间:2021年01月01日 星期一</text>
+        </view>
+        <view class="contentContainer">
+            <view class="hotContentR">
+                <view bind:tap="toSpecialtyOrder" class="hotItemR">
+                    <image src="/static/images/gbtl.jpg"></image>
+                    <view class="instruction">
+                        <view class="titleNav">
+                            <text class="name">收工自制点心</text>
+                        </view>
+                        <view class="priceItem">
+                            <text class="price">￥564起</text>
+                            <text class="comment">AAAA 景区</text>
+                        </view>
+                    </view>
+                </view>
+                <view bind:tap="toSpecialtyOrder" class="hotItemR">
+                    <image src="/static/images/gbtl.jpg"></image>
+                    <view class="instruction">
+                        <view class="titleNav">
+                            <text class="name">收工自制点心</text>
+                        </view>
+                        <view class="priceItem">
+                            <text class="price">￥564起</text>
+                            <text class="comment">AAAA 景区</text>
+                        </view>
+                    </view>
+                </view>
+                <view bind:tap="toSpecialtyOrder" class="hotItemR">
+                    <image src="/static/images/gbtl.jpg"></image>
+                    <view class="instruction">
+                        <view class="titleNav">
+                            <text class="name">收工自制点心</text>
+                        </view>
+                        <view class="priceItem">
+                            <text class="price">￥564起</text>
+                            <text class="comment">AAAA 景区</text>
+                        </view>
+                    </view>
+                </view>
+                <view bind:tap="toSpecialtyOrder" class="hotItemR">
+                    <image src="/static/images/gbtl.jpg"></image>
+                    <view class="instruction">
+                        <view class="titleNav">
+                            <text class="name">收工自制点心</text>
+                        </view>
+                        <view class="priceItem">
+                            <text class="price">￥564起</text>
+                            <text class="comment">AAAA 景区</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="hotelContainer" tt:elif="{{isSelect[1]}}">
+        <view class="timer">
+            <text>收藏时间:2021年01月01日 星期一</text>
+        </view>
+        <view class="routeItem">
+            <view class="imgBox">
+                <image src="/static/images/gbtl.jpg"></image>
+            </view>
+            <view class="info">
+                <view class="titleNav">
+                    <text class="star">四星</text>
+                    <text class="title">酒店名称</text>
+                </view>
+                <text class="desc">大床房/15m-20m/有无线/无早餐</text>
+                <text class="company">位于火车站附近500m</text>
+            </view>
+            <view class="price">
+                <view class="red">
+                    <text class="big">270</text>
+                    起
+                </view>
+            </view>
+        </view>
+        <view class="routeItem">
+            <view class="imgBox">
+                <image src="/static/images/gbtl.jpg"></image>
+            </view>
+            <view class="info">
+                <view class="titleNav">
+                    <text class="star">四星</text>
+                    <text class="title">酒店名称</text>
+                </view>
+                <text class="desc">大床房/15m-20m/有无线/无早餐</text>
+                <text class="company">位于火车站附近500m</text>
+            </view>
+            <view class="price">
+                <view class="red">
+                    <text class="big">270</text>
+                    起
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="routeContainer" tt:elif="{{isSelect[2]}}">
+        <view class="timer">
+            <text>收藏时间:2021年01月01日 星期一</text>
+        </view>
+        <view class="showcaseItem">
+            <view class="top">
+                <image src="/static/images/gbtl.jpg"></image>
+                <view class="topNav">
+                    <text class="name">马仑草原一日游</text>
+                    <text>芦芽山-马伦草原,情人谷一日游</text>
+                    <view class="star">
+                        <text class="iconfont icon-xingxing" tt:for="{{5}}"></text>
+                        <text class="price">4.9分</text>
+                        <text class="red">￥564起</text>
+                    </view>
+                </view>
+            </view>
+            <view class="down">
+                <text>1日 | 自驾游 | 约472公里</text>
+                <text class="see">查看详情</text>
+            </view>
+        </view>
+    </view>
+</view>

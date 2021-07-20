@@ -1,0 +1,139 @@
+.topChoose{
+    display: flex;
+    justify-content: space-around;
+    font-size: 28rpx;
+    color: #797979;
+    margin-bottom: 40rpx;
+}
+.topChoose .select{
+    color: var(--fontColor);
+}
+.contentContainer{
+    padding: 20rpx;
+}
+.timer{
+    width: 55%;
+    font-size: 24rpx;
+    border-radius: 30rpx;
+    padding: 0 10rpx;
+    background: rgba(0,0,0,0.5);
+}
+.timer text{
+    color: #fff;
+}
+.contentContainer .routeItem {
+    position: relative;
+    display: flex;
+    padding: 20rpx;
+    font-size: 26rpx;
+    margin-top: 10rpx;
+    /*border:2rpx solid #eee;*/
+    background:#fff;
+}
+
+.contentContainer .routeItem .imgBox {
+    position: relative;
+    color: #fff;
+    width: 200rpx;
+    height: 160rpx;
+}
+
+.contentContainer .routeItem .imgBox image {
+    width: 200rpx;
+    height: 160rpx;
+    border-radius: 10rpx;
+}
+
+.contentContainer .routeItem .imgBox .type {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #16181a;
+    opacity: 0.7;
+    width: 100rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    text-align: center;
+    border-top-left-radius: 10rpx;
+    border-bottom-right-radius: 10rpx;
+}
+
+.contentContainer .routeItem .imgBox .location {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #16181a;
+    opacity: 0.7;
+    width: 100%;
+    height: 40rpx;
+    line-height: 40rpx;
+    text-align: center;
+    border-bottom-left-radius: 10rpx;
+    border-bottom-right-radius: 10rpx;
+}
+
+.contentContainer .routeItem .info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20rpx;
+    letter-spacing: 5rpx;
+}
+
+.contentContainer .routeItem .titleNav{
+    margin-bottom: 10rpx;
+}
+.contentContainer .routeItem .info .desc {
+    color: #52575c;
+    font-size: 24rpx;
+}
+
+.contentContainer .routeItem .info .company {
+    font-size:18rpx;
+    color: #52575c;
+}
+
+.contentContainer .routeItem .price {
+    position: absolute;
+    top: 20rpx;
+    right: 20rpx;
+    display: flex;
+    height: 50rpx;
+    line-height: 50rpx;
+    color: #52575c;
+}
+
+.contentContainer .routeItem .price .red {
+    color: #d22b20;
+}
+
+.contentContainer .routeItem .price .red .big {
+    font-size: 36rpx;
+    margin-right: 10rpx;
+}
+.contentContainer .routeItem .btnNav{
+    display: flex;
+    position:absolute;
+    bottom: 0;
+    right: 0;
+    margin: 10rpx 0;
+}
+.contentContainer .routeItem .btnNav .cancel{
+    border: 2rpx solid #ff8e54;
+    color: #ff8e54;
+    width: 120rpx;
+    border-radius: 10rpx;
+    text-align: center;
+    padding: 0 10rpx;
+    margin-right: 20rpx;
+}
+.contentContainer .routeItem .btnNav  .reserve{
+    background: linear-gradient(#ff9754,#ff7356);
+    color: #fff;
+    font-size:22rpx;
+    width: 120rpx;
+    border-radius: 10rpx;
+    text-align: center;
+    padding: 0 10rpx;
+    line-height:40rpx;
+    margin-right: 10rpx;
+}

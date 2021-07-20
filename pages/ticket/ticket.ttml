@@ -1,0 +1,107 @@
+<view class="container">
+    <view class="TopInputBox">
+        <select class="select" name="全部" options="{{options}}" key="city_id" bind:change="change"></select>
+        <view class="inputBox">
+            <text class="iconfont icon-sousuo"></text>
+            <input placeholder="搜索景点,门票,酒店"></input>
+        </view>
+    </view>
+    <view class="headImg">
+        <image src="/static/images/lxzbc.png"></image>
+    </view>
+    <view class="btnContainer">
+        <view class="btnItem" bind:tap="toOrderTypeShow" data-name="赏花踏青">
+            <image src="/static/images/shtq.png"></image>
+            <text>赏花踏青</text>
+        </view>
+        <view class="btnItem" bind:tap="toOrderTypeShow" data-name="动植物园">
+            <image src="/static/images/dzwy.png"></image>
+            <text>动植物园</text>
+        </view>
+        <view class="btnItem" bind:tap="toOrderTypeShow" data-name="名胜古迹">
+            <image src="/static/images/msgj.png"></image>
+            <text>名胜古迹</text>
+        </view>
+        <view class="btnItem" bind:tap="toOrderTypeShow" data-name="自然风光">
+            <image src="/static/images/zrfg.png"></image>
+            <text>自然风光</text>
+        </view>
+        <view class="btnItem" bind:tap="toOrderTypeShow" data-name="演出演艺">
+            <image src="/static/images/ycyy.png"></image>
+            <text>演出演艺</text>
+        </view>
+    </view>
+    <!--  热门推荐  -->
+    <view class="hotRecommend">
+        <view class="hotHead">
+            <text class="title">热门推荐</text>
+            <text class="otherTitle">寻味福建</text>
+            <text class="otherTitle">休闲度假</text>
+        </view>
+        <view class="hotContent">
+            <view class="hotItem" bind:tap="toTicketDetail">
+                <image src="/static/images/gbtl.jpg"></image>
+                <view class="instruction">
+                    <text class="name">福建平潭岛</text>
+                    <view class="priceItem">
+                        <text class="price">￥564起</text>
+                        <text class="comment">AAAA 景区</text>
+                    </view>
+                </view>
+            </view>
+            <view class="hotItem">
+                <image src="/static/images/gbtl.jpg"></image>
+                <view class="instruction">
+                    <text class="name">福建平潭岛</text>
+                    <view class="priceItem">
+                        <text class="price">￥564起</text>
+                        <text class="comment">AAAA 景区</text>
+                    </view>
+                </view>
+            </view>
+            <view class="hotItem">
+                <image src="/static/images/gbtl.jpg"></image>
+                <view class="instruction">
+                    <text class="name">福建平潭岛</text>
+                    <view class="priceItem">
+                        <text class="price">￥564起</text>
+                        <text class="comment">AAAA 景区</text>
+                    </view>
+                </view>
+            </view>
+            <view class="hotItem">
+                <image src="/static/images/gbtl.jpg"></image>
+                <view class="instruction">
+                    <text class="name">福建平潭岛</text>
+                    <view class="priceItem">
+                        <text class="price">￥564起</text>
+                        <text class="comment">AAAA 景区</text>
+                    </view>
+                </view>
+            </view>
+            <view class="hotItem">
+                <image src="/static/images/gbtl.jpg"></image>
+                <view class="instruction">
+                    <text class="name">福建平潭岛</text>
+                    <view class="priceItem">
+                        <text class="price">￥564起</text>
+                        <text class="comment">AAAA 景区</text>
+                    </view>
+                </view>
+            </view>
+            <view class="hotItem">
+                <image src="/static/images/gbtl.jpg"></image>
+                <view class="instruction">
+                    <text class="name">福建平潭岛</text>
+                    <view class="priceItem">
+                        <text class="price">￥564起</text>
+                        <text class="comment">AAAA 景区</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="weui-footer">
+        <view class="weui-footer__text">我也是有底线的喔</view>
+    </view>
+</view>

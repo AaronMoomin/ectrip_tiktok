@@ -1,0 +1,42 @@
+<view class="hotDetailContainer">
+    <view class="hotContainer">
+        <view class="imgShow">
+            <swiper class="scrollNav" indicator-dots circular indicator-active-color="#fff">
+                <swiper-item class="scrollItem">
+                    <image src="/static/images/sea.png"></image>
+                </swiper-item>
+                <swiper-item class="scrollItem">
+                    <image src="/static/images/gbtl.jpg"></image>
+                </swiper-item>
+                <swiper-item class="scrollItem">
+                    <image src="/static/images/gbtl.jpg"></image>
+                </swiper-item>
+            </swiper>
+        </view>
+        <view class="contentContainer">
+            <view class="title">
+                新征程上,必须坚持中国共产党坚强领导
+            </view>
+            <view class="userShow">
+                <view class="user">
+                    <image src="/static/images/gbtl.jpg"></image>
+                    <text>山西发布</text>
+                </view>
+                <text>于20210年7月16号</text>
+            </view>
+            <view class="content">
+                好多好多字好多好多字好多好多字好多好多字好多好多字好多好多字
+                好多好多字好多好多字好多好多字好多好多字好多好多字好多好多字
+                好多好多字好多好多字好多好多字好多好多字好多好多字好多好多字
+                好多好多字好多好多字好多好多字好多好多字好多好多字好多好多字
+                好多好多字好多好多字好多好多字好多好多字好多好多字好多好多字
+                好多好多字好多好多字好多好多字好多好多字好多好多字好多好多字
+                好多好多字好多好多字好多好多字好多好多字好多好多字好多好多字
+                好多好多字好多好多字好多好多字好多好多字好多好多字好多好多字
+                好多好多字好多好多字好多好多字好多好多字好多好多字好多好多字
+                好多好多字好多好多字好多好多字好多好多字好多好多字好多好多字
+                好多好多字好多好多字好多好多字好多好多字好多好多字好多好多字
+            </view>
+            <image class="show" src="/static/images/gbtl.jpg"></image>
+        </view>
+</view>

@@ -1,0 +1,124 @@
+<view class="container">
+    <view class="headImg">
+        <image src="/static/images/rntx.png"></image>
+    </view>
+    <view class="searchContainer">
+        <view class="btnNav">
+            <text bind:tap="handleCurrentIndex" data-index="1" class="{{currentIndex==1?'current':''}}">酒店</text>
+            <text bind:tap="handleCurrentIndex" data-index="2" class="{{currentIndex==2?'current':''}}">民宿</text>
+            <text bind:tap="handleCurrentIndex" data-index="3" class="{{currentIndex==3?'current':''}}">钟点房</text>
+        </view>
+        <view class="inputBox">
+            <text class="iconfont icon-sousuo"></text>
+            <text class="inputItem">{{address}}</text>
+            <view class="location" bind:tap="getLocation">
+                <text class="iconfont icon-dingwei here"></text>
+                <text>当前位置</text>
+            </view>
+        </view>
+        <view class="chooseContainer">
+            <view class="dateContainer">
+                <view class="pre">
+                    <picker mode="date" data-type="pre" value="{{dateGlobal}}" start="{{yearT}}" end="{{2099-12-31}}" bindchange="bindDateChange">
+                        <text>{{weekT}}\n</text>
+                        <text>{{today}}</text>
+                    </picker>
+                </view>
+                <view class="line"></view>
+                <view class="line"></view>
+                <view class="next">
+                    <picker mode="date" data-type="next" value="{{dateGlobal2}}" start="{{yearN}}" end="{{2099-12-31}}" bindchange="bindDateChange">
+                        <text>{{weekN}}\n</text>
+                        <text>{{tomorrow}}</text>
+                    </picker>
+                </view>
+            </view>
+            <view class="peopleContainer">
+                <text>每间</text>
+                <view class="people">
+                    <picker data-type="adult" bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <text class="big">{{adults}}成人</text>
+                    </picker>
+                    <picker data-type="children" bindchange="bindPickerChange" value="{{index1}}" range="{{array}}">
+                        <text class="little">{{childrens}}儿童</text>
+                    </picker>
+                </view>
+            </view>
+        </view>
+        <input type="text" class="suggests" placeholder="试试搜索 '振华商圈'"
+        bind:confirm="toHotelSearch"></input>
+        <button class="btn" bind:tap="handleReserve">立即预定</button>
+    </view>
+    <!--  超值特惠  -->
+    <view class="hotRecommend">
+        <view class="hotHead">
+            <text class="title">超值特惠</text>
+        </view>
+        <view class="hotContent">
+            <view class="hotItem" bind:tap="toHotelDetail" data-name="又见文华酒店">
+                <image src="/static/images/gbtl.jpg"></image>
+                <view class="instruction">
+                    <text class="name">又见文华酒店</text>
+                    <view class="priceItem">
+                        <text class="price">￥564起</text>
+                        <text class="comment">民宿</text>
+                    </view>
+                </view>
+            </view>
+            <view class="hotItem">
+                <image src="/static/images/gbtl.jpg"></image>
+                <view class="instruction">
+                    <text class="name">福建平潭岛</text>
+                    <view class="priceItem">
+                        <text class="price">￥564起</text>
+                        <text class="comment">民宿</text>
+                    </view>
+                </view>
+            </view>
+            <view class="hotItem">
+                <image src="/static/images/gbtl.jpg"></image>
+                <view class="instruction">
+                    <text class="name">福建平潭岛</text>
+                    <view class="priceItem">
+                        <text class="price">￥564起</text>
+                        <text class="comment">民宿</text>
+                    </view>
+                </view>
+            </view>
+            <view class="hotItem">
+                <image src="/static/images/gbtl.jpg"></image>
+                <view class="instruction">
+                    <text class="name">福建平潭岛</text>
+                    <view class="priceItem">
+                        <text class="price">￥564起</text>
+                        <text class="comment">民宿</text>
+                    </view>
+                </view>
+            </view>
+            <view class="hotItem">
+                <image src="/static/images/gbtl.jpg"></image>
+                <view class="instruction">
+                    <text class="name">福建平潭岛</text>
+                    <view class="priceItem">
+                        <text class="price">￥564起</text>
+                        <text class="comment">民宿</text>
+                    </view>
+                </view>
+            </view>
+            <view class="hotItem">
+                <image src="/static/images/gbtl.jpg"></image>
+                <view class="instruction">
+                    <text class="name">福建平潭岛</text>
+                    <view class="priceItem">
+                        <text class="price">￥564起</text>
+                        <text class="comment">民宿</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="weui-footer">
+        <view class="weui-footer__text">我也是有底线的喔</view>
+    </view>
+</view>
+

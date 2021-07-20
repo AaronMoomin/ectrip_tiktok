@@ -1,0 +1,104 @@
+.orderContainer{
+    position:relative;
+    color:#000;
+}
+.orderContainer .imgShow {
+    width: 100%;
+}
+
+.imgShow .scrollNav {
+    width: 100%;
+    height: 560rpx;
+}
+
+.imgShow .scrollNav .scrollItem image {
+    width: 100%;
+    height: 560rpx;
+}
+.contentContainer {
+    position: absolute;
+    top: 500rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    background: #fff;
+    padding: 40rpx;
+    border-radius: 30rpx;
+    border: 2rpx solid #eee;
+}
+.contentContainer{
+    font-size:28rpx;
+}
+.contentContainer .red{
+    color: #f2280e;
+}
+.contentContainer .red .price{
+    font-size:38rpx;
+}
+.contentContainer .descInfo{
+    display: flex;
+    justify-content:space-around;
+    padding: 30rpx 0;
+    border-bottom:2rpx solid #eee;
+}
+.contentContainer .descInfo .descItem{
+    color: #797979;
+    font-size: 24rpx;
+}
+.contentContainer .descInfo .descItem .iconfont{
+    color:#f23720;
+    margin-right: 10rpx;
+    font-size: 24rpx;
+}
+.commentContainer{
+    display: flex;
+    font-size: 28rpx;
+    margin: 30rpx 0;
+    padding-bottom: 30rpx;
+    border-bottom:2rpx solid #eee;
+}
+.commentContainer .comment{
+    flex:1;
+}
+.goodsInstruction{
+    display: flex;
+    flex-direction: column;
+}
+.goodsInstruction .title{
+    margin-bottom: 20rpx;
+}
+.goodsInstruction image{
+    width: 100%;
+    margin-bottom: 10rpx;
+}
+.fixedBox{
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    background:#fff;
+    height: 100rpx;
+    width: 100%;
+    font-size:24rpx;
+    padding-top: 20rpx;
+}
+.fixedBox .fixedItem{
+    display: flex;
+    flex:1;
+    flex-direction: column;
+    text-align: center;
+    margin: 0 40rpx;
+}
+.fixedBox .fixedItem .iconfont{
+    font-size:32rpx;
+}
+.fixedBox .btn{
+    font-size: 24rpx;
+    width: 200rpx;
+    height: 60rpx;
+    line-height:60rpx;
+    background:#ff6256;
+    margin: 20rpx 40rpx 0 0;
+    color: #fff;
+    border-radius:30rpx;
+}

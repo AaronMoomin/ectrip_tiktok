@@ -1,0 +1,68 @@
+<view class="listContainer">
+    <view class="inputBox">
+        <text class="iconfont icon-sousuo"></text>
+        <input placeholder="想住哪里?"></input>
+    </view>
+    <view class="chooseContainer">
+        <select class="select" options="{{all}}" name="综合" key="city_id" bind:change="change"></select>
+        <select class="select" options="{{locations}}" name="销量" key="city_id" bind:change="change"></select>
+        <select class="select" options="{{destination}}" name="价格" key="city_id" bind:change="change"></select>
+        <select class="select" options="{{days}}" name="上新" key="city_id" bind:change="change"></select>
+    </view>
+    <view class="hotRecommend">
+        <view class="hotContentR">
+            <view class="hotItemR" bind:tap="toSpecialtyOrder">
+                <image src="/static/images/gbtl.jpg"></image>
+                <view class="instruction">
+                    <view class="titleNav">
+                        <text class="tj">推荐</text>
+                        <text class="name">收工自制点心</text>
+                    </view>
+                    <view class="priceItem">
+                        <text class="price">￥564</text>
+                        <text class="comment">165人付款</text>
+                    </view>
+                </view>
+            </view>
+            <view class="hotItemR" bind:tap="toSpecialtyOrder">
+                <image src="/static/images/gbtl.jpg"></image>
+                <view class="instruction">
+                    <view class="titleNav">
+                        <text class="tj">推荐</text>
+                        <text class="name">收工自制点心</text>
+                    </view>
+                    <view class="priceItem">
+                        <text class="price">￥564</text>
+                        <text class="comment">165人付款</text>
+                    </view>
+                </view>
+            </view>
+            <view class="hotItemR" bind:tap="toSpecialtyOrder">
+                <image src="/static/images/gbtl.jpg"></image>
+                <view class="instruction">
+                    <view class="titleNav">
+                        <text class="tj">推荐</text>
+                        <text class="name">收工自制点心</text>
+                    </view>
+                    <view class="priceItem">
+                        <text class="price">￥564</text>
+                        <text class="comment">165人付款</text>
+                    </view>
+                </view>
+            </view>
+            <view class="hotItemR" bind:tap="toSpecialtyOrder">
+                <image src="/static/images/gbtl.jpg"></image>
+                <view class="instruction">
+                    <view class="titleNav">
+                        <text class="tj">推荐</text>
+                        <text class="name">收工自制点心</text>
+                    </view>
+                    <view class="priceItem">
+                        <text class="price">￥564</text>
+                        <text class="comment">165人付款</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,37 @@
+<view class="tcontainer">
+    <view class="topBox">
+        <text class="title">太原</text>
+        <view class="searchBox">
+            <text class="iconfont icon-sousuo search"></text>
+            <input type="text" placeholder="搜索景区, 门票, 酒店"
+            placeholder-class="inputSy"></input>
+        </view>
+    </view>
+    <view class="contentContainer">
+        <view class="showcaseContainer">
+            <view class="showcaseItem" bind:tap="toHotDetail">
+                <image src="/static/images/gbtl.jpg"></image>
+                <view class="info">
+                    <text class="name">福建平潭岛</text>
+                    <view class="infoDes">
+                        <text class="grade"></text>
+                        <text>流沙包</text>
+                    </view>
+                </view>
+            </view>
+            <view class="showcaseItem" bind:tap="toHotDetail">
+                <image src="/static/images/gbtl.jpg"></image>
+                <view class="info">
+                    <text class="name">福建平潭岛</text>
+                    <view class="infoDes">
+                        <text class="grade"></text>
+                        <text>流沙包</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="weui-footer">
+            <view class="weui-footer__text">我也是有底线的喔</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,55 @@
+<view class="destinationContainer">
+    <view class="TopInputBox">
+        <view class="inputBox">
+            <text class="iconfont icon-sousuo"></text>
+            <input placeholder="搜索景点,门票,酒店"></input>
+        </view>
+        <select class="select" name="全部"
+                options="{{options}}" key="city_id"
+                bind:change="change"></select>
+    </view>
+    <map></map>
+</view>
+<view class="fadeIn" tt:if="{{dialog}}">
+    <view class="weui-mask" bindtap="close"></view>
+    <view class="weui-half-screen-dialog">
+        <view class="weui-half-screen-dialog__hd">
+        </view>
+        <view class="weui-half-screen-dialog__bd" style="padding-top:10rpx;height:200px;">
+            <view class="topChoose">
+                <text bind:tap="handleSelect" class="{{isSelect[0]?'select':''}}" data-index="0">景点</text>
+                <text bind:tap="handleSelect" class="{{isSelect[1]?'select':''}}" data-index="1">酒店</text>
+                <text bind:tap="handleSelect" class="{{isSelect[2]?'select':''}}" data-index="2">美食</text>
+                <text bind:tap="handleSelect" class="{{isSelect[3]?'select':''}}" data-index="3">医院</text>
+            </view>
+            <view class="disItem">
+                <view class="left">
+                    <text class="name">静思公园</text>
+                    <text class="desc">山西省太原市金童区金石镇</text>
+                    <view class="info">
+                        <text>古迹遗址</text>
+                        <text>历史建筑</text>
+                    </view>
+                </view>
+                <view class="right">
+                    <image src="/static/images/dh.png"></image>
+                    <text>距我212m</text>
+                </view>
+            </view>
+            <view class="disItem">
+                <view class="left">
+                    <text class="name">静思公园</text>
+                    <text class="desc">山西省太原市金童区金石镇</text>
+                    <view class="info">
+                        <text>古迹遗址</text>
+                        <text>历史建筑</text>
+                    </view>
+                </view>
+                <view class="right">
+                    <image src="/static/images/dh.png"></image>
+                    <text>距我212m</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

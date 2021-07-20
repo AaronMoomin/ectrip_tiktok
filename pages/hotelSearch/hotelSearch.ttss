@@ -1,0 +1,132 @@
+.listContainer{
+    /*background:#eee;*/
+}
+.inputBox{
+    flex:1;
+    margin: 0 20rpx;
+    padding-left: 20rpx;
+    background:#fff;
+    line-height:60rpx;
+    border-radius: 20rpx;
+    display: flex;
+}
+.inputBox text{
+    color: #797979;
+}
+.inputBox input{
+    margin-left: 20rpx;
+    height: 60rpx;
+    font-size: 26rpx;
+}
+.chooseContainer {
+    background:#fff;
+    display: flex;
+    justify-content: space-around;
+    margin: 20rpx;
+    border: 2rpx solid #eee;
+    box-shadow: 4rpx 4rpx 4rpx 2rpx #eee;
+}
+
+.chooseContainer .select {
+    width: 25%;
+}
+.hotelContainer{
+    padding: 20rpx;
+}
+.hotelContainer .routeItem {
+    background:#fff;
+    position: relative;
+    display: flex;
+    padding: 20rpx;
+    font-size: 26rpx;
+    margin-top: 10rpx;
+    border-bottom:2rpx solid #eee;
+}
+
+.hotelContainer .routeItem .imgBox {
+    position: relative;
+    color: #fff;
+    width: 200rpx;
+    height: 160rpx;
+}
+
+.hotelContainer .routeItem .imgBox image {
+    width: 200rpx;
+    height: 160rpx;
+    border-radius: 10rpx;
+}
+
+.hotelContainer .routeItem .imgBox .type {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #16181a;
+    opacity: 0.7;
+    width: 100rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    text-align: center;
+    border-top-left-radius: 10rpx;
+    border-bottom-right-radius: 10rpx;
+}
+
+.hotelContainer .routeItem .imgBox .location {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #16181a;
+    opacity: 0.7;
+    width: 100%;
+    height: 40rpx;
+    line-height: 40rpx;
+    text-align: center;
+    border-bottom-left-radius: 10rpx;
+    border-bottom-right-radius: 10rpx;
+}
+
+.hotelContainer .routeItem .info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20rpx;
+    letter-spacing: 5rpx;
+}
+
+.hotelContainer .routeItem .titleNav{
+    margin-bottom: 10rpx;
+}
+.hotelContainer .routeItem .titleNav .star{
+    background: linear-gradient(#ff9754,#ff7356);
+    color: #fff;
+    font-size:22rpx;
+    padding: 5rpx 10rpx;
+    border-radius: 10rpx;
+    margin-right: 10rpx;
+}
+.hotelContainer .routeItem .info .desc {
+    color: #52575c;
+    font-size: 24rpx;
+}
+
+.hotelContainer .routeItem .info .company {
+    font-size:22rpx;
+    color: #52575c;
+}
+
+.hotelContainer .routeItem .price {
+    position: absolute;
+    bottom: 10rpx;
+    right: 20rpx;
+    display: flex;
+    height: 50rpx;
+    line-height: 50rpx;
+    color: #52575c;
+}
+
+.hotelContainer .routeItem .price .red {
+    color: #d22b20;
+}
+
+.hotelContainer .routeItem .price .red .big {
+    font-size: 36rpx;
+    margin-right: 10rpx;
+}

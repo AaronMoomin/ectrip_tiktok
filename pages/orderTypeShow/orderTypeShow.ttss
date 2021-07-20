@@ -1,0 +1,84 @@
+.orderContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 30rpx;
+}
+.orderItem{
+    /*border: 2rpx solid #f8f8f8;*/
+    margin-bottom: 20rpx;
+    border-radius:20rpx;
+    /*box-shadow:0 0 40rpx 0 #ccc;*/
+}
+.orderItem .orderImg{
+    position: relative;
+    font-size:24rpx;
+}
+.orderItem .orderImg .type{
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    width: 80rpx;
+    height: 40rpx;
+    background:#61748b;
+    color: #fff;
+    border-top-left-radius:20rpx;
+    border-bottom-right-radius:20rpx;
+}
+.orderItem .orderImg image{
+    width: 100%;
+    height: 300rpx;
+    border-top-left-radius:20rpx;
+    border-top-right-radius:20rpx;
+}
+.orderItem .orderImg .address{
+    position: absolute;
+    color: #fff;
+    left: 20rpx;
+    bottom: 20rpx;
+}
+.orderItem .orderImg .address .iconfont{
+    margin-right: 10rpx;
+}
+.orderItem .priceNav{
+    padding: 10rpx;
+    background:#fff;
+    border-bottom-left-radius: 20rpx;
+    border-bottom-right-radius: 20rpx;
+}
+.orderItem .priceNav .nameNav{
+    margin-bottom: 20rpx;
+}
+.orderItem .priceNav .nameNav .name{
+    font-weight: bold;
+    margin-right: 10rpx;
+    color: #000;
+}
+.orderItem .priceNav .nameNav .other{
+    font-size:24rpx;
+    color: #959595;
+}
+.orderItem .discountsNav{
+    font-size: 24rpx;
+    margin-bottom: 20rpx;
+}
+.orderItem .discountsNav text{
+    color: #d32c21;
+    padding: 10rpx 20rpx;
+    border-radius: 30rpx;
+    background:#faede8;
+}
+.orderItem .priceNav .price{
+    display: flex;
+    font-size: 24rpx;
+    height: 100rpx;
+    line-height:100rpx;
+    color: #959595;
+}
+.orderItem .priceNav .price .red{
+    color: #d32c21;
+    margin-right: 10rpx;
+}
+.orderItem .priceNav .price .red text{
+    font-size: 40rpx;
+}

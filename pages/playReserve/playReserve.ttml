@@ -1,0 +1,164 @@
+<view class="reserveContainer">
+    <swiper class="swiperNav"
+            circular autoplay indicator-dots>
+        <swiper-item class="swiperItem">
+            <image src="/static/images/gbtl.jpg"></image>
+        </swiper-item>
+        <swiper-item class="swiperItem">
+            <image src="/static/images/sea.png"></image>
+        </swiper-item>
+        <swiper-item class="swiperItem">
+            <image src="/static/images/gbtl.jpg"></image>
+        </swiper-item>
+    </swiper>
+    <view class="infoContainer">
+        <text class="title">常规平遥乔家一日游</text>
+        <view class="price">￥<text class="big">270</text>
+        </view>
+        <view class="collect">
+            <text class="iconfont icon-xingxing"></text>
+            <text>收藏</text>
+        </view>
+        <view class="dateContainer">
+            <text class="tie">产品类型/日期</text>
+            <view class="timeChooser">
+                <view class="timeBox">
+                    <view class="timeItem" bind:tap="{{showYesterday?'preDay':''}}">
+                        <text style="{{showYesterday?'':'color:#d8dadc'}};">{{yesterday}}\n</text>
+                        <text class="price">￥270</text>
+                    </view>
+                    <view class="timeItem select">
+                        <text style="{{showDay?'':'color:#d8dadc'}};">{{today}}\n</text>
+                        <text class="price">￥270</text>
+                    </view>
+                    <view class="timeItem" bind:tap="{{showTomorrow?'nextDay':''}}">
+                        <text style="{{showTomorrow?'':'color:#d8dadc'}};">{{tomorrow}}\n</text>
+                        <text class="price">￥270</text>
+                    </view>
+                    <view class="more" bind:tap="open">
+                        <text>更多日期</text>
+                        <text class="iconfont icon-tiaozhuan"></text>
+                    </view>
+                </view>
+            </view>
+            <view class="goodsShow">
+                <view class="goodsItem">
+                    <text class="goodsName" style="white-space:pre-wrap">常规平遥乔家一日游</text>
+                </view>
+            </view>
+            <text class="company">太原出发·游山西供应商</text>
+        </view>
+    </view>
+    <view class="imgContainer">
+        <text class="name">产品描述</text>
+        <image src="/static/images/gbtl.jpg"></image>
+        <image src="/static/images/gbtl.jpg"></image>
+        <image src="/static/images/gbtl.jpg"></image>
+    </view>
+    <view class="routeContainer">
+        <text class="name">日程安排</text>
+        <view class="routeNav">
+            <text class="d">D1</text>
+            <text class="title">乌金山欢乐谷一日游</text>
+        </view>
+        <view class="routeItem">
+            <text class="iconfont icon-gongjiao"></text>
+            <view class="tie">大巴 : 上海-北海道</view>
+            <view class="content">
+                7.30到交通大厦集合7.30到交通大厦集合7.30到交通大厦集合
+                7.30到交通大厦集合7.30到交通大厦集合7.30到交通大厦集合
+                7.30到交通大厦集合7.30到交通大厦集合7.30到交通大厦集合
+            </view>
+        </view>
+        <view class="routeItem">
+            <text class="iconfont icon-shan"></text>
+            <view class="tie">大巴 : 上海-北海道</view>
+            <view class="content">
+                7.30到交通大厦集合7.30到交通大厦集合7.30到交通大厦集合
+                7.30到交通大厦集合7.30到交通大厦集合7.30到交通大厦集合
+                7.30到交通大厦集合7.30到交通大厦集合7.30到交通大厦集合
+            </view>
+        </view>
+        <view class="routeItem">
+            <text class="iconfont icon-gongjiao"></text>
+            <view class="tie">大巴 : 上海-北海道</view>
+            <view class="content">
+                7.30到交通大厦集合7.30到交通大厦集合7.30到交通大厦集合
+                7.30到交通大厦集合7.30到交通大厦集合7.30到交通大厦集合
+                7.30到交通大厦集合7.30到交通大厦集合7.30到交通大厦集合
+            </view>
+        </view>
+    </view>
+    <view class="feeContainer">
+        <text class="name">费用说明</text>
+        <view class="feeContent">
+            <text class="title">费用包含</text>
+            <view class="feeItem">
+                <text class="itemName">交通 :</text>
+                <text class="desc">7.30集合7.30集合7.30集合7.30集合7.30集合7.30集合</text>
+            </view>
+            <view class="feeItem">
+                <text class="itemName">交通 :</text>
+                <text class="desc">7.30集合7.30集合7.30集合7.30集合7.30集合7.30集合</text>
+            </view>
+            <view class="feeItem">
+                <text class="itemName">交通 :</text>
+                <text class="desc">7.30集合7.30集合7.30集合7.30集合7.30集合7.30集合</text>
+            </view>
+            <view class="feeItem">
+                <text class="itemName">交通 :</text>
+                <text class="desc">7.30集合7.30集合7.30集合7.30集合7.30集合7.30集合</text>
+            </view>
+            <text class="title">费用不含</text>
+            <view class="feeItem">
+                <text class="itemName">交通 :</text>
+                <text class="desc">7.30集合7.30集合7.30集合7.30集合7.30集合7.30集合</text>
+            </view>
+            <view class="feeItem">
+                <text class="itemName">交通 :</text>
+                <text class="desc">7.30集合7.30集合7.30集合7.30集合7.30集合7.30集合</text>
+            </view>
+        </view>
+    </view>
+    <view class="feeContainer">
+        <text class="name">预定须知</text>
+        <view class="feeContent">
+            <text class="title">行前须知</text>
+            <view class="feeItem">
+                <text class="desc">7.30集合7.30集合7.30集合7.30集合7.30集合7.30集合</text>
+            </view>
+            <text class="title">退改须知</text>
+            <view class="feeItem">
+                <text class="desc">7.30集合7.30集合7.30集合7.30集合7.30集合7.30集合</text>
+            </view>
+        </view>
+    </view>
+    <view class="operation">
+        <view class="operationItem">
+            <text class="iconfont icon-zixun"></text>
+            <text>在线咨询</text>
+        </view>
+        <view class="btn" bind:tap="toRouteReserve">立即预定</view>
+    </view>
+    <!--  日期选择  -->
+    <view class="fadeIn" tt:if="{{dialog}}">
+        <view class="weui-mask" bindtap="close"></view>
+        <view class="weui-half-screen-dialog">
+            <view class="weui-half-screen-dialog__hd">
+                <view class="weui-half-screen-dialog__hd__side" bindtap="close">
+                    <view class="weui-icon-btn">关闭<text class="weui-icon-close-thin"></text>
+                    </view>
+                </view>
+                <view class="weui-half-screen-dialog__hd__main">
+                    <text class="weui-half-screen-dialog__title">选择日期</text>
+                </view>
+            </view>
+            <view class="weui-half-screen-dialog__bd" style="padding-top:32rpx;height:500rpx;">
+                <calendar  bind:change="dateChange" spot="{{spot}}" defaultTime="{{selectDay}}"></calendar>
+            </view>
+            <view class="weui-half-screen-dialog__ft">
+                <button class="confirm" bind:tap="confirmDate">确定</button>
+            </view>
+        </view>
+    </view>
+</view>

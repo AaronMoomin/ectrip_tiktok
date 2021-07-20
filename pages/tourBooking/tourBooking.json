@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "footerComponent":"/components/footer/footer"
-  },
-  "navigationBarTitleText": "发现"
-}

@@ -1,0 +1,62 @@
+.visitorContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 20rpx;
+    /*background-color:#eee;*/
+    color:#000;
+}
+.titleNav{
+    background:#6a687f;
+    color:#fff;
+    border-radius: 10rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    padding: 20rpx;
+}
+.visitorItem{
+    display: flex;
+    font-size: 30rpx;
+    background:#fff;
+    height: 300rpx;
+    padding: 20rpx;
+    margin-top: 20rpx;
+    border-radius: 10rpx;
+}
+.visitorItem .left{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.visitorItem .left .title{
+    font-size:36rpx;
+    margin-bottom: 30rpx;
+}
+.visitorItem .left .address{
+    color:#797979;
+    margin-bottom: 30rpx;
+}
+.visitorItem .right{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.visitorItem .right .phone{
+    color: #ff685c;
+    margin-left: 100rpx;
+}
+.visitorItem .right  .editNav{
+    display: flex;
+    justify-content:space-around;
+    font-size:28rpx;
+    margin-top: 160rpx;
+    margin-left: 100rpx;
+}
+.btn{
+    margin-top: 20rpx;
+    height: 100rpx;
+    background-color:#fff;
+    border-radius: 10rpx;
+    text-align: center;
+    line-height: 100rpx;
+    color:#ff847a;
+}

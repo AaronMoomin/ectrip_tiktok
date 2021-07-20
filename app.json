@@ -1,39 +1,44 @@
 {
   "pages": [
+    "pages/comment/comment",
+    "pages/mine/mine",
     "pages/index/index",
+    "pages/ticket/ticket",
     "pages/reserve/reserve",
     "pages/ticketDetail/ticketDetail",
-    "pages/ticket/ticket",
     "pages/hotel/hotel",
-    "pages/tourBooking/tourBooking",
-    "pages/qualityTouristRoutes/qualityTouristRoutes",
-    "pages/mine/mine",
+    "pages/orderTypeShow/orderTypeShow",
     "pages/serve/serve",
-    "pages/destination/destination"
+    "pages/hotelDetail/hotelDetail",
+    "pages/destination/destination",
+    "pages/hotelSearch/hotelSearch",
+    "pages/routeReserve/routeReserve",
+    "pages/playReserve/playReserve",
+    "pages/playerItemShow/playerItemShow",
+    "pages/hotDetail/hotDetail",
+    "pages/hotList/hotList",
+    "pages/visitor/visitor",
+    "pages/discountShow/discountShow",
+    "pages/allOrder/allOrder",
+    "pages/collect/collect",
+    "pages/specialtyStore/specialtyStore",
+    "pages/specialtyOrder/specialtyOrder",
+    "pages/specialtyList/specialtyList",
+    "pages/qualityTouristRoutes/qualityTouristRoutes"
   ],
-  "plugins": {
-    "calendar": {
-      "version": "1.1.3",
-      "provider": "wx92c68dae5a8bb046"
-    }
-  },
-  "permission": {
-    "scope.userLocation": {
-      "desc": "你的位置将用于小程序位置接口的效果展示"
-    }
-  },
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "ectrip",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#120e33",
+    "navigationBarTitleText": "鼎游信息",
+    "navigationBarTextStyle": "white"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "tabBar": {
+    "borderStyle": "black",
     "color": "#8a8a8a",
-    "selectedColor": "#2ba5ff",
-    "backgroundColor": "white",
+    "selectedColor": "#ff935e",
+    "backgroundColor": "#120e33",
     "list": [
       {
         "selectedIconPath": "./static/icon/indexSelected.png",
@@ -45,7 +50,7 @@
         "selectedIconPath": "./static/icon/destinationSelected.png",
         "iconPath": "./static/icon/destination.png",
         "pagePath": "pages/destination/destination",
-        "text": "目的地"
+        "text": "地图"
       },
       {
         "selectedIconPath": "./static/icon/serveSelected.png",

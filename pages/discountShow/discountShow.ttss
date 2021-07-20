@@ -1,0 +1,59 @@
+.discountContainer{
+    padding: 10rpx;
+    /*background:#eee;*/
+}
+.topChoose{
+    display: flex;
+    justify-content: space-around;
+    font-size: 28rpx;
+    color: #a8a6b2;
+    margin-bottom: 40rpx;
+    background:#6b687f;
+    height: 100rpx;
+    line-height:100rpx;
+    border-radius:10rpx;
+}
+.topChoose .select{
+    color: #fff;
+}
+.discountNav{
+    display: flex;
+    flex-direction: column;
+}
+.discountNav .discountItem{
+    width: 100%;
+    position:relative;
+    color: #ff786e;
+}
+.discountNav .discountItem image{
+    width: 100%;
+    height: 240rpx;
+}
+.discountNav .discountItem .price{
+    position:absolute;
+    top: 40rpx;
+    left: 100rpx;
+    display: flex;
+}
+.discountNav .discountItem .price .big{
+    font-size:100rpx;
+}
+.discountNav .discountItem .desc{
+    display: flex;
+    flex-wrap: wrap;
+    width: 200rpx;
+    position:absolute;
+    top: 60rpx;
+    left: 360rpx;
+    font-size:32rpx;
+}
+.discountNav .discountItem .go{
+    display: flex;
+    flex-wrap: wrap;
+    width: 30rpx;
+    position:absolute;
+    top: 36rpx;
+    left: 660rpx;
+    font-size:32rpx;
+    color: #fff;
+}

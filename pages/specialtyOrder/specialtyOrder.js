@@ -1,18 +1,18 @@
-// pages/qualityTouristRoutes/playReserve.js
+
 Page({
   /**
    * 页面的初始数据
    */
-  data: {},
-  toPlayerShow(e){
-    tt.navigateTo({
-      url:"/pages/playerItemShow/playerItemShow?type="+e.currentTarget.dataset.type
-    })
+  data: {
+
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {},
+  onLoad: function (options) {
+
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -1,0 +1,51 @@
+<view class="orderContainer">
+    <view class="orderItem">
+        <view class="orderImg">
+            <text class="type">门票</text>
+            <image src="/static/images/sea.png"></image>
+            <view class="address">
+                <text class="iconfont icon-travel"></text>
+                <text>广东省深圳市南山区高速公路</text>
+            </view>
+        </view>
+        <view class="priceNav">
+            <view class="nameNav">
+                <text class="name">仙洞沟风景名胜区</text>
+                <text class="other">其他</text>
+            </view>
+            <view class="discountsNav">
+                <text>立减</text>
+                <text>优惠券</text>
+            </view>
+            <view class="price">
+                <view class="red">￥<text>35</text></view>起
+            </view>
+        </view>
+    </view>
+    <view class="orderItem">
+        <view class="orderImg">
+            <text class="type">门票</text>
+            <image src="/static/images/sea.png"></image>
+            <view class="address">
+                <text class="iconfont icon-travel"></text>
+                <text>广东省深圳市南山区高速公路</text>
+            </view>
+        </view>
+        <view class="priceNav">
+            <view class="nameNav">
+                <text class="name">仙洞沟风景名胜区</text>
+                <text class="other">其他</text>
+            </view>
+            <view class="discountsNav">
+                <text>立减</text>
+                <text>优惠券</text>
+            </view>
+            <view class="price">
+                <view class="red">￥<text>35</text></view>起
+            </view>
+        </view>
+    </view>
+    <view class="weui-footer">
+        <view class="weui-footer__text">我也是有底线的喔</view>
+    </view>
+</view>

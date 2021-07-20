@@ -1,0 +1,78 @@
+<view class="container">
+    <view class="headContainer">
+        <image src="/static/images/gbtl.jpg"></image>
+        <view class="instruction">
+            <text>游客服务</text>
+            <text>福建旅游服务绿色通道</text>
+        </view>
+    </view>
+    <view class="btnContainer">
+        <view class="title">旅游服务</view>
+        <view class="btnContent">
+            <view class="btnItem">
+                <image src="/static/images/serve.png"></image>
+                <text>在线客服</text>
+            </view>
+            <view class="btnItem">
+                <image src="/static/images/phone.png"></image>
+                <text>服务电话</text>
+            </view>
+            <view class="btnItem">
+                <image src="/static/images/ring.png"></image>
+                <text>一键救援</text>
+            </view>
+            <view class="btnItem">
+                <image src="/static/images/message.png"></image>
+                <text>在线投诉</text>
+            </view>
+        </view>
+    </view>
+    <view class="btnContainer">
+        <view class="title">旅游服务</view>
+        <view class="btnContent">
+            <view class="btnItem">
+                <image src="/static/images/bus.png"></image>
+                <text>地铁公交</text>
+            </view>
+            <view class="btnItem">
+                <image src="/static/images/airport.png"></image>
+                <text>机场车站</text>
+            </view>
+            <view class="btnItem">
+                <image src="/static/images/p.png"></image>
+                <text>停车场</text>
+            </view>
+            <view class="btnItem">
+                <image src="/static/images/hospital.png"></image>
+                <text>医院</text>
+            </view>
+        </view>
+        <view class="btnContent">
+            <view class="btnItem">
+                <image src="/static/images/wc.png"></image>
+                <text>找厕所</text>
+            </view>
+            <view class="btnItem">
+                <image src="/static/images/shopping.png"></image>
+                <text>购物</text>
+            </view>
+            <view class="btnItem"></view>
+            <view class="btnItem"></view>
+        </view>
+    </view>
+    <view class="btnContainer">
+        <view class="title">旅游服务</view>
+        <view class="btnContent">
+            <view class="btnItem">
+                <image src="/static/images/cityServe.png"></image>
+                <text>城市服务</text>
+            </view>
+            <view class="btnItem">
+                <image src="/static/images/technologyWay.png"></image>
+                <text>智能行程</text>
+            </view>
+            <view class="btnItem"></view>
+            <view class="btnItem"></view>
+        </view>
+    </view>
+</view>

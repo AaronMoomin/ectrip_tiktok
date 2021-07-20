@@ -1,12 +1,22 @@
-// pages/qualityTouristRoutes/playReserve.js
+
 Page({
   /**
    * 页面的初始数据
    */
-  data: {},
-  toPlayerShow(e){
-    tt.navigateTo({
-      url:"/pages/playerItemShow/playerItemShow?type="+e.currentTarget.dataset.type
+  data: {
+    isSelect:[true,false,false]
+  },
+  handleSelect(e){
+    let {isSelect} = this.data
+    let index = e.currentTarget.dataset.index
+    for (let i in isSelect) {
+      isSelect[i] =  false
+      if (index == i){
+        isSelect[i] = !isSelect[i]
+      }
+    }
+    this.setData({
+      isSelect
     })
   },
   /**

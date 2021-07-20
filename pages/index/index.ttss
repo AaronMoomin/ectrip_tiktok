@@ -1,0 +1,545 @@
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.container .topNav {
+    display: flex;
+    position: absolute;
+    top: 100rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+}
+
+.headImg {
+    width: 100%;
+}
+
+.scan {
+    font-size: 40rpx;
+    color: white;
+}
+
+.inputItem {
+    position: relative;
+    display: flex;
+    width: 550rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 25rpx;
+    margin: 0 10rpx;
+    font-size: 28rpx;
+}
+
+.inputItem:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 550rpx;
+    height: 60rpx;
+    background: #e2e2e2;
+    opacity: 0.5;
+    border-radius: 25rpx;
+}
+
+.inputItem .search {
+    margin-left: 20rpx;
+    color: #fff;
+}
+
+.inputItem .inputBox {
+    height: 60rpx;
+    line-height: 60rpx;
+    margin-left: 20rpx;
+    z-index: 99;
+}
+
+.contentContainer {
+    position: absolute;
+    top: 400rpx;
+    display: flex;
+    flex-direction: column;
+    border-top-left-radius: 50rpx;
+    border-top-right-radius: 50rpx;
+    width: 100%;
+    background:var(--backColor);
+    color: var(--fontColor);
+}
+
+.contentContainer .contentTop {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 50rpx;
+    margin-bottom: 40rpx;
+}
+
+.contentContainer .contentTop .topNavItem {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.contentContainer .contentTop .downNavItem {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.contentContainer .contentTop .topNavItem .item {
+    text-align: center;
+    height: 150rpx;
+    width: 100rpx;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.contentContainer .contentTop .topNavItem .item text {
+    font-size: 24rpx;
+    margin-top: 10rpx;
+}
+
+
+.contentContainer .contentTop image {
+    width: 80rpx;
+    height: 80rpx;
+    margin: 0 auto;
+}
+
+.showImg {
+    margin: 0 auto;
+    width: 95%;
+    height: 200rpx;
+    border-radius: 30rpx;
+    background: #eee;
+}
+
+.showImg image {
+    width: 100%;
+    height: 200rpx;
+}
+
+.addressShow {
+    position:relative;
+    margin: 30rpx 20rpx;
+    padding-top: 60rpx;
+    z-index: 999;
+}
+
+.addressShow .titleNav {
+    display: flex;
+    color: #fff;
+    justify-content: space-around;
+    margin-bottom: 40rpx;
+}
+
+.select {
+    font-weight: bold;
+    font-size: 40rpx;
+    border-bottom: 4rpx solid #448cfe;
+}
+
+.addressShow .info1 {
+    width: 80%;
+    padding: 30rpx;
+    font-size: 28rpx;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+    border-radius: 10rpx;
+}
+
+.addressShow .info1 text {
+    color: #fff;
+}
+
+.ticketNav {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.ticketNav .ticketItem {
+    position: relative;
+    display: flex;
+    font-size: 26rpx;
+    margin-top: 10rpx;
+    border-radius: 20rpx;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-bottom: 2rpx solid #eee;
+}
+
+.ticketNav .ticketItem .imgBox {
+    position: relative;
+    color: #fff;
+    width: 280rpx;
+    height: 240rpx;
+}
+
+.ticketNav .ticketItem .imgBox image {
+    width: 280rpx;
+    height: 240rpx;
+    border-radius: 10rpx;
+}
+
+.ticketNav .ticketItem .imgBox .type {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 24rpx;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    text-align: center;
+    border-top-left-radius: 10rpx;
+    border-bottom-right-radius: 20rpx;
+}
+
+.ticketNav .ticketItem .imgBox .location {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 22rpx;
+    width: 100%;
+    height: 40rpx;
+    line-height: 40rpx;
+    text-align: center;
+    padding-left: 10rpx;
+    padding-bottom: 10rpx;
+    border-bottom-left-radius: 10rpx;
+    border-bottom-right-radius: 10rpx;
+}
+
+.ticketNav .ticketItem .imgBox .location .iconfont {
+    font-size: 22rpx;
+    margin-right: 10rpx;
+}
+
+.ticketNav .ticketItem .info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20rpx;
+    padding-top: 10rpx;
+    letter-spacing: 5rpx;
+}
+
+.ticketNav .ticketItem .info .title {
+    font-size: 28rpx;
+    color: #fff;
+    margin: 10rpx;
+}
+
+.ticketNav .ticketItem .info .desc {
+    color: #fff;
+    border-radius: 50rpx;
+    font-size: 24rpx;
+    text-align: center;
+    margin-top: 10rpx;
+    background: linear-gradient(#448dfd, #52e5ca)
+}
+
+.ticketNav .ticketItem .info .company {
+    margin-top: 30rpx;
+}
+
+.ticketItem .aaa {
+    width: 60rpx;
+    height: 60rpx;
+    margin-top: 20rpx;
+}
+
+.ticketNav .ticketItem .price {
+    position: absolute;
+    bottom: 10rpx;
+    right: 20rpx;
+    display: flex;
+    height: 50rpx;
+    line-height: 50rpx;
+    color: #52575c;
+}
+
+.ticketNav .ticketItem .price .red {
+    color: #d22b20;
+}
+
+.ticketNav .ticketItem .price .red .big {
+    font-size: 36rpx;
+    font-weight: bold;
+    margin-right: 10rpx;
+}
+
+.scrollContent .scrollNav {
+    width: 100%;
+    height: 380rpx;
+}
+
+.scrollContent {
+    padding: 20rpx;
+}
+
+.scrollContent .scrollNav .scrollItem {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.scrollContent .scrollNav .scrollItem .type {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 24rpx;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100rpx;
+    height: 40rpx;
+    color: #fff;
+    line-height: 40rpx;
+    text-align: center;
+    border-top-left-radius: 10rpx;
+    border-bottom-right-radius: 20rpx;
+}
+
+.scrollContent .scrollNav .scrollItem .instruction {
+    position: absolute;
+    bottom: 0;
+    width: 220rpx;
+    padding: 10rpx;
+    height: 100rpx;
+    display: flex;
+    flex-direction: column;
+    font-size: 24rpx;
+    background: #fff;
+    letter-spacing: 5rpx;
+    color:var(--rfontColor);
+}
+
+.scrollItem .instruction .red {
+    color: #d22b20;
+}
+
+.scrollItem .instruction .red .big {
+    font-size: 36rpx;
+    font-weight: bold;
+    margin-right: 10rpx;
+}
+
+.scrollContent .scrollNav .scrollItem .instruction text:first-child {
+    margin-bottom: 15rpx;
+}
+
+.scrollContent .scrollNav .scrollItem image {
+    width: 240rpx;
+    height: 300rpx;
+    border-radius: 15rpx;
+}
+
+.hotContent {
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20rpx;
+}
+.hotContent .hotItem .type {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 24rpx;
+    background: rgba(0,0,0,0.5);
+    width: 100rpx;
+    height: 40rpx;
+    color: #fff;
+    line-height: 40rpx;
+    text-align: center;
+    border-top-left-radius: 10rpx;
+    border-bottom-right-radius: 20rpx;
+}
+
+.hotContent .hotItem {
+    position:relative;
+    width: 45%;
+    margin: 20rpx 10rpx 10rpx 15rpx;
+    border-radius: 10rpx;
+    border: 2rpx solid #eee;
+}
+
+.hotContent .hotItem image {
+    width: 100%;
+    height: 200rpx;
+    border-top-left-radius: 10rpx;
+    border-top-right-radius: 10rpx;
+}
+
+.hotItem .instruction {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 20rpx;
+    color:var(--rfontColor);
+}
+
+.hotItem .instruction .name {
+    font-weight: bold;
+    font-size: 28rpx;
+}
+
+.hotItem .instruction .priceItem {
+    position: relative;
+    display: flex;
+    font-size: 24rpx;
+    margin-top: 20rpx;
+}
+
+.hotItem .instruction .priceItem .price {
+    color: #f10000;
+}
+
+.hotItem .instruction .priceItem .comment {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #797979;
+}
+
+.showcaseContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 5rpx;
+}
+
+.showcaseContainer .showcaseTop, .showcaseContainer .showcaseDown {
+    display: flex;
+    justify-content: space-around;
+}
+
+.showcaseContainer .showcaseTop {
+    margin-bottom: 20rpx;
+}
+
+.showcaseContainer .showcaseItem {
+    position: relative;
+    text-align: center;
+}
+
+.showcaseContainer .showcaseItem text {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 160rpx;
+    color: #fff;
+    font-size: 20rpx;
+    font-weight: bold;
+}
+
+.showcaseContainer .showcaseItem image {
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 15rpx;
+}
+
+.waterfallContainer {
+    display: flex;
+    padding: 5rpx;
+}
+
+.waterfallContainer .waterfallLeftContainer,
+.waterfallContainer .waterfallRightContainer {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 5rpx;
+}
+
+.waterfallContainer .waterfallLeftContainer .leftItem,
+.waterfallContainer .waterfallRightContainer .rightItem {
+    position: relative;
+    width: 95%;
+    height: 500rpx;
+    border-radius: 20rpx;
+    margin: 5rpx;
+    border: 2rpx solid #e2e2e2;
+}
+
+.waterfallContainer .waterfallLeftContainer .leftItem:nth-child(odd),
+.waterfallContainer .waterfallRightContainer .rightItem:nth-child(even) {
+    height: 500rpx;
+    background: #eee;
+}
+
+.waterfallContainer .waterfallLeftContainer .leftItem:nth-child(even),
+.waterfallContainer .waterfallRightContainer .rightItem:nth-child(odd) {
+    height: 600rpx;
+    background: #eee;
+}
+
+.waterfallContainer .waterfallLeftContainer .leftItem:nth-child(odd) > image,
+.waterfallContainer .waterfallRightContainer .rightItem:nth-child(odd) > image {
+    width: 100%;
+    height: 500rpx;
+    border-radius: 10rpx;
+}
+
+.waterfallContainer .waterfallLeftContainer .leftItem:nth-child(even) > image,
+.waterfallContainer .waterfallRightContainer .rightItem:nth-child(even) > image {
+    width: 100%;
+    height: 500rpx;
+    border-radius: 10rpx;
+}
+
+.leftItem .itemContent,
+.rightItem .itemContent {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    bottom: 0;
+    background: #fff;
+    padding: 20rpx;
+}
+
+.leftItem .itemContent .title,
+.rightItem .itemContent .title {
+    font-size: 26rpx;
+    letter-spacing: 5rpx;
+}
+
+.leftItem .itemContent .instruction,
+.rightItem .itemContent .instruction {
+    font-size: 22rpx;
+    color: #979797;
+}
+
+.leftItem .itemContent .functionBox,
+.rightItem .itemContent .functionBox {
+    position: relative;
+    display: flex;
+    font-size: 22rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    margin-top: 20rpx;
+}
+
+.leftItem .itemContent .functionBox .photo,
+.rightItem .itemContent .functionBox .photo {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+    background: #e2e2e2;
+    margin-right: 10rpx;
+}
+
+.leftItem .itemContent .functionBox .like,
+.rightItem .itemContent .functionBox .like {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.leftItem .itemContent .functionBox .like .xin,
+.rightItem .itemContent .functionBox .like .xin {
+    font-size: 18rpx;
+}

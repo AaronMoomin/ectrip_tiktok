@@ -1,0 +1,34 @@
+<view class="visitorContainer">
+    <view class="titleNav">
+        常用旅客
+    </view>
+    <view class="visitorItem">
+        <view class="left">
+            <text class="title">张三</text>
+            <text class="address">地址地址地址地址地址地址地址地址地址地址</text>
+            <text>身份证 111***0000</text>
+        </view>
+        <view class="right">
+            <text class="phone">188888888</text>
+            <view class="editNav">
+                <text>编辑</text>
+                <text>删除</text>
+            </view>
+        </view>
+    </view>
+    <view class="visitorItem">
+        <view class="left">
+            <text class="title">张三</text>
+            <text class="address">地址地址地址地址地址地址地址地址地址地址</text>
+            <text>身份证 111***0000</text>
+        </view>
+        <view class="right">
+            <text class="phone">188888888</text>
+            <view class="editNav">
+                <text>编辑</text>
+                <text>删除</text>
+            </view>
+        </view>
+    </view>
+    <view class="btn">新增地址</view>
+</view>

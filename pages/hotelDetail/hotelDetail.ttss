@@ -1,0 +1,674 @@
+.ticketContainer {
+    position: relative;
+    width: 100%;
+}
+
+.ticketContainer .imgShow {
+    width: 100%;
+}
+
+.imgShow .scrollNav {
+    width: 100%;
+    height: 500rpx;
+}
+
+.imgShow .scrollNav .scrollItem image {
+    width: 100%;
+    height: 500rpx;
+}
+
+.contentContainer {
+    position: absolute;
+    top: 480rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 320rpx;
+    background: #fff;
+    border-radius: 20rpx;
+    border: 2rpx solid #eee;
+}
+
+.contentContainer .titleNav {
+    font-size: 24rpx;
+    margin-left: 10rpx;
+    color: #000;
+}
+.contentContainer .titleNav .collect{
+    position: absolute;
+    right: 20rpx;
+    top: 20rpx;
+    background:#ffe6d4;
+    border-radius:30rpx;
+    width: 150rpx;
+    height: 80rpx;
+    text-align: center;
+    line-height:80rpx;
+    color: #ff786c;
+}
+.contentContainer .titleNav .collect .iconfont{
+    margin-right: 10rpx;
+}
+.contentContainer .titleNav .title {
+    letter-spacing: 5rpx;
+    margin-right: 10rpx;
+    font-size: 40rpx;
+}
+.contentContainer .titleNav .grade .type{
+    border: 2rpx solid #ff6156;
+    color: #ff6156;
+    padding: 5rpx 10rpx;
+    margin: 0 10rpx;
+}
+
+.contentContainer .titleNav .grade .iconfont {
+    color: #ff8e63;
+    margin-right: 20rpx;
+}
+
+.contentContainer .mapNav {
+    position: relative;
+    margin-top: 20rpx;
+    border-radius: 20rpx;
+}
+
+.contentContainer .mapNav image {
+    width: 100%;
+    height: 140rpx;
+    border-radius: 20rpx;
+}
+
+.contentContainer .mapNav .hotelInfo {
+    position: absolute;
+    top: 10rpx;
+    left: 0;
+    padding: 10rpx;
+    display: flex;
+    width: 100%;
+    font-size: 26rpx;
+}
+
+.contentContainer .mapNav .bus {
+    position: absolute;
+    top: 110rpx;
+    left: 0;
+    padding: 10rpx;
+    display: flex;
+    width: 100%;
+    font-size: 26rpx;
+    color: #797979;
+}
+
+.mapNav .hotelInfo .address {
+    flex: 1;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+}
+
+.mapNav .hotelInfo .show {
+    width: 170rpx;
+    height: 100rpx;
+    margin-left: 90rpx;
+    margin-top: 50rpx;
+}
+
+.mapNav .hotelInfo .show text {
+    font-size: 20rpx;
+}
+
+.contentContainer .discountNav {
+    display: flex;
+    padding: 5rpx 20rpx;
+    width: 95%;
+    height: 100rpx;
+    line-height: 100rpx;
+    background: #fbe6e5;
+    border-radius: 20rpx;
+    font-size: 26rpx;
+    margin-bottom: 20rpx;
+}
+
+.contentContainer .discountNav .tie {
+    color: #e15c56;
+    width: 80rpx;
+    height: 100rpx;
+    font-size: 45rpx;
+}
+
+.contentContainer .discountNav .discount {
+    flex: 1;
+    position: relative;
+    width: 300rpx;
+    height: 50rpx;
+    overflow: hidden;
+    line-height: 50rpx;
+    margin-top: 25rpx;
+    margin-left: 10rpx;
+    font-size: 24rpx;
+}
+
+.contentContainer .discountNav .discount .back {
+    color: #e8807c;
+    font-size: 80rpx;
+}
+
+.contentContainer .discountNav .discount .name {
+    position: absolute;
+    color: #fff;
+    left: 20rpx;
+}
+
+.contentContainer .discountNav .get {
+    font-size: 24rpx;
+    color: #d74942;
+}
+
+.contentContainer .discountNav .get .iconfont {
+    font-size: 24rpx;
+}
+
+.reserveHotelContainer {
+    width: 100%;
+    /*height: 400rpx;*/
+    border-radius: 20rpx;
+    font-size: 26rpx;
+    margin-bottom: 20rpx;
+    margin-top: 240rpx;
+    padding-top: 10rpx;
+    border: 2rpx solid #eee;
+    background: #fff;
+    color: #000;
+}
+
+.reserveHotelContainer .dateContainer {
+    display: flex;
+    width: 100%;
+    height: 60rpx;
+    line-height: 6rpx;
+    padding: 20rpx;
+    border-top-left-radius: 20rpx;
+    border-top-right-radius: 20rpx;
+}
+
+.isfixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    transition: fixed 1s ease;
+}
+
+.dateContainer .in {
+    width: 40%;
+    /*margin: 0 30rpx;*/
+}
+
+.dateContainer .line {
+    width: 30rpx;
+    height: 2rpx;
+    background: #797979;
+}
+
+.dateContainer .continue {
+    width: 20%;
+    height: 50rpx;
+}
+
+.dateContainer .continue text {
+    padding: 2rpx 10rpx;
+    font-size: 24rpx;
+}
+
+.dateContainer .in .timePicker {
+    display: flex;
+    font-size: 28rpx;
+}
+
+.dateContainer .in .timePicker text:nth-child(2) {
+    margin-left: 10rpx;
+    font-size: 24rpx;
+    color: #797979;
+}
+
+.reserveHotelContainer .typeChooser {
+    display: flex;
+    margin-top: 10rpx;
+}
+
+.reserveHotelContainer .typeChooser text {
+    background: #f6f6f6;
+    padding: 10rpx 20rpx;
+    height: 35rpx;
+    border-radius: 30rpx;
+    margin-left: 10rpx;
+}
+
+.hotelNav {
+    display: flex;
+    flex-direction: column;
+}
+
+.hotelNav .hotelItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.hotelNav .hotelItem .itemShow {
+    display: flex;
+    padding: 10rpx;
+    margin-top: 20rpx;
+}
+
+.hotelNav .hotelItem .itemShow .imgShow {
+    position: relative;
+    width: 120rpx;
+    height: 120rpx;
+    margin-right: 20rpx;
+}
+
+.hotelNav .hotelItem .itemShow .imgShow image {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 10rpx;
+}
+
+.hotelNav .hotelItem .itemShow .imgShow .num {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 24rpx;
+    width: 70rpx;
+    height: 30rpx;
+    line-height: 30rpx;
+    background: #4e402e;
+}
+
+.hotelNav .hotelItem .itemShow .reserveBtn {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100rpx;
+    height: 80rpx;
+    border-radius: 10rpx;
+    font-size: 24rpx;
+    border: 1rpx solid #ff6156;
+}
+
+.hotelNav .hotelItem .itemShow .reserveBtn .yd {
+    background: #ff6156;
+    color: #fff;
+    border-top-left-radius: 10rpx;
+    border-top-right-radius: 10rpx;
+}
+
+.hotelNav .hotelItem .itemShow .reserveBtn .zxf {
+    color: #ff6156;
+    border-bottom-left-radius: 10rpx;
+    border-bottom-right-radius: 10rpx;
+}
+
+.hotelNav .hotelItem .itemShow .info {
+    flex: 1;
+}
+
+.hotelNav .hotelItem .itemShow .info .title {
+    /*font-size: 30rpx;*/
+}
+
+.hotelNav .hotelItem .itemShow .info .title .iconfont {
+    font-size: 24rpx;
+    margin-left: 30rpx;
+}
+
+.hotelNav .hotelItem .itemShow .info .desc {
+    font-size: 24rpx;
+    color: #b2b2b2;
+}
+
+.hotelNav .hotelItem .itemShow .info .priceBox {
+    display: flex;
+}
+
+.priceBox .bad {
+    margin-top: 10rpx;
+    margin-left: 30rpx;
+    text-decoration: line-through;
+}
+
+.hotelNav .hotelItem .itemShow .info .red {
+    color: #d33127;
+}
+
+.hotelNav .hotelItem .itemShow .info .red .price {
+    font-size: 34rpx;
+    margin-right: 10rpx;
+}
+
+.hotelNav .hotelItem .itemShow .slide {
+    width: 35rpx;
+    height: 35rpx;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 24rpx;
+    font-weight: bold;
+    text-align: center;
+    line-height: 35rpx;
+    transform: rotateZ(90deg);
+    background: #3e86e9;
+    margin: 50rpx 20rpx;
+}
+
+.hotelNav .hotelItem .itemHide {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 20rpx;
+    border: 20rpx solid #f9f9f9;
+}
+
+.hotelNav .hotelItem .itemHide .title {
+    font-weight: bold;
+    font-size: 28rpx;
+}
+
+.hotelNav .hotelItem .itemHide .title .iconfont {
+    font-size: 24rpx;
+    margin-left: 20rpx;
+}
+
+.hotelNav .hotelItem .itemHide .info {
+    color: #b2b2b2;
+}
+
+.hotelNav .hotelItem .itemHide .freeCancel {
+    color: #74d1a1;
+}
+
+.hotelNav .hotelItem .itemHide .discount {
+    width: 100rpx;
+    height: 30rpx;
+    line-height: 30rpx;
+    text-align: center;
+    border-radius: 10rpx;
+    color: #da554e;
+    font-weight: 500;
+    border: 4rpx solid #da554e;
+}
+
+.hotelNav .hotelItem .itemHide .red {
+    margin-top: 20rpx;
+    color: #d33127;
+}
+
+.hotelNav .hotelItem .itemHide .red .price {
+    font-size: 34rpx;
+    font-weight: bolder;
+    margin-right: 10rpx;
+}
+
+.hotelNav .hotelItem .itemHide .confirm {
+    position: absolute;
+    right: 20rpx;
+    bottom: 10rpx;
+    background: #3e86e9;
+    width: 150rpx;
+    height: 56rpx;
+    line-height: 56rpx;
+    text-align: center;
+    font-size: 28rpx;
+    letter-spacing: 5rpx;
+    color: #fff;
+    border-radius: 50rpx;
+}
+
+.hotelNav .hotelItem .itemHide .confirm::after {
+    border: none !important;
+}
+
+.mustKnowNav {
+    width: 95%;
+    /*height: 700rpx;*/
+    border: 2rpx solid #eee;
+    border-radius: 20rpx;
+    padding: 20rpx;
+    background: #fff;
+    color: #000;
+}
+
+.mustKnowNav .title {
+    font-size: 28rpx;
+}
+
+.mustKnowNav .rules {
+    margin-top: 20rpx;
+    font-size: 24rpx;
+}
+
+.mustKnowNav .rules .toolsNav {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.mustKnowNav .rules .toolsNav .toolsItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.mustKnowNav .rules .ruleNav {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20rpx;
+    font-size: 22rpx;
+    border-bottom: 2rpx solid #eee;
+}
+
+.mustKnowNav .rules .ruleNav .ruleItem {
+    display: flex;
+    margin-bottom: 20rpx;
+}
+
+.mustKnowNav .rules .ruleNav .ruleItem .tie {
+    width: 100rpx;
+    margin-right: 20rpx;
+}
+
+.mustKnowNav .rules .ruleNav .ruleItem .dark {
+    color: #797979;
+    flex: 1;
+}
+
+.mustKnowNav .rules .ruleNav .ruleItem .out {
+    margin-left: 20rpx;
+}
+
+.mustKnowNav .visitorComment .mark {
+    display: flex;
+    font-size: 22rpx;
+}
+
+.mustKnowNav .visitorComment .mark .price {
+    display: flex;
+    flex-direction: column;
+}
+
+.mustKnowNav .visitorComment .mark .price .num {
+    color: #ff6256;
+    font-size: 26rpx;
+}
+
+.mustKnowNav .visitorComment .mark .line {
+    width: 4rpx;
+    height: 80rpx;
+    background: #eee;
+    margin: 0 20rpx;
+}
+.mustKnowNav .visitorComment .mark .priceNav{
+    display: flex;
+}
+.mark .priceNav .priceItem{
+    display: flex;
+    flex-direction: column;
+    margin-right: 30rpx;
+}
+.mark .priceNav .priceItem .item{
+    display: flex;
+    height: 50rpx;
+    line-height:5rpx;
+}
+.mark .priceNav .priceItem .item text{
+    margin: 0 5rpx;
+}
+.mark .priceNav .priceItem .item .priceLine{
+    width: 50rpx;
+    height: 4rpx;
+    background:#ff6256;
+}
+.mustKnowNav .visitorComment .comment{
+    display: flex;
+    flex-direction: column;
+    font-size:24rpx;
+}
+.comment .commentItem{
+    display: flex;
+    margin-top: 10rpx;
+}
+.comment .commentItem image{
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    margin-right: 20rpx;
+}
+.comment .commentItem .content .time{
+    display: flex;
+    margin-bottom: 10rpx;
+}
+.comment .commentItem .content .num{
+    color: #ff6256;
+    flex: 1;
+    margin-left: 10rpx;
+}
+.comment .commentItem .content .room{
+    margin-right: 20rpx;
+}
+#confirm {
+    background: #3e86e9;
+    color: #fff;
+    border-radius: 50rpx;
+}
+
+#confirm::after {
+    border: none !important;
+}
+
+.weui-half-screen-dialog {
+    padding: 0;
+}
+
+.weui-half-screen-dialog__bd {
+    padding-top: 0;
+}
+
+.imgShow {
+    width: 100%;
+}
+
+.imgShow .swiperNav {
+    height: 400rpx;
+}
+
+.swiperNav .swiperItem {
+    height: 400rpx;
+}
+
+.swiperNav .swiperItem image {
+    width: 100%;
+    height: 400rpx;
+    border-top-left-radius: 20rpx;
+    border-top-right-radius: 20rpx;
+}
+
+.hotelInfo {
+    width: 90%;
+    padding: 30rpx;
+    font-size: 24rpx;
+}
+
+.hotelInfo .title {
+    font-weight: bolder;
+    font-size: 36rpx;
+    letter-spacing: 5rpx;
+}
+
+.hotelInfo .itemNav {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.hotelInfo .itemNav .item {
+    margin-top: 20rpx;
+    width: 50%;
+}
+
+.hotelInfo .itemNav .item .name {
+    color: #bdbdbd;
+    margin-right: 10rpx;
+}
+
+.otherInfo {
+    position: relative;
+    padding: 30rpx;
+}
+
+.otherInfo .item {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20rpx;
+    color: #bdbdbd;
+    font-size: 26rpx;
+}
+
+.otherInfo .item .name {
+    font-size: 30rpx;
+    font-weight: 500;
+    margin-bottom: 10rpx;
+    color: #000;
+}
+
+.otherInfo .item .red {
+    margin-top: 20rpx;
+    color: #d33127;
+}
+
+.otherInfo .item .red .price {
+    font-size: 40rpx;
+    font-weight: bold;
+    margin-right: 10rpx;
+}
+
+.confirm {
+    position: absolute;
+    right: 30rpx;
+    bottom: 10rpx;
+    width: 200rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    background: #3e86e9;
+    color: #fff;
+    border-radius: 50rpx;
+}
+
+.confirm::after {
+    border: none !important;
+}
+
+.fixOperation {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

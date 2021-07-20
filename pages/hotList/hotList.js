@@ -1,18 +1,20 @@
-// pages/qualityTouristRoutes/playReserve.js
 Page({
   /**
    * 页面的初始数据
    */
   data: {},
-  toPlayerShow(e){
+  toHotDetail(){
+    console.log(' dian');
     tt.navigateTo({
-      url:"/pages/playerItemShow/playerItemShow?type="+e.currentTarget.dataset.type
+      url:"/pages/hotDetail/hotDetail"
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {},
+  onLoad: function (options) {
+
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

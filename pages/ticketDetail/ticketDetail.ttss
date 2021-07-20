@@ -1,0 +1,229 @@
+.ticketContainer {
+    position: relative;
+    color:#000;
+}
+
+.ticketContainer .imgShow {
+    width: 100%;
+}
+
+.imgShow .scrollNav {
+    width: 100%;
+    height: 600rpx;
+}
+
+.imgShow .scrollNav .scrollItem image {
+    width: 100%;
+    height: 600rpx;
+}
+
+.contentContainer {
+    position: absolute;
+    top: 480rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    background: #fff;
+    padding: 20rpx;
+    border-radius: 20rpx;
+    border: 2rpx solid #eee;
+    font-size:26rpx;
+}
+.contentContainer .title{
+    font-size:28rpx;
+
+}
+.contentContainer .mapNav{
+    display: flex;
+    flex-direction: column;
+    margin-top: 40rpx;
+}
+.contentContainer .mapNav .mapItem{
+    margin-bottom: 20rpx;
+}
+.contentContainer .mapNav .yd{
+    display: flex;
+}
+.contentContainer .mapNav .yd .tie{
+    flex: 1;
+}
+.contentContainer .iconfont{
+    font-size:24rpx;
+}
+.contentContainer .titleNav{
+    position:relative;
+}
+.contentContainer .titleNav .collect{
+    position: absolute;
+    right: 20rpx;
+    top: 10rpx;
+    background:#ffe6d4;
+    border-radius:30rpx;
+    width: 150rpx;
+    height: 80rpx;
+    text-align: center;
+    line-height:80rpx;
+    color: #ff786c;
+}
+.contentContainer .titleNav .collect .iconfont{
+    margin-right: 10rpx;
+}
+.ticketNav{
+    width: 90%;
+    padding: 20rpx;
+    background:#fff;
+    margin: 220rpx auto 0;
+    border-radius:20rpx;
+    font-size:24rpx;
+    color: #8d8d8d;
+}
+.ticketNav .iconfont{
+    font-size: 24rpx;
+}
+.ticketNav .title{
+    font-size:28rpx;
+    color: #000;
+}
+.ticketNav .ticketItem{
+    position: relative;
+    border-bottom: 2rpx solid #eee;
+    padding-bottom: 20rpx;
+}
+.ticketNav .ticketItem .name{
+    color: #000;
+    font-size: 26rpx;
+}
+.ticketNav .ticketItem .discount{
+    display: flex;
+    font-size:20rpx;
+    margin: 20rpx 5rpx;
+}
+.ticketNav .ticketItem .discount text{
+    border: 2rpx solid #ff6156;
+    padding: 0 10rpx;
+    color: #ff6156;
+    margin-right: 10rpx;
+}
+.ticketNav .ticketItem .desc{
+    margin: 20rpx 0;
+}
+.ticketNav .ticketItem .know{
+    display: flex;
+}
+.ticketNav .ticketItem .know .iconfont{
+    margin-left: 30rpx;
+}
+.ticketNav .ticketItem .price{
+    position:absolute;
+    top: 10rpx;
+    right: 10rpx;
+    display: flex;
+    height: 50rpx;
+    line-height:50rpx;
+}
+.ticketNav .ticketItem .price .red{
+    color: #fe6156;
+    margin-right: 20rpx;
+}
+.price .red .big{
+    font-size:32rpx;
+}
+.ticketNav .ticketItem .reserveBtn {
+    position: absolute;
+    bottom: 20rpx;
+    right: 30rpx;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100rpx;
+    height: 80rpx;
+    border-radius: 10rpx;
+    font-size: 24rpx;
+    border: 1rpx solid #ff6156;
+}
+.ticketNav .ticketItem .reserveBtn .yd {
+    background: #ff6156;
+    color: #fff;
+    border-top-left-radius: 10rpx;
+    border-top-right-radius: 10rpx;
+}
+.ticketNav .ticketItem .reserveBtn .zxf {
+    color: #ff6156;
+    border-bottom-left-radius: 10rpx;
+    border-bottom-right-radius: 10rpx;
+}
+.instructionNav{
+    width: 90%;
+    padding: 20rpx;
+    background:#fff;
+    margin: 30rpx auto 0;
+    border-radius:20rpx;
+    font-size:24rpx;
+    color: #8d8d8d;
+}
+.instructionNav .title{
+    font-size:28rpx;
+    color: #000;
+}
+.instructionNav .content{
+    margin: 20rpx 0;
+}
+.instructionNav .contentImgShow{
+    padding: 0 30rpx;
+}
+.instructionNav .contentImgShow image{
+    border-radius: 10rpx;
+    width: 100%;
+    height: 400rpx;
+    margin-bottom: 30rpx;
+}
+.commentNav{
+    width: 90%;
+    padding: 20rpx;
+    background:#fff;
+    margin: 30rpx auto 0;
+    border-radius:20rpx;
+    font-size:24rpx;
+}
+.commentNav .title{
+    font-size:28rpx;
+    color: #000;
+}
+.commentNav .gradeNav{
+    display: flex;
+    margin-top: 20rpx 0;
+}
+.commentNav .gradeNav .grade{
+    flex: 1;
+    color: #fe867e;
+}
+.commentNav .gradeNav .grade .big{
+    font-size:30rpx;
+    margin-right: 20rpx;
+}
+.commentNav .commentItem{
+    display: flex;
+    margin-top: 20rpx;
+}
+.commentNav .commentItem image{
+    width: 60rpx;
+    height: 60rpx;
+    border-radius:50%;
+}
+.commentNav .commentItem .commentContent{
+    width: 90%;
+    margin-left: 20rpx;
+}
+.commentItem .commentContent .userName{
+    color: #797979;
+}
+.commentContent .gradeNav .gr{
+    flex: 1;
+}
+.commentContent .gradeNav .gr .red{
+    color: #fe867e;
+    margin-left: 20rpx;
+}
+.commentContent .gradeNav .commentNum{
+    color: #797979;
+}

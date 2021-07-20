@@ -1,0 +1,55 @@
+<view class="dayContainer">
+    <view class="showcaseContainer">
+        <view class="showcaseItem" bind:tap="toPlayReserve">
+            <view class="top">
+                <image src="/static/images/gbtl.jpg"></image>
+                <view class="topNav">
+                    <text class="name">马仑草原一日游</text>
+                    <text>芦芽山-马伦草原,情人谷一日游</text>
+                    <view class="star">
+                        <text class="iconfont icon-xingxing" tt:for="{{5}}"></text>
+                        <text class="price">4.9分</text>
+                    </view>
+                </view>
+            </view>
+            <view class="down">
+                <text>1日 | 自驾游 | 约472公里</text>
+                <text class="see">查看详情</text>
+            </view>
+        </view>
+        <view class="showcaseItem" bind:tap="toPlayReserve">
+            <view class="top">
+                <image src="/static/images/gbtl.jpg"></image>
+                <view class="topNav">
+                    <text class="name">马仑草原一日游</text>
+                    <text>芦芽山-马伦草原,情人谷一日游</text>
+                    <view class="star">
+                        <text class="iconfont icon-xingxing" tt:for="{{5}}"></text>
+                        <text class="price">4.9分</text>
+                    </view>
+                </view>
+            </view>
+            <view class="down">
+                <text>1日 | 自驾游 | 约472公里</text>
+                <text class="see">查看详情</text>
+            </view>
+        </view>
+        <view class="showcaseItem" bind:tap="toPlayReserve">
+            <view class="top">
+                <image src="/static/images/gbtl.jpg"></image>
+                <view class="topNav">
+                    <text class="name">马仑草原一日游</text>
+                    <text>芦芽山-马伦草原,情人谷一日游</text>
+                    <view class="star">
+                        <text class="iconfont icon-xingxing" tt:for="{{5}}"></text>
+                        <text class="price">4.9分</text>
+                    </view>
+                </view>
+            </view>
+            <view class="down">
+                <text>1日 | 自驾游 | 约472公里</text>
+                <text class="see">查看详情</text>
+            </view>
+        </view>
+    </view>
+</view>

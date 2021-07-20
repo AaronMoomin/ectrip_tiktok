@@ -1,0 +1,142 @@
+<view class="ticketContainer">
+    <view class="imgShow">
+        <swiper class="scrollNav" indicator-dots circular indicator-active-color="#fff">
+            <swiper-item class="scrollItem">
+                <image src="/static/images/sea.png"></image>
+            </swiper-item>
+            <swiper-item class="scrollItem">
+                <image src="/static/images/gbtl.jpg"></image>
+            </swiper-item>
+            <swiper-item class="scrollItem">
+                <image src="/static/images/gbtl.jpg"></image>
+            </swiper-item>
+        </swiper>
+    </view>
+    <view class="contentContainer">
+        <view class="titleNav">
+            <text class="title">景区名称景点名称</text>
+            <view class="mapNav">
+                <view class="mapItem">营业时间: 08:30-17:30</view>
+                <view class="mapItem">酒店地址酒店地址酒店地址酒店地址酒店地址</view>
+                <view class="yd mapItem" bind:tap="open">
+                    <text class="tie">优待政策: 1.2米(不含)以下儿童免票</text>
+                    <text class="iconfont icon-tiaozhuan"></text>
+                </view>
+            </view>
+            <view class="collect">
+                <text class="iconfont icon-xingxing"></text>
+                <text>收藏</text>
+            </view>
+        </view>
+    </view>
+    <view class="ticketNav">
+        <text class="title">一日票</text>
+        <view class="ticketItem">
+            <view class="name">成人票</view>
+            <view class="discount">
+                <text>立减5元</text>
+                <text>优惠券</text>
+            </view>
+            <view class="desc">未使用随时可退,随买随用</view>
+            <view class="know">
+                <text>预定须知</text>
+                <text class="iconfont icon-tiaozhuan"></text>
+            </view>
+            <view class="reserveBtn" bind:tap="toReserve">
+                <text class="yd">预定</text>
+                <text class="zxf">在线付</text>
+            </view>
+            <view class="price">
+                <view class="red">￥
+                    <text class="big">225</text>
+                </view>
+                起
+            </view>
+        </view>
+        <view class="ticketItem">
+            <view class="name">成人票</view>
+            <view class="discount">
+                <text>立减5元</text>
+                <text>优惠券</text>
+            </view>
+            <view class="desc">未使用随时可退,随买随用</view>
+            <view class="know">
+                <text>预定须知</text>
+                <text class="iconfont icon-tiaozhuan"></text>
+            </view>
+            <view class="reserveBtn" bind:tap="toReserve">
+                <text class="yd">预定</text>
+                <text class="zxf">在线付</text>
+            </view>
+            <view class="price">
+                <view class="red">￥
+                    <text class="big">225</text>
+                </view>
+                起
+            </view>
+        </view>
+    </view>
+    <view class="instructionNav">
+        <text class="title">景区介绍</text>
+        <view class="content">
+            景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍
+            景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍
+            景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍
+            景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍
+            景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍
+            景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍
+            景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍
+            景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍
+            景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍
+            景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍
+        </view>
+        <view class="contentImgShow">
+            <image src="/static/images/gbtl.jpg"></image>
+            <image src="/static/images/gbtl.jpg"></image>
+        </view>
+    </view>
+    <view class="commentNav">
+        <text class="title">住客点评</text>
+        <view class="gradeNav">
+            <view class="grade">
+                <text class="big">4.8</text>
+                <text>很好</text>
+            </view>
+            <view class="commentNum">平遥古城(1条用户评论)</view>
+        </view>
+        <view class="commentItem">
+            <image src="/static/images/gbtl.jpg"></image>
+            <view class="commentContent">
+                <text class="userName">zhangzh</text>
+                <view class="gradeNav">
+                    <view class="gr">
+                        <text>打分</text>
+                        <text class="red">5.0</text>
+                    </view>
+                    <view class="commentNum">2020.01.06</view>
+                </view>
+                <view class="comment">
+                    评价评价评价评价评价评价评价评价评价评价评价评价
+                    评价评价评价评价评价评价
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="fadeIn" tt:if="{{dialog1}}">
+        <view class="weui-mask" bindtap="close"></view>
+        <view class="weui-half-screen-dialog">
+            <view class="weui-half-screen-dialog__hd">
+                <view class="weui-half-screen-dialog__hd__side" bindtap="close">
+                    <view class="weui-icon-btn">关闭<text class="weui-icon-close-thin"></text>
+                    </view>
+                </view>
+                <view class="weui-half-screen-dialog__hd__main">
+                    <text class="weui-half-screen-dialog__title">购票须知</text>
+                </view>
+            </view>
+            <view class="weui-half-screen-dialog__bd" style="padding-top:32rpx;height:500rpx;">
+                购票须知
+            </view>
+        </view>
+    </view>
+</view>

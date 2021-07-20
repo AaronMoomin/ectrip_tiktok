@@ -1,0 +1,31 @@
+<view class="discountContainer">
+    <view class="topChoose">
+        <text bind:tap="handleSelect" class="{{isSelect[0]?'select':''}}" data-index="0">未使用</text>
+        <text bind:tap="handleSelect" class="{{isSelect[1]?'select':''}}" data-index="1">已使用</text>
+        <text bind:tap="handleSelect" class="{{isSelect[2]?'select':''}}" data-index="2">已失效</text>
+    </view>
+    <view class="discountNav">
+        <view class="discountItem">
+            <image src="/static/images/yhjbig.png"></image>
+            <view class="price">
+                <text class="big">12</text>
+                <text class="icon">￥</text>
+            </view>
+            <view class="desc">
+                <text>国内酒店红包满100元可用</text>
+            </view>
+            <text class="go">去使用</text>
+        </view>
+        <view class="discountItem">
+            <image src="/static/images/yhjbig.png"></image>
+            <view class="price">
+                <text class="big">12</text>
+                <text class="icon">￥</text>
+            </view>
+            <view class="desc">
+                <text>国内酒店红包满100元可用</text>
+            </view>
+            <text class="go">去使用</text>
+        </view>
+    </view>
+</view>

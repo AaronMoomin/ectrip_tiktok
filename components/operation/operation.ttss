@@ -1,0 +1,30 @@
+.operationContainer {
+    width: 100%;
+    background: #fff;
+    border-top: 2rpx solid #eee;
+    box-shadow: 4rpx 4px 12px 8px #eee;
+}
+
+.operationContainer .operation {
+    display: flex;
+    justify-content: space-around;
+    font-size: 26rpx;
+}
+
+.operationContainer .operation .operationItem {
+    display: flex;
+    flex-direction: column;
+    height: 100rpx;
+    width: 100rpx;
+    text-align: center;
+}
+
+.operationContainer .operation .operationItem .iconfont {
+    font-size: 26rpx;
+}
+.zan{
+    color: #dc5c54;
+}
+.have{
+    color: #e09f00;
+}

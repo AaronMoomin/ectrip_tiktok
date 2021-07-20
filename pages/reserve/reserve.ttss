@@ -1,0 +1,410 @@
+.reserveContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 20rpx;
+    color: #000;
+}
+
+.reserveContainer .detailContainer {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10rpx;
+    padding: 30rpx;
+    background: #fff;
+    margin-bottom: 5rpx;
+}
+
+.detailContainer .headTitle {
+    font-size: 30rpx;
+    padding-bottom: 20rpx;
+    border-bottom: 2rpx solid #eee;
+}
+
+.detailContainer .timeChooser {
+    font-size:24rpx;
+    padding: 10rpx;
+    display: flex;
+    border-bottom: 2rpx solid #f9f9f9;
+}
+.detailContainer .timeChooser .title{
+    width: 150rpx;
+    margin-top: 40rpx;
+    font-size:28rpx;
+}
+.timeChooser .timeBox {
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    font-size: 26rpx;
+    height: 100rpx;
+}
+
+.timeChooser .timeBox .timeItem {
+    position: relative;
+    width: 30%;
+    margin: 5rpx;
+    padding: 5rpx;
+    border: 2rpx solid #eee;
+    text-align: center;
+    border-radius: 10rpx;
+    display: flex;
+    flex-direction: column;
+}
+
+.timeChooser .timeBox .timeItem .dui {
+    position: absolute;
+    bottom: -1rpx;
+    right: -2rpx;
+    background: #3e86e9;
+    color: #fff;
+    font-size: 22rpx;
+    border-top-left-radius: 30rpx;
+    border-bottom-right-radius: 30rpx;
+    width: 50rpx;
+    height: 20rpx;
+    line-height: 20rpx;
+}
+
+.timeChooser .timeBox .select {
+    background:#ff9d54;
+    color: #fff;
+}
+
+.timeChooser .timeBox .more {
+    display: flex;
+    width: 20%;
+    background: #f2f8fd;
+    border-radius: 20rpx;
+    text-align: center;
+    line-height: 110rpx;
+    font-size: 20rpx;
+}
+
+.timeChooser .timeBox .more text:nth-child(1) {
+    width: 55rpx;
+    margin: 10rpx;
+    line-height: 50rpx;
+}
+
+.timeChooser .timeBox .more text:nth-child(2) {
+    color: #797979;
+    width: 20rpx;
+    height: 20rpx;
+    margin: 0;
+    padding-right: 5rpx;
+}
+
+.detailContainer .addressChooser {
+    font-size:24rpx;
+    padding: 20rpx;
+    display: flex;
+    border-bottom: 2rpx solid #f9f9f9;
+}
+.detailContainer .addressChooser .title{
+    width: 150rpx;
+    margin-top: 30rpx;
+    font-size:28rpx;
+}
+
+.detailContainer .addressChooser .address {
+    display: flex;
+    flex-direction: column;
+    margin: 20rpx 10rpx;
+    padding: 10rpx 10rpx;
+    border: 4rpx solid #e7e7e7;
+    border-radius: 20rpx;
+    text-align:center;
+}
+
+.detailContainer .addressChooser .select {
+    background:#ff9d54;
+    color:#fff;
+}
+
+.detailContainer .addressChooser .address text:nth-child(1) {
+    flex: 1;
+}
+
+.detailContainer .numChooser {
+    padding: 20rpx;
+    display: flex;
+    font-size:28rpx;
+}
+.detailContainer .numChooser .infos{
+    flex: 1;
+    display: flex;
+}
+.numChooser .infos .title{
+    margin: 10rpx 20rpx;
+}
+.numChooser .infos .red{
+    color: #ff776e;
+}
+.numChooser .infos .red .big{
+    font-size:36rpx;
+}
+.showbtn{
+    display: flex;
+    font-size:24rpx;
+    color: #797979;
+    width: 180rpx;
+    margin:0 auto;
+    border: 2rpx solid #eee;
+    padding: 10rpx 20rpx;
+}
+.showbtn .iconfont{
+    margin-left: 10rpx;
+    font-size:24rpx;
+    transform:rotateZ(90deg);
+}
+.humanInfo {
+    margin-top: 10rpx;
+    padding: 30rpx;
+    background: #fff;
+    border-radius: 10rpx;
+    margin-bottom: 10rpx;
+}
+
+.humanInfo .headTitle {
+    font-size: 30rpx;
+    padding-bottom: 20rpx;
+    border-bottom: 2rpx solid #eee;
+}
+
+.humanInfo .top text:nth-child(2) {
+    font-size: 22rpx;
+}
+
+.humanInfo .infoItem {
+    justify-content: center;
+    border-radius: 10rpx;
+    padding: 10rpx;
+    line-height: 50rpx;
+    margin: 20rpx 0;
+}
+.humanInfo .infoItem .infoCell{
+    display: flex;
+    font-size:24rpx;
+}
+.humanInfo .infoItem .infoCell .name{
+    width: 150rpx;
+    display: flex;
+}
+.humanInfo .infoItem .infoCell .pickerCal{
+    display: flex;
+}
+.pickerCal .iconfont{
+    font-size: 24rpx;
+}
+.humanInfo .infoItem .infoCell input{
+    flex: 1;
+    margin-left: 60rpx;
+}
+
+.humanInfo .infoItem button {
+    border: none;
+    padding: 0;
+    background: #3d85e8;
+    color: #fff;
+    width: 50rpx;
+    height: 50rpx;
+    line-height:50rpx;
+    border-radius: 50%;
+    margin: 0 20rpx 0 0;
+}
+.humanInfo .infoItem button::after{
+    border:none !important;
+}
+.humanInfo .infoItem .style-module_container__3M6IE{
+    line-height:50rpx;
+}
+
+.humanInfo .infoItem text {
+    font-size: 26rpx;
+}
+
+.phoneInput {
+    padding: 30rpx;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+#confirm {
+    background: #3e86e9;
+    color: #fff;
+    border-radius: 50rpx;
+}
+#confirm::after{
+    border:none !important;
+}
+
+.userInfo .userBox {
+    display: flex;
+    font-size: 26rpx;
+    width: 100%;
+    height: 100rpx;
+}
+
+.userInfo .userBox .userItem {
+    position: relative;
+    width: 30%;
+    padding: 5rpx;
+    background: #f2f8fd;
+    text-align: center;
+    line-height: 80rpx;
+    border-radius: 20rpx;
+    margin: 5rpx 20rpx 5rpx 5rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.userInfo .userBox .userItem .dui {
+    position: absolute;
+    bottom: -1rpx;
+    right: -5rpx;
+    background: #3e86e9;
+    color: #fff;
+    font-size: 22rpx;
+    border-top-left-radius: 30rpx;
+    border-bottom-right-radius: 30rpx;
+    width: 50rpx;
+    height: 20rpx;
+    line-height: 20rpx;
+}
+
+.userInfo .userBox .select {
+    border: 4rpx solid #3e86e9;
+}
+
+.userInfo .userBox .more {
+    display: flex;
+    width: 20%;
+    background: #f2f8fd;
+    border-radius: 20rpx;
+    text-align: center;
+    line-height: 45rpx;
+    font-size: 20rpx;
+}
+
+.userInfo .userBox .more text:nth-child(1) {
+    width: 70rpx;
+    font-size: 25rpx;
+}
+
+.userInfo .userBox .more text:nth-child(2) {
+    color: #3e86e9;
+    margin-top: 20rpx;
+}
+
+.userDetails {
+    display: flex;
+    background: #f2f8fd;
+    border-radius: 10rpx;
+    margin-top: 20rpx;
+    padding: 10rpx;
+}
+
+.userDetails .iconfont {
+    color: #3e86e9;
+    width: 60rpx;
+    height: 100rpx;
+    font-size: 35rpx;
+    margin-top: 80rpx;
+    text-align: center;
+}
+
+.userDetails .user {
+    display: flex;
+    flex: 1;
+    margin: 20rpx;
+    flex-direction: column;
+}
+.userDetails .user .userItem{
+    font-size:30rpx;
+}
+.userDetails .user .userItem .lead {
+    color: #797979;
+    margin-right: 20rpx;
+}
+
+.userDetails .user .userItem .name {
+    font-weight: bold;
+}
+
+.confirmContainer {
+    margin-top: 20rpx;
+}
+.humanCheckNav {
+    position:relative;
+    padding: 30rpx;
+    background: #fff;
+    border-radius: 10rpx;
+    margin: 10rpx 0 200rpx;
+}
+.humanCheckNav .bj{
+    position:absolute;
+    right: 20rpx;
+    top: 30rpx;
+}
+
+.humanCheckNav .headTitle {
+    font-size: 30rpx;
+    padding-bottom: 20rpx;
+    border-bottom: 2rpx solid #eee;
+}
+.humanCheckNav .humanItem{
+    display: flex;
+    font-size:28rpx;
+    margin: 40rpx 0;
+    border-bottom: 2rpx solid #eee;
+}
+.humanCheckNav .humanItem .num{
+    width: 180rpx;
+}
+.humanCheckNav .humanItem .humanItemInfo{
+    display: flex;
+    flex-direction: column;
+}
+.humanCheckNav .humanItem .humanItemInfo .idCard{
+    color: #797979;
+}
+.fixedNav{
+    position:fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    font-size:28rpx;
+    color: #797979;
+    width: 100%;
+    height: 160rpx;
+    background: #120e33;
+    z-index:10;
+    padding: 20rpx 0 0 40rpx;
+}
+.fixedNav .price{
+    display: flex;
+    flex-direction: column;
+    margin: 0 20rpx;
+}
+.fixedNav .price .red{
+    display: flex;
+    color: #fe6255;
+}
+.fixedNav .price .red .big{
+    font-size:32rpx;
+}
+.fixedNav .price .discount{
+    font-size:24rpx;
+}
+.fixedNav .toReserve{
+    background:#fe6255;
+    color: #fff;
+    width: 200rpx;
+    height: 80rpx;
+    text-align: center;
+    line-height:80rpx;
+    border-radius:20rpx;
+    margin-left: 200rpx;
+}

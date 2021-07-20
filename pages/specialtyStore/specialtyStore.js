@@ -1,12 +1,24 @@
-// pages/qualityTouristRoutes/playReserve.js
+
 Page({
   /**
    * 页面的初始数据
    */
-  data: {},
-  toPlayerShow(e){
+  data: {
+    options: [{
+      id: '001',
+      name: '厦门'
+    }, {
+      id: '002',
+      name: '上海'
+    }, {
+      id: '003',
+      name: '深圳'
+    }]
+  },
+  toSpecialtyList(e){
+    let name = e.currentTarget.dataset.name
     tt.navigateTo({
-      url:"/pages/playerItemShow/playerItemShow?type="+e.currentTarget.dataset.type
+      url:"/pages/specialtyList/specialtyList?name="+name
     })
   },
   /**

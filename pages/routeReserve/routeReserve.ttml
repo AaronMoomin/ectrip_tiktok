@@ -1,0 +1,40 @@
+<view class="routeReserveContainer">
+    <view class="reserveItem">
+        <text class="title">出发城市</text>
+        <text class="desc">太原</text>
+    </view>
+    <view class="reserveItem">
+        <text class="title">选择路线</text>
+        <text class="routeDesc">庞泉沟漂流一日游</text>
+    </view>
+    <view class="reserveItem">
+        <text class="title">选择路线</text>
+        <view class="priceDesc">
+            <text class="date">01-01</text>
+            <text class="price">￥225</text>
+        </view>
+    </view>
+    <view class="peopleItem">
+        <text class="title">选择出行人数</text>
+        <view class="people">
+            <text>成人</text>
+            <calculate></calculate>
+        </view>
+        <view class="people">
+            <text>儿童</text>
+            <calculate></calculate>
+        </view>
+    </view>
+    <view class="fixedBox">
+        <view class="info">
+            <view class="top">
+                <text>在线支付</text>
+                <view class="red">￥<text class="big">225</text></view>
+            </view>
+            <text>2021.01.01出票</text>
+        </view>
+        <view class="btn">
+            立即预定
+        </view>
+    </view>
+</view>

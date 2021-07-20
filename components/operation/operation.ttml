@@ -1,0 +1,17 @@
+<view class="operationContainer">
+    <view class="operation">
+        <view class="operationItem">
+            <text class="iconfont icon-zan {{isZan?'zan':''}}"></text>
+            <text class="{{isZan?'zan':''}}">点赞</text>
+        </view>
+        <view class="operationItem" bind:tap="toComment">
+            <text class="iconfont icon-pinglun"></text>
+            <text>评论</text>
+        </view>
+        <view class="operationItem">
+            <text class="iconfont icon-shoucang1 {{isHave?'have':''}}"></text>
+            <text class="{{isHave?'have':''}}">收藏</text>
+        </view>
+    </view>
+</view>
+

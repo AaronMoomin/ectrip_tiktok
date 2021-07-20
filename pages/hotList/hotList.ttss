@@ -1,0 +1,130 @@
+.tcontainer {
+    overflow: hidden;
+    padding: 20rpx;
+}
+
+.topBox {
+    display: flex;
+    width: 100%;
+    height: 60rpx;
+    line-height: 60rpx;
+    padding: 0 20rpx;
+}
+
+.topBox .title {
+    font-size: 34rpx;
+}
+
+.topBox .searchBox {
+    display: flex;
+    flex: 1;
+    margin-left: 20rpx;
+    background: #f3f3f3;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 30rpx;
+    font-size: 24rpx;
+}
+
+.searchBox .search {
+    margin: 0 20rpx;
+}
+
+.inputSy {
+    flex: 1;
+    height: 60rpx;
+    margin-left: 20rpx;
+}
+
+.contentContainer {
+    margin-top: 20rpx;
+}
+
+.contentContainer .topChoose {
+    display: flex;
+    padding: 10rpx 10rpx 0 50rpx;
+}
+
+.contentContainer .topChoose text {
+    font-size: 28rpx;
+}
+
+.contentContainer .topChoose text:nth-child(2) {
+    margin-left: 80rpx;
+}
+
+.contentContainer .showcaseContainer {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20rpx;
+    padding: 15rpx;
+}
+
+.showcaseContainer .showcaseItem {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 46%;
+    padding: 10rpx;
+    background-color:#eee;
+    color: #000;
+    margin-bottom: 20rpx;
+    border-radius: 10rpx;
+}
+
+.showcaseContainer .showcaseItem image {
+    width: 100%;
+    height: 300rpx;
+    border-radius: 10rpx;
+}
+
+.showcaseItem .title {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 20rpx;
+    background: #4a6a7d;
+    color: #fff;
+    font-size: 24rpx;
+    border-top-right-radius: 10rpx;
+}
+
+.showcaseItem .info {
+    display: flex;
+    flex-direction: column;
+    height: 100rpx;
+    font-size: 24rpx;
+    padding-top: 10rpx;
+    border-bottom-left-radius: 10rpx;
+    border-bottom-right-radius: 10rpx;
+}
+
+.showcaseItem .info .name {
+    font-size: 26rpx;
+    font-weight: bold;
+    margin-left: 20rpx;
+}
+
+.showcaseItem .info .show {
+    margin: 0 0 0 20rpx;
+    width: 300rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+}
+.showcaseItem .info .infoDes{
+    display: flex;
+    height: 60rpx;
+    line-height: 70rpx;
+}
+.showcaseItem .info .infoDes .grade{
+    width: 30rpx;
+    height: 30rpx;
+    margin: 20rpx;
+    border-radius: 50%;
+    background:#ffc26b;
+}

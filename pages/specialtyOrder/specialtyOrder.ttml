@@ -1,0 +1,56 @@
+<view class="orderContainer">
+    <view class="imgShow">
+        <swiper class="scrollNav" indicator-dots circular indicator-active-color="#fff">
+            <swiper-item class="scrollItem">
+                <image src="/static/images/sea.png"></image>
+            </swiper-item>
+            <swiper-item class="scrollItem">
+                <image src="/static/images/gbtl.jpg"></image>
+            </swiper-item>
+            <swiper-item class="scrollItem">
+                <image src="/static/images/gbtl.jpg"></image>
+            </swiper-item>
+        </swiper>
+    </view>
+    <view class="contentContainer">
+        <text class="title">商品名称商品名称</text>
+        <view class="red">
+            ￥<text class="price">48.00</text>
+        </view>
+        <view class="descInfo">
+            <view class="descItem">
+                <text class="iconfont icon-shouhuodizhi"></text>
+                <text>快递: 包邮</text>
+            </view>
+            <view class="descItem">
+                <text class="iconfont icon-xiaoliang"></text>
+                <text>月销量: 998</text>
+            </view>
+            <view class="descItem">
+                <text class="iconfont icon-travel"></text>
+                <text>云南省-昆明市</text>
+            </view>
+        </view>
+        <view class="commentContainer">
+            <text class="comment">评价 (0)</text>
+            <text>暂无评价</text>
+        </view>
+        <view class="goodsInstruction">
+            <text class="title">商品介绍</text>
+            <image src="/static/images/gbtl.jpg"></image>
+            <image src="/static/images/gbtl.jpg"></image>
+        </view>
+    </view>
+    <view class="fixedBox">
+        <view class="fixedItem">
+            <text class="iconfont icon-kefu"></text>
+            <text>客服</text>
+        </view>
+        <view class="fixedItem">
+            <text class="iconfont icon-lujing1018"></text>
+            <text>店铺</text>
+        </view>
+        <button class="btn">立即购买</button>
+    </view>
+</view>
+

@@ -1,0 +1,221 @@
+<view class="hotelContainer">
+    <view class="imgShow">
+        <swiper class="scrollNav" indicator-dots circular indicator-active-color="#fff">
+            <swiper-item class="scrollItem">
+                <image src="/static/images/sea.png"></image>
+            </swiper-item>
+            <swiper-item class="scrollItem">
+                <image src="/static/images/gbtl.jpg"></image>
+            </swiper-item>
+            <swiper-item class="scrollItem">
+                <image src="/static/images/gbtl.jpg"></image>
+            </swiper-item>
+        </swiper>
+    </view>
+    <view class="contentContainer">
+        <view class="titleNav">
+            <text class="title">{{name}}</text>
+            <view class="grade">
+                <text class="iconfont icon-xingxing"></text>
+                <text>4.6分</text>
+                <text class="type">经济型</text>
+                <text class="type">环境好</text>
+            </view>
+            <view class="mapNav">
+                <view class="hotelInfo">
+                    <text class="address">山西省晋中市平遥县顺城路154号又见瓶窑园区1号楼</text>
+                    <view class="show" bind:tap="showMap">地图<text class="iconfont icon-tiaozhuan"></text>
+                    </view>
+                </view>
+                <view class="bus">
+                    <text class="iconfont icon-gongjiao"></text>
+                    <text>位于火车站附近500m</text>
+                </view>
+            </view>
+            <view class="collect">
+                <text class="iconfont icon-xingxing"></text>
+                <text>收藏</text>
+            </view>
+        </view>
+        <view class="reserveHotelContainer">
+            <view class="dateContainer" id="dateCheck">
+                <view class="in">
+                    <view class="timePicker" bind:tap="open">
+                        <text>{{today}}\n</text>
+                        <text>入住时间</text>
+                    </view>
+                </view>
+                <text class="line"></text>
+                <view class="in">
+                    <view class="timePicker" bind:tap="open">
+                        <text>{{tomorrow}}\n</text>
+                        <text>离店时间</text>
+                    </view>
+                </view>
+                <view class="continue">
+                    <text>共{{daysBetween}}晚</text>
+                </view>
+            </view>
+            <view class="typeChooser">
+                <text>大床</text>
+                <text>双床</text>
+                <text>免费取消</text>
+            </view>
+            <view class="hotelNav">
+                <view class="hotelItem">
+                    <view class="itemShow">
+                        <view class="imgShow">
+                            <image src="/static/images/gbtl.jpg"></image>
+                        </view>
+                        <view class="info">
+                            <view class="title">
+                                <text>豪华标准间(含早)</text>
+                            </view>
+                            <text class="desc">大床 有窗 一人入住</text>
+                            <view class="priceBox">
+                                <view class="red">￥<text class="price">438</text>起
+                                </view>
+                                <text class="bad">￥260</text>
+                            </view>
+                        </view>
+                        <view class="reserveBtn">
+                            <text class="yd">预定</text>
+                            <text class="zxf">在线付</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="hotelItem">
+                    <view class="itemShow">
+                        <view class="imgShow">
+                            <image src="/static/images/gbtl.jpg"></image>
+                        </view>
+                        <view class="info">
+                            <view class="title">
+                                <text>豪华标准间(含早)</text>
+                            </view>
+                            <text class="desc">大床 有窗 一人入住</text>
+                            <view class="priceBox">
+                                <view class="red">￥<text class="price">438</text>起
+                                </view>
+                                <text class="bad">￥260</text>
+                            </view>
+                        </view>
+                        <view class="reserveBtn">
+                            <text class="yd">预定</text>
+                            <text class="zxf">在线付</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="mustKnowNav">
+            <text class="title">设施/亮点</text>
+            <view class="rules">
+                <text>基础设施</text>
+                <view class="toolsNav">
+                    <view class="toolsItem">
+                        <text class="iconfont icon-00185_SelectWifiFill"></text>
+                        <text>无线上网</text>
+                    </view>
+                    <view class="toolsItem">
+                        <text class="iconfont icon-tingchechang"></text>
+                        <text>停车场</text>
+                    </view>
+                    <view class="toolsItem">
+                        <text class="iconfont icon-hangli"></text>
+                        <text>行李寄存</text>
+                    </view>
+                    <view class="toolsItem">
+                        <text class="iconfont icon-zaocan"></text>
+                        <text>餐厅</text>
+                    </view>
+                </view>
+                <view class="ruleNav">
+                    <view class="ruleItem">
+                        <text class="tie">入离时间</text>
+                        <text class="dark">入住时间 14:00之前</text>
+                        <text class="out dark">离店时间 12:00之前</text>
+                    </view>
+                    <view class="ruleItem">
+                        <text class="tie">酒店提示</text>
+                        <text class="dark">不接受18岁以下客人在无监护人陪同的情况下入住,加床及儿童政策取决于您所选房的类型</text>
+                    </view>
+                    <view class="ruleItem">
+                        <text class="tie">宠物携带</text>
+                        <text class="dark">不可携带宠物</text>
+                    </view>
+                </view>
+            </view>
+            <view class="visitorComment">
+                <text class="title">住户点评</text>
+                <view class="mark">
+                    <view class="price">
+                        <text class="num">4.6 很好</text>
+                        <text>高于97%同类型酒店</text>
+                    </view>
+                    <view class="line"></view>
+                    <view class="priceNav">
+                        <view class="priceItem">
+                            <view class="item">
+                                <text>服务</text>
+                                <text>4.6</text>
+                                <text class="priceLine"></text>
+                            </view>
+                            <view class="item">
+                                <text>位置</text>
+                                <text>4.6</text>
+                                <text class="priceLine"></text>
+                            </view>
+                        </view>
+                        <view class="priceItem">
+                            <view class="item">
+                                <text>设施</text>
+                                <text>4.6</text>
+                                <text class="priceLine"></text>
+                            </view>
+                            <view class="item">
+                                <text>卫生</text>
+                                <text>4.6</text>
+                                <text class="priceLine"></text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="comment">
+                    <view class="commentItem">
+                        <image src="/static/images/gbtl.jpg"></image>
+                        <view class="content">
+                            <text class="name">zhangzh</text>
+                            <view class="time">
+                                <text>打分</text>
+                                <text class="num">5.0</text>
+                                <text class="room">大床房</text>
+                                <text>2020-03-06</text>
+                            </view>
+                            <text>评价评价评价评价评价评价评价评价评价评价</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+        <!--  日期选择  -->
+<view class="fadeIn" tt:if="{{dialog}}">
+    <view class="weui-mask" bindtap="close"></view>
+    <view class="weui-half-screen-dialog">
+        <view class="weui-half-screen-dialog__hd">
+            <view class="weui-half-screen-dialog__hd__side" bindtap="close">
+            </view>
+            <view class="weui-half-screen-dialog__hd__main">
+                <text class="weui-half-screen-dialog__title">选择入离日期</text>
+            </view>
+        </view>
+        <view class="weui-half-screen-dialog__bd" style="height:560rpx;">
+            <calendar class="calendar" bind:getMyDate="handleGetMyDate"></calendar>
+        </view>
+        <view class="weui-half-screen-dialog__ft">
+            <button id="confirm" bind:tap="confirmDate">确定</button>
+        </view>
+    </view>
+</view>

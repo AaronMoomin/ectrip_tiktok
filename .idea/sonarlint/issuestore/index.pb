@@ -1,14 +1,10 @@
 
 F
 pages/hotel/hotel.wxss,3\3\3382626d95aed6e8efbac5d90cb7bfe926c8c97c
-D
-pages/index/index.js,a\a\aa449e3b02f3c581f54c1555278503f2dc8da561
 R
 "pages/tourBooking/tourBooking.wxss,7\4\742038b19a9a3fff75a3bb85cb92c06edc8b5606
 @
 static/weui.wxss,4\a\4a9b5bc5547ee625219c584f66248b6c1545cd93
-6
-app.js,4\a\4a68969ef8e858229267b842dedf42ab5dde4d50
 P
  pages/tourBooking/tourBooking.js,9\2\92f7163ea419b0acab4a342d430be1ed177e739b
 D
@@ -97,7 +93,5 @@ R
 "pages/tourBooking/tourBooking.json,b\1\b1ac11f000e5c8d3ee7289af8ac8dc3b229e1337
 R
 "pages/tourBooking/tourBooking.wxml,d\3\d35f6cdc084d78066a08fd4bdf62f51a88520185
-8
-app.json,6\5\65596286f14dbaba6a5081a2edaae69700cc3c3b
 8
 app.wxss,a\f\af601df16cec8540397818893dd64d837f4879ee

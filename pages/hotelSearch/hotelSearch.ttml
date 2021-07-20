@@ -1,0 +1,52 @@
+<view class="listContainer">
+    <view class="inputBox">
+        <text class="iconfont icon-sousuo"></text>
+        <input placeholder="想住哪里?"></input>
+    </view>
+    <view class="chooseContainer">
+        <select class="select" options="{{all}}" name="距离" key="city_id" bind:change="change"></select>
+        <select class="select" options="{{locations}}" name="价格" key="city_id" bind:change="change"></select>
+        <select class="select" options="{{destination}}" name="星级" key="city_id" bind:change="change"></select>
+        <select class="select" options="{{days}}" name="综合排序" key="city_id" bind:change="change"></select>
+    </view>
+    <view class="hotelContainer">
+        <view class="routeItem">
+            <view class="imgBox">
+                <image src="/static/images/gbtl.jpg"></image>
+            </view>
+            <view class="info">
+                <view class="titleNav">
+                    <text class="star">四星</text>
+                    <text class="title">酒店名称</text>
+                </view>
+                <text class="desc">大床房/15m-20m/有无线/无早餐</text>
+                <text class="company">位于火车站附近500m</text>
+            </view>
+            <view class="price">
+                <view class="red">
+                    <text class="big">270</text>
+                    起
+                </view>
+            </view>
+        </view>
+        <view class="routeItem">
+            <view class="imgBox">
+                <image src="/static/images/gbtl.jpg"></image>
+            </view>
+            <view class="info">
+                <view class="titleNav">
+                    <text class="star">四星</text>
+                    <text class="title">酒店名称</text>
+                </view>
+                <text class="desc">大床房/15m-20m/有无线/无早餐</text>
+                <text class="company">位于火车站附近500m</text>
+            </view>
+            <view class="price">
+                <view class="red">
+                    <text class="big">270</text>
+                    起
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

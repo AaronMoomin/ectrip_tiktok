@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "calculate": "/components/calculateIndex/calculateIndex",
+    "calendar":"/components/calendar/calendar"
+  }
+}

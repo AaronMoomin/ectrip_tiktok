@@ -1,0 +1,250 @@
+.topChoose{
+    display: flex;
+    justify-content: space-around;
+    font-size: 28rpx;
+    color: #797979;
+    margin-bottom: 40rpx;
+}
+.topChoose .select{
+    color: var(--fontColor);
+}
+.timer{
+    width: 55%;
+    font-size: 24rpx;
+    border-radius: 30rpx;
+    padding: 0 10rpx;
+    background: rgba(0,0,0,0.5);
+}
+.timer text{
+    color: #fff;
+}
+.scenicContainer{
+    padding: 20rpx;
+}
+.hotelContainer{
+    padding: 20rpx;
+    color: #000;
+}
+.hotRecommend {
+    width: 100%;
+    padding: 20rpx;
+}
+
+.hotContentR {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.hotContentR .hotItemR {
+    width: 45%;
+    margin: 20rpx 10rpx 10rpx 15rpx;
+    border-radius: 10rpx;
+    font-size:24rpx;
+    color: #000;
+    /*border: 2rpx solid #eee;*/
+}
+
+.hotContentR .hotItemR image {
+    width: 100%;
+    height: 200rpx;
+    border-top-left-radius: 10rpx;
+    border-top-right-radius: 10rpx;
+}
+
+.hotItemR .instruction {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 20rpx;
+}
+
+.hotItemR .instruction .titleNav{
+    display: flex;
+}
+.hotItemR .instruction .titleNav .tj{
+    background:#fb6156;
+    color: #fff;
+    padding: 0 20rpx;
+    border-radius: 10rpx;
+    margin-right: 20rpx;
+}
+
+.hotItemR .instruction .priceItem {
+    position: relative;
+    display: flex;
+    font-size: 24rpx;
+    margin-top: 20rpx;
+}
+
+.hotItemR .instruction .priceItem .price {
+    color: #fb6156;
+}
+
+.hotItemR .instruction .priceItem .comment {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #797979;
+}
+.hotelContainer .routeItem {
+    position: relative;
+    display: flex;
+    padding: 20rpx;
+    font-size: 26rpx;
+    margin-top: 10rpx;
+    background:var(--fontColor);
+    border-bottom:2rpx solid #eee;
+}
+
+.hotelContainer .routeItem .imgBox {
+    position: relative;
+    color: #fff;
+    width: 200rpx;
+    height: 160rpx;
+}
+
+.hotelContainer .routeItem .imgBox image {
+    width: 200rpx;
+    height: 160rpx;
+    border-radius: 10rpx;
+}
+
+.hotelContainer .routeItem .imgBox .type {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #16181a;
+    opacity: 0.7;
+    width: 100rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    text-align: center;
+    border-top-left-radius: 10rpx;
+    border-bottom-right-radius: 10rpx;
+}
+
+.hotelContainer .routeItem .imgBox .location {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #16181a;
+    opacity: 0.7;
+    width: 100%;
+    height: 40rpx;
+    line-height: 40rpx;
+    text-align: center;
+    border-bottom-left-radius: 10rpx;
+    border-bottom-right-radius: 10rpx;
+}
+
+.hotelContainer .routeItem .info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20rpx;
+    letter-spacing: 5rpx;
+}
+
+.hotelContainer .routeItem .titleNav{
+    margin-bottom: 10rpx;
+}
+.hotelContainer .routeItem .titleNav .star{
+    background: linear-gradient(#ff9754,#ff7356);
+    color: #fff;
+    font-size:22rpx;
+    padding: 5rpx 10rpx;
+    border-radius: 10rpx;
+    margin-right: 10rpx;
+}
+.hotelContainer .routeItem .info .desc {
+    color: #52575c;
+    font-size: 24rpx;
+}
+
+.hotelContainer .routeItem .info .company {
+    font-size:22rpx;
+    color: #52575c;
+}
+
+.hotelContainer .routeItem .price {
+    position: absolute;
+    bottom: 10rpx;
+    right: 20rpx;
+    display: flex;
+    height: 50rpx;
+    line-height: 50rpx;
+    color: #52575c;
+}
+
+.hotelContainer .routeItem .price .red {
+    color: #d22b20;
+}
+
+.hotelContainer .routeItem .price .red .big {
+    font-size: 36rpx;
+    margin-right: 10rpx;
+}
+.routeContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 30rpx;
+}
+.routeContainer .showcaseItem {
+    display: flex;
+    flex-direction: column;
+    font-size: 24rpx;
+    /*border: 2px solid #eee;*/
+    background:#fff;
+    padding: 30rpx;
+    border-radius: 10rpx;
+    margin-bottom: 20rpx;
+}
+.showcaseItem .top{
+    display: flex;
+}
+.showcaseItem .top image{
+    width: 200rpx;
+    height: 130rpx;
+    margin-right: 20rpx;
+    border-radius: 10rpx;
+}
+.showcaseItem .top .topNav{
+    display: flex;
+    flex-direction: column;
+}
+.showcaseItem .top .topNav text{
+    color: #797979;
+}
+.showcaseItem .top .topNav .name{
+    color:#000;
+}
+.showcaseItem .top .topNav .star text{
+    color: #fcc511;
+}
+.showcaseItem .top .topNav .star .price{
+    margin-left: 10rpx;
+}
+.showcaseItem .top .topNav .star .red{
+    color: #ff8a83;
+    margin-left: 100rpx;
+}
+.showcaseItem .top .topNav .star .iconfont{
+    font-size: 24rpx;
+}
+.showcaseItem .down{
+    position:relative;
+    color: #797979;
+    margin: 20rpx 0 ;
+}
+.showcaseItem .down .see{
+    position:absolute;
+    right: 10rpx;
+    bottom: 0;
+    border-radius: 20rpx;
+    color: #fff;
+    width: 150rpx;
+    height: 50rpx;
+    text-align: center;
+    font-size:24rpx;
+    background:linear-gradient(#ff9e54,#ff6a56);
+}

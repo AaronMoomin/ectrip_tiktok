@@ -1,0 +1,17 @@
+@import "./static/icon.ttss";
+@import "./static/weui.ttss";
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+page{
+  background:var(--backColor);
+  color: var(--fontColor);
+  --backColor:#120e33;
+  --fontColor:#fff;
+  --rfontColor:#000;
+}

@@ -1,47 +1,74 @@
 // index.js
 // 获取应用实例
-const app = getApp()
-
+const app = getApp();
 Page({
   data: {
-    
+    isSelect:[true,false,false],
   },
+
   // 事件处理函数
   onLoad() {
-    
+
   },
-  handleScan(){
-    wx.scanCode({
-      success:(res)=>{
+  onShow() {
+
+  },
+  handleAddress(e){
+    let {isSelect} = this.data
+    let index = e.currentTarget.dataset.index
+
+    for (let i in isSelect) {
+      if (i==index){
+        isSelect[i] = !isSelect[i]
+      }else {
+        isSelect[i] = false
+      }
+    }
+    this.setData({
+      isSelect
+    })
+  },
+  handleScan() {
+    tt.scanCode({
+      success: res => {
         console.log(res);
       },
-      fail:(err)=>{
+      fail: err => {
         console.log(err);
       }
-    })
+    });
   },
+
   // 跳转精品路线
-  toQualityTouristRoutes(){
-    wx.navigateTo({
+  toQualityTouristRoutes() {
+    tt.navigateTo({
       url: "/pages/qualityTouristRoutes/qualityTouristRoutes"
-    })
+    });
+  },
+  //跳转特产商城
+  toSpecialtyStore(){
+    tt.navigateTo({
+      url: "/pages/specialtyStore/specialtyStore"
+    });
   },
   // 跳转文旅预约
-  toTourBooking(){
-    wx.navigateTo({
-      url: "/pages/tourBooking/tourBooking"
-    })
+  toTourBooking() {
+    tt.navigateTo({
+      url: "/pages/hotList/hotList"
+    });
   },
+
   // 跳转门票
-  toTicket(){
-    wx.navigateTo({
+  toTicket() {
+    tt.navigateTo({
       url: "/pages/ticket/ticket"
-    })
+    });
   },
+
   // 跳转酒店
-  toHotel(){
-    wx.navigateTo({
+  toHotel() {
+    tt.navigateTo({
       url: "/pages/hotel/hotel"
-    })
+    });
   }
-})
+});
