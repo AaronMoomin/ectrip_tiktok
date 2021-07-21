@@ -1,6 +1,4 @@
 {
-  "usingComponents": {
-    "footer": "/components/footer/footer"
-  },
+  "usingComponents": {},
   "navigationBarTitleText": "酒店"
 }

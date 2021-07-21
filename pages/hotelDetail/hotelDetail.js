@@ -16,19 +16,9 @@ Page({
         dialog: false,
         selectArray:[],
     },
-    triggerShow(e){
-        let index = e.currentTarget.dataset.index
-        let {itemTrigger,rotateAnimation} = this.data
-        itemTrigger[index] = !itemTrigger[index]
-        if (itemTrigger[index]){
-            this.animation.rotate(270).step();
-        }else {
-            this.animation.rotate(90).step();
-        }
-        rotateAnimation[index] = this.animation.export()
-        this.setData({
-            itemTrigger,
-            rotateAnimation,
+    toHotelReserve(){
+        tt.navigateTo({
+            url: '/pages/hotelReserve/hotelReserve'
         })
     },
     bindDateChange(e) {

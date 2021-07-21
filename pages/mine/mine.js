@@ -1,4 +1,4 @@
-
+const request = require('../..//utils/request')
 Page({
   /**
    * 页面的初始数据
@@ -7,12 +7,39 @@ Page({
     avatarUrl:'',
     nickName:'',
   },
+  async login(code){
+    await request.myRequest(
+        '/tiktok/serverAPI/login',
+        {
+          code
+        },
+        "post"
+    ).then(res =>{
+      console.log(res);
+      let {openid,session_key,unionid} = res.data.data
+      tt.setStorage({
+        key: 'session',
+        data:{
+          openid,session_key,unionid
+        },
+        success:res=>{
+          console.log('setStorage调用成功');
+        },
+        fail:err=>{
+          console.log(err);
+        }
+      })
+    }).catch(err =>{
+      console.log(err);
+    })
+  },
   handleLogin(){
     let {avatarUrl,nickName} = this.data
     tt.login({
       force: true,
       success:(res)=>{
         console.log(res);
+        this.login(res.code)
         tt.getUserInfo({
           withCredentials: true,
           success:(res)=> {
@@ -29,7 +56,7 @@ Page({
                 nickName
               },
               success:(res) =>{
-                console.log(res);
+                // console.log(res);
               },
               fail(res) {
                 console.log(`setStorage调用失败`);
@@ -120,5 +147,5 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {}
+  onShareAppMessage: function () {},
 });

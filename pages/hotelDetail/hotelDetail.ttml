@@ -2,13 +2,13 @@
     <view class="imgShow">
         <swiper class="scrollNav" indicator-dots circular indicator-active-color="#fff">
             <swiper-item class="scrollItem">
-                <image src="/static/images/sea.png"></image>
+                <image src="/static/images/hotelBack.png"></image>
             </swiper-item>
             <swiper-item class="scrollItem">
                 <image src="/static/images/gbtl.jpg"></image>
             </swiper-item>
             <swiper-item class="scrollItem">
-                <image src="/static/images/gbtl.jpg"></image>
+                <image src="/static/images/hotelBack.png"></image>
             </swiper-item>
         </swiper>
     </view>
@@ -78,7 +78,7 @@
                                 <text class="bad">￥260</text>
                             </view>
                         </view>
-                        <view class="reserveBtn">
+                        <view class="reserveBtn" bind:tap="toHotelReserve">
                             <text class="yd">预定</text>
                             <text class="zxf">在线付</text>
                         </view>
@@ -100,7 +100,7 @@
                                 <text class="bad">￥260</text>
                             </view>
                         </view>
-                        <view class="reserveBtn">
+                        <view class="reserveBtn" bind:tap="toHotelReserve">
                             <text class="yd">预定</text>
                             <text class="zxf">在线付</text>
                         </view>

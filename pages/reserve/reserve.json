@@ -1,7 +1,7 @@
 {
   "usingComponents": {
-    "calendar": "plugin://calendar/calendar",
-    "calculate": "/components/calculateIndex/calculateIndex"
+    "calculate": "/components/calculateIndex/calculateIndex",
+    "calendar":"/components/calendar/calendar"
   },
-  "navigationBarTitleText": "填单页"
+  "navigationBarTitleText": "门票预定"
 }

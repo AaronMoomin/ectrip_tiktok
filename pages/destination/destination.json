@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "footerComponent": "/components/footer/footer"
+    "select": "/components/select/select"
   }
 }

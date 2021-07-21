@@ -34,6 +34,12 @@ Component({
             if (date == '' || date <= 0) {
                 return;
             }
+            if (selectArray.length!=0 && date==selectArray[0].date){
+                selectArray=[]
+            }
+            this.setData({
+                selectArray
+            })
             var index = e.currentTarget.dataset.key;
             var item = e.currentTarget.dataset.keyitem;
             var month = e.currentTarget.dataset.month;
@@ -42,12 +48,15 @@ Component({
                 thisDateLists[index][item].month = this.data.thisMonth
                 thisDateLists[index][item].year = this.data.thisYear
                 if (selectArray.indexOf(thisDateLists[index][item]) === -1) {
+                    if (selectArray.length>1){
+                        selectArray.pop()
+                    }
                     selectArray.push(thisDateLists[index][item])
                 }
                 this.setData({
                     selectArray
                 })
-                // console.log(selectArray);
+                console.log(selectArray);
                 //切换选中状态
                 if (thisDateLists[index][item].state == true) { // 取消选中
                     thisDateLists[index][item].state = false;
@@ -62,6 +71,7 @@ Component({
                     for (let i = 0; i < thisDateLists.length; i++) {
                         for (let j = 0; j < thisDateLists[i].length; j++) {
                             thisDateLists[i][j].state = false;
+                            thisDateLists[i][j].outDate = false
                         }
                     }
                 } else if (thisDateLists[index][item].state == false) {//选中
@@ -195,7 +205,6 @@ Component({
                     }
                 }
             }
-
             //根据月份设置数据
             if (month == 'thisMonth') {
                 this.setData({
@@ -207,6 +216,7 @@ Component({
                     nextMonthArr: nextDateLists,
                 });
             }
+
         },
         //获取两日期之间日期列表函数
         getdiffdate(stime, etime) {

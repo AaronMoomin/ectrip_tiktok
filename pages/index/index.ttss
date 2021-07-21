@@ -138,6 +138,7 @@
 .select {
     font-weight: bold;
     font-size: 40rpx;
+    letter-spacing: 10rpx;
     border-bottom: 4rpx solid #448cfe;
 }
 

@@ -1,0 +1,102 @@
+<view class="hotelReserveContainer">
+    <view class="timeNav">
+        <view class="start">
+            <text>入住时间</text>
+            <text class="time">11月17日 周一</text>
+        </view>
+        <view class="start">
+            <text>入住时间</text>
+            <text class="time">11月17日 周一</text>
+        </view>
+        <view class="duration">
+            <text>共一晚</text>
+            <text class="iconfont icon-tiaozhuan"></text>
+        </view>
+    </view>
+    <view class="info">
+        <image src="/static/images/gbtl.jpg"></image>
+        <view class="infoItem">
+            <text class="name">酒店名称</text>
+            <text>大床房/1人入住/15m-30m/有窗/无早餐</text>
+            <text>位于火车站附近500m</text>
+        </view>
+    </view>
+    <view class="humanInfo">
+        <text class="headTitle">入住信息</text>
+        <view class="infoItem">
+            <view class="infoCell">
+                <text class="name">姓名</text>
+                <input bindinput="handleUserName" value="{{userName}}"
+                       placeholder="请输入真实姓名"/>
+            </view>
+            <view class="weui-cells__tips weui-cells__tips_warn"
+                  style="color:red;{{isNameCurrentWaring ? 'display:block' : 'display:none'}}">
+                {{nameWarnMessage}}
+            </view>
+        </view>
+        <view class="infoItem">
+            <view class="infoCell">
+                <text class="name">联系手机</text>
+                <input bindinput="handlePhone" value="{{phone}}"
+                       placeholder="请输入联系手机"/>
+            </view>
+            <view class="weui-cells__tips weui-cells__tips_warn"
+                  style="color:red;{{isPhoneCurrentWaring ? 'display:block' : 'display:none'}}">
+                {{phoneWarnMessage}}
+            </view>
+        </view>
+        <view class="infoItem">
+            <view class="infoCell">
+                <text class="name">房间数</text>
+                <view class="pic">
+                    <picker class="pickerCal" bindchange="bindPickerChange" range="{{array}}">
+                        <view>{{array[value1]}}</view>
+                    </picker>
+                    <text class="iconfont icon-tiaozhuan"></text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="humanInfo discountNav">
+        <text class="headTitle">优惠</text>
+        <view class="infoItem">
+            <view class="infoCell">
+                <text class="name">促销优惠</text>
+                <view class="pic">
+                    <text class="desc red">-￥10</text>
+                    <text class="iconfont icon-tiaozhuan"></text>
+                </view>
+            </view>
+        </view>
+        <view class="infoItem">
+            <view class="infoCell">
+                <text class="name">可选优惠</text>
+                <view class="pic">
+                    <text class="desc">选择可用满减红包</text>
+                    <text class="iconfont icon-tiaozhuan"></text>
+                </view>
+            </view>
+        </view>
+        <view class="infoItem">
+            <view class="infoCell">
+                <text class="name">酒店权益</text>
+                <view class="pic">
+                    <text class="desc">提前取消订单全额退款</text>
+                    <text class="iconfont icon-tiaozhuan"></text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="fixedNav">
+    <text>在线支付</text>
+    <view class="price">
+        <view class="red">￥
+            <text class="big">108</text>
+        </view>
+        <view class="discount">已减￥15</view>
+    </view>
+    <view class="toReserve">
+        去支付
+    </view>
+</view>

@@ -1,10 +1,14 @@
 {
     "setting": {
-        "urlCheck": true,
+        "urlCheck": false,
         "es6": true,
-        "postcss": true,
-        "minified": true,
-        "newFeature": true
+        "newFeature": false,
+        "postcss": false,
+        "mockUpdate": false,
+        "minified": false,
+        "nodeModules": false,
+        "scripts": false,
+        "mockLogin": false
     },
     "appid": "tt0b527def946a3fdc01",
     "projectname": "鼎游信息",

@@ -1,7 +1,7 @@
 // pages/reserve/reserve.js
 let util = require('../../utils/util.js');
-Page({
 
+Page({
     /**
      * 页面的初始数据
      */
@@ -15,16 +15,29 @@ Page({
         showYesterday: false,
         showDay: true,
         showTomorrow: true,
-        timeChooser: [{start: '20:30', end: '21:40', session: '20:30场', isSelect: false},
-            {start: '08:30', end: '10:40', session: '08:30场', isSelect: false}],
-        dialog: false,//时间dialog
-        dialog2: false,//新增dialog
-        dialog3: false,//编辑dialog
+        timeChooser: [{
+            start: '20:30',
+            end: '21:40',
+            session: '20:30',
+            isSelect: false
+        }, {
+            start: '08:30',
+            end: '10:40',
+            session: '08:30',
+            isSelect: false
+        }],
+        dialog: false,
+        //时间dialog
+        dialog2: false,
+        //新增dialog
+        dialog3: false,
+        //编辑dialog
         days_style: [],
         disabled: '',
         displayed2: 'none',
         btnDisabled: true,
-        currentValue: '',//当前输入手机号
+        currentValue: '',
+        //当前输入手机号
         isCurrentWaring: false,
         warnMessage: '',
         array: ['身份证', '兵役证'],
@@ -48,18 +61,34 @@ Page({
         isNameCurrentWaring: false,
         nameWarnMessage: '',
         hasUser: false,
-        iosDialog: false,//确认删除
+        iosDialog: false,
+        //确认删除
         voteNum: 1,
+        dateString: "",
+        spot: [],
+    },
+    dateChange(e) {
+        console.log("现在日期是", e.detail.dateString)
+        this.setData({
+            dateString: e.detail.dateString,
+            selectDay: e.detail.dateString
+        })
+        this.dayClick(e)
     },
     //获取票数
     getIndex(e) {
-        const {index} = e.detail
-        let {voteNum} = this.data
-        voteNum = index
+        const {
+            index
+        } = e.detail;
+        let {
+            voteNum
+        } = this.data;
+        voteNum = index;
         this.setData({
             voteNum
-        })
+        });
     },
+
     //最终提交
     allConfirm() {
         let {
@@ -75,45 +104,50 @@ Page({
             currentValue,
             needKnow,
             users
-        } = this.data
-        let time = []
+        } = this.data;
+        let time = [];
         timeChooser.forEach(item => {
             if (item.isSelect == true) {
-                time.push(item.session)
+                time.push(item.session);
             }
-        })
+        });
+
         if (time.length === 0) {
-            wx.showToast({
+            tt.showToast({
                 title: '未选择场次',
                 icon: 'error'
-            })
-            return
+            });
+            return;
         }
+
         if (users.length === 0) {
-            wx.showToast({
+            tt.showToast({
                 title: '游玩人不能为空',
                 icon: 'error'
-            })
-            return
+            });
+            return;
         }
+
         if (currentValue === '') {
-            wx.showToast({
+            tt.showToast({
                 title: '手机不能为空',
                 icon: 'error'
-            })
-            return
+            });
+            return;
         }
+
         if (needKnow.length === 0) {
-            wx.showToast({
+            tt.showToast({
                 title: '请同意条约',
                 icon: 'error'
-            })
-            return
+            });
+            return;
         }
-        wx.showToast({
+
+        tt.showToast({
             title: '购票成功',
             icon: 'success'
-        })
+        });
         console.log(`日期:${selectDay},
                     场次:${time},
                     票数:${voteNum},
@@ -122,20 +156,24 @@ Page({
                     性别:${sexShow},
                     证件类型:${array[value1Show]},
                     证件号码:${idCardShow},
-                    联系电话:${currentValue}`)
+                    联系电话:${currentValue}`);
     },
+
     //选择时间段
     checkSession(e) {
-        let {timeChooser} = this.data
+        let {
+            timeChooser
+        } = this.data;
         timeChooser.forEach(item => {
             if (item.session === e.currentTarget.dataset.session) {
-                item.isSelect = !item.isSelect
+                item.isSelect = !item.isSelect;
             }
-        })
+        });
         this.setData({
             timeChooser
-        })
+        });
     },
+
     confirm() {
         let {
             userName,
@@ -150,59 +188,81 @@ Page({
             idCard,
             idCardShow,
             users
-        } = this.data
+        } = this.data;
         // console.log(`${userName}-${phone}-${sex}-${array[value1]}-${idCard}`)
-        let idType = array[value1]
+
+        let idType = array[value1];
         if (userName === '') {
             this.setData({
                 isNameCurrentWaring: true,
                 nameWarnMessage: '姓名不能为空'
-            })
+            });
             return;
         }
+
         if (phone === '') {
             this.setData({
                 isPhoneCurrentWaring: true,
                 phoneWarnMessage: '手机号不能为空'
-            })
+            });
             return;
         }
+
         if (idCard === '') {
             this.setData({
                 isIdCardCurrentWaring: true,
                 IdCardWarnMessage: '身份证不能为空'
-            })
+            });
             return;
         }
+
         for (let item of users) {
             if (item.userName === userName) {
-                wx.showToast({
+                tt.showToast({
                     title: '该游玩人已存在',
                     icon: 'none'
-                })
-                return
+                });
+                return;
             } else if (item.idCard === idCard) {
-                wx.showToast({
+                tt.showToast({
                     title: '该身份证已存在',
                     icon: 'none'
-                })
-                return
+                });
+                return;
             }
         }
+
         if (users.length == 0) {
-            users.push({userName, phone, sex, idType, idCard, isSelect: true})
+            users.push({
+                userName,
+                phone,
+                sex,
+                idType,
+                idCard,
+                value1,
+                isSelect: true
+            });
         } else {
-            users.push({userName, phone, sex, idType, idCard, isSelect: false})
+            users.push({
+                userName,
+                phone,
+                sex,
+                idType,
+                idCard,
+                value1,
+                isSelect: false
+            });
         }
+
         users.forEach(item => {
             if (item.isSelect) {
-                userNameShow = item.userName
-                phoneShow = item.phone
-                idCardShow = item.idCard
-                sexShow = item.sex
-                value1Show = value1
+                userNameShow = item.userName;
+                phoneShow = item.phone;
+                idCardShow = item.idCard;
+                sexShow = item.sex;
+                value1Show = item.value1;
             }
-        })
+        });
         this.setData({
             userNameShow,
             phoneShow,
@@ -219,8 +279,9 @@ Page({
             isPhoneCurrentWaring: false,
             isIdCardCurrentWaring: false,
             users
-        })
+        });
     },
+
     confirmEdit() {
         let {
             userName,
@@ -235,45 +296,48 @@ Page({
             value1Show,
             array,
             users
-        } = this.data
-        console.log(`${userName}-${phone}-${sex}-${array[value1]}-${idCard}`)
+        } = this.data;
+        // console.log(`${userName}-${phone}-${sex}-${array[value1]}-${idCard}`);
+        let idType = array[value1];
 
-        let idType = array[value1]
         if (userName == "") {
             this.setData({
                 isNameCurrentWaring: true,
                 nameWarnMessage: '姓名不能为空'
-            })
+            });
             return;
         }
+
         if (phone == "") {
             this.setData({
                 isPhoneCurrentWaring: true,
                 phoneWarnMessage: '手机号不能为空'
-            })
+            });
             return;
         }
+
         if (idCard == "") {
             this.setData({
                 isIdCardCurrentWaring: true,
                 IdCardWarnMessage: '身份证不能为空'
-            })
+            });
             return;
         }
+
         users.forEach(item => {
             if (item.isSelect == true) {
-                item.userName = userName
-                item.phone = phone
-                item.sex = sex
-                item.idCard = idCard
-                item.idType = idType
+                item.userName = userName;
+                item.phone = phone;
+                item.sex = sex;
+                item.idCard = idCard;
+                item.idType = idType;
             }
-        })
-        userNameShow = userName
-        phoneShow = phone
-        idCardShow = idCard
-        sexShow = sex
-        value1Show = value1
+        });
+        userNameShow = userName;
+        phoneShow = phone;
+        idCardShow = idCard;
+        sexShow = sex;
+        value1Show = value1;
         this.setData({
             userName: '',
             phone: '',
@@ -289,32 +353,46 @@ Page({
             isPhoneCurrentWaring: false,
             isIdCardCurrentWaring: false,
             users
-        })
+        });
     },
+
     handleDelete() {
         this.setData({
             iosDialog: true
-        })
+        });
     },
+
     addNew() {
-        let {users} = this.data
+        let {
+            users
+        } = this.data;
+
         if (users.length >= 4) {
-            wx.showToast({
+            tt.showToast({
                 title: '最多可添加4位',
                 icon: 'none'
-            })
+            });
         } else {
             this.setData({
                 userName: '',
                 phone: '',
                 idCard: '',
                 value1: 0,
-                dialog2: true,
-            })
+                dialog2: true
+            });
         }
     },
+
     edit() {
-        let {userNameShow, phoneShow, sexShow, value1Show, idCardShow} = this.data
+        let {
+            userNameShow,
+            phoneShow,
+            sexShow,
+            value1Show,
+            idCardShow,
+            array
+        } = this.data;
+        console.log(`${userNameShow}-${phoneShow}-${sexShow}-${array[value1Show]}-${idCardShow}`);
         this.setData({
             userName: userNameShow,
             phone: phoneShow,
@@ -324,91 +402,121 @@ Page({
             dialog3: true,
             isNameCurrentWaring: false,
             isPhoneCurrentWaring: false,
-            isIdCardCurrentWaring: false,
-        })
+            isIdCardCurrentWaring: false
+        });
     },
+
     //切换选中
     userChoose(e) {
-        let {users, userNameShow, phoneShow, idCardShow} = this.data
+        let {
+            users,
+            userNameShow,
+            phoneShow,
+            sexShow,
+            value1Show,
+            idCardShow,
+            array
+        } = this.data;
+
         users.forEach(item => {
             if (item.userName === e.currentTarget.dataset.user.userName) {
-                item.isSelect = true
-                userNameShow = item.userName
-                phoneShow = item.phone
-                idCardShow = item.idCard
-                return true
+                item.isSelect = true;
+                userNameShow = item.userName;
+                phoneShow = item.phone;
+                idCardShow = item.idCard;
+                sexShow = item.sex
+                value1Show = item.value1
+                return true;
             } else {
-                item.isSelect = false
-                return false
+                item.isSelect = false;
+                return false;
             }
         });
         this.setData({
             users,
             userNameShow,
             phoneShow,
-            idCardShow
-        })
+            idCardShow,
+            sexShow,
+            value1Show
+        });
     },
+
     cancel() {
         this.setData({
             iosDialog: false
-        })
+        });
     },
+
     deleteItem() {
-        let {users, userNameShow, phoneShow, idCardShow} = this.data
+        let {
+            users,
+            userNameShow,
+            phoneShow,
+            idCardShow
+        } = this.data;
+
         for (let index in users) {
             if (users[index].userName === userNameShow) {
-                users.splice(index, 1)
-                if (users.length===0){
+                users.splice(index, 1);
+
+                if (users.length === 0) {
                     this.setData({
-                        userNameShow:'',
-                        phoneShow:'',
-                        idCardShow:'',
-                    })
-                }else {
-                    users[0].isSelect = true
+                        userNameShow: '',
+                        phoneShow: '',
+                        idCardShow: ''
+                    });
+                } else {
+                    users[0].isSelect = true;
                 }
             }
         }
+
         users.forEach(item => {
             if (item.isSelect) {
-                userNameShow = item.userName
-                phoneShow = item.phone
-                idCardShow = item.idCard
+                userNameShow = item.userName;
+                phoneShow = item.phone;
+                idCardShow = item.idCard;
             }
-        })
+        });
         this.setData({
             users,
             userNameShow,
             phoneShow,
             idCardShow,
             iosDialog: false
-        })
+        });
     },
+
     bindPickerChange(e) {
         this.setData({
             value1: e.detail.value
-        })
+        });
     },
+
     bindPickerChange1(e) {
         this.setData({
             value2: e.detail.value
-        })
+        });
     },
+
     //性别
     radioChange(e) {
         this.setData({
             sex: e.detail.value
-        })
+        });
     },
+
     checkboxChange(e) {
         this.setData({
             needKnow: e.detail.value
-        })
+        });
     },
+
     onCurrentInput(e) {
         let currentValue = e.detail.value;
         let myReg = /^[1][3,4,5,7,8,9][0-9]{9}$/;
+
         if (currentValue === '') {
             this.setData({
                 isCurrentWaring: true,
@@ -427,23 +535,26 @@ Page({
             });
         }
     },
+
     handleUserName(e) {
         if (e.detail.value == '') {
             this.setData({
                 isNameCurrentWaring: true,
                 nameWarnMessage: '姓名不能为空',
                 userName: ''
-            })
+            });
         } else {
             this.setData({
                 userName: e.detail.value,
                 isNameCurrentWaring: false
-            })
+            });
         }
     },
+
     handlePhone(e) {
         const currentValue = e.detail.value;
         let myReg = /^[1][3,4,5,7,8,9][0-9]{9}$/;
+
         if (currentValue == '') {
             this.setData({
                 isPhoneCurrentWaring: true,
@@ -458,13 +569,15 @@ Page({
         } else {
             this.setData({
                 phone: e.detail.value,
-                isPhoneCurrentWaring: false,
+                isPhoneCurrentWaring: false
             });
         }
     },
+
     handleIdCard(e) {
         const currentValue = e.detail.value;
         const reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+
         if (currentValue == '') {
             this.setData({
                 isIdCardCurrentWaring: true,
@@ -479,225 +592,239 @@ Page({
         } else {
             this.setData({
                 idCard: e.detail.value,
-                isIdCardCurrentWaring: false,
+                isIdCardCurrentWaring: false
             });
         }
     },
+
     open() {
         this.setData({
             dialog: true
-        })
+        });
     },
+
     open1() {
         this.setData({
             dialog2: true
-        })
+        });
     },
+
     open2() {
         this.setData({
             needToKnow: true
-        })
+        });
     },
+
     close() {
         this.setData({
             dialog: false
-        })
+        });
     },
+
     close1() {
         this.setData({
             dialog2: false
-        })
+        });
     },
+
     close2() {
         this.setData({
             dialog3: false
-        })
+        });
     },
+
     close3() {
         this.setData({
             needToKnow: false
-        })
+        });
     },
+
     dayClick(e) {
-        //设置只能选一天
-        this.setData({
-            days_style: []
-        })
-        let {days_style, selectDay, today, yesterday, tomorrow} = this.data
-        //今天
-        let str = util.GetDateStr(0)
-        //下一天
-        let preStr = util.GetDateStr1(str, -1)
-        days_style.push({month: 'current', day: e.detail.day, color: 'white', background: '#aad4f5'},)
-        selectDay = `${e.detail.year}-${(e.detail.month + '').padStart(2, '0')}-${(e.detail.day + '').padStart(2, '0')}`
-        yesterday = util.GetWeekStr(selectDay, -1)
-        today = util.GetWeekStr(selectDay, 0)
-        tomorrow = util.GetWeekStr(selectDay, 1)
-        if (str > selectDay) {//选中日期比今天小 6 7 8  5 6 7
+        let {
+            selectDay,
+            today,
+            yesterday,
+            tomorrow
+        } = this.data; //今天
+
+        let str = util.GetDateStr(0); //下一天
+
+        let preStr = util.GetDateStr1(str, -1);
+        yesterday = util.GetWeekStr1(selectDay, -1);
+        today = util.GetWeekStr1(selectDay, 0);
+        tomorrow = util.GetWeekStr1(selectDay, 1);
+
+        if (str > selectDay) {
+            //选中日期比今天小 6 7 8  5 6 7
             if (preStr <= selectDay) {
                 this.setData({
                     showYesterday: false,
                     showDay: false,
                     showTomorrow: true
-                })
+                });
             } else {
                 this.setData({
                     showYesterday: false,
                     showDay: false,
                     showTomorrow: false
-                })
+                });
             }
-        } else if (str < selectDay) {//选中日期比今天大
+        } else if (str < selectDay) {
+            //选中日期比今天大
             this.setData({
                 showYesterday: true,
                 showDay: true,
                 showTomorrow: true
-            })
-        } else { //就是今天
+            });
+        } else {
+            //就是今天
             this.setData({
                 showYesterday: false,
                 showDay: true,
                 showTomorrow: true
-            })
+            });
         }
+
         this.setData({
-            days_style,
             selectDay,
             today,
             yesterday,
             tomorrow
-        })
+        });
     },
+
     preDay() {
-        //设置只能选一天
-        this.setData({
-            days_style: []
-        })
-        let {selectDay, today, yesterday, tomorrow, days_style} = this.data
-        let str = util.GetDateStr(0)
-        selectDay = util.GetDateStr1(selectDay, -1)
-        yesterday = util.GetWeekStr(selectDay, -1)
-        today = util.GetWeekStr(selectDay, 0)
-        tomorrow = util.GetWeekStr(selectDay, 1)
-        days_style.push({month: 'current', day: util.GetDay(selectDay), color: 'white', background: '#aad4f5'},)
+        let {
+            selectDay,
+            today,
+            yesterday,
+            tomorrow
+        } = this.data;
+        let str = util.GetDateStr(0);
+        selectDay = util.GetDateStr1(selectDay, -1);
+        yesterday = util.GetWeekStr1(selectDay, -1);
+        today = util.GetWeekStr1(selectDay, 0);
+        tomorrow = util.GetWeekStr1(selectDay, 1);
+
         if (str >= selectDay) {
             this.setData({
                 showYesterday: false
-            })
+            });
         }
+
         this.setData({
-            yesterday,
-            today,
-            tomorrow,
-            selectDay,
-            days_style
-        })
-    },
-    nextDay() {
-        //设置只能选一天
-        this.setData({
-            days_style: []
-        })
-        let {selectDay, today, yesterday, tomorrow, days_style} = this.data
-        let str = util.GetDateStr(0)
-        selectDay = util.GetDateStr1(selectDay, 1)
-        yesterday = util.GetWeekStr(selectDay, -1)
-        today = util.GetWeekStr(selectDay, 0)
-        tomorrow = util.GetWeekStr(selectDay, 1)
-        days_style.push({month: 'current', day: util.GetDay(selectDay), color: 'white', background: '#aad4f5'},)
-        if (str < selectDay) {
-            this.setData({
-                showYesterday: true,
-                showDay: true
-            })
-        } else {
-            this.setData({
-                showYesterday: false,
-                showDay: true
-            })
-        }
-        this.setData({
-            yesterday,
-            today,
-            tomorrow,
-            selectDay,
-            days_style
-        })
-    },
-    confirmDate() {
-        this.setData({
-            dialog: false
-        })
-    },
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-        let date = new Date()
-        let day = date.getDate()
-        let {days_style, yesterday, today, tomorrow, selectDay} = this.data
-        days_style.push({month: 'current', day: day, color: 'white', background: '#aad4f5'},)
-        //获取当天日期 2021-07-08
-        let str = util.GetDateStr(0)
-        selectDay = str
-        yesterday = util.GetWeekStr(str, -1)
-        today = util.GetWeekStr(str, 0)
-        tomorrow = util.GetWeekStr(str, 1)
-        this.setData({
-            days_style,
             yesterday,
             today,
             tomorrow,
             selectDay
-        })
+        });
+    },
+
+    nextDay() {
+        let {
+            selectDay,
+            today,
+            yesterday,
+            tomorrow
+        } = this.data;
+        let str = util.GetDateStr(0);
+        selectDay = util.GetDateStr1(selectDay, 1);
+        yesterday = util.GetWeekStr1(selectDay, -1);
+        today = util.GetWeekStr1(selectDay, 0);
+        tomorrow = util.GetWeekStr1(selectDay, 1);
+
+        if (str < selectDay) {
+            this.setData({
+                showYesterday: true,
+                showDay: true
+            });
+        } else {
+            this.setData({
+                showYesterday: false,
+                showDay: true
+            });
+        }
+
+        this.setData({
+            yesterday,
+            today,
+            tomorrow,
+            selectDay
+        });
+    },
+
+    confirmDate() {
+        this.setData({
+            dialog: false
+        });
+    },
+
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function (options) {
+        let date = new Date();
+        let day = date.getDate();
+        let {
+            yesterday,
+            today,
+            tomorrow,
+            selectDay
+        } = this.data;
+        //获取当天日期 2021-07-08
+
+        let str = util.GetDateStr(0);
+        selectDay = str;
+        yesterday = util.GetWeekStr1(str, -1);
+        today = util.GetWeekStr1(str, 0);
+        tomorrow = util.GetWeekStr1(str, 1);
+        this.setData({
+            yesterday,
+            today,
+            tomorrow,
+            selectDay
+        });
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
     },
 
     /**
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
-
     }
-})
+});

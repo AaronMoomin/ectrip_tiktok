@@ -1,6 +1,5 @@
-// pages/ticket/ticket.js
+// pages/ticket/orderTypeShow.js
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -16,66 +15,57 @@ Page({
       name: '深圳'
     }]
   },
-  //跳转门票详情
-  toTicketDetail(e){
-    let name = e.currentTarget.dataset.name
-    wx.navigateTo({
-      url: `/pages/ticketDetail/ticketDetail?name=${name}`
+  //按钮跳转类型商品展示
+  toOrderTypeShow(e){
+    tt.navigateTo({
+      url: '/pages/orderTypeShow/orderTypeShow?name='+ e.currentTarget.dataset.name
     })
   },
+  //跳转门票详情
+  toTicketDetail(e) {
+    let name = e.currentTarget.dataset.name;
+    tt.navigateTo({
+      url: `/pages/ticketDetail/ticketDetail?name=${name}`
+    });
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
-  },
+  onLoad: function (options) {},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
-  },
+  onReady: function () {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
-  },
+  onShow: function () {},
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-
-  },
+  onHide: function () {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-
-  },
+  onUnload: function () {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
-  },
+  onPullDownRefresh: function () {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
-  },
+  onReachBottom: function () {},
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
-  }
-})
+  onShareAppMessage: function () {}
+});

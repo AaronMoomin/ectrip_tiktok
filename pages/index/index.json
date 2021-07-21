@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "headComponent": "/components/headComponent/headComponent",
-    "footerComponent": "/components/footer/footer"
+    "headComponent": "/components/headComponent/headComponent"
   }
 }

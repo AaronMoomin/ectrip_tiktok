@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "footerComponent":"/components/footer/footer"
   },
   "navigationBarTitleText": "精品路线"
 }

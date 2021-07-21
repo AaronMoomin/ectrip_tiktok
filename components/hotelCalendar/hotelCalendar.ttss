@@ -1,0 +1,117 @@
+/* pages/setCalendar/setCalendar.ttss */
+.Box {
+    position: relative;
+}
+.tips {
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    background: #fff;
+    font-size: 36rpx;
+    font-weight: 700;
+    padding-left: 20rpx;
+    color: #dd434b;
+}
+.calendar {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.calendar .year_month{
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    background:#ececec;
+    padding-left: 20rpx;
+}
+
+.calendar .week {
+    width: 98%;
+    margin: 0 auto;
+    height: auto;
+    overflow: hidden;
+}
+.calendar .week text{
+    width: 14%;
+    margin: 0 auto;
+    text-align: center;
+    height: 120rpx;
+    font-size: 36rpx;
+    display: flex;
+    float: left;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: #FFFFFF 1px solid;
+    box-sizing: border-box;
+}
+.calendar .week .saturday {
+    color: #000;
+}
+.calendar .week .sunday {
+    color: #000;
+}
+.calendar .week .now {
+    border:none;
+    border-bottom: #E64340 1px solid;
+    background: #FFFFFF;
+    border-radius: 0;
+    box-sizing: border-box;
+}
+.calendar .week .selected {
+    position: relative;
+    border:none;
+    /*background: #dd434b;*/
+    background: #eee;
+    border: #fff 1px solid;
+    color: #FFFFFF;
+    border-radius: 10rpx;
+    box-sizing: border-box;
+}
+.calendar .week .in{
+    position: relative;
+    background: #dd434b;
+}
+.calendar .week .in::after {
+    content: "入住";
+    position:absolute;
+    bottom: 0;
+    left: 50%;
+    transform:translateX(-50%);
+    font-size:24rpx;
+}
+.calendar .week .out{
+    position: relative;
+    background: #dd434b;
+}
+.calendar .week .out::after {
+    content: "离店";
+    position:absolute;
+    bottom: 0;
+    left: 50%;
+    transform:translateX(-50%);
+    font-size:24rpx;
+}
+.calendar .week .disabled {
+    border:none;
+    background: #FFFFFF;
+    border: #FFFFFF 1px solid;
+    color: #888888;
+    box-sizing: border-box;
+}
+.btnBox {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.btn {
+    width: 680rpx;
+    height: 80rpx;
+    margin: 20rpx auto;
+    border-radius: 40rpx;
+    background: #dd434b;
+}

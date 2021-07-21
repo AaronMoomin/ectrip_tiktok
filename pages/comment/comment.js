@@ -8,26 +8,11 @@ Page({
         select:[false,false,false,false,false],
         value: "",
     },
-    onTextFocus: function (e) {
-        console.log(e);
-    },
-    onTextBlur: function (e) {
-        console.log(e);
-    },
-    onTextInput: function (e) {
-        this.setData({
-            value: e.detail.value,
-        });
-    },
     handleSelect(e){
         let {select} = this.data
         let index = e.currentTarget.dataset.index
-        console.log(index);
         for (let i=0;i<index+1;i++){
-            select[i] = true
-        }
-        for (let j = index+1; j <=select.length ; j++) {
-            select[j] = false
+            select[i] = !select[i]
         }
         this.setData({
             select

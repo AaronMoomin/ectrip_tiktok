@@ -1,6 +1,6 @@
 .commentContainer {
     padding: 30rpx;
-    color: #000;
+    background: #f9f9f9;
 }
 
 .comment {
