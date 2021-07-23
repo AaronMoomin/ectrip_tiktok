@@ -60,8 +60,9 @@ Page({
     },
     toReserve(e) {
         let product = JSON.stringify(e.currentTarget.dataset.product)
+        let totalStock = e.currentTarget.dataset.totalstock
         tt.navigateTo({
-            url: `/pages/reserve/reserve?product=${product}`
+            url: `/pages/reserve/reserve?product=${product}&totalStock=${totalStock}`
         });
     },
 

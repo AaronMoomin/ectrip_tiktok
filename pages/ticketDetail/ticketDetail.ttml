@@ -42,8 +42,10 @@
                 <text>预定须知</text>
                 <text class="iconfont icon-tiaozhuan"></text>
             </view>
-            <view class="reserveBtn" bind:tap="toReserve" tt:if="{{item.stockList[0].totalStock>1}}"
-                  data-product="{{item}}">
+            <view class="reserveBtn" bind:tap="toReserve"
+                  data-totalstock="{{item.stockList[0].totalStock}}"
+                  data-product="{{item}}"
+                  tt:if="{{item.stockList[0].totalStock>1}}">
                 <text class="yd">预定</text>
                 <text class="zxf">在线付</text>
             </view>

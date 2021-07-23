@@ -3,14 +3,19 @@ Component({
   /**
    * 组件的属性列表
    */
-  properties: {},
+  properties: {
+    num:{
+      type: 'number'
+    }
+  },
 
   /**
    * 组件的初始数据
    */
   data: {
     index: 1,
-    isDisabled: false
+    isDisabled: false,
+    jiaDisabled: false,
   },
 
   /**
@@ -23,7 +28,8 @@ Component({
       } = this.data;
       index--;
       this.setData({
-        index
+        index,
+        jiaDisabled:false,
       });
 
       if (index < 2) {
@@ -46,6 +52,11 @@ Component({
         index,
         isDisabled: false
       });
+      if (index>=this.properties.num){
+        this.setData({
+          jiaDisabled:true,
+        });
+      }
       this.triggerEvent("itemIndex", {
         index
       });

@@ -3,5 +3,5 @@
     <text class="line">|</text>
     <text>{{index}}</text>
     <text class="line">|</text>
-    <button bind:tap="jia">+</button>
+    <button disabled="{{jiaDisabled}}" bind:tap="jia">+</button>
 </view>

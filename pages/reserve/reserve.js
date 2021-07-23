@@ -11,11 +11,12 @@ Page({
         nowPrice:'',
         product:{},
         visitPersons:[{
-            credentials:'441402188805420215',
+            credentials:'522601198003069767',
             credentialsType:"ID_CARD",
-            mobile:"13432154554",
+            mobile:"15724864113",
             name:"海绵宝宝"
         }],
+        totalStock:0,
         ticketType:[],
         needToKnow: false,
         needKnow: [],
@@ -79,6 +80,11 @@ Page({
         spot: [],
     },
     async toReserve() {
+        // 15731445471
+        // 610404197603155734
+
+        // 522601198003069767
+        // 15724864113
         tt.showLoading({
             title:'加载中...'
         })
@@ -87,6 +93,8 @@ Page({
             idCard, visitPersons,product,
         isIdCardCurrentWaring,isPhoneCurrentWaring} = this.data
         let credentialsType = arrayVal[value1]
+        price = price*100
+        nowPrice = nowPrice*100
         if (userName==''){
             tt.showToast({
                 title:'姓名不能为空',
@@ -127,7 +135,7 @@ Page({
                 mobile: phone,
                 name: userName
             },
-            distributorId: product.distributorId,
+            distributorProductId: product.distributorProductId,
             endDate: "",
             orderPrice: nowPrice,
             orderQuantity: voteNum,
@@ -136,6 +144,7 @@ Page({
             startDate: selectDay,
             visitPersons
         })
+        console.log(obj);
         let object = base64.encode(obj)
         await request.myRequest(
             '/tiktok/mutual/createPaymentOrder',
@@ -902,8 +911,8 @@ Page({
             ticketType:options.product.attributeIds.attributeIds,
             price:options.product.priceList[0].price,
             nowPrice:options.product.priceList[0].price,
+            totalStock:options.totalStock*1
         });
-        console.log(this.data.product);
         let thisDay = util.GetDateStr(0)
         this.getDailyPrice(thisDay)
     },

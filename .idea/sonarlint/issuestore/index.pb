@@ -16,8 +16,6 @@ C
 ]
 -components/calculateIndex/calculateIndex.json,8\8\88311d60bb21905895a133f73af2e6d88eaaf8be
 ]
--components/calculateIndex/calculateIndex.ttml,5\5\55c774769a0cb3c96ffa06b9e17470eb7ec58158
-]
 -components/calculateIndex/calculateIndex.ttss,f\a\faa91866476bdb6a425f326055fe978e6013ee6e
 O
 components/calendar/calendar.js,7\a\7a446e16d5c308d6788d87764d4845a4e9ca517b
@@ -189,10 +187,6 @@ R
 "pages/hotelDetail/hotelDetail.ttss,0\d\0d56ca204cbc14e607f7ce3f6c2ed5af21c3120c
 T
 $pages/routeReserve/routeReserve.ttml,8\f\8f8c245f7c46df4d17a7f74344b3ac5a3437bf25
-F
-pages/index/index.ttml,7\c\7ccc99912f848b05e568992e295cecb672eaafbe
-[
-+components/calculateIndex/calculateIndex.js,2\f\2f19d9c35eb71b60f5cded4efa4fa0dc482f26be
 Y
 )components/headComponent/headComponent.js,4\b\4b9e2029951858ab855a8b73e769c418c5a4dffe
 Y
@@ -229,8 +223,6 @@ T
 $pages/hotelReserve/hotelReserve.ttss,e\f\efbd01eeac304b14968860440e0637b56eb73628
 F
 pages/index/index.json,6\7\67f504ef8ca289664c90770f75e290092778b11e
-F
-pages/index/index.ttss,1\a\1ab692b70ea9eba4076756ba5ae9bdb22d7e6690
 D
 pages/mine/mine.json,f\6\f651ad73b74e450be17a019a41022b2793a6abde
 d
