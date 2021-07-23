@@ -10,25 +10,37 @@
         <image src="/static/images/lxzbc.png"></image>
     </view>
     <view class="btnContainer">
-        <view class="btnItem" bind:tap="toOrderTypeShow" data-name="赏花踏青">
+        <view class="btnItem" bind:tap="toOrderTypeShow" data-id="1" data-name="自然风光">
             <image src="/static/images/shtq.png"></image>
-            <text>赏花踏青</text>
-        </view>
-        <view class="btnItem" bind:tap="toOrderTypeShow" data-name="动植物园">
-            <image src="/static/images/dzwy.png"></image>
-            <text>动植物园</text>
-        </view>
-        <view class="btnItem" bind:tap="toOrderTypeShow" data-name="名胜古迹">
-            <image src="/static/images/msgj.png"></image>
-            <text>名胜古迹</text>
-        </view>
-        <view class="btnItem" bind:tap="toOrderTypeShow" data-name="自然风光">
-            <image src="/static/images/zrfg.png"></image>
             <text>自然风光</text>
         </view>
-        <view class="btnItem" bind:tap="toOrderTypeShow" data-name="演出演艺">
+        <view class="btnItem" bind:tap="toOrderTypeShow" data-id="2" data-name="山水田园">
+            <image src="/static/images/yry.png"></image>
+            <text>山水田园</text>
+        </view>
+        <view class="btnItem" bind:tap="toOrderTypeShow" data-id="3" data-name="亲子出行">
+            <image src="/static/images/sry.png"></image>
+            <text>亲子出行</text>
+        </view>
+        <view class="btnItem" bind:tap="toOrderTypeShow" data-id="4" data-name="文化艺术">
             <image src="/static/images/ycyy.png"></image>
-            <text>演出演艺</text>
+            <text>文化艺术</text>
+        </view>
+        <view class="btnItem" bind:tap="toOrderTypeShow" data-id="5" data-name="主题公园">
+            <image src="/static/images/dzwy.png"></image>
+            <text>主题公园</text>
+        </view>
+        <view class="btnItem" bind:tap="toOrderTypeShow" data-id="6" data-name="休闲度假">
+            <image src="/static/images/zrfg.png"></image>
+            <text>休闲度假</text>
+        </view>
+        <view class="btnItem" bind:tap="toOrderTypeShow" data-id="7" data-name="景色宜人">
+            <image src="/static/images/msgj.png"></image>
+            <text>景色宜人</text>
+        </view>
+        <view class="btnItem" bind:tap="toOrderTypeShow" data-id="8" data-name="人间仙境">
+            <image src="/static/images/zrfg.png"></image>
+            <text>人间仙境</text>
         </view>
     </view>
     <!--  热门推荐  -->
@@ -39,62 +51,13 @@
             <text class="otherTitle">休闲度假</text>
         </view>
         <view class="hotContent">
-            <view class="hotItem" bind:tap="toTicketDetail">
-                <image src="/static/images/gbtl.jpg"></image>
+            <view class="hotItem" bind:tap="toTicketDetail" data-id="{{item.id}}" data-name="{{item.name}}"
+                tt:for="{{goodsList}}" tt:key="{{item.id}}">
+                <image src="{{item.imageList[0].url || '/static/images/gbtl.jpg'}}"></image>
                 <view class="instruction">
-                    <text class="name">福建平潭岛</text>
+                    <text class="name">{{item.name}}</text>
                     <view class="priceItem">
-                        <text class="price">￥564起</text>
-                        <text class="comment">AAAA 景区</text>
-                    </view>
-                </view>
-            </view>
-            <view class="hotItem">
-                <image src="/static/images/gbtl.jpg"></image>
-                <view class="instruction">
-                    <text class="name">福建平潭岛</text>
-                    <view class="priceItem">
-                        <text class="price">￥564起</text>
-                        <text class="comment">AAAA 景区</text>
-                    </view>
-                </view>
-            </view>
-            <view class="hotItem">
-                <image src="/static/images/gbtl.jpg"></image>
-                <view class="instruction">
-                    <text class="name">福建平潭岛</text>
-                    <view class="priceItem">
-                        <text class="price">￥564起</text>
-                        <text class="comment">AAAA 景区</text>
-                    </view>
-                </view>
-            </view>
-            <view class="hotItem">
-                <image src="/static/images/gbtl.jpg"></image>
-                <view class="instruction">
-                    <text class="name">福建平潭岛</text>
-                    <view class="priceItem">
-                        <text class="price">￥564起</text>
-                        <text class="comment">AAAA 景区</text>
-                    </view>
-                </view>
-            </view>
-            <view class="hotItem">
-                <image src="/static/images/gbtl.jpg"></image>
-                <view class="instruction">
-                    <text class="name">福建平潭岛</text>
-                    <view class="priceItem">
-                        <text class="price">￥564起</text>
-                        <text class="comment">AAAA 景区</text>
-                    </view>
-                </view>
-            </view>
-            <view class="hotItem">
-                <image src="/static/images/gbtl.jpg"></image>
-                <view class="instruction">
-                    <text class="name">福建平潭岛</text>
-                    <view class="priceItem">
-                        <text class="price">￥564起</text>
+                        <text class="price">￥{{item.minPrice}}起</text>
                         <text class="comment">AAAA 景区</text>
                     </view>
                 </view>

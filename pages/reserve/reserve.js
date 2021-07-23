@@ -1,11 +1,22 @@
 // pages/reserve/reserve.js
 let util = require('../../utils/util.js');
-
+const request = require("../../utils/request")
+const base64 = require("../../utils/base64.js")
 Page({
     /**
      * 页面的初始数据
      */
     data: {
+        price:'',
+        nowPrice:'',
+        product:{},
+        visitPersons:[{
+            credentials:'441402188805420215',
+            credentialsType:"ID_CARD",
+            mobile:"13432154554",
+            name:"海绵宝宝"
+        }],
+        ticketType:[],
         needToKnow: false,
         needKnow: [],
         yesterday: '',
@@ -40,8 +51,8 @@ Page({
         //当前输入手机号
         isCurrentWaring: false,
         warnMessage: '',
-        array: ['身份证', '兵役证'],
-        array1: ['+86', '+80', '+84', '+87'],
+        array: ['身份证','护照','台胞证','港澳通行证','军官证','其他'],
+        arrayVal: ['ID_CARD','HUZHAO','TAIBAO','GANGAO','JUNGUAN','OTHER'],
         users: [],
         value1: 0,
         value1Show: '身份证',
@@ -67,6 +78,100 @@ Page({
         dateString: "",
         spot: [],
     },
+    async toReserve() {
+        tt.showLoading({
+            title:'加载中...'
+        })
+        let {voteNum,price,nowPrice,selectDay,
+            arrayVal, value1, phone, userName,
+            idCard, visitPersons,product,
+        isIdCardCurrentWaring,isPhoneCurrentWaring} = this.data
+        let credentialsType = arrayVal[value1]
+        if (userName==''){
+            tt.showToast({
+                title:'姓名不能为空',
+                icon:'fail'
+            })
+            return
+        }else if (idCard==''){
+            if (isIdCardCurrentWaring){
+                tt.showToast({
+                    title:'身份证格式错误',
+                    icon:'fail'
+                })
+            }else {
+                tt.showToast({
+                    title:'身份证不能为空',
+                    icon:'fail'
+                })
+            }
+            return
+        }else if (phone==''){
+            if(isPhoneCurrentWaring){
+                tt.showToast({
+                    title:'手机号格式错误',
+                    icon:'fail'
+                })
+            }else {
+                tt.showToast({
+                    title:'手机号不能为空',
+                    icon:'fail'
+                })
+            }
+            return
+        }
+        let obj = JSON.stringify({
+            contactPerson: {
+                credentials: idCard,
+                credentialsType,
+                mobile: phone,
+                name: userName
+            },
+            distributorId: product.distributorId,
+            endDate: "",
+            orderPrice: nowPrice,
+            orderQuantity: voteNum,
+            productId: product.productId,
+            sellPrice: price,
+            startDate: selectDay,
+            visitPersons
+        })
+        let object = base64.encode(obj)
+        await request.myRequest(
+            '/tiktok/mutual/createPaymentOrder',
+            {
+                data:object,
+                signed:"111"
+            },
+            'post'
+        ).then(res=>{
+            tt.hideLoading()
+            console.log(res);
+        }).catch(err=>{
+            tt.hideLoading()
+            console.log(err);
+        })
+    },
+    async getDailyPrice(day) {
+        let {product} = this.data
+        await request.myRequest(
+            '/tiktok/mutual/dailyPriceAndStock',
+            {
+                endDate:"",
+                id:product.distributorProductId,
+                startDate:day
+            },
+            "get",
+            'application/x-www-form-urlencoded'
+        ).then(res=>{
+            this.setData({
+                price:res.data.data.priceList[0].price
+            })
+            console.log(res);
+        }).catch(err=>{
+            console.log(err);
+        })
+    },
     dateChange(e) {
         console.log("现在日期是", e.detail.dateString)
         this.setData({
@@ -81,11 +186,21 @@ Page({
             index
         } = e.detail;
         let {
-            voteNum
+            voteNum,
+            price,
+            nowPrice
         } = this.data;
+        if (voteNum>index){
+            nowPrice-=price
+        }else {
+            nowPrice+=price
+        }
+        nowPrice = nowPrice.toFixed(2)*1
         voteNum = index;
         this.setData({
-            voteNum
+            voteNum,
+            price,
+            nowPrice
         });
     },
 
@@ -705,7 +820,7 @@ Page({
         yesterday = util.GetWeekStr1(selectDay, -1);
         today = util.GetWeekStr1(selectDay, 0);
         tomorrow = util.GetWeekStr1(selectDay, 1);
-
+        this.getDailyPrice(selectDay)
         if (str >= selectDay) {
             this.setData({
                 showYesterday: false
@@ -732,7 +847,7 @@ Page({
         yesterday = util.GetWeekStr1(selectDay, -1);
         today = util.GetWeekStr1(selectDay, 0);
         tomorrow = util.GetWeekStr1(selectDay, 1);
-
+        this.getDailyPrice(selectDay)
         if (str < selectDay) {
             this.setData({
                 showYesterday: true,
@@ -758,18 +873,18 @@ Page({
             dialog: false
         });
     },
-
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        options.product = JSON.parse(options.product)
         let date = new Date();
         let day = date.getDate();
         let {
             yesterday,
             today,
             tomorrow,
-            selectDay
+            selectDay,
         } = this.data;
         //获取当天日期 2021-07-08
 
@@ -782,8 +897,15 @@ Page({
             yesterday,
             today,
             tomorrow,
-            selectDay
+            selectDay,
+            product:options.product,
+            ticketType:options.product.attributeIds.attributeIds,
+            price:options.product.priceList[0].price,
+            nowPrice:options.product.priceList[0].price,
         });
+        console.log(this.data.product);
+        let thisDay = util.GetDateStr(0)
+        this.getDailyPrice(thisDay)
     },
 
     /**

@@ -14,10 +14,10 @@
     </view>
     <view class="contentContainer">
         <view class="titleNav">
-            <text class="title">景区名称景点名称</text>
+            <text class="title">{{name}}</text>
             <view class="mapNav">
-                <view class="mapItem">营业时间: 08:30-17:30</view>
-                <view class="mapItem">酒店地址酒店地址酒店地址酒店地址酒店地址</view>
+                <view class="mapItem">营业时间: {{goods.openStartTime}}-{{goods.openEndTime}}</view>
+                <view class="mapItem">{{goods.infoAddress[0].address[0].name}}</view>
                 <view class="yd mapItem" bind:tap="open">
                     <text class="tie">优待政策: 1.2米(不含)以下儿童免票</text>
                     <text class="iconfont icon-tiaozhuan"></text>
@@ -30,9 +30,9 @@
         </view>
     </view>
     <view class="ticketNav">
-        <text class="title">一日票</text>
-        <view class="ticketItem">
-            <view class="name">成人票</view>
+        <text class="title">{{name}}</text>
+        <view class="ticketItem" tt:for="{{productList}}" tt:key="{{item.goodsId}}">
+            <view class="name">{{item.productName}}</view>
             <view class="discount">
                 <text>立减5元</text>
                 <text>优惠券</text>
@@ -42,35 +42,17 @@
                 <text>预定须知</text>
                 <text class="iconfont icon-tiaozhuan"></text>
             </view>
-            <view class="reserveBtn" bind:tap="toReserve">
+            <view class="reserveBtn" bind:tap="toReserve" tt:if="{{item.stockList[0].totalStock>1}}"
+                  data-product="{{item}}">
                 <text class="yd">预定</text>
                 <text class="zxf">在线付</text>
             </view>
-            <view class="price">
-                <view class="red">￥
-                    <text class="big">225</text>
-                </view>
-                起
-            </view>
-        </view>
-        <view class="ticketItem">
-            <view class="name">成人票</view>
-            <view class="discount">
-                <text>立减5元</text>
-                <text>优惠券</text>
-            </view>
-            <view class="desc">未使用随时可退,随买随用</view>
-            <view class="know">
-                <text>预定须知</text>
-                <text class="iconfont icon-tiaozhuan"></text>
-            </view>
-            <view class="reserveBtn" bind:tap="toReserve">
-                <text class="yd">预定</text>
-                <text class="zxf">在线付</text>
+            <view class="reserveBtn disabled-btn" tt:else>
+                <text>已售完</text>
             </view>
             <view class="price">
                 <view class="red">￥
-                    <text class="big">225</text>
+                    <text class="big">{{item.priceList[0].price}}</text>
                 </view>
                 起
             </view>

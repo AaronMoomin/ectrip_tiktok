@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/ticket/ticket",
+    "pages/ticketDetail/ticketDetail",
     "pages/mine/mine",
     "pages/routeReserve/routeReserve",
     "pages/hotel/hotel",
@@ -8,9 +10,7 @@
     "pages/hotelDetail/hotelDetail",
     "pages/hotDetail/hotDetail",
     "pages/comment/comment",
-    "pages/ticket/ticket",
     "pages/reserve/reserve",
-    "pages/ticketDetail/ticketDetail",
     "pages/orderTypeShow/orderTypeShow",
     "pages/serve/serve",
     "pages/destination/destination",

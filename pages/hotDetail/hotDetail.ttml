@@ -39,4 +39,5 @@
             </view>
             <image class="show" src="/static/images/gbtl.jpg"></image>
         </view>
+    </view>
 </view>

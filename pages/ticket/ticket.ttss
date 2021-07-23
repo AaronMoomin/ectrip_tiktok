@@ -44,24 +44,26 @@
 }
 .btnContainer {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    flex-wrap: wrap;
     padding: 30rpx;
-    width: 100%;
+    /*width: 100%;*/
     border-bottom: 1px solid #eee;
 }
 
 .btnContainer .btnItem {
     display: flex;
     flex-direction: column;
-    width: 100rpx;
-    height: 100rpx;
+    width: 140rpx;
+    height: 140rpx;
     text-align: center;
+    margin-top: 30rpx;
 }
 
 .btnContainer .btnItem image {
     width: 60rpx;
     height: 60rpx;
-    margin: 0 auto;
+    margin: 0 auto 20rpx;
 }
 
 .btnContainer .btnItem text {
@@ -151,10 +153,12 @@
 }
 
 .hotContent .hotItem {
+    display: flex;
+    flex-direction: column;
     width: 43%;
     margin: 20rpx 10rpx 10rpx 15rpx;
     border-radius: 10rpx;
-    border: 1px solid #ebf7fa;
+    border: 2rpx solid #eee;
 }
 
 .hotContent .hotItem image {

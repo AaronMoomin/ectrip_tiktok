@@ -1,20 +1,20 @@
 <view class="reserveContainer">
     <view class="detailContainer">
-        <text class="headTitle">《太行山上》大型实景演艺门票不限人群</text>
+        <text class="headTitle">{{product.productName}}</text>
         <view class="timeChooser">
             <text class="title">游玩日期</text>
             <view class="timeBox">
                 <view class="timeItem">
                     <text style="{{showYesterday?'':'color:#d8dadc'}};" bind:tap="{{showYesterday?'preDay':''}}">{{yesterday}}</text>
-                    <text style="{{showYesterday?'':'color:#d8dadc'}};">￥135</text>
+<!--                    <text style="{{showYesterday?'':'color:#d8dadc'}};">￥{{product.priceList[0].price}}</text>-->
                 </view>
                 <view class="timeItem select">
                     <text style="{{showDay?'':'color:#d8dadc'}};">{{today}}</text>
-                    <text>￥135</text>
+<!--                    <text>￥{{product.priceList[0].price}}</text>-->
                 </view>
                 <view class="timeItem" bind:tap="{{showTomorrow?'nextDay':''}}">
                     <text style="{{showTomorrow?'':'color:#d8dadc'}};">{{tomorrow}}</text>
-                    <text>￥135</text>
+<!--                    <text>￥{{product.priceList[0].price}}</text>-->
                 </view>
                 <view class="more" bind:tap="open">
                     <text>更多日期</text>
@@ -31,26 +31,26 @@
         </view>
         <view class="numChooser">
             <view class="infos">
-                <text class="title">成人票</text>
                 <view class="red">￥
-                    <text class="big">225</text>
+                    <text class="big">{{nowPrice}}</text>
                 </view>
+                <text class="title">数量</text>
             </view>
             <calculate binditemIndex="getIndex"></calculate>
         </view>
-        <view class="numChooser">
-            <view class="infos">
-                <text class="title">儿童票</text>
-                <view class="red">￥
-                    <text class="big">225</text>
-                </view>
-            </view>
-            <calculate binditemIndex="getIndex"></calculate>
-        </view>
-        <view class="showbtn">
-            <text>展开其余3张</text>
-            <text class="iconfont icon-tiaozhuan"></text>
-        </view>
+<!--        <view class="numChooser">-->
+<!--            <view class="infos">-->
+<!--                <text class="title">儿童票</text>-->
+<!--                <view class="red">￥-->
+<!--                    <text class="big">225</text>-->
+<!--                </view>-->
+<!--            </view>-->
+<!--            <calculate binditemIndex="getIndex"></calculate>-->
+<!--        </view>-->
+<!--        <view class="showbtn">-->
+<!--            <text>展开其余3张</text>-->
+<!--            <text class="iconfont icon-tiaozhuan"></text>-->
+<!--        </view>-->
     </view>
     <view class="humanInfo">
         <text class="headTitle">取票信息</text>
@@ -60,7 +60,7 @@
                 <input bindinput="handleUserName" value="{{userName}}"
                        placeholder="请输入真实姓名,否则会影响出票"/>
             </view>
-            <view class="weui-cells__tips weui-cells__tips_warn" style="color:red;{{isNameCurrentWaring ? 'display:block' : 'display:none'}}">
+            <view class="weui-cells__tips weui-cells__tips_warn" style="color:red;font-size:22rpx; {{isNameCurrentWaring ? 'display:block' : 'display:none'}}">
                 {{nameWarnMessage}}
             </view>
         </view>
@@ -75,7 +75,7 @@
                 <input bindinput="handleIdCard" value="{{idCard}}"
                        placeholder="请输入取票人证件号"/>
             </view>
-            <view class="weui-cells__tips weui-cells__tips_warn" style="color:red;{{isIdCardCurrentWaring ? 'display:block' : 'display:none'}}">
+            <view class="weui-cells__tips weui-cells__tips_warn" style="color:red;font-size:22rpx;{{isIdCardCurrentWaring ? 'display:block' : 'display:none'}}">
                 {{IdCardWarnMessage}}
             </view>
         </view>
@@ -85,7 +85,7 @@
                 <input bindinput="handlePhone" value="{{phone}}"
                        placeholder="请输入取票人号码"/>
             </view>
-            <view class="weui-cells__tips weui-cells__tips_warn" style="color:red;{{isPhoneCurrentWaring ? 'display:block' : 'display:none'}}">
+            <view class="weui-cells__tips weui-cells__tips_warn" style="color:red;font-size:22rpx;{{isPhoneCurrentWaring ? 'display:block' : 'display:none'}}">
                 {{phoneWarnMessage}}
             </view>
         </view>
@@ -312,18 +312,11 @@
     <view class="humanCheckNav">
         <text class="iconfont icon-bianji bj"></text>
         <text class="headTitle">取票信息</text>
-        <view class="humanItem">
+        <view class="humanItem" tt:for="{{visitPersons}}" tt:key="{{item.credentials}}">
             <text class="num">游客1</text>
             <view class="humanItemInfo">
-                <text class="name">阿飘</text>
-                <text class="idCard">身份证 445454****45454545</text>
-            </view>
-        </view>
-        <view class="humanItem">
-            <text class="num">游客1</text>
-            <view class="humanItemInfo">
-                <text class="name">阿飘</text>
-                <text class="idCard">身份证 445454****45454545</text>
+                <text class="name">{{item.name}}</text>
+                <text class="idCard">身份证 {{item.credentials}}</text>
             </view>
         </view>
     </view>
@@ -331,11 +324,11 @@
         <text>在线支付</text>
         <view class="price">
             <view class="red">￥
-                <text class="big">108</text>
+                <text class="big">{{nowPrice}}</text>
             </view>
             <view class="discount">已减￥15</view>
         </view>
-        <view class="toReserve">
+        <view class="toReserve" bind:tap="toReserve">
             去支付
         </view>
     </view>

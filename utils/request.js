@@ -1,11 +1,16 @@
 const api = 'http://192.168.4.146:8888'
-function myRequest(url, data = {}, method = 'GET') {
+const api1 = 'http://192.168.4.19:8888'
+function myRequest(url, data = {}, method = 'GET',
+                   content= "application/json") {
     // new Promise 初始化Promise实例的状态为pending
     return new Promise((resolve, reject) => {
         tt.request({
-            url: api + url,
+            url: api1 + url,
             data,
             method,
+            header:{
+                "content-type": content,
+            },
             success: (res) => {
                 // console.log('请求成功', res);
                 resolve(res)//resolve修改promise的状态为成功状态resolved

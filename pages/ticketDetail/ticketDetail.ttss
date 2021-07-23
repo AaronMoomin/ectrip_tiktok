@@ -139,7 +139,11 @@
     height: 80rpx;
     border-radius: 10rpx;
     font-size: 24rpx;
-    border: 1rpx solid #ff6156;
+    border: 2rpx solid #ff6156;
+}
+.ticketNav .ticketItem .disabled-btn{
+    line-height:80rpx;
+    border: 2rpx solid #eee;
 }
 .ticketNav .ticketItem .reserveBtn .yd {
     background: #ff6156;
