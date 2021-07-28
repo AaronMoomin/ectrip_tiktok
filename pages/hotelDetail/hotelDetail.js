@@ -4,6 +4,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        isCollect:false,
         name: '',//酒店名称
         yearT: '',
         dateGlobal: '',
@@ -15,6 +16,25 @@ Page({
         daysBetween: '',
         dialog: false,
         selectArray:[],
+    },
+    handleCollect(){
+        let {isCollect} = this.data
+        if (isCollect) {
+            tt.showToast({
+                title:'取消收藏',
+                icon: 'none'
+            })
+            isCollect = false
+        }else {
+            tt.showToast({
+                title:'收藏成功',
+                icon: 'none'
+            })
+            isCollect = true
+        }
+        this.setData({
+            isCollect
+        })
     },
     toHotelReserve(){
         tt.navigateTo({

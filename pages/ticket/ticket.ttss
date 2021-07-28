@@ -7,6 +7,32 @@
     display: flex;
     padding: 30rpx 0;
 }
+.searchHistory{
+    margin: 30rpx;
+    color: #000;
+    font-size: 24rpx;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+.searchHistory .title{
+    color: #fff;
+    margin-bottom: 10rpx;
+}
+.searchHistory .clear{
+    color: #fff;
+    margin-top: 10rpx;
+}
+.searchHistory .historyNav{
+    display: flex;
+    flex-wrap: wrap;
+}
+.searchHistory .historyNav .historyItem{
+    background: #eee;
+    padding: 0 10rpx;
+    border-radius: 10rpx;
+    margin: 10rpx 10rpx 0 0;
+}
 .TopInputBox .select{
     width: 180rpx;
     padding-left: 20rpx;

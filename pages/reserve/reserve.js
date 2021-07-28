@@ -213,76 +213,6 @@ Page({
         });
     },
 
-    //最终提交
-    allConfirm() {
-        let {
-            selectDay,
-            timeChooser,
-            voteNum,
-            userNameShow,
-            phoneShow,
-            sexShow,
-            array,
-            value1Show,
-            idCardShow,
-            currentValue,
-            needKnow,
-            users
-        } = this.data;
-        let time = [];
-        timeChooser.forEach(item => {
-            if (item.isSelect == true) {
-                time.push(item.session);
-            }
-        });
-
-        if (time.length === 0) {
-            tt.showToast({
-                title: '未选择场次',
-                icon: 'error'
-            });
-            return;
-        }
-
-        if (users.length === 0) {
-            tt.showToast({
-                title: '游玩人不能为空',
-                icon: 'error'
-            });
-            return;
-        }
-
-        if (currentValue === '') {
-            tt.showToast({
-                title: '手机不能为空',
-                icon: 'error'
-            });
-            return;
-        }
-
-        if (needKnow.length === 0) {
-            tt.showToast({
-                title: '请同意条约',
-                icon: 'error'
-            });
-            return;
-        }
-
-        tt.showToast({
-            title: '购票成功',
-            icon: 'success'
-        });
-        console.log(`日期:${selectDay},
-                    场次:${time},
-                    票数:${voteNum},
-                    游玩人:${userNameShow},
-                    电话:${phoneShow},
-                    性别:${sexShow},
-                    证件类型:${array[value1Show]},
-                    证件号码:${idCardShow},
-                    联系电话:${currentValue}`);
-    },
-
     //选择时间段
     checkSession(e) {
         let {
@@ -480,33 +410,6 @@ Page({
         });
     },
 
-    handleDelete() {
-        this.setData({
-            iosDialog: true
-        });
-    },
-
-    addNew() {
-        let {
-            users
-        } = this.data;
-
-        if (users.length >= 4) {
-            tt.showToast({
-                title: '最多可添加4位',
-                icon: 'none'
-            });
-        } else {
-            this.setData({
-                userName: '',
-                phone: '',
-                idCard: '',
-                value1: 0,
-                dialog2: true
-            });
-        }
-    },
-
     edit() {
         let {
             userNameShow,
@@ -527,42 +430,6 @@ Page({
             isNameCurrentWaring: false,
             isPhoneCurrentWaring: false,
             isIdCardCurrentWaring: false
-        });
-    },
-
-    //切换选中
-    userChoose(e) {
-        let {
-            users,
-            userNameShow,
-            phoneShow,
-            sexShow,
-            value1Show,
-            idCardShow,
-            array
-        } = this.data;
-
-        users.forEach(item => {
-            if (item.userName === e.currentTarget.dataset.user.userName) {
-                item.isSelect = true;
-                userNameShow = item.userName;
-                phoneShow = item.phone;
-                idCardShow = item.idCard;
-                sexShow = item.sex
-                value1Show = item.value1
-                return true;
-            } else {
-                item.isSelect = false;
-                return false;
-            }
-        });
-        this.setData({
-            users,
-            userNameShow,
-            phoneShow,
-            idCardShow,
-            sexShow,
-            value1Show
         });
     },
 
@@ -618,46 +485,11 @@ Page({
         });
     },
 
-    bindPickerChange1(e) {
-        this.setData({
-            value2: e.detail.value
-        });
-    },
-
     //性别
     radioChange(e) {
         this.setData({
             sex: e.detail.value
         });
-    },
-
-    checkboxChange(e) {
-        this.setData({
-            needKnow: e.detail.value
-        });
-    },
-
-    onCurrentInput(e) {
-        let currentValue = e.detail.value;
-        let myReg = /^[1][3,4,5,7,8,9][0-9]{9}$/;
-
-        if (currentValue === '') {
-            this.setData({
-                isCurrentWaring: true,
-                warnMessage: '手机号不能为空',
-                currentValue: ''
-            });
-        } else if (!myReg.test(currentValue)) {
-            this.setData({
-                isCurrentWaring: true,
-                warnMessage: '输入手机号格式不正确'
-            });
-        } else {
-            this.setData({
-                isCurrentWaring: false,
-                currentValue
-            });
-        }
     },
 
     handleUserName(e) {

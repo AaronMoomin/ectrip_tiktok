@@ -37,7 +37,18 @@
         </view>
         <!--  图片展示  -->
         <view class="showImg">
-            <image src="/static/images/gjyyr.png"></image>
+            <swiper autoplay circular>
+                <swiper-item>
+                    <image src="/static/images/gjyyr.png"></image>
+                </swiper-item>
+                <swiper-item>
+                    <image src="/static/images/gjyyr.png"></image>
+                </swiper-item>
+                <swiper-item>
+                    <image src="/static/images/gjyyr.png"></image>
+                </swiper-item>
+            </swiper>
+
         </view>
         <!--  轮播 -->
         <view class="addressShow">

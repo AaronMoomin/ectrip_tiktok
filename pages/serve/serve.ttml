@@ -1,6 +1,6 @@
 <view class="container">
     <view class="headContainer">
-        <image src="/static/images/gbtl.jpg"></image>
+        <image src="/static/images/serveback.png"></image>
         <view class="instruction">
             <text>游客服务</text>
             <text>福建旅游服务绿色通道</text>

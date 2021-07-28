@@ -41,22 +41,12 @@ M
 components/select/select.ttml,6\e\6e4d37f8bc0d0affb18a5d1bccb310fb76dc8d02
 M
 components/select/select.ttss,1\c\1c3e080739aa960f71d1fab61cfb674da7c1363c
-J
-pages/allOrder/allOrder.js,9\9\99279a81c709cacd16c646b93359e05d3a041d79
 L
 pages/allOrder/allOrder.json,8\3\83c15aaa12d2b6257b2fc0e8caf6f7b88157b78b
 L
-pages/allOrder/allOrder.ttml,f\2\f244003fa28b00f070f6ee8bace6f1c31c115066
-L
 pages/allOrder/allOrder.ttss,7\8\7831452556323e6cfb5a39a9e93d6283ccbe513f
-H
-pages/collect/collect.js,c\9\c956cba785122fadea3b3058ef6ac76406bcff48
 J
 pages/collect/collect.json,7\5\753a3d6abb6a380a7daccc85487bb2ba1707c2e0
-J
-pages/collect/collect.ttml,6\6\6618fd407f44d92bb681f88bc61e4f498759dbf6
-J
-pages/collect/collect.ttss,a\5\a5abeb669da4e43e98eba6f64b545ff884a77804
 J
 pages/comment/comment.json,c\0\c0100d18c38ab82b57e4d6926c28b69802d8196e
 R
@@ -77,10 +67,6 @@ N
 pages/hotDetail/hotDetail.json,b\d\bdf07836cc821433bac4e14b48fd5b63a6c3ab68
 N
 pages/hotDetail/hotDetail.ttss,d\4\d41538616770b6477e7fb276ce173f15e85c575d
-F
-pages/hotel/hotel.ttml,3\2\329374ff5354f6a6cade170c1a8499ba851f7d53
-F
-pages/hotel/hotel.ttss,7\a\7a909d7c81f437da79cbf812ec9df5b6dbbb4098
 R
 "pages/hotelDetail/hotelDetail.json,5\7\574ade00a92cbc5e7470227e2e955e35ae09c394
 R
@@ -91,18 +77,8 @@ J
 pages/hotList/hotList.ttss,e\8\e8c0aa479b37e3b12be34d6fef97c0009facb127
 D
 pages/index/index.js,a\a\aa449e3b02f3c581f54c1555278503f2dc8da561
-D
-pages/mine/mine.ttml,e\a\ea97d5fb1d2e83de870fb0a295b3c581d6b29c3a
-D
-pages/mine/mine.ttss,9\5\95145f0d38a9ed3c7beed7664e83e238d42672fe
-T
-$pages/orderTypeShow/orderTypeShow.js,b\7\b7461214a5dce9de653df56f679a18a09220760b
 V
 &pages/orderTypeShow/orderTypeShow.json,3\b\3b2467332ea1540b9898a5177e766d91b9f672a9
-V
-&pages/orderTypeShow/orderTypeShow.ttml,2\f\2fcb1ec83fd999d5804b8148c37f44799af7674d
-V
-&pages/orderTypeShow/orderTypeShow.ttss,9\2\92e1846d5fc730be9065e76265fe65498175f9ac
 V
 &pages/playerItemShow/playerItemShow.js,7\b\7b788aa907865362a61e00f877436234abb28690
 X
@@ -134,15 +110,11 @@ D
 F
 pages/serve/serve.json,7\b\7b3cb7dfbe3f1f09fc742ef68faed94bddadea8b
 F
-pages/serve/serve.ttml,5\d\5de450016d8cddc0c29afaa51e115345238ce1d3
-F
 pages/serve/serve.ttss,c\4\c49b538918648fa64ae5f3dea206cfca9feb18ba
 V
 &pages/specialtyList/specialtyList.json,8\5\8501592f4a5a0bf29fe0eb9416f2d70484a7698e
 T
 $pages/specialtyList/specialtyList.js,d\6\d6b2d354186c386532051c14b930dc224da8c20e
-V
-&pages/specialtyList/specialtyList.ttss,d\d\dd488bdbd50abeb510f068ed1e1f5c229505b60f
 V
 &pages/specialtyOrder/specialtyOrder.js,0\d\0d7142407f1674c6631247e52c1bde302f188482
 X
@@ -153,28 +125,16 @@ V
 &pages/specialtyStore/specialtyStore.js,7\d\7deb98cf1b4baf7cad691d0ecc75f5cc67925ad7
 X
 (pages/specialtyStore/specialtyStore.json,0\b\0b0a1432fe2bb6decd2e9c0c5f7d375c142233d5
-X
-(pages/specialtyStore/specialtyStore.ttss,8\8\886c2cf33255116fdd9e8489a2100318e5cb307d
 T
 $pages/ticketDetail/ticketDetail.json,a\6\a63b4747ce0de3d0b653e6eb865d1e3fcb1022c5
-H
-pages/visitor/visitor.js,f\c\fccbb32b8488d21f73a91b7222515f3d520ebe16
 J
 pages/visitor/visitor.json,3\f\3f321c50f2474607cdcd40faead8711d2410f4e6
-J
-pages/visitor/visitor.ttss,c\0\c0a90f7326510de94907864320b2d3053bdf08b2
 [
 +components/headComponent/headComponent.ttml,f\a\fa4600dda50f1203470a005a6209d087000d4e8a
 R
 "pages/hotelSearch/hotelSearch.ttss,1\2\12f2d43a672d2703c6ee1be5b374b2f5382bd486
 X
-(pages/specialtyStore/specialtyStore.ttml,9\5\95eadabd8dbd5d3c30455599f8ab9a198260939d
-X
 (pages/specialtyOrder/specialtyOrder.ttml,7\8\788e31cd906e4eb7e3bf51f7bf982f420f011248
-J
-pages/visitor/visitor.ttml,b\a\ba3dfdd73a389c7080d12b6093b8e1337287b858
-V
-&pages/specialtyList/specialtyList.ttml,a\0\a01690ff1f05da8219740b38a870705fa8ba1066
 R
 "pages/hotelSearch/hotelSearch.ttml,e\5\e57757108a9a549c08c3efb5db375cc73f9c8310
 J
@@ -183,8 +143,6 @@ H
 pages/hotList/hotList.js,2\5\2576e523bec1e5dc4aa817795fd3fb4a54189867
 P
  pages/hotelSearch/hotelSearch.js,c\9\c99f9a291a3b4284b111f5fdf443a88b01ddaae1
-R
-"pages/hotelDetail/hotelDetail.ttss,0\d\0d56ca204cbc14e607f7ce3f6c2ed5af21c3120c
 T
 $pages/routeReserve/routeReserve.ttml,8\f\8f8c245f7c46df4d17a7f74344b3ac5a3437bf25
 Y
@@ -203,16 +161,12 @@ J
 pages/comment/comment.ttml,e\1\e1f342c1df933a72f220da9626657392a5ce8346
 J
 pages/comment/comment.ttss,e\8\e803ebddc06a175a3db2cf51c80b7b1020b67011
-P
- pages/destination/destination.js,a\4\a45e6e1217554cbdeb40d6af4e43ff8e3590e729
 R
 "pages/destination/destination.json,4\1\41153c85264b3cb5bdfd552395efef865a2260f7
 D
 pages/hotel/hotel.js,a\d\adceeca0b5b4450b117168239b819c52369a1b80
 F
 pages/hotel/hotel.json,4\4\44973bc1934d4a1c1540c33d1d5ca5045d8989f3
-P
- pages/hotelDetail/hotelDetail.js,e\7\e78364a1a3a1018af11f36e5d66c562209de0d28
 R
 "pages/hotelReserve/hotelReserve.js,6\a\6a6144167670d81175b370ac27dd17e1ea2da5f0
 T
@@ -235,5 +189,23 @@ C
 project.config.json,0\0\000e81eecb3dc940708c485fd21934b53a135fcd
 =
 utils/util.js,8\e\8ee4064285c76d2fc75da7748cc4081cd75cceae
-6
-app.js,4\a\4a68969ef8e858229267b842dedf42ab5dde4d50
+H
+pages/ticket/ticket.json,9\2\92d6719a42ef6b782670f12f4e995d93435d60f1
+N
+pages/hotDetail/hotDetail.ttml,d\2\d2b76263c37517f4b087a12e2a2be23d704cad49
+?
+utils/base64.js,2\4\245fcd7437b4e3f6e728da52d8d978aedf2f99bf
+]
+-components/calculateIndex/calculateIndex.ttml,5\5\55c774769a0cb3c96ffa06b9e17470eb7ec58158
+F
+pages/index/index.ttss,1\a\1ab692b70ea9eba4076756ba5ae9bdb22d7e6690
+[
++components/calculateIndex/calculateIndex.js,2\f\2f19d9c35eb71b60f5cded4efa4fa0dc482f26be
+F
+pages/hotel/hotel.ttml,3\2\329374ff5354f6a6cade170c1a8499ba851f7d53
+X
+(pages/specialtyStore/specialtyStore.ttml,9\5\95eadabd8dbd5d3c30455599f8ab9a198260939d
+V
+&pages/specialtyList/specialtyList.ttml,a\0\a01690ff1f05da8219740b38a870705fa8ba1066
+J
+pages/reserve/reserve.ttss,d\2\d2cdce6d37ec2c2c7ead9bd96b8e5aa5a3d99069

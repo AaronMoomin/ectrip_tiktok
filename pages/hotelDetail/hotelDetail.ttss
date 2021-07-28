@@ -37,7 +37,7 @@
 .contentContainer .titleNav .collect{
     position: absolute;
     right: 20rpx;
-    top: 20rpx;
+    top: 10rpx;
     background:#ffe6d4;
     border-radius:30rpx;
     width: 150rpx;
@@ -45,6 +45,18 @@
     text-align: center;
     line-height:80rpx;
     color: #ff786c;
+}
+.contentContainer .titleNav .collected{
+    position: absolute;
+    right: 20rpx;
+    top: 10rpx;
+    background:#ff786c;
+    color: #ffe6d4;
+    border-radius:30rpx;
+    width: 150rpx;
+    height: 80rpx;
+    text-align: center;
+    line-height:80rpx;
 }
 .contentContainer .titleNav .collect .iconfont{
     margin-right: 10rpx;

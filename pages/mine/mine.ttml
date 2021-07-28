@@ -4,9 +4,9 @@
             <image class="backImg" src="/static/images/sea.png"></image>
         </view>
         <view bind:tap="handleLogin" class="people" style="position: absolute; left: 4rpx; top: 184rpx">
-            <image class="photo" src="{{avatarUrl}}"></image>
+            <image class="photo" src="{{avatarUrl || '/static/images/head.png'}}"></image>
             <view class="tell">
-                <text class="userName">{{nickName || '用户'}}</text>
+                <text class="userName">{{nickName || '未登录'}}</text>
                 <text class="sign">一二三四五六七八九十</text>
             </view>
             <text class="iconfont icon-tiaozhuan to" style="width: 29rpx; height: 38rpx; display: block; box-sizing: border-box; left: 673rpx; top: 40rpx"></text>
@@ -31,19 +31,24 @@
             <text class="itemName">我的信息</text>
             <text class="iconfont icon-tiaozhuan"></text>
         </view>
-        <view class="contentItem" bind:tap="toCollect">
-            <text class="iconfont icon-shoucang"></text>
-            <text class="itemName">我的收藏</text>
-            <text class="iconfont icon-tiaozhuan"></text>
-        </view>
         <view class="contentItem">
-            <text class="iconfont icon-travel"></text>
-            <text class="itemName">我的行程</text>
+            <text class="iconfont icon-dingdan"></text>
+            <text class="itemName">服务中心</text>
             <text class="iconfont icon-tiaozhuan"></text>
         </view>
         <view class="contentItem" bind:tap="toVisitor">
             <text class="iconfont icon-niandaofangwaibinrenci"></text>
             <text class="itemName">常用旅客</text>
+            <text class="iconfont icon-tiaozhuan"></text>
+        </view>
+        <view class="contentItem">
+            <text class="iconfont icon-travel"></text>
+            <text class="itemName">服务中心</text>
+            <text class="iconfont icon-tiaozhuan"></text>
+        </view>
+        <view class="contentItem">
+            <text class="iconfont icon-travel"></text>
+            <text class="itemName">我的行程</text>
             <text class="iconfont icon-tiaozhuan"></text>
         </view>
         <view class="contentItem">
@@ -53,12 +58,22 @@
         </view>
         <view class="contentItem">
             <text class="iconfont icon-youjian"></text>
-            <text class="itemName">意见反馈</text>
+            <text class="itemName">救助活动</text>
             <text class="iconfont icon-tiaozhuan"></text>
         </view>
-        <view class="contentItem">
-            <text class="iconfont icon-shezhi"></text>
-            <text class="itemName">设置</text>
+        <view class="contentItem" bind:tap="toMyComment">
+            <text class="iconfont icon-youjian"></text>
+            <text class="itemName">我的评论</text>
+            <text class="iconfont icon-tiaozhuan"></text>
+        </view>
+        <view class="contentItem" bind:tap="toCollect">
+            <text class="iconfont icon-shoucang"></text>
+            <text class="itemName">我的收藏</text>
+            <text class="iconfont icon-tiaozhuan"></text>
+        </view>
+        <view class="contentItem" bind:tap="toGoodsAddress">
+            <text class="iconfont icon-youjian"></text>
+            <text class="itemName">收货地址</text>
             <text class="iconfont icon-tiaozhuan"></text>
         </view>
     </view>

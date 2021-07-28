@@ -1,6 +1,7 @@
 const request = require("../../utils/request")
 const util = require("../../utils/util")
 const base64 = require("../../utils/base64.js")
+const app = getApp()
 Page({
     /**
      * 页面的初始数据
@@ -11,11 +12,76 @@ Page({
         name:'',
         goods:{},
         productList:[],
+        productListShow:[],
+        slideNum:0,
         contentHeight: '550rpx',
         //介绍的高度
         displayed: 'block',
         //显示
         dialog1: false,
+        isCollect:false,
+        openid:'',
+    },
+    async handleCollect(e) {
+        let {isCollect,openid} = this.data
+        console.log(e.currentTarget.dataset.goods);
+        let obj = JSON.stringify({
+            "categoryId": e.currentTarget.dataset.goods.categoryId,
+            "goodsId": e.currentTarget.dataset.goods.id,
+            openid,
+        })
+        let object = base64.encode(obj)
+        if (isCollect) {
+            tt.showToast({
+                title: '取消收藏',
+                icon: 'none'
+            })
+            isCollect = false
+            await request.myRequest(
+                '/tiktok/personCenter/collection/remove',
+                {
+                    goodsId:e.currentTarget.dataset.goods.id,
+                    openId:openid
+                },
+                'post',
+                'application/x-www-form-urlencoded'
+            ).then(res => {
+                console.log(res);
+            }).catch(err => {
+                console.log(err);
+            })
+        } else {
+            tt.showToast({
+                title: '收藏成功',
+                icon: 'none'
+            })
+            isCollect = true
+            await request.myRequest(
+                '/tiktok/personCenter/collection/add',
+                {
+                    data:object,
+                    signed:'add'
+                },
+                'post',
+            ).then(res => {
+                console.log(res);
+            }).catch(err => {
+                console.log(err);
+            })
+        }
+        this.setData({
+            isCollect
+        })
+    },
+    slide(){
+        let {productList,productListShow} = this.data
+        for (let i = 2; i < productList.length; i++) {
+            productListShow.push(productList[i])
+        }
+        this.setData({
+            productListShow,
+            slideNum:productList.length-productListShow.length
+        })
     },
     async getGoodsDetail() {
         let {id} = this.data
@@ -35,22 +101,33 @@ Page({
             'post'
         ).then(res=>{
             console.log(res);
-            let {goods,productList} = this.data
+            let {goods,productList,productListShow} = this.data
             res.data.data.goods.openStartTime =
             res.data.data.goods.openStartTime.split(" ")[1]
             res.data.data.goods.openEndTime =
                 res.data.data.goods.openEndTime.split(" ")[1]
             res.data.data.goods.infoAddress
                 = JSON.parse(res.data.data.goods.infoAddress)
+            res.data.data.goods.imageList = JSON.parse(res.data.data.goods.imageList)
             for (let p of res.data.data.productList) {
                 p.attributeIds = JSON.parse(p.attributeIds)
                 p.attributeIds.attributeIds =
                     JSON.parse(p.attributeIds.attributeIds)
                 productList.push(p)
             }
+            if (productList.length>=2){
+                for (let i = 0; i < 2; i++) {
+                    productListShow.push(productList[i])
+                }
+            }else {
+                productListShow = productList
+            }
+
             this.setData({
                 goods:res.data.data.goods,
-                productList
+                productList,
+                productListShow,
+                slideNum:productList.length-productListShow.length
             })
             console.log('goods',res.data.data.goods);
             console.log('productList',productList);
@@ -101,7 +178,8 @@ Page({
         });
         this.setData({
             name: options.name,
-            id:options.id
+            id:options.id,
+            openid:app.globalData.openid
         });
         this.getGoodsDetail()
     },

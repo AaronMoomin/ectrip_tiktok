@@ -1,0 +1,23 @@
+<view class="commentContainer">
+    <view class="routeItem">
+        <view class="info">
+            <view class="titleNav">
+                <text class="star">四星</text>
+                <text class="title">酒店名称</text>
+            </view>
+            <text class="desc">大床房/15m-20m/有无线/无早餐</text>
+            <text class="company">位于火车站附近500m</text>
+            <view class="imgBox">
+                <image src="/static/images/gbtl.jpg"></image>
+                <image src="/static/images/gbtl.jpg"></image>
+                <image src="/static/images/gbtl.jpg"></image>
+            </view>
+        </view>
+        <view class="price">
+            <view class="red">
+                <text class="big">270</text>
+                起
+            </view>
+        </view>
+    </view>
+</view>

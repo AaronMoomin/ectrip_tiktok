@@ -19,11 +19,11 @@
                 <view class="mapItem">营业时间: {{goods.openStartTime}}-{{goods.openEndTime}}</view>
                 <view class="mapItem">{{goods.infoAddress[0].address[0].name}}</view>
                 <view class="yd mapItem" bind:tap="open">
-                    <text class="tie">优待政策: 1.2米(不含)以下儿童免票</text>
+                    <text class="tie">费用说明: {{goods.feeDescription}}</text>
                     <text class="iconfont icon-tiaozhuan"></text>
                 </view>
             </view>
-            <view class="collect">
+            <view bind:tap="handleCollect" data-goods="{{goods}}" class="{{isCollect?'collected':'collect'}}">
                 <text class="iconfont icon-xingxing"></text>
                 <text>收藏</text>
             </view>
@@ -31,7 +31,7 @@
     </view>
     <view class="ticketNav">
         <text class="title">{{name}}</text>
-        <view class="ticketItem" tt:for="{{productList}}" tt:key="{{item.goodsId}}">
+        <view class="ticketItem" tt:for="{{productListShow}}" tt:key="{{item.goodsId}}">
             <view class="name">{{item.productName}}</view>
             <view class="discount">
                 <text>立减5元</text>
@@ -59,24 +59,19 @@
                 起
             </view>
         </view>
+        <view class="slide" bind:tap="slide" tt:if="{{slideNum!=0}}">
+            <text>展开剩下的{{slideNum}}个</text>
+            <text class="iconfont icon-tiaozhuan"></text>
+        </view>
     </view>
     <view class="instructionNav">
         <text class="title">景区介绍</text>
         <view class="content">
-            景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍
-            景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍
-            景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍
-            景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍
-            景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍
-            景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍
-            景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍
-            景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍
-            景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍
-            景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍景区介绍
+            {{goods.description}}
         </view>
         <view class="contentImgShow">
-            <image src="/static/images/gbtl.jpg"></image>
-            <image src="/static/images/gbtl.jpg"></image>
+            <image tt:for="{{goods.imageList}}" tt:key="{{item.uid}}"
+               src="{{item.url}}"></image>
         </view>
     </view>
     <view class="commentNav">
@@ -115,11 +110,11 @@
                     </view>
                 </view>
                 <view class="weui-half-screen-dialog__hd__main">
-                    <text class="weui-half-screen-dialog__title">购票须知</text>
+                    <text class="weui-half-screen-dialog__title">预定须知</text>
                 </view>
             </view>
             <view class="weui-half-screen-dialog__bd" style="padding-top:32rpx;height:500rpx;">
-                购票须知
+                {{goods.feeDescription}}
             </view>
         </view>
     </view>

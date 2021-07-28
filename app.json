@@ -1,9 +1,13 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/ticket/ticket",
-    "pages/ticketDetail/ticketDetail",
+    "pages/allOrder/allOrder",
     "pages/mine/mine",
+    "pages/visitor/visitor",
+    "pages/ticket/ticket",
+    "pages/myComment/myComment",
+    "pages/goodsAddress/goodsAddress",
+    "pages/ticketDetail/ticketDetail",
     "pages/routeReserve/routeReserve",
     "pages/hotel/hotel",
     "pages/hotelReserve/hotelReserve",
@@ -18,14 +22,13 @@
     "pages/playReserve/playReserve",
     "pages/playerItemShow/playerItemShow",
     "pages/hotList/hotList",
-    "pages/visitor/visitor",
     "pages/discountShow/discountShow",
-    "pages/allOrder/allOrder",
     "pages/collect/collect",
     "pages/specialtyStore/specialtyStore",
     "pages/specialtyOrder/specialtyOrder",
     "pages/specialtyList/specialtyList",
-    "pages/qualityTouristRoutes/qualityTouristRoutes"
+    "pages/qualityTouristRoutes/qualityTouristRoutes",
+    "pages/ticketSearch/ticketSearch"
   ],
   "window": {
     "backgroundTextStyle": "light",

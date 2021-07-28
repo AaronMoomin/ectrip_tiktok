@@ -32,7 +32,7 @@
                     <text>位于火车站附近500m</text>
                 </view>
             </view>
-            <view class="collect">
+            <view bind:tap="handleCollect" class="{{isCollect?'collected':'collect'}}">
                 <text class="iconfont icon-xingxing"></text>
                 <text>收藏</text>
             </view>

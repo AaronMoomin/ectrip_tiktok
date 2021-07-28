@@ -3,8 +3,19 @@
         <select class="select" name="全部" options="{{options}}" key="city_id" bind:change="change"></select>
         <view class="inputBox">
             <text class="iconfont icon-sousuo"></text>
-            <input placeholder="搜索景点,门票,酒店"></input>
+            <input placeholder="搜索景点,门票,酒店"
+                   bind:focus="handleFocus"
+                   bind:input="change" value="{{searchValue}}"
+                   bind:confirm="handleConfirm"></input>
         </view>
+    </view>
+    <view class="searchHistory" tt:if="{{historyShow}}">
+        <text class="title" bind:tap="handleDown">搜索记录 [收起]</text>
+        <view class="historyNav">
+            <text class="historyItem" bind:tap="historyUp" data-name="{{item}}"
+                  tt:for="{{historyList}}" tt:key="{{index}}">{{item}}</text>
+        </view>
+        <text class="clear" bind:tap="clear">清空</text>
     </view>
     <view class="headImg">
         <image src="/static/images/lxzbc.png"></image>

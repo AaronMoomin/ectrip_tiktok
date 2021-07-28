@@ -133,11 +133,12 @@
     width: 43%;
     margin: 20rpx 10rpx 10rpx 15rpx;
     border-radius: 10rpx;
-    border: 1px solid #ebf7fa;
+    border: 1px solid #120e33;
     color: #000;
 }
 
 .hotContentR .hotItemR image {
+    display: flex;
     width: 100%;
     height: 280rpx;
     border-top-left-radius: 10rpx;

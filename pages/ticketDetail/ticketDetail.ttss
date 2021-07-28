@@ -65,6 +65,18 @@
     line-height:80rpx;
     color: #ff786c;
 }
+.contentContainer .titleNav .collected{
+    position: absolute;
+    right: 20rpx;
+    top: 10rpx;
+    background:#ff786c;
+    color: #ffe6d4;
+    border-radius:30rpx;
+    width: 150rpx;
+    height: 80rpx;
+    text-align: center;
+    line-height:80rpx;
+}
 .contentContainer .titleNav .collect .iconfont{
     margin-right: 10rpx;
 }
@@ -230,4 +242,19 @@
 }
 .commentContent .gradeNav .commentNum{
     color: #797979;
+}
+.slide{
+    display: flex;
+    width: 200rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+    border: 2rpx solid #797979;
+    padding: 0 10rpx;
+    margin: 10rpx auto 0 ;
+}
+.slide .iconfont{
+    font-size: 24rpx;
+    transform: rotateZ(90deg);
+    margin-left: 10rpx;
 }

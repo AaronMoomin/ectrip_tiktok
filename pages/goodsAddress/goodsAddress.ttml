@@ -1,0 +1,160 @@
+<view class="visitorContainer">
+    <view class="titleNav">
+        常用地址
+    </view>
+    <view class="visitorItem" tt:for="{{addressList}}" tt:key="{{address.phone}}">
+        <view class="left">
+            <text class="title">{{item.name}}</text>
+            <text class="address">{{item.address}}</text>
+        </view>
+        <view class="right">
+            <text class="phone">{{item.phone}}</text>
+            <view class="editNav">
+                <text bind:tap="edit" data-item="{{item}}">编辑</text>
+                <text bind:tap="del" data-item="{{item}}">删除</text>
+            </view>
+        </view>
+    </view>
+    <view class="btn" bind:tap="open">新增地址</view>
+</view>
+        <!--  新增  -->
+<view class="fadeIn" tt:if="{{dialog}}">
+    <view class="weui-mask" bindtap="close"></view>
+    <view class="weui-half-screen-dialog">
+        <view class="weui-half-screen-dialog__hd">
+            <view class="weui-half-screen-dialog__hd__side" bindtap="close">
+                <view class="weui-icon-btn">关闭<text class="weui-icon-close-thin"></text>
+                </view>
+            </view>
+            <view class="weui-half-screen-dialog__hd__main">
+                <text class="weui-half-screen-dialog__title">新增地址信息</text>
+            </view>
+        </view>
+        <view class="weui-half-screen-dialog__bd" style="height:550rpx;">
+            <view class="weui-cells__group weui-cells__group_form">
+                <view class="weui-cells weui-cells_form">
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">姓名</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input class="weui-input" bindinput="handleUserName" value="{{name}}" placeholder="填写本人姓名"
+                                   placeholder-class="weui-input__placeholder"/>
+                        </view>
+                    </view>
+                    <view class="weui-cells__tips weui-cells__tips_warn"
+                          style="color:red;{{isNameCurrentWaring ? 'display:block' : 'display:none'}}">
+                        {{nameWarnMessage}}
+                    </view>
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">手机号</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input class="weui-input" bindinput="handlePhone" placeholder="填写本人的电话号码" type="number"
+                                   placeholder-class="weui-input__placeholder" value="{{phone}}"/>
+                        </view>
+                    </view>
+                    <view class="weui-cells__tips weui-cells__tips_warn"
+                          style="color:red;{{isPhoneCurrentWaring ? 'display:block' : 'display:none'}}">
+                        {{phoneWarnMessage}}
+                    </view>
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">地址</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <textarea class="weui-textarea" placeholder="填写地址"
+                                      placeholder-class="weui-input__placeholder" rows="3"
+                                      bindinput="handleAddress" value="{{address}}"
+                            ></textarea>
+                        </view>
+                    </view>
+                    <view class="weui-cells__tips weui-cells__tips_warn"
+                          style="color:red;{{isAddressCurrentWaring ? 'display:block' : 'display:none'}}">
+                        {{addressWarnMessage}}
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="weui-half-screen-dialog__ft">
+            <button class="confirm" bind:tap="confirm">确定</button>
+        </view>
+    </view>
+</view>
+
+        <!--  编辑  -->
+<view class="fadeIn" tt:if="{{dialog1}}">
+    <view class="weui-mask" bindtap="close1"></view>
+    <view class="weui-half-screen-dialog">
+        <view class="weui-half-screen-dialog__hd">
+            <view class="weui-half-screen-dialog__hd__side" bindtap="close1">
+                <view class="weui-icon-btn">关闭<text class="weui-icon-close-thin"></text>
+                </view>
+            </view>
+            <view class="weui-half-screen-dialog__hd__main">
+                <text class="weui-half-screen-dialog__title">编辑地址信息</text>
+            </view>
+        </view>
+        <view class="weui-half-screen-dialog__bd" style="height:550rpx;">
+            <view class="weui-cells__group weui-cells__group_form">
+                <view class="weui-cells weui-cells_form">
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">姓名</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input class="weui-input" bindinput="handleUserName" value="{{name}}" placeholder="填写本人姓名"
+                                   placeholder-class="weui-input__placeholder"/>
+                        </view>
+                    </view>
+                    <view class="weui-cells__tips weui-cells__tips_warn"
+                          style="color:red;{{isNameCurrentWaring ? 'display:block' : 'display:none'}}">
+                        {{nameWarnMessage}}
+                    </view>
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">手机号</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input class="weui-input" bindinput="handlePhone" placeholder="填写本人的电话号码" type="number"
+                                   placeholder-class="weui-input__placeholder" value="{{phone}}"/>
+                        </view>
+                    </view>
+                    <view class="weui-cells__tips weui-cells__tips_warn"
+                          style="color:red;{{isPhoneCurrentWaring ? 'display:block' : 'display:none'}}">
+                        {{phoneWarnMessage}}
+                    </view>
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">地址</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <textarea class="weui-textarea" placeholder="填写地址"
+                                      placeholder-class="weui-input__placeholder" rows="3"
+                                      bindinput="handleAddress" value="{{address}}"
+                            ></textarea>
+                        </view>
+                    </view>
+                    <view class="weui-cells__tips weui-cells__tips_warn"
+                          style="color:red;{{isAddressCurrentWaring ? 'display:block' : 'display:none'}}">
+                        {{addressWarnMessage}}
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="weui-half-screen-dialog__ft">
+            <button class="confirm" bind:tap="confirmEdit">确定</button>
+        </view>
+    </view>
+</view>
+<view class="fadeIn" tt:if="{{iosDialog}}">
+    <view class="weui-mask"></view>
+    <view class="weui-dialog">
+        <view class="weui-dialog__bd">是否删除</view>
+        <view class="weui-dialog__ft">
+            <text class="weui-dialog__btn weui-dialog__btn_default" bindtap="cancel">取消</text>
+            <text class="weui-dialog__btn weui-dialog__btn_primary" bindtap="deleteItem">确定</text>
+        </view>
+    </view>
+</view>

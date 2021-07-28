@@ -18,11 +18,15 @@ Page({
         goodsList:[],
         themeList:[],
         size:10,
+        historyShow:false,
+        historyList:['测试','欢乐谷'],
+        searchValue:'',
     },
     //按钮跳转类型商品展示
     toOrderTypeShow(e) {
         tt.navigateTo({
-            url: '/pages/orderTypeShow/orderTypeShow?name=' + e.currentTarget.dataset.name
+            url: '/pages/orderTypeShow/orderTypeShow?name='
+                + e.currentTarget.dataset.name+"&themeId="+e.currentTarget.dataset.id
         })
     },
     //跳转门票详情
@@ -39,7 +43,75 @@ Page({
      */
     onLoad: function (options) {
         this.getGoods(this.data.size)
-        // this.getTheme()
+        this.getTheme()
+    },
+    clear(){
+        this.setData({
+            historyList:[]
+        })
+        tt.setStorage({
+            key:'ticketHistory',
+            data:this.data.historyList
+        })
+    },
+    handleDown(){
+        this.setData({
+            historyShow:false
+        })
+    },
+    historyUp(e){
+        this.setData({
+            searchValue:e.currentTarget.dataset.name
+        })
+    },
+    handleFocus(){
+        tt.getStorage({
+            key:'ticketHistory',
+            success:(res)=>{
+                this.setData({
+                    historyList:res.data
+                })
+            },
+            fail:(err)=>{
+                console.log(err);
+            }
+        })
+        this.setData({
+            historyShow:true
+        })
+    },
+    change(e){
+        this.setData({
+            searchValue:e.detail.value
+        })
+    },
+    handleConfirm(e){
+        if (e.detail.value == ''){
+            tt.showToast({
+                title:'内容为空',
+                icon:'none'
+            })
+            return
+        }
+        let {historyList} = this.data
+        if (historyList.indexOf(e.detail.value)==-1){
+            historyList.unshift(e.detail.value)
+        }else{
+            historyList.splice(historyList.indexOf(e.detail.value),1)
+            historyList.unshift(e.detail.value)
+        }
+        tt.setStorage({
+            key:'ticketHistory',
+            data:historyList
+        })
+        this.setData({
+            historyShow:false,
+            historyList,
+            searchValue:'',
+        })
+        tt.navigateTo({
+            url:'/pages/ticketSearch/ticketSearch?value='+e.detail.value
+        })
     },
     // 查询主题
     async getTheme() {
@@ -51,6 +123,7 @@ Page({
             'get',
             'application/x-www-form-urlencoded'
         ).then(res=>{
+            console.log(res);
             this.setData({
                 themeList:res.data.data.data
             })
@@ -69,7 +142,8 @@ Page({
             "orderBy": 0,
             "startDate": "",
             "current":0,
-            "size":size
+            "size":size,
+            "themeId":""
         })
         let object = base64.encode(obj)
         await request.myRequest(

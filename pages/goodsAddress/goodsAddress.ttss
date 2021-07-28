@@ -14,7 +14,6 @@
     padding: 20rpx;
 }
 .visitorItem{
-    position:relative;
     display: flex;
     font-size: 30rpx;
     background:#fff;
@@ -24,7 +23,7 @@
     border-radius: 10rpx;
 }
 .visitorItem .left{
-    width: 100%;
+    width: 50%;
     display: flex;
     flex-direction: column;
 }
@@ -33,8 +32,6 @@
     margin-bottom: 30rpx;
 }
 .visitorItem .left .address{
-    display: flex;
-    justify-content: space-between;
     color:#797979;
     margin-bottom: 30rpx;
 }
@@ -43,24 +40,16 @@
     display: flex;
     flex-direction: column;
 }
-.visitorItem .phone{
-    position:absolute;
-    top: 20rpx;
-    right: 30rpx;
+.visitorItem .right .phone{
     color: #ff685c;
     margin-left: 100rpx;
 }
-.visitorItem .editNav{
-    position:absolute;
-    bottom: 10rpx;
-    right: 30rpx;
+.visitorItem .right  .editNav{
     display: flex;
+    justify-content:space-around;
     font-size:28rpx;
     margin-top: 160rpx;
     margin-left: 100rpx;
-}
-.visitorItem .editNav text{
-    margin-right: 40rpx;
 }
 .btn{
     margin-top: 20rpx;
@@ -71,39 +60,7 @@
     line-height: 100rpx;
     color:#ff847a;
 }
-.humanInfo .infoItem {
-    justify-content: center;
-    border-radius: 10rpx;
-    padding: 10rpx;
-    line-height: 50rpx;
-    margin: 20rpx 0;
-}
-.humanInfo .infoItem .infoCell{
-    display: flex;
-    font-size:28rpx;
-}
-.humanInfo .infoItem .infoCell .name{
-    width: 150rpx;
-    display: flex;
-}
-.humanInfo .infoItem .infoCell .name .iconfont{
-    font-size: 24rpx;
-}
-.humanInfo .infoItem .infoCell .pickerCal{
-    display: flex;
-}
-.pickerCal .iconfont{
-    font-size: 24rpx;
-}
-.humanInfo .infoItem .infoCell input{
-    flex: 1;
-    margin-left: 60rpx;
-}
-
-.humanInfo .infoItem button::after{
-    border:none !important;
-}
 .confirm{
-    background: #ff6d7a;
-    color: #fff;
+    background: #ff847a;
+    color:#fff;
 }
