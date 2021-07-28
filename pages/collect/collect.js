@@ -29,7 +29,7 @@ Page({
             '/tiktok/personCenter/collection/list',
             {
                 categoryId,
-                openId:this.data.openid
+                openid:this.data.openid
             },
             'get',
             'application/x-www-form-urlencoded'

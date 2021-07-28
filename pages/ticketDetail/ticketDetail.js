@@ -19,7 +19,7 @@ Page({
         displayed: 'block',
         //显示
         dialog1: false,
-        isCollect:false,
+        isCollect:'',
         openid:'',
     },
     async handleCollect(e) {
@@ -36,12 +36,12 @@ Page({
                 title: '取消收藏',
                 icon: 'none'
             })
-            isCollect = false
+            isCollect=0
             await request.myRequest(
                 '/tiktok/personCenter/collection/remove',
                 {
                     goodsId:e.currentTarget.dataset.goods.id,
-                    openId:openid
+                    openid:app.globalData.openid
                 },
                 'post',
                 'application/x-www-form-urlencoded'
@@ -55,7 +55,7 @@ Page({
                 title: '收藏成功',
                 icon: 'none'
             })
-            isCollect = true
+            isCollect=1
             await request.myRequest(
                 '/tiktok/personCenter/collection/add',
                 {
@@ -86,9 +86,11 @@ Page({
     async getGoodsDetail() {
         let {id} = this.data
         let today = util.GetDateStr(0)
+        let openid = app.globalData.openid
         let obj = JSON.stringify({
             "endDate": "",
             id,
+            openid,
             "startDate": today
         })
         let object = base64.encode(obj)
@@ -101,7 +103,7 @@ Page({
             'post'
         ).then(res=>{
             console.log(res);
-            let {goods,productList,productListShow} = this.data
+            let {goods,productList,productListShow,isCollect} = this.data
             res.data.data.goods.openStartTime =
             res.data.data.goods.openStartTime.split(" ")[1]
             res.data.data.goods.openEndTime =
@@ -127,7 +129,8 @@ Page({
                 goods:res.data.data.goods,
                 productList,
                 productListShow,
-                slideNum:productList.length-productListShow.length
+                slideNum:productList.length-productListShow.length,
+                isCollect:res.data.data.isCollected
             })
             console.log('goods',res.data.data.goods);
             console.log('productList',productList);
