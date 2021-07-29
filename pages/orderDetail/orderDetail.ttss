@@ -1,0 +1,17 @@
+.orderDetailContainer{
+    padding:20rpx;
+    font-size:26rpx;
+}
+.detailItem{
+    border-radius: 20rpx;
+    background:#fff;
+    margin-bottom: 20rpx;
+}
+.detailItem .name{
+    color:#797979;
+    font-size: 38rpx;
+    margin: 20rpx;
+}
+.detailItem .title{
+    color:#000;
+}

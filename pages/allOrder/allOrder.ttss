@@ -26,8 +26,8 @@
     display: flex;
     padding: 20rpx;
     font-size: 26rpx;
-    margin-top: 10rpx;
-    /*border:2rpx solid #eee;*/
+    margin-top: 20rpx;
+    border-radius: 10rpx;
     background:#fff;
 }
 
@@ -81,6 +81,7 @@
 
 .contentContainer .routeItem .titleNav{
     margin-bottom: 10rpx;
+    color: #000;
 }
 .contentContainer .routeItem .info .desc {
     color: #52575c;

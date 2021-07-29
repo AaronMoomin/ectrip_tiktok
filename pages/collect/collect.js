@@ -35,18 +35,29 @@ Page({
             'application/x-www-form-urlencoded'
         ).then(res => {
             console.log(res);
+            let {allList} = this.data
             if (res.data.message=='无收藏'){
-                this.setData({
-                    allList:[]
-                })
+                allList=[]
             }else {
-                this.setData({
-                    allList:res.data.data.goodsList
-                })
+                allList = res.data.data.goodsList
+                for (let i in allList) {
+                    allList[i].imageList = JSON.parse(allList[i].imageList)
+                }
             }
+            this.setData({
+                allList
+            })
         }).catch(err =>{
             console.log(err);
         })
+    },
+    //跳转门票详情
+    toTicketDetail(e) {
+        let name = e.currentTarget.dataset.name;
+        let id = e.currentTarget.dataset.id;
+        tt.navigateTo({
+            url: `/pages/ticketDetail/ticketDetail?id=${id}&name=${name}`
+        });
     },
     /**
      * 生命周期函数--监听页面加载
@@ -68,6 +79,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+        this.getCollectList()
     },
 
     /**

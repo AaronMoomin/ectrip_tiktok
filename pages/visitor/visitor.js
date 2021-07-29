@@ -35,7 +35,7 @@ Page({
         await request.myRequest(
             '/tiktok/personCenter/contact/list',
             {
-                openId: openid
+                openid
             },
             'get',
             'application/x-www-form-urlencoded'

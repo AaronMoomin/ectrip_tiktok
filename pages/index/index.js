@@ -18,10 +18,9 @@ Page({
     let index = e.currentTarget.dataset.index
 
     for (let i in isSelect) {
-      if (i==index){
+      isSelect[i] = false
+      if (index == i) {
         isSelect[i] = !isSelect[i]
-      }else {
-        isSelect[i] = false
       }
     }
     this.setData({

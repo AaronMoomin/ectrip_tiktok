@@ -7,6 +7,14 @@ Page({
     data: {
         isSelect: [true, false, false, false],
         openid: '',
+        orderList:[],
+    },
+    toOrderDetail(e){
+        tt.navigateTo({
+            url: "/pages/orderDetail/orderDetail?orderCode="
+                +e.currentTarget.dataset.ordercode+
+                '&productName='+e.currentTarget.dataset.productname
+        })
     },
     handleSelect(e) {
         let {isSelect} = this.data
@@ -15,24 +23,32 @@ Page({
             isSelect[i] = false
             if (index == i) {
                 isSelect[i] = !isSelect[i]
+                this.getOrderList(index)
             }
         }
         this.setData({
             isSelect
         })
-        console.log(isSelect);
     },
-    async getOrderList() {
+    async getOrderList(status=0) {
         await request.myRequest(
             '/tiktok/personCenter/order/List',
             {
-                openId: this.data.openid,
-                status: 4
+                openid: this.data.openid,
+                status
             },
             'get',
             "application/x-www-form-urlencoded"
         ).then(res => {
-            console.log(res);
+            let {orderList} = this.data
+            orderList = res.data.data.orderList
+            for (let item of orderList) {
+                item.createTime=item.createTime.split(' ')[0]
+            }
+            console.log(res.data.data.orderList);
+            this.setData({
+                orderList
+            })
         }).catch(err => {
             console.log(err);
         })
@@ -41,20 +57,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        // tt.getStorage({
-        //     key:'session',
-        //     success:res=>{
-        //         let {openid} = this.data
-        //         openid = res.data.openid
-        //         this.setData({
-        //             openid
-        //         })
-        //         this.getOrderList()
-        //     },
-        //     fail:err=>{
-        //         console.log(err);
-        //     }
-        // })
         this.setData({
             openid:app.globalData.openid
         })

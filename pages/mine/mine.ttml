@@ -9,7 +9,7 @@
                 <text class="userName">{{nickName || '未登录'}}</text>
                 <text class="sign">一二三四五六七八九十</text>
             </view>
-            <text class="iconfont icon-tiaozhuan to" style="width: 29rpx; height: 38rpx; display: block; box-sizing: border-box; left: 673rpx; top: 40rpx"></text>
+<!--            <text class="iconfont icon-tiaozhuan to" style="width: 29rpx; height: 38rpx; display: block; box-sizing: border-box; left: 673rpx; top: 40rpx"></text>-->
         </view>
         <view class="btnBox">
             <view class="btnItem" bind:tap="toAllOrder">

@@ -1,0 +1,74 @@
+<view class="orderDetailContainer">
+    <view class="detailItem">
+        <view class="weui-cell">
+            <view class="weui-cell__bd title">产品名称</view>
+            <view class="weui-cell__ft">{{productName}}</view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd title">订单号</view>
+            <view class="weui-cell__ft">{{orderInfo.orderCode}}</view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd title">验证码</view>
+            <view class="weui-cell__ft">{{orderInfo.verifyCode}}</view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd title">订单状态</view>
+            <view class="weui-cell__ft">已完成</view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd title">下单时间</view>
+            <view class="weui-cell__ft">{{orderInfo.createDate}}</view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd title">游玩时间</view>
+            <view class="weui-cell__ft">{{orderInfo.visitDate}}</view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd title">单价</view>
+            <view class="weui-cell__ft">￥{{orderList.price}}</view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd title">购买数量</view>
+            <view class="weui-cell__ft">{{orderList.totalQuantity}}</view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd title">消费数量</view>
+            <view class="weui-cell__ft">{{orderList.consumeQuantity}}</view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd title">金额</view>
+            <view class="weui-cell__ft">￥{{orderList.totalMoney}}</view>
+        </view>
+    </view>
+    <view class="detailItem">
+        <text class="name">联系人</text>
+        <view class="weui-cell">
+            <view class="weui-cell__bd title">姓名</view>
+            <view class="weui-cell__ft">{{orderInfo.contactName}}</view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd title">证件号码</view>
+            <view class="weui-cell__ft">442415454545454545</view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd title">联系电话</view>
+            <view class="weui-cell__ft">{{orderInfo.contactPhone}}</view>
+        </view>
+    </view>
+    <view class="detailItem">
+        <text class="name">游客信息</text>
+        <view class="weui-cell">
+            <view class="weui-cell__bd title">姓名</view>
+            <view class="weui-cell__ft">张三</view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd title">证件号码</view>
+            <view class="weui-cell__ft">442415454545454545</view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd title">联系电话</view>
+            <view class="weui-cell__ft">18345454545</view>
+        </view>
+    </view>
+</view>

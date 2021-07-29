@@ -1,8 +1,10 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/allOrder/allOrder",
     "pages/mine/mine",
+    "pages/allOrder/allOrder",
+    "pages/index/index",
+    "pages/orderDetail/orderDetail",
+    "pages/collect/collect",
     "pages/visitor/visitor",
     "pages/ticket/ticket",
     "pages/myComment/myComment",
@@ -23,7 +25,6 @@
     "pages/playerItemShow/playerItemShow",
     "pages/hotList/hotList",
     "pages/discountShow/discountShow",
-    "pages/collect/collect",
     "pages/specialtyStore/specialtyStore",
     "pages/specialtyOrder/specialtyOrder",
     "pages/specialtyList/specialtyList",

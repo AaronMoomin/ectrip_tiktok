@@ -9,6 +9,29 @@ Page({
         avatarUrl: '',
         nickName: '',
     },
+    checkLogin() {
+        tt.getStorage({
+            key: 'userInfo',
+            success: res => {
+                console.log(res);
+                this.setData({
+                    nickName: res.data.nickName,
+                    avatarUrl: res.data.avatarUrl
+                })
+            },
+            fail: err => {
+                console.log(err);
+            }
+        })
+        if (this.data.nickName == "") {
+            console.log("未登录");
+            this.handleLogin()
+            return false
+        } else {
+            console.log("已登录");
+            return true
+        }
+    },
     async login(value) {
         let obj = JSON.stringify({
             "anonymous_code": value.anonymousCode,
@@ -19,9 +42,8 @@ Page({
         let Object = base64.encode(obj)
         let data = {
             "data": Object,
-            "signed": "11"
+            "signed": "login"
         }
-        console.log(data);
         await request.myRequest(
             '/tiktok/serverAPI/login',
             data,
@@ -38,10 +60,10 @@ Page({
                     unionid
                 },
                 success: res => {
-                    console.log('setStorage调用成功');
+                    // console.log('openid调用成功');
                 },
                 fail: err => {
-                    console.log(err);
+                    // console.log('openid调用失败');
                 }
             })
         }).catch(err => {
@@ -49,92 +71,90 @@ Page({
         })
     },
     handleLogin() {
-        let {avatarUrl, nickName} = this.data
         tt.login({
                 force: true,
                 success: (res) => {
-                    console.log(res);
-                    this.login(res)
+                    // console.log('登录回调', res);
                     tt.getUserInfo({
                         withCredentials: true,
-                        success: (res) => {
-                            avatarUrl = res.userInfo.avatarUrl
-                            nickName = res.userInfo.nickName
+                        success: (res1) => {
+                            this.login(res)
                             this.setData({
-                                avatarUrl,
-                                nickName
+                                avatarUrl: res1.userInfo.avatarUrl,
+                                nickName: res1.userInfo.nickName
                             })
                             tt.setStorage({
                                 key: "userInfo",
                                 data: {
-                                    avatarUrl,
-                                    nickName
+                                    avatarUrl: res1.userInfo.avatarUrl,
+                                    nickName: res1.userInfo.nickName
                                 },
                                 success: (res) => {
-                                    // console.log(res);
+                                    console.log(`userInfo写入成功`);
                                 },
                                 fail(res) {
-                                    console.log(`setStorage调用失败`);
+                                    // console.log(`userInfo调用失败`);
                                 },
                             });
                         },
                         fail(res) {
-                            console.log(`getUserInfo 调用失败`);
+                            console.log(`getUserInfo失败`);
                         },
                     });
                 },
                 fail: (err) => {
-                    console.log(err);
+                    console.log('取消', err);
                 }
             }
         )
     },
     toMyComment() {
-        tt.navigateTo({
-            url: "/pages/myComment/myComment"
-        })
+        if (this.checkLogin()) {
+            tt.navigateTo({
+                url: "/pages/myComment/myComment"
+            })
+        }
     },
     toGoodsAddress() {
-        tt.navigateTo({
-            url: "/pages/goodsAddress/goodsAddress"
-        })
+        if (this.checkLogin()) {
+            tt.navigateTo({
+                url: "/pages/goodsAddress/goodsAddress"
+            })
+        }
     },
     toCollect() {
-        tt.navigateTo({
-            url: "/pages/collect/collect"
-        })
+        if (this.checkLogin()) {
+            tt.navigateTo({
+                url: "/pages/collect/collect"
+            })
+        }
     },
     toAllOrder() {
-        tt.navigateTo({
-            url: "/pages/allOrder/allOrder"
-        })
+        if (this.checkLogin()) {
+            tt.navigateTo({
+                url: "/pages/allOrder/allOrder"
+            })
+        }
     },
     toDiscountShow() {
-        tt.navigateTo({
-            url: "/pages/discountShow/discountShow"
-        })
+        if (this.checkLogin()) {
+            tt.navigateTo({
+                url: "/pages/discountShow/discountShow"
+            })
+        }
     },
     toVisitor() {
-        tt.navigateTo({
-            url: "/pages/visitor/visitor"
-        })
+        if (this.checkLogin()) {
+            tt.navigateTo({
+                url: "/pages/visitor/visitor"
+            })
+        }
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        let {avatarUrl, nickName} = this.data
-        tt.getStorage({
-            key: "userInfo",
-            success: (res) => {
-                avatarUrl = res.data.avatarUrl
-                nickName = res.data.nickName
-                this.setData({
-                    avatarUrl,
-                    nickName
-                })
-            }
-        })
+
     },
 
     /**
@@ -147,19 +167,32 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        let {avatarUrl, nickName} = this.data
+        tt.getStorage({
+            key: "userInfo",
+            success: (res) => {
+                avatarUrl = res.data.avatarUrl
+                nickName = res.data.nickName
+                this.setData({
+                    avatarUrl,
+                    nickName
+                })
+            }
+        })
+        this.checkLogin()
     },
-
     /**
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
+
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
+
     },
 
     /**

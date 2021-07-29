@@ -6,23 +6,29 @@
         <text bind:tap="handleSelect" class="{{isSelect[3]?'select':''}}" data-index="3">取消/退款</text>
     </view>
     <view class="contentContainer">
-        <view class="timer">
-            <text>收藏时间:2021年01月01日 星期一</text>
-        </view>
-        <view class="routeItem">
-            <view class="imgBox">
-                <image src="/static/images/gbtl.jpg"></image>
-            </view>
+<!--        <view class="timer">-->
+<!--            <text>收藏时间:2021年01月01日 星期一</text>-->
+<!--        </view>-->
+        <view class="routeItem"
+              tt:for="{{orderList}}" tt:key="{{item.contactPhone}}"
+              bind:tap="toOrderDetail"
+              data-productname="{{item.productName}}"
+              data-ordercode="{{item.orderCode}}">
+<!--            <view class="imgBox">-->
+<!--                <image src="/static/images/gbtl.jpg"></image>-->
+<!--            </view>-->
             <view class="info">
                 <view class="titleNav">
-                    <text class="title">酒店名称</text>
+                    <text class="title">{{item.goodsName}}--</text>
+                    <text class="title">{{item.productName}}</text>
                 </view>
-                <text class="desc">大床房 1 间(含早餐)</text>
-                <text class="company">2021.01.01-2021.01.02 共计1晚</text>
+                <text class="desc">订单号: {{item.orderCode}}</text>
+                <text class="desc">大床房: {{item.totalQuantity}}</text>
+                <text class="company">时间: {{item.createTime}}</text>
             </view>
             <view class="price">
                 <view class="red">
-                    <text class="big">￥270</text>
+                    <text class="big">￥{{item.orderPrice}}</text>
                 </view>
             </view>
             <view class="btnNav">
