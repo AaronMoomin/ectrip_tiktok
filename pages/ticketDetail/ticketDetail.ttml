@@ -1,14 +1,8 @@
 <view class="ticketContainer">
     <view class="imgShow">
         <swiper class="scrollNav" indicator-dots circular indicator-active-color="#fff">
-            <swiper-item class="scrollItem">
-                <image src="/static/images/sea.png"></image>
-            </swiper-item>
-            <swiper-item class="scrollItem">
-                <image src="/static/images/gbtl.jpg"></image>
-            </swiper-item>
-            <swiper-item class="scrollItem">
-                <image src="/static/images/gbtl.jpg"></image>
+            <swiper-item class="scrollItem" tt:for="{{goods.imageList}}" tt:key="{{item.uid}}">
+                <image src="{{item.url}}"></image>
             </swiper-item>
         </swiper>
     </view>

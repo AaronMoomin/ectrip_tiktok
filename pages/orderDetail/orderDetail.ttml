@@ -14,7 +14,7 @@
         </view>
         <view class="weui-cell">
             <view class="weui-cell__bd title">订单状态</view>
-            <view class="weui-cell__ft">已完成</view>
+            <view class="weui-cell__ft">{{orderInfo.statusStr}}</view>
         </view>
         <view class="weui-cell">
             <view class="weui-cell__bd title">下单时间</view>
@@ -49,26 +49,30 @@
         </view>
         <view class="weui-cell">
             <view class="weui-cell__bd title">证件号码</view>
-            <view class="weui-cell__ft">442415454545454545</view>
+            <view class="weui-cell__ft">{{orderInfo.credentials}}</view>
         </view>
         <view class="weui-cell">
             <view class="weui-cell__bd title">联系电话</view>
             <view class="weui-cell__ft">{{orderInfo.contactPhone}}</view>
         </view>
     </view>
-    <view class="detailItem">
+    <view class="detailItem" tt:if="{{orderPassenger.length!=0}}">
         <text class="name">游客信息</text>
-        <view class="weui-cell">
-            <view class="weui-cell__bd title">姓名</view>
-            <view class="weui-cell__ft">张三</view>
-        </view>
-        <view class="weui-cell">
-            <view class="weui-cell__bd title">证件号码</view>
-            <view class="weui-cell__ft">442415454545454545</view>
-        </view>
-        <view class="weui-cell">
-            <view class="weui-cell__bd title">联系电话</view>
-            <view class="weui-cell__ft">18345454545</view>
+        <view tt:for="{{orderPassenger}}"
+              tt:key="{{item.id}}">
+            <text class="tie">游客{{index+1}}</text>
+            <view class="weui-cell">
+                <view class="weui-cell__bd title">姓名</view>
+                <view class="weui-cell__ft">{{item.name}}</view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd title">证件号码</view>
+                <view class="weui-cell__ft">{{item.credentials}}</view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd title">联系电话</view>
+                <view class="weui-cell__ft">{{item.phone}}</view>
+            </view>
         </view>
     </view>
 </view>

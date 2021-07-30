@@ -5,6 +5,7 @@ Page({
         orderCode:'',
         orderList:'',
         orderInfo:'',
+        orderPassenger:'',
     },
     async getOrder() {
         tt.showLoading({
@@ -26,6 +27,7 @@ Page({
             this.setData({
                 orderInfo:res.data.data.orderInfo,
                 orderList:res.data.data.orderList,
+                orderPassenger:res.data.data.orderPassenger,
             })
         }).catch(err =>{
             console.log(err);

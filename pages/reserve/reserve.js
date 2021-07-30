@@ -2,22 +2,19 @@
 let util = require('../../utils/util.js');
 const request = require("../../utils/request")
 const base64 = require("../../utils/base64.js")
+const app = getApp()
 Page({
     /**
      * 页面的初始数据
      */
     data: {
-        price:'',
-        nowPrice:'',
-        product:{},
-        visitPersons:[{
-            credentials:'522601198003069767',
-            credentialsType:"ID_CARD",
-            mobile:"15724864113",
-            name:"海绵宝宝"
-        }],
-        totalStock:0,
-        ticketType:[],
+        price: '',
+        nowPrice: '',
+        product: {},
+        visitPersons: [],
+        visitPersonsShow: [],
+        totalStock: 0,
+        ticketType: [],
         needToKnow: false,
         needKnow: [],
         yesterday: '',
@@ -39,10 +36,7 @@ Page({
             isSelect: false
         }],
         dialog: false,
-        //时间dialog
-        dialog2: false,
-        //新增dialog
-        dialog3: false,
+        dialog1: false,
         //编辑dialog
         days_style: [],
         disabled: '',
@@ -52,8 +46,8 @@ Page({
         //当前输入手机号
         isCurrentWaring: false,
         warnMessage: '',
-        array: ['身份证','护照','台胞证','港澳通行证','军官证','其他'],
-        arrayVal: ['ID_CARD','HUZHAO','TAIBAO','GANGAO','JUNGUAN','OTHER'],
+        array: ['身份证', '护照', '台胞证', '港澳通行证', '军官证', '其他'],
+        arrayVal: ['ID_CARD', 'HUZHAO', 'TAIBAO', 'GANGAO', 'JUNGUAN', 'OTHER'],
         users: [],
         value1: 0,
         value1Show: '身份证',
@@ -79,6 +73,75 @@ Page({
         dateString: "",
         spot: [],
     },
+    // 常用联系人列表查询
+    async getList() {
+        await request.myRequest(
+            '/tiktok/personCenter/contact/list',
+            {
+                openid: app.globalData.openid,
+            },
+            'get',
+            'application/x-www-form-urlencoded'
+        ).then(res => {
+            let {visitPersons} = this.data
+            visitPersons = res.data.data.contactList
+            for (let visitPerson of visitPersons) {
+                visitPerson.checked = false
+            }
+            this.setData({
+                visitPersons,
+            })
+            console.log(visitPersons);
+        }).catch(err => {
+            console.log(err);
+        })
+    },
+    confirmVisitor() {
+        let {visitPersons, visitPersonsShow} = this.data
+        for (let visitPerson of visitPersons) {
+            if (visitPerson.checked) {
+                if (visitPersonsShow.indexOf(visitPerson)==-1){
+                    visitPersonsShow.push(visitPerson)
+                }
+                visitPerson.checked = false
+            }
+        }
+        this.setData({
+            visitPersons,
+            visitPersonsShow,
+            dialog1: false
+        })
+        console.log(visitPersonsShow);
+    },
+    deleteVisitor(e) {
+        let {visitPersonsShow} = this.data
+        for (let i in visitPersonsShow) {
+            if (visitPersonsShow[i].id == e.currentTarget.dataset.id) {
+                visitPersonsShow.splice(i, 1)
+            }
+        }
+        this.setData({
+            visitPersonsShow
+        })
+    },
+    checkboxChange(e) {
+        let {visitPersons} = this.data
+        for (let person of visitPersons) {
+            for (let v of e.detail.value) {
+                if (person.id==v){
+                    person.checked = true
+                }
+            }
+        }
+        this.setData({
+            visitPersons
+        })
+    },
+    toVisitor() {
+        tt.navigateTo({
+            url: '/pages/visitor/visitor'
+        })
+    },
     async toReserve() {
         // 15731445471
         // 610404197603155734
@@ -86,46 +149,55 @@ Page({
         // 522601198003069767
         // 15724864113
         tt.showLoading({
-            title:'加载中...'
+            title: '加载中...'
         })
-        let {voteNum,price,nowPrice,selectDay,
+        let {
+            voteNum, price, nowPrice, selectDay,
             arrayVal, value1, phone, userName,
-            idCard, visitPersons,product,
-        isIdCardCurrentWaring,isPhoneCurrentWaring} = this.data
+            idCard, visitPersons, product,
+            isIdCardCurrentWaring, isPhoneCurrentWaring,
+            visitPersonsShow
+        } = this.data
         let credentialsType = arrayVal[value1]
-        price = price*100
-        nowPrice = nowPrice*100
-        if (userName==''){
+        price = price * 100
+        nowPrice = nowPrice * 100
+        if (userName == '') {
             tt.showToast({
-                title:'姓名不能为空',
-                icon:'fail'
+                title: '姓名不能为空',
+                icon: 'fail'
             })
             return
-        }else if (idCard==''){
-            if (isIdCardCurrentWaring){
+        } else if (idCard == '') {
+            if (isIdCardCurrentWaring) {
                 tt.showToast({
-                    title:'身份证格式错误',
-                    icon:'fail'
+                    title: '身份证格式错误',
+                    icon: 'fail'
                 })
-            }else {
+            } else {
                 tt.showToast({
-                    title:'身份证不能为空',
-                    icon:'fail'
+                    title: '身份证不能为空',
+                    icon: 'fail'
                 })
             }
             return
-        }else if (phone==''){
-            if(isPhoneCurrentWaring){
+        } else if (phone == '') {
+            if (isPhoneCurrentWaring) {
                 tt.showToast({
-                    title:'手机号格式错误',
-                    icon:'fail'
+                    title: '手机号格式错误',
+                    icon: 'fail'
                 })
-            }else {
+            } else {
                 tt.showToast({
-                    title:'手机号不能为空',
-                    icon:'fail'
+                    title: '手机号不能为空',
+                    icon: 'fail'
                 })
             }
+            return
+        }else if (visitPersonsShow.length==0){
+            tt.showToast({
+                title: '游客不能为空',
+                icon: 'fail'
+            })
             return
         }
         let obj = JSON.stringify({
@@ -142,21 +214,21 @@ Page({
             productId: product.productId,
             sellPrice: price,
             startDate: selectDay,
-            visitPersons
+            visitPersonsShow
         })
         console.log(obj);
         let object = base64.encode(obj)
         await request.myRequest(
             '/tiktok/mutual/createPaymentOrder',
             {
-                data:object,
-                signed:"111"
+                data: object,
+                signed: "111"
             },
             'post'
-        ).then(res=>{
+        ).then(res => {
             tt.hideLoading()
             console.log(res);
-        }).catch(err=>{
+        }).catch(err => {
             tt.hideLoading()
             console.log(err);
         })
@@ -166,18 +238,18 @@ Page({
         await request.myRequest(
             '/tiktok/mutual/dailyPriceAndStock',
             {
-                endDate:"",
-                id:product.distributorProductId,
-                startDate:day
+                endDate: "",
+                id: product.distributorProductId,
+                startDate: day
             },
             "get",
             'application/x-www-form-urlencoded'
-        ).then(res=>{
+        ).then(res => {
             this.setData({
-                price:res.data.data.priceList[0].price
+                price: res.data.data.priceList[0].price
             })
             console.log(res);
-        }).catch(err=>{
+        }).catch(err => {
             console.log(err);
         })
     },
@@ -199,12 +271,12 @@ Page({
             price,
             nowPrice
         } = this.data;
-        if (voteNum>index){
-            nowPrice-=price
-        }else {
-            nowPrice+=price
+        if (voteNum > index) {
+            nowPrice -= price
+        } else {
+            nowPrice += price
         }
-        nowPrice = nowPrice.toFixed(2)*1
+        nowPrice = nowPrice.toFixed(2) * 1
         voteNum = index;
         this.setData({
             voteNum,
@@ -561,7 +633,7 @@ Page({
 
     open1() {
         this.setData({
-            dialog2: true
+            dialog1: true
         });
     },
 
@@ -579,19 +651,13 @@ Page({
 
     close1() {
         this.setData({
-            dialog2: false
+            dialog1: false
         });
     },
 
     close2() {
         this.setData({
             dialog3: false
-        });
-    },
-
-    close3() {
-        this.setData({
-            needToKnow: false
         });
     },
 
@@ -739,14 +805,15 @@ Page({
             today,
             tomorrow,
             selectDay,
-            product:options.product,
-            ticketType:options.product.attributeIds.attributeIds,
-            price:options.product.priceList[0].price,
-            nowPrice:options.product.priceList[0].price,
-            totalStock:options.totalStock*1
+            product: options.product,
+            ticketType: options.product.attributeIds.attributeIds,
+            price: options.product.priceList[0].price,
+            nowPrice: options.product.priceList[0].price,
+            totalStock: options.totalStock * 1
         });
         let thisDay = util.GetDateStr(0)
         this.getDailyPrice(thisDay)
+
     },
 
     /**
@@ -759,6 +826,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+        this.getList()
     },
 
     /**

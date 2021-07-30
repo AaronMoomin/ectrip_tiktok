@@ -28,6 +28,7 @@
     margin-left: 20rpx;
     height: 60rpx;
     font-size: 26rpx;
+    color: #000;
 }
 .btnContainer {
     display: flex;

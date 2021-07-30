@@ -24,9 +24,9 @@
     flex-direction: column;
     width: 95%;
     background: #fff;
-    padding: 20rpx;
     border-radius: 30rpx;
     border: 2rpx solid #eee;
+    padding: 20rpx 20rpx 40rpx;
 }
 .contentContainer .userShow{
     display: flex;
@@ -58,7 +58,7 @@
     margin-right: 20rpx;
 }
 .content{
-    padding: 20rpx;
+    padding: 30rpx;
     font-size:28rpx;
     text-indent: 2em;
 }

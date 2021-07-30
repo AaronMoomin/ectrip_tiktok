@@ -17,14 +17,13 @@
     margin-left: 20rpx;
     height: 60rpx;
     font-size: 26rpx;
+    color: #000;
 }
 .chooseContainer {
-    background:#fff;
+    color: #000;
     display: flex;
     justify-content: space-around;
     margin: 20rpx;
-    border: 2rpx solid #eee;
-    box-shadow: 4rpx 4rpx 4rpx 2rpx #eee;
 }
 
 .chooseContainer .select {

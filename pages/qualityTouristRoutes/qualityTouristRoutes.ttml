@@ -21,7 +21,7 @@
         <text class="title">超值特惠</text>
         <view class="scrollContainer">
             <swiper class="scrollNav" display-multiple-items="1"
-                    next-margin="330rpx" autoplay>
+                    next-margin="330rpx" autoplay circular>
                 <swiper-item class="scrollItem">
                     <image src="/static/images/gbtl.jpg"></image>
                     <view class="institution">

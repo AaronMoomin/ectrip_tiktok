@@ -28,8 +28,12 @@
 
 .searchBox .search {
     margin: 0 20rpx;
+    color: #000;
 }
-
+.searchBox input{
+    color: #000;
+    height: 60rpx;
+}
 .inputSy {
     flex: 1;
     height: 60rpx;

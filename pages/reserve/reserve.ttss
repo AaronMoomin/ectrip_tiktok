@@ -205,7 +205,7 @@
 .humanInfo .infoItem button {
     border: none;
     padding: 0;
-    background: #3d85e8;
+    background: #ff786c;
     color: #fff;
     width: 50rpx;
     height: 50rpx;
@@ -232,7 +232,7 @@
 }
 
 #confirm {
-    background: #3e86e9;
+    background: #ff786c;
     color: #fff;
     border-radius: 50rpx;
 }
@@ -339,7 +339,6 @@
 }
 .humanCheckNav {
     position:relative;
-    padding: 30rpx;
     background: #fff;
     border-radius: 10rpx;
     margin: 10rpx 0 200rpx;
@@ -364,12 +363,22 @@
 .humanCheckNav .humanItem .num{
     width: 180rpx;
 }
-.humanCheckNav .humanItem .humanItemInfo{
+.humanItem .humanItemInfo{
     display: flex;
     flex-direction: column;
+    margin-right: 30rpx;
 }
-.humanCheckNav .humanItem .humanItemInfo .idCard{
+.humanItem .humanItemInfo .idCard{
     color: #797979;
+}
+.humanCheckNav .add{
+    display: flex;
+    margin: 0 auto;
+    font-size: 24rpx;
+    width: 140rpx;
+}
+.humanCheckNav .add .iconfont{
+    font-size: 24rpx;
 }
 .fixedNav{
     position:fixed;
@@ -408,4 +417,17 @@
     line-height:80rpx;
     border-radius:20rpx;
     margin-left: 200rpx;
+}
+.checkNav{
+    display: flex;
+    border-bottom: 2px solid #eee;
+    padding: 20rpx;
+}
+.checkNav .checkItemInfo{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20rpx;
+}
+.checkNav .checkItemInfo .name{
+    margin-bottom: 10rpx;
 }

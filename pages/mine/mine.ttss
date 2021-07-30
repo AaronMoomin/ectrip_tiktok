@@ -153,7 +153,7 @@
     height: 100rpx;
     line-height: 100rpx;
     padding: 0 35rpx;
-    border-bottom: 2rpx solid #eee;
+    /*border-bottom: 2rpx solid #eee;*/
 }
 
 .content .contentItem .itemName {

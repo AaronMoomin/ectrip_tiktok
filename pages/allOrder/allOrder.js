@@ -53,6 +53,13 @@ Page({
             console.log(err);
         })
     },
+    toTicketDetail(e){
+        let name = e.currentTarget.dataset.name;
+        let id = e.currentTarget.dataset.id;
+        tt.navigateTo({
+            url: `/pages/ticketDetail/ticketDetail?id=${id}&name=${name}`
+        });
+    },
     /**
      * 生命周期函数--监听页面加载
      */

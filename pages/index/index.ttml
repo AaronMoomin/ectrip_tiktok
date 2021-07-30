@@ -48,7 +48,6 @@
                     <image src="/static/images/gjyyr.png"></image>
                 </swiper-item>
             </swiper>
-
         </view>
         <!--  轮播 -->
         <view class="addressShow">
@@ -67,7 +66,7 @@
                 <view class="ticketItem">
                     <view class="imgBox">
                         <text class="type">门票</text>
-                        <image src="/static/images/gbtl.jpg"></image>
+                        <image src="/static/images/hotelBack.png"></image>
                         <view class="location">
                             <text class="iconfont icon-travel"></text>
                             <text>运城市运城市运城市运城市运城市</text>
@@ -86,7 +85,7 @@
                 <view class="ticketItem">
                     <view class="imgBox">
                         <text class="type">门票</text>
-                        <image src="/static/images/gbtl.jpg"></image>
+                        <image src="/static/images/hotelBack.png"></image>
                         <view class="location">
                             <text class="iconfont icon-travel"></text>
                             <text>运城市运城市运城市运城市运城市</text>
@@ -105,10 +104,10 @@
             </view>
             <view class="scrollContainer">
                 <view class="scrollContent">
-                    <swiper class="scrollNav" display-multiple-items="2" next-margin="150rpx">
+                    <swiper class="scrollNav" autoplay circular display-multiple-items="2" next-margin="150rpx">
                         <swiper-item class="scrollItem">
                             <text class="type">酒店</text>
-                            <image src="/static/images/gbtl.jpg"></image>
+                            <image src="/static/images/hotelBack.png"></image>
                             <view class="instruction">
                                 <text>大禹渡景区</text>
                                 <view class="red">￥<text class="big">270</text>
@@ -117,7 +116,7 @@
                         </swiper-item>
                         <swiper-item class="scrollItem">
                             <text class="type">酒店</text>
-                            <image src="/static/images/gbtl.jpg"></image>
+                            <image src="/static/images/hotelBack.png"></image>
                             <view class="instruction">
                                 <text>大禹渡景区</text>
                                 <view class="red">￥<text class="big">270</text>
@@ -126,7 +125,7 @@
                         </swiper-item>
                         <swiper-item class="scrollItem">
                             <text class="type">酒店</text>
-                            <image src="/static/images/gbtl.jpg"></image>
+                            <image src="/static/images/hotelBack.png"></image>
                             <view class="instruction">
                                 <text>大禹渡景区</text>
                                 <view class="red">￥<text class="big">270</text>
@@ -135,7 +134,7 @@
                         </swiper-item>
                         <swiper-item class="scrollItem">
                             <text class="type">酒店</text>
-                            <image src="/static/images/gbtl.jpg"></image>
+                            <image src="/static/images/hotelBack.png"></image>
                             <view class="instruction">
                                 <text>大禹渡景区</text>
                                 <view class="red">￥<text class="big">270</text>
@@ -144,7 +143,7 @@
                         </swiper-item>
                         <swiper-item class="scrollItem">
                             <text class="type">酒店</text>
-                            <image src="/static/images/gbtl.jpg"></image>
+                            <image src="/static/images/hotelBack.png"></image>
                             <view class="instruction">
                                 <text>大禹渡景区</text>
                                 <view class="red">￥<text class="big">270</text>
@@ -153,7 +152,7 @@
                         </swiper-item>
                         <swiper-item class="scrollItem">
                             <text class="type">酒店</text>
-                            <image src="/static/images/gbtl.jpg"></image>
+                            <image src="/static/images/hotelBack.png"></image>
                             <view class="instruction">
                                 <text>大禹渡景区</text>
                                 <view class="red">￥<text class="big">270</text>

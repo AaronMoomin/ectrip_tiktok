@@ -77,17 +77,25 @@
     flex-direction: column;
     padding-left: 20rpx;
     letter-spacing: 5rpx;
+    height: 300rpx;
 }
 
 .contentContainer .routeItem .titleNav{
+    display: flex;
+    flex-direction: column;
     margin-bottom: 10rpx;
     color: #000;
 }
 .contentContainer .routeItem .info .desc {
     color: #52575c;
     font-size: 24rpx;
+    margin-bottom: 20rpx;
 }
-
+.nothing{
+    color: #fff;
+    width: 120rpx;
+    margin: 50rpx auto;
+}
 .contentContainer .routeItem .info .company {
     font-size:18rpx;
     color: #52575c;

@@ -215,7 +215,7 @@
             <calendar class="calendar" bind:getMyDate="handleGetMyDate"></calendar>
         </view>
         <view class="weui-half-screen-dialog__ft">
-            <button id="confirm" bind:tap="confirmDate">确定</button>
+            <button class="confirmBtn" bind:tap="confirmDate">确定</button>
         </view>
     </view>
 </view>

@@ -1,7 +1,7 @@
 <view class="container">
     <view class="headBox">
         <view class="cover">
-            <image class="backImg" src="/static/images/sea.png"></image>
+            <image class="backImg" src="/static/images/backImg.png"></image>
         </view>
         <view bind:tap="handleLogin" class="people" style="position: absolute; left: 4rpx; top: 184rpx">
             <image class="photo" src="{{avatarUrl || '/static/images/head.png'}}"></image>

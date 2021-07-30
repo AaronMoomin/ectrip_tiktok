@@ -33,9 +33,9 @@
         </view>
         <view class="numChooser">
             <view class="infos">
-                <view class="red">￥
-                    <text class="big">{{nowPrice}}</text>
-                </view>
+                <!--                <view class="red">￥-->
+                <!--                    <text class="big">{{nowPrice}}</text>-->
+                <!--                </view>-->
                 <text class="title">数量</text>
             </view>
             <calculate binditemIndex="getIndex" num="{{totalStock}}"></calculate>
@@ -95,16 +95,25 @@
             </view>
         </view>
         <view class="humanCheckNav">
-            <text class="iconfont icon-bianji bj"></text>
-            <text class="headTitle">取票信息</text>
-            <view class="humanItem" tt:for="{{visitPersons}}" tt:key="{{item.credentials}}">
-                <text class="num">游客1</text>
+            <text class="iconfont icon-bianji bj"
+                  bind:tap="toVisitor"
+            ></text>
+            <text class="headTitle">游客信息</text>
+            <view class="humanItem" tt:for="{{visitPersonsShow}}" tt:key="{{item.id}}">
+                <text class="num">游客{{index + 1}}</text>
                 <view class="humanItemInfo">
                     <text class="name">{{item.name}}</text>
                     <text class="idCard">身份证 {{item.credentials}}</text>
                 </view>
+                <text class="iconfont icon-shanchu" bind:tap="deleteVisitor"
+                data-id="{{item.id}}"></text>
+            </view>
+            <view class="add" bind:tap="open1">
+                <text class="iconfont icon-add"></text>
+                <text>选择游客</text>
             </view>
         </view>
+
         <view class="fixedNav">
             <text>在线支付</text>
             <view class="price">
@@ -119,10 +128,10 @@
         </view>
         <!--  日期选择  -->
         <view class="fadeIn" tt:if="{{dialog}}">
-            <view class="weui-mask" bindtap="close"></view>
+            <view class="weui-mask" bind:tap="close"></view>
             <view class="weui-half-screen-dialog">
                 <view class="weui-half-screen-dialog__hd">
-                    <view class="weui-half-screen-dialog__hd__side" bindtap="close">
+                    <view class="weui-half-screen-dialog__hd__side" bind:tap="close">
                         <view class="weui-icon-btn">关闭<text class="weui-icon-close-thin"></text>
                         </view>
                     </view>
@@ -138,21 +147,40 @@
                 </view>
             </view>
         </view>
-        <view class="fadeIn" tt:if="{{needToKnow}}">
-            <view class="weui-mask" bindtap="close3"></view>
+
+        <!--  游客选择  -->
+        <view class="fadeIn" tt:if="{{dialog1}}">
+            <view class="weui-mask" bind:tap="close1"></view>
             <view class="weui-half-screen-dialog">
                 <view class="weui-half-screen-dialog__hd">
-                    <view class="weui-half-screen-dialog__hd__side" bindtap="close3">
+                    <view class="weui-half-screen-dialog__hd__side" bind:tap="close1">
                         <view class="weui-icon-btn">关闭<text class="weui-icon-close-thin"></text>
                         </view>
                     </view>
                     <view class="weui-half-screen-dialog__hd__main">
-                        <text class="weui-half-screen-dialog__title">平台旅游预定条数</text>
+                        <text class="weui-half-screen-dialog__title">选择游客</text>
                     </view>
                 </view>
                 <view class="weui-half-screen-dialog__bd" style="padding-top:32rpx;height:500rpx;">
-                    平台旅游预定条数
+                    <checkbox-group bind:change="checkboxChange">
+                        <label class="ttui-cell checkNav" tt:for="{{visitPersons}}" tt:key="{{item.id}}">
+                            <view class="ttui-cell__hd">
+                                <checkbox value="{{item.id}}"
+                                          checked="{{item.checked}}" />
+                            </view>
+                            <view class="checkItemInfo">
+                                <text class="name">{{item.name}}</text>
+                                <text class="name">手机 {{item.cellphone}}</text>
+                                <text class="name">身份证 {{item.credentials}}</text>
+                                <text class="name">地址 {{item.address}}</text>
+                            </view>
+                        </label>
+                    </checkbox-group>
+                </view>
+                <view class="weui-half-screen-dialog__ft">
+                    <button id="confirm" bind:tap="confirmVisitor">确定</button>
                 </view>
             </view>
         </view>
     </view>
+</view>

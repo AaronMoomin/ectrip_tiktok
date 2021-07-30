@@ -155,7 +155,7 @@
     width: 56rpx;
     text-align: center;
     color: #fff;
-    background: #3e86e9;
+    background: #ff786c;
     margin: 0 auto;
 }
 
