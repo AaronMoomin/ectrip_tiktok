@@ -1,8 +1,11 @@
-<!--components/calendar/calendar.wxml-->
+<!--components/calendar/calendar.ttml-->
 <view class="calendar">
 	<view class="title flex">
 		<view class="flex">
-			<picker value="{{selectDay.year+'-'+selectDay.month}}" bindchange="editMonth" mode="date" fields="month" class="year-month">{{selectDay.year}}.{{selectDay.month>9?selectDay.month:"0"+selectDay.month}}</picker>
+			<picker value="{{selectDay.year+'-'+selectDay.month}}" bindchange="editMonth"
+					mode="date" fields="month" class="year-month">
+				{{selectDay.year}}.{{selectDay.month>9?selectDay.month:"0"+selectDay.month}}
+			</picker>
 			<view class="icon" bindtap="lastMonth" style="transform:rotate(180deg);">
 				<view class="iconfont icon-playfill"></view>
 			</view>
@@ -25,11 +28,17 @@
 
 	<!-- 日历主体 -->
 	<view class="flex-start flex-wrap calendar-main" style="height:400rpx">
-		<view wx:for="{{dateList}}" wx:key="dateList" class="day">
-			<view class="bg {{(item.year === selectDay.year && item.month === selectDay.month) ? (item.day === selectDay.day?'select':''): 'other-month'}}" catchtap="selectChange" data-day="{{item.day}}" data-year="{{item.year}}" data-month="{{item.month}}" data-date-string="{{item.dateString}}">
+		<view tt:for="{{dateList}}" tt:key="dateList" class="day">
+			<view class="bg {{item.dateString<today?'other-month':''}}
+			{{(item.year === selectDay.year && item.month === selectDay.month) ? (item.day === selectDay.day?'select':''): 'other-month'}}"
+				  catchtap="{{item.dateString>=today?'selectChange':''}}"
+				  data-day="{{item.day}}"
+				  data-year="{{item.year}}"
+				  data-month="{{item.month}}"
+				  data-date-string="{{item.dateString}}">
 				{{item.day}}
 			</view>
-			<view class="spot" wx:if="{{item.spot}}"></view>
+			<view class="spot" tt:if="{{item.spot}}"></view>
 		</view>
 	</view>
 </view>

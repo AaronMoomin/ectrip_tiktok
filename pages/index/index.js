@@ -3,7 +3,8 @@
 const app = getApp();
 Page({
   data: {
-    isSelect:[true,false,false],
+    isSelect:[false,false,true,false,false],
+    move:50,
   },
 
   // 事件处理函数
@@ -14,9 +15,17 @@ Page({
 
   },
   handleAddress(e){
-    let {isSelect} = this.data
+    let {isSelect,move} = this.data
     let index = e.currentTarget.dataset.index
-
+    let mid = (isSelect.length)/2
+    move=0
+    if (index<Math.floor(mid)){
+      move=move-(index*50)
+    }else if (index>Math.floor(mid)){
+      move=move+(index*50)
+    }else {
+      move = 50
+    }
     for (let i in isSelect) {
       isSelect[i] = false
       if (index == i) {
@@ -24,7 +33,8 @@ Page({
       }
     }
     this.setData({
-      isSelect
+      isSelect,
+      move
     })
   },
   handleScan() {

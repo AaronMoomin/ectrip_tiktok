@@ -62,7 +62,8 @@
             <text class="otherTitle">休闲度假</text>
         </view>
         <view class="hotContent">
-            <view class="hotItem" bind:tap="toTicketDetail" data-id="{{item.id}}" data-name="{{item.name}}"
+            <view class="hotItem" bind:tap="toTicketDetail"
+                  data-id="{{item.id}}" data-name="{{item.name}}"
                 tt:for="{{goodsList}}" tt:key="{{item.id}}">
                 <image src="{{item.imageList[0].url || '/static/images/gbtl.jpg'}}"></image>
                 <view class="instruction">

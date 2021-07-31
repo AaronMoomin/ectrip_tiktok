@@ -2,7 +2,7 @@
     <view class="imgShow">
         <swiper class="scrollNav" indicator-dots circular indicator-active-color="#fff">
             <swiper-item class="scrollItem" tt:for="{{goods.imageList}}" tt:key="{{item.uid}}">
-                <image src="{{item.url}}"></image>
+                <image src="{{goods.imageList.length!=0?item.url:'/static/images/hotelBack.png'}}"></image>
             </swiper-item>
         </swiper>
     </view>
@@ -17,9 +17,10 @@
                     <text class="iconfont icon-tiaozhuan"></text>
                 </view>
             </view>
-            <view bind:tap="handleCollect" data-goods="{{goods}}" class="{{isCollect?'collected':'collect'}}">
+            <view bind:tap="handleCollect" data-goods="{{goods}}"
+                  class="{{isCollect?'collected':'collect'}}">
                 <text class="iconfont icon-xingxing"></text>
-                <text>收藏</text>
+                <text>{{isCollect?'已收藏':'收藏'}}</text>
             </view>
         </view>
     </view>

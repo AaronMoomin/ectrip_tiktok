@@ -34,7 +34,7 @@
             </view>
             <view class="btnNav">
                 <text class="cancel">已完成</text>
-                <text class="reserve" catch:tap="toTicketDetail" data-id="{{item.id}}" data-name="{{item.productName}}"
+                <text class="reserve" catch:tap="toTicketDetail" data-id="{{item.goodsId}}" data-name="{{item.productName}}"
                 >再次预定</text>
             </view>
         </view>

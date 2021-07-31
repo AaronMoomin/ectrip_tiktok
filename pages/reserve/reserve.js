@@ -46,8 +46,8 @@ Page({
         //当前输入手机号
         isCurrentWaring: false,
         warnMessage: '',
-        array: ['身份证', '护照', '台胞证', '港澳通行证', '军官证', '其他'],
-        arrayVal: ['ID_CARD', 'HUZHAO', 'TAIBAO', 'GANGAO', 'JUNGUAN', 'OTHER'],
+        array: ['身份证', '护照', '军官证', '台胞证', '港澳通行证', '其他'],
+        arrayVal: ['ID_CARD', 'HUZHAO','JUNGUAN', 'TAIBAO', 'GANGAO', 'OTHER'],
         users: [],
         value1: 0,
         value1Show: '身份证',
@@ -72,6 +72,7 @@ Page({
         voteNum: 1,
         dateString: "",
         spot: [],
+        nickName:'',
     },
     // 常用联系人列表查询
     async getList() {
@@ -100,7 +101,7 @@ Page({
         let {visitPersons, visitPersonsShow} = this.data
         for (let visitPerson of visitPersons) {
             if (visitPerson.checked) {
-                if (visitPersonsShow.indexOf(visitPerson)==-1){
+                if (visitPersonsShow.indexOf(visitPerson) == -1) {
                     visitPersonsShow.push(visitPerson)
                 }
                 visitPerson.checked = false
@@ -128,7 +129,7 @@ Page({
         let {visitPersons} = this.data
         for (let person of visitPersons) {
             for (let v of e.detail.value) {
-                if (person.id==v){
+                if (person.id == v) {
                     person.checked = true
                 }
             }
@@ -158,7 +159,7 @@ Page({
             isIdCardCurrentWaring, isPhoneCurrentWaring,
             visitPersonsShow
         } = this.data
-        let credentialsType = arrayVal[value1]
+        let credentialsType = value1
         price = price * 100
         nowPrice = nowPrice * 100
         if (userName == '') {
@@ -193,17 +194,27 @@ Page({
                 })
             }
             return
-        }else if (visitPersonsShow.length==0){
+        } else if (visitPersonsShow.length == 0) {
             tt.showToast({
                 title: '游客不能为空',
                 icon: 'fail'
             })
             return
         }
+        let visitPerson = []
+        for (let item of visitPersonsShow) {
+            let perItem = {
+                credentials: item.credentials,
+                credentialsType: arrayVal[item.credentialsType],
+                mobile: item.cellphone,
+                name: item.name
+            }
+            visitPerson.push(perItem)
+        }
         let obj = JSON.stringify({
             contactPerson: {
                 credentials: idCard,
-                credentialsType,
+                credentialsType:arrayVal[credentialsType],
                 mobile: phone,
                 name: userName
             },
@@ -214,15 +225,15 @@ Page({
             productId: product.productId,
             sellPrice: price,
             startDate: selectDay,
-            visitPersonsShow
+            visitPersons: visitPerson
         })
-        console.log(obj);
+        console.log(JSON.parse(obj));
         let object = base64.encode(obj)
         await request.myRequest(
-            '/tiktok/mutual/createPaymentOrder',
+            '/tiktok/mutual/createOrder',
             {
                 data: object,
-                signed: "111"
+                signed: "reserve"
             },
             'post'
         ).then(res => {
@@ -785,6 +796,7 @@ Page({
      */
     onLoad: function (options) {
         options.product = JSON.parse(options.product)
+
         let date = new Date();
         let day = date.getDate();
         let {

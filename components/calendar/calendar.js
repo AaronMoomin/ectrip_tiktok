@@ -20,6 +20,7 @@ Component({
     data: {
       dateList: [], //日历主体渲染数组
       selectDay: {}, //选中时间
+      today:'',
     },
   
     /**
@@ -237,6 +238,12 @@ Component({
           day: now.getDate(),
           dateString: this.formatTime(now, "Y-M-D")
         }
+        let date = new Date()
+        let today = this.formatTime(date, "Y-M-D")
+        this.setData({
+          today:today
+        })
+        console.log(this.data.today);
         this.setMonth(selectDay.year, selectDay.month, selectDay.day)
       }
     },

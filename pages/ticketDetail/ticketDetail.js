@@ -21,57 +21,163 @@ Page({
         dialog1: false,
         isCollect:'',
         openid:'',
+        nickName:'',
+        avatarUrl:'',
+    },
+    checkLogin() {
+        tt.getStorage({
+            key: 'userInfo',
+            success: res => {
+                console.log(res);
+                this.setData({
+                    nickName: res.data.nickName,
+                    avatarUrl: res.data.avatarUrl
+                })
+            },
+            fail: err => {
+                console.log(err);
+            }
+        })
+        if (this.data.nickName == "") {
+            console.log("未登录");
+            this.handleLogin()
+            return false
+        } else {
+            console.log("已登录");
+            return true
+        }
+    },
+    async login(value) {
+        let obj = JSON.stringify({
+            "anonymous_code": value.anonymousCode,
+            "appid": app.globalData.appid,
+            "code": value.code,
+            "secret": app.globalData.secret
+        })
+        let Object = base64.encode(obj)
+        let data = {
+            "data": Object,
+            "signed": "login"
+        }
+        await request.myRequest(
+            '/tiktok/serverAPI/login',
+            data,
+            "post"
+        ).then(res => {
+            console.log(res);
+            let {openid, session_key, unionid} = res.data.data
+            app.globalData.openid = openid
+            tt.setStorage({
+                key: 'session',
+                data: {
+                    openid,
+                    session_key,
+                    unionid
+                },
+                success: res => {
+                    // console.log('openid调用成功');
+                },
+                fail: err => {
+                    // console.log('openid调用失败');
+                }
+            })
+        }).catch(err => {
+            console.log(err);
+        })
+    },
+    handleLogin() {
+        tt.login({
+                force: true,
+                success: (res) => {
+                    // console.log('登录回调', res);
+                    tt.getUserInfo({
+                        withCredentials: true,
+                        success: (res1) => {
+                            this.login(res)
+                            this.setData({
+                                avatarUrl: res1.userInfo.avatarUrl,
+                                nickName: res1.userInfo.nickName
+                            })
+                            tt.setStorage({
+                                key: "userInfo",
+                                data: {
+                                    avatarUrl: res1.userInfo.avatarUrl,
+                                    nickName: res1.userInfo.nickName
+                                },
+                                success: (res) => {
+                                    console.log(`userInfo写入成功`);
+                                },
+                                fail(res) {
+                                    // console.log(`userInfo调用失败`);
+                                },
+                            });
+                        },
+                        fail(res) {
+                            console.log(`getUserInfo失败`);
+                        },
+                    });
+                },
+                fail: (err) => {
+                    console.log('取消', err);
+                }
+            }
+        )
     },
     async handleCollect(e) {
-        let {isCollect,openid} = this.data
-        console.log(e.currentTarget.dataset.goods);
-        let obj = JSON.stringify({
-            "categoryId": e.currentTarget.dataset.goods.categoryId,
-            "goodsId": e.currentTarget.dataset.goods.id,
-            openid,
-        })
-        let object = base64.encode(obj)
-        if (isCollect) {
-            tt.showToast({
-                title: '取消收藏',
-                icon: 'none'
+        if (this.checkLogin()){
+            this.setData({
+                openid:app.globalData.openid
+            });
+            let {isCollect,openid} = this.data
+            console.log(e.currentTarget.dataset.goods);
+            let obj = JSON.stringify({
+                "categoryId": e.currentTarget.dataset.goods.categoryId,
+                "goodsId": e.currentTarget.dataset.goods.id,
+                openid,
             })
-            isCollect=0
-            await request.myRequest(
-                '/tiktok/personCenter/collection/remove',
-                {
-                    goodsId:e.currentTarget.dataset.goods.id,
-                    openid:app.globalData.openid
-                },
-                'post',
-                'application/x-www-form-urlencoded'
-            ).then(res => {
-                console.log(res);
-            }).catch(err => {
-                console.log(err);
-            })
-        } else {
-            tt.showToast({
-                title: '收藏成功',
-                icon: 'none'
-            })
-            isCollect=1
-            await request.myRequest(
-                '/tiktok/personCenter/collection/add',
-                {
-                    data:object,
-                    signed:'add'
-                },
-                'post',
-            ).then(res => {
-                console.log(res);
-            }).catch(err => {
-                console.log(err);
+            let object = base64.encode(obj)
+            if (isCollect) {
+                tt.showToast({
+                    title: '取消收藏',
+                    icon: 'none'
+                })
+                isCollect=0
+                await request.myRequest(
+                    '/tiktok/personCenter/collection/remove',
+                    {
+                        goodsId:e.currentTarget.dataset.goods.id,
+                        openid:app.globalData.openid
+                    },
+                    'post',
+                    'application/x-www-form-urlencoded'
+                ).then(res => {
+                    console.log(res);
+                }).catch(err => {
+                    console.log(err);
+                })
+            } else {
+                tt.showToast({
+                    title: '收藏成功',
+                    icon: 'none'
+                })
+                isCollect=1
+                await request.myRequest(
+                    '/tiktok/personCenter/collection/add',
+                    {
+                        data:object,
+                        signed:'add'
+                    },
+                    'post',
+                ).then(res => {
+                    console.log(res);
+                }).catch(err => {
+                    console.log(err);
+                })
+            }
+            this.setData({
+                isCollect
             })
         }
-        this.setData({
-            isCollect
-        })
     },
     slide(){
         let {productList,productListShow} = this.data
@@ -139,18 +245,15 @@ Page({
         })
     },
     toReserve(e) {
-        let product = JSON.stringify(e.currentTarget.dataset.product)
-        let totalStock = e.currentTarget.dataset.totalstock
-        tt.navigateTo({
-            url: `/pages/reserve/reserve?product=${product}&totalStock=${totalStock}`
-        });
-    },
-
-    handleLocation() {
-        tt.showToast({
-            title: '暂无经纬度信息',
-            icon: 'none'
-        });
+        if (this.checkLogin()){
+            let product = JSON.stringify(e.currentTarget.dataset.product)
+            let totalStock = e.currentTarget.dataset.totalstock
+            tt.navigateTo({
+                url: `/pages/reserve/reserve?product=${product}&totalStock=${totalStock}`
+            });
+        }else {
+            console.log('未登录');
+        }
     },
 
     open() {
@@ -165,13 +268,6 @@ Page({
         });
     },
 
-    handleSlide() {
-        this.setData({
-            contentHeight: 'auto',
-            displayed: 'none'
-        });
-    },
-
     /**
      * 生命周期函数--监听页面加载
      */
@@ -179,10 +275,18 @@ Page({
         tt.setNavigationBarTitle({
             title: options.name
         });
+        tt.getStorage({
+            key:'userInfo',
+            success:res=>{
+                this.setData({
+                    nickName:res.data.nickName
+                })
+            }
+        })
         this.setData({
             name: options.name,
             id:options.id,
-            openid:app.globalData.openid
+            openid:app.globalData.openid,
         });
         this.getGoodsDetail()
     },
@@ -197,6 +301,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+
     },
 
     /**

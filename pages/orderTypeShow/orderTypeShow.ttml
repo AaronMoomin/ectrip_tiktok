@@ -1,5 +1,6 @@
 <view class="orderContainer">
-    <view class="orderItem" bind:tap="toTicketDetail" data-id="{{item.id}}" data-name="{{item.name}}"
+    <view class="orderItem" bind:tap="toTicketDetail"
+          data-id="{{item.id}}" data-name="{{item.name}}"
           tt:for="{{goodsList}}" tt:key="{{item.id}}">
         <view class="orderImg">
             <text class="type">门票</text>

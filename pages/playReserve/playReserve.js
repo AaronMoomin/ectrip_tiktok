@@ -12,19 +12,109 @@ Page({
     showTomorrow: true,
     selectDay: '',
     dialog:false,
+    isCollect:false,
+  },
+  handleCollect(){
+    let {isCollect} = this.data
+    if (isCollect) {
+      tt.showToast({
+        title:'取消收藏',
+        icon: 'none'
+      })
+      isCollect = false
+    }else {
+      tt.showToast({
+        title:'收藏成功',
+        icon: 'none'
+      })
+      isCollect = true
+    }
+    this.setData({
+      isCollect
+    })
   },
   toRouteReserve(){
     tt.navigateTo({
       url:"/pages/routeReserve/routeReserve"
     })
   },
+  formatTime(time, format) {
+    function formatNumber(n) {
+      n = n.toString()
+      return n[1] ? n : '0' + n
+    }
+
+    function getDate(time, format) {
+      const formateArr = ['Y', 'M', 'D', 'h', 'm', 's']
+      const returnArr = []
+      const date = new Date(time)
+      returnArr.push(date.getFullYear())
+      returnArr.push(formatNumber(date.getMonth() + 1))
+      returnArr.push(formatNumber(date.getDate()))
+      returnArr.push(formatNumber(date.getHours()))
+      returnArr.push(formatNumber(date.getMinutes()))
+      returnArr.push(formatNumber(date.getSeconds()))
+      for (const i in returnArr) {
+        format = format.replace(formateArr[i], returnArr[i])
+      }
+      return format
+    }
+
+    function getDateDiff(time) {
+      let r = ''
+      const ft = new Date(time)
+      const nt = new Date()
+      const nd = new Date(nt)
+      nd.setHours(23)
+      nd.setMinutes(59)
+      nd.setSeconds(59)
+      nd.setMilliseconds(999)
+      const d = parseInt((nd - ft) / 86400000)
+      switch (true) {
+        case d === 0:
+          const t = parseInt(nt / 1000) - parseInt(ft / 1000)
+          switch (true) {
+            case t < 60:
+              r = '刚刚'
+              break
+            case t < 3600:
+              r = parseInt(t / 60) + '分钟前'
+              break
+            default:
+              r = parseInt(t / 3600) + '小时前'
+          }
+          break
+        case d === 1:
+          r = '昨天'
+          break
+        case d === 2:
+          r = '前天'
+          break
+        case d > 2 && d < 30:
+          r = d + '天前'
+          break
+        default:
+          r = getDate(time, 'Y-M-D')
+      }
+      return r
+    }
+    if (!format) {
+      return getDateDiff(time)
+    } else {
+      return getDate(time, format)
+    }
+  },
   dateChange(e) {
     console.log("现在日期是", e.detail.dateString)
-    this.setData({
-      dateString: e.detail.dateString,
-      selectDay: e.detail.dateString
-    })
-    this.dayClick(e)
+    let date = new Date()
+    let thisDay = this.formatTime(date,'Y-M-D')
+    if (e.detail.dateString>=thisDay){
+      this.setData({
+        dateString: e.detail.dateString,
+        selectDay: e.detail.dateString
+      })
+      this.dayClick(e)
+    }
   },
   dayClick(e) {
     let {

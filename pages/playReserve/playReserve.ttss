@@ -55,6 +55,19 @@
     border-radius: 20rpx;
     font-size: 26rpx;
 }
+.infoContainer .collected{
+    position: absolute;
+    right: 20rpx;
+    top: 50rpx;
+    width: 200rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    color:#ffe6d4;
+    background:#ff7d71;
+    border-radius: 20rpx;
+    font-size: 26rpx;
+}
 .infoContainer .collect .iconfont{
     margin-right: 10rpx;
     font-size: 26rpx;
@@ -141,7 +154,7 @@
     width: 300rpx;
     height: 80rpx;
     border-radius: 50rpx;
-    background: #3e86e9;
+    background: #ff786c;
     color: #fff;
     line-height: 80rpx;
     text-align: center;
@@ -180,8 +193,9 @@
     bottom: 0;
     width: 100%;
     font-size:26rpx;
-    border: 2rpx solid #eee;
-    background: #fff;
+    border: 2rpx solid #120e33;
+    background: #120e33;
+    color:#fff;
     display: flex;
     padding: 0 20rpx 20rpx;
 }

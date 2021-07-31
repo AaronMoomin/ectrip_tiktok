@@ -15,9 +15,10 @@
         <text class="title">常规平遥乔家一日游</text>
         <view class="price">￥<text class="big">270</text>
         </view>
-        <view class="collect">
+        <view bind:tap="handleCollect" data-goods="{{goods}}"
+              class="{{isCollect?'collected':'collect'}}">
             <text class="iconfont icon-xingxing"></text>
-            <text>收藏</text>
+            <text>{{isCollect?'已收藏':'收藏'}}</text>
         </view>
         <view class="dateContainer">
             <text class="tie">产品类型/日期</text>

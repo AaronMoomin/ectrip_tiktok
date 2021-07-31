@@ -15,7 +15,7 @@
                     <view bind:tap="toTicketDetail" class="hotItemR"
                           data-name="{{item.name}}" data-id="{{item.id}}"
                           tt:for="{{allList}}" tt:key="{{item.id}}">
-                        <image src="{{item.imageList[0].length!=0?item.imageList[0].url:'/static/images/gbtl.jpg'}}"></image>
+                        <image src="{{item.imageList.length!=0?item.imageList[0].url:'/static/images/hotelBack.png'}}"></image>
                         <view class="instruction">
                             <view class="titleNav">
                                 <text class="name">{{item.name}}</text>
