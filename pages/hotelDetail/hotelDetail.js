@@ -16,6 +16,7 @@ Page({
         daysBetween: '',
         dialog: false,
         selectArray:[],
+        params:[],
     },
     handleCollect(){
         let {isCollect} = this.data
@@ -73,32 +74,26 @@ Page({
             selectArray: e.detail.selectArray
         })
     },
+    onMyEvent(e){
+        console.log(e.detail.params);
+        let params = e.detail.params
+        this.setData({
+            params
+        })
+    },
     confirmDate() {
-        let {today,tomorrow,weekN,weekT,daysBetween,selectArray} = this.data
-        console.log(selectArray);
-        let year0 = selectArray[0].year
-        let month0 = selectArray[0].month+''
-        month0 = month0.padStart(2,'0')
-        let date0 = selectArray[0].date+''
-        date0 = date0.padStart(2,'0')
-        let year1 = selectArray[1].year
-        let month1 = selectArray[1].month+''
-        month1 = month1.padStart(2,'0')
-        let date1 = selectArray[1].date+''
-        date1 = date1.padStart(2,'0')
-        let d0 = `${year0}-${month0}-${date0}`
-        let d1 = `${year1}-${month1}-${date1}`
-        daysBetween = this.getDaysBetween(d0, d1)
-        today = `${month0}月-${date0}日`
-        tomorrow = `${month1}月-${date1}日`
-        weekT = util.GetWeek(d0,0)
-        weekN = util.GetWeek(d1,0)
+        let {today,tomorrow,daysBetween,params} = this.data
+        today = params[0].xuanShiJian
+        today = today.split('-')[1]
+        today = `${today}月${(params[0].xuanDayShi+'').padStart(2,'0')}日`
+        tomorrow = params[1].xuanShiJian
+        tomorrow = tomorrow.split('-')[1]
+        tomorrow = `${tomorrow}月${(params[1].xuanDayShi+'').padStart(2,'0')}日`
+        daysBetween = params[1].chaDay
         this.setData({
             today,
             tomorrow,
             daysBetween,
-            weekT,
-            weekN,
             dialog:false
         })
     },

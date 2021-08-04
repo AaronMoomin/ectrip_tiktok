@@ -212,7 +212,8 @@
             </view>
         </view>
         <view class="weui-half-screen-dialog__bd" style="height:560rpx;">
-            <calendar class="calendar" bind:getMyDate="handleGetMyDate"></calendar>
+<!--            <calendar class="calendar" bind:getMyDate="handleGetMyDate"></calendar>-->
+            <rili bindmyevent="onMyEvent" id='rili'></rili>
         </view>
         <view class="weui-half-screen-dialog__ft">
             <button class="confirmBtn" bind:tap="confirmDate">确定</button>

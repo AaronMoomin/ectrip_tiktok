@@ -7,10 +7,10 @@
 				{{selectDay.year}}.{{selectDay.month>9?selectDay.month:"0"+selectDay.month}}
 			</picker>
 			<view class="icon" bindtap="lastMonth" style="transform:rotate(180deg);">
-				<view class="iconfont icon-playfill"></view>
+				<view class="iconfont icon-tiaozhuan"></view>
 			</view>
 			<view class="icon" bindtap="nextMonth">
-				<view class="iconfont icon-playfill"></view>
+				<view class="iconfont icon-tiaozhuan"></view>
 			</view>
 		</view>
 	</view>

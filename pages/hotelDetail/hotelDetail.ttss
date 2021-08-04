@@ -214,7 +214,7 @@
 
 .dateContainer .in {
     width: 40%;
-    /*margin: 0 30rpx;*/
+    margin: 0 10rpx;
 }
 
 .dateContainer .line {

@@ -258,3 +258,13 @@
     transform: rotateZ(90deg);
     margin-left: 10rpx;
 }
+.desc{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20rpx;
+}
+.desc .name{
+    font-size:32rpx;
+    font-weight: bold;
+    margin-bottom: 10rpx;
+}

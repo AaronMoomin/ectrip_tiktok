@@ -1,0 +1,39 @@
+<view animation="{{animationData}}" class="page" id="page">
+    <view class="scroll">
+        <view class="zhiDing">
+            <view class="list " tt:for="{{date}}" tt:key="{{date}}">{{item}}</view>
+        </view>
+        <scroll-view class="scroll1" scroll-y='true' scroll-into-view='{{tiao}}'>
+            <view id="tiao"></view>
+            <view class="xianRi" tt:for="{{xianShiZongData}}" tt:for-item='list' tt:key="list.id">
+                <view class="xianriLI_1">{{list.xian}}</view>
+                <view class='xianriLI'>
+                    <view class="list quXia" tt:for="{{list.shangData}}" tt:key="{{shangY}}">{{item}}</view>
+                    <view tt:if="{{xianShi==list.xian && item.data<xianDay}}" class="list hui"
+                          tt:for="{{list.xainData}}" tt:key="{{dateArr}}">{{item.data}}
+                    </view>
+                    <view tt:if="{{xianShi==list.xian && item.data>=xianDay || xianShi!=list.xian}}"
+                          class="list {{(item.getTime>xuanZheData[0].getTime && item.getTime<xuanZheData[1].getTime)?'bgDate':''}}"
+                          tt:for="{{list.xainData}}" tt:key="{{dateArr}}" bindtap='dianXuan' data-day='{{item.data}}'
+                          data-shi='{{list.xian}}'>
+                        <view tt:if='{{xuanZheData.length==2 && item.getTime==xuanZheData[0].getTime}}'
+                              class='qiangXuan'></view>
+                        <view tt:if='{{xuanZheData.length==2 && item.getTime==xuanZheData[1].getTime}}'
+                              class='houXuan'></view>
+                        <view class="xianDayaRi {{xuanZheData.length==2 && (item.getTime==xuanZheData[0].getTime||item.getTime==xuanZheData[1].getTime)?'xuanbgDate':''}}  {{xianShi==list.xian && xianDay==item.data?'day':''}} {{(xuanZheData[0].xuanShiJian==list.xian && xuanZheData[0].xuanDayShi==item.data)||(xuanZheData[1].xuanShiJian==list.xian && xuanZheData[1].xuanDayShi==item.data)?'xaunDay':''}}">
+                            <view>{{item.data}}</view>
+                            <view tt:if='{{xuanZheData.length==2 && item.getTime==xuanZheData[0].getTime}}'
+                                  class='ruzhu'>{{xuanZheData[0].text}}
+                            </view>
+                            <view tt:if='{{xuanZheData.length==2 && item.getTime==xuanZheData[1].getTime}}'
+                                  class='likai'>{{xuanZheData[1].text}}
+                            </view>
+                        </view>
+                    </view>
+                    <view class="list quXia" tt:for="{{list.xiaData}}" tt:key="{{xiaY}}">{{item}}</view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+

@@ -37,6 +37,9 @@
 .showcaseItem .top .topNav .name{
     color:#000;
 }
+.showcaseItem .top .topNav .star{
+    color:#f5a623;
+}
 .showcaseItem .top .topNav .star text{
     color: #fcc511;
 }

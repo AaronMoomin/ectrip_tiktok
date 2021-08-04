@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "calendar": "/components/hotelCalendar/hotelCalendar",
+    "rili": "/components/rili/rili",
     "operation": "/components/operation/operation"
   },
   "navigationBarTitleText": ""

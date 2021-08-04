@@ -2,7 +2,7 @@
     <image class="headImg" src="/static/images/backImg.png" alt="backImg"></image>
     <!-- 搜索框 -->
     <view class="topNav">
-        <text class="iconfont icon-saoma2 scan" bind:tap="handleScan"></text>
+        <text class="iconfont icon-saoma scan" bind:tap="handleScan"></text>
         <view class="inputItem">
             <text class="iconfont icon-sousuo search"></text>
             <input class="inputBox" placeholder-style="color:#ffffff;" type="text" placeholder="搜索景区, 门票, 酒店"></input>

@@ -28,14 +28,15 @@ Component({
     methods: {
         select_date: function (e) {
             let {selectArray, thisDate, nextDate, betweenDayList} = this.data
-            // this.triggerEvent('getMyDate',{selectArray:selectArray})
-            //如果点击项为空百项目，不继续执行
+            //?子组件向父组件传值
+            this.triggerEvent('getMyDate',{selectArray:selectArray})
+            //?如果点击项为空百项目，不继续执行
             var date = e.currentTarget.dataset.date;
             if (date == '' || date <= 0) {
                 return;
             }
-            if (selectArray.length!=0 && date==selectArray[0].date){
-                selectArray=[]
+            if (selectArray.length != 0 && date == selectArray[0].date) {
+                selectArray = []
             }
             this.setData({
                 selectArray
@@ -44,11 +45,21 @@ Component({
             var item = e.currentTarget.dataset.keyitem;
             var month = e.currentTarget.dataset.month;
             if (month == 'thisMonth') {
+                console.log('点击了这个月');
                 var thisDateLists = this.data.thisMonthArr;
                 thisDateLists[index][item].month = this.data.thisMonth
                 thisDateLists[index][item].year = this.data.thisYear
                 if (selectArray.indexOf(thisDateLists[index][item]) === -1) {
-                    if (selectArray.length>1){
+                    if (selectArray.length > 1) {
+                        //?处理更新离店点击
+                        thisDateLists.find(item => {
+                            for (let i = 0; i < item.length; i++) {
+                                if (item[i].date==selectArray[1].date){
+                                    item[i].outDate = false
+                                    item[i].state = false
+                                }
+                            }
+                        })
                         selectArray.pop()
                     }
                     selectArray.push(thisDateLists[index][item])
@@ -56,33 +67,72 @@ Component({
                 this.setData({
                     selectArray
                 })
-                console.log(selectArray);
-                //切换选中状态
-                if (thisDateLists[index][item].state == true) { // 取消选中
+                console.log(selectArray,'selectArray');
+                //?切换选中状态
+                if (thisDateLists[index][item].state) { //? 取消选中
                     thisDateLists[index][item].state = false;
                     if (selectArray.length === 1) {
                         thisDateLists[index][item].inDate = false
+                        for (let item of thisDateLists) {
+                            for (let i = 0; i < item.length; i++) {
+                                if (item[i].outDate){
+                                    item[i].outDate = false
+                                }
+                                item[i].state = false
+                            }
+                        }
                         selectArray.pop()
-                    }
-                    if (thisDateLists[index][item].outDate) {
+                    }else if (thisDateLists[index][item].outDate) {
+                        console.log('点击了离店');
                         thisDateLists[index][item].outDate = false
-                        selectArray.pop()
+                        for (let item of thisDateLists) {
+                            for (let i = 0; i < item.length; i++) {
+                                if (item[i].inDate){
+                                    item[i].inDate = false
+                                }
+                                item[i].state = false
+                            }
+                        }
+                        selectArray = []
                     }
-                    for (let i = 0; i < thisDateLists.length; i++) {
-                        for (let j = 0; j < thisDateLists[i].length; j++) {
-                            thisDateLists[i][j].state = false;
-                            thisDateLists[i][j].outDate = false
+                    for (let item of thisDateLists) {
+                        for (let i = 0; i < item.length; i++) {
+                            if (selectArray.length!=0){
+                                item[i].state = false
+                            }
                         }
                     }
-                } else if (thisDateLists[index][item].state == false) {//选中
+                } else if (thisDateLists[index][item].state == false) {//?选中
                     thisDateLists[index][item].state = true;
                     if (selectArray.length === 1) {// 判断入住
                         thisDateLists[index][item].inDate = true
                     } else if (!thisDateLists[index][item].outDate) {// 判断离店
                         thisDateLists[index][item].outDate = true
-                        this.triggerEvent('getMyDate',{selectArray:selectArray})
+                        if (selectArray[1].date < selectArray[0].date &&
+                            selectArray[1].year == selectArray[0].year) {
+                            for (let item of thisDateLists) {
+                                for (let i = 0; i < item.length; i++) {
+                                    if (item[i].date == selectArray[1].date) {
+                                        item[i].outDate = false
+                                        item[i].inDate = true
+                                    }
+                                    if (item[i].date == selectArray[0].date &&
+                                        item[i].year==selectArray[0].year) {
+                                        item[i].outDate = true
+                                        item[i].inDate = false
+                                    }
+                                }
+                            }
+                            let temp = ''
+                            temp = selectArray[0]
+                            selectArray[0] = selectArray[1]
+                            selectArray[1] = temp
+                        }
                     }
                 }
+                this.setData({
+                    selectArray
+                })
                 if (selectArray.length != 0) {
                     let thisMonth = selectArray[0].month + '';
                     thisMonth = thisMonth.padStart(2, '0')
@@ -114,46 +164,88 @@ Component({
                         }
                     }
                 }
-            } else {
+            } else { //?下个月
+                console.log('点击了下个月');
                 var nextDateLists = this.data.nextMonthArr;
+                var thisDateLists = this.data.thisMonthArr
                 nextDateLists[index][item].month = this.data.nextMonth
                 nextDateLists[index][item].year = this.data.nextYear
-                var thisDateLists = this.data.thisMonthArr
                 if (selectArray.indexOf(nextDateLists[index][item]) === -1) {
+                    if (selectArray.length > 1) {
+                        //?处理更新离店点击
+                        nextDateLists.find(item => {
+                            for (let i = 0; i < item.length; i++) {
+                                if (item[i].date == selectArray[1].date) {
+                                    item[i].outDate = false
+                                    item[i].state = false
+                                }
+                            }
+                        })
+                        selectArray.pop()
+                    }
                     selectArray.push(nextDateLists[index][item])
                 }
                 this.setData({
                     selectArray
                 })
-                // console.log(selectArray);
+                console.log(selectArray,'selectArray');
                 //切换选中状态
-                if (nextDateLists[index][item].state == true) { // 取消选中
+                if (nextDateLists[index][item].state == true) { //? 取消选中
                     nextDateLists[index][item].state = false;
                     if (selectArray.length === 1) {
+                        console.log('点击了入店', selectArray);
                         nextDateLists[index][item].inDate = false
+                        for (let item of nextDateLists) {
+                            for (let i = 0; i < item.length; i++) {
+                                item[i].outDate = false;
+                                item[i].state = false;
+                            }
+                        }
                         selectArray.pop()
                     } else if (nextDateLists[index][item].outDate) {
+                        console.log('点击了离店');
                         nextDateLists[index][item].outDate = false
                         selectArray.pop()
                     }
-                    for (let i = 0; i < nextDateLists.length; i++) {
-                        for (let j = 0; j < nextDateLists[i].length; j++) {
-                            nextDateLists[i][j].state = false;
+                    for (let item of nextDateLists) {
+                        for (let i = 0; i < item.length; i++) {
+                            item[i].state = false;
                         }
                     }
-                    for (let i = 0; i < thisDateLists.length; i++) {
-                        for (let j = 0; j < thisDateLists[i].length; j++) {
-                            thisDateLists[i][j].state = false;
+                    for (let item of thisDateLists) {
+                        for (let i = 0; i < item.length; i++) {
+                            item.state = false;
                         }
                     }
-                } else if (nextDateLists[index][item].state == false) {//选中
+                } else if (nextDateLists[index][item].state == false) {//?选中
                     nextDateLists[index][item].state = true;
                     if (selectArray.length === 1) {// 判断入住
                         nextDateLists[index][item].inDate = true
                     } else if (!nextDateLists[index][item].outDate) {// 判断离店
                         nextDateLists[index][item].outDate = true
-                        this.triggerEvent('getMyDate',{selectArray:selectArray})
+                        if (selectArray[1].date < selectArray[0].date) {
+                            for (let item of nextDateLists) {
+                                for (let i = 0; i < item.length; i++) {
+                                    if (item[i].date == selectArray[1].date) {
+                                        item[i].outDate = false
+                                        item[i].inDate = true
+                                    }
+                                    if (item[i].date == selectArray[0].date &&
+                                        item[i].year==selectArray[0].year) {
+                                        item[i].outDate = true
+                                        item[i].inDate = false
+                                    }
+                                }
+                            }
+                            let temp = ''
+                            temp = selectArray[0]
+                            selectArray[0] = selectArray[1]
+                            selectArray[1] = temp
+                        }
                     }
+                    this.setData({
+                        selectArray
+                    })
                 }
                 if (selectArray.length != 0) {
                     let thisMonth = selectArray[0].month + '';
@@ -173,6 +265,7 @@ Component({
                     for (let i = 0; i < selectBetween.length; i++) {
                         betweenDayList.push(selectBetween[i].split('-')[2])
                     }
+                    console.log(betweenDayList);
                 }
                 let pre = []
                 let next = []

@@ -3,7 +3,7 @@
         <scroll-view scroll-y class='scroll-view'>
             <!-- 当前月 -->
             <view class='calendar'>
-                <view class='year_month'> {{thisYear}}年{{thisMonth}}月</view>
+                <view class='year_month'>{{thisYear}}年{{thisMonth}}月</view>
                 <view class='week'>
                     <text class='saturday'>日</text>
                     <text>一</text>
@@ -15,13 +15,34 @@
                 </view>
                 <block tt:for="{{thisMonthArr}}" tt:key="index">
                     <view class='week'>
-                        <text class="saturday {{item[0]['inDate']==true?'in':''}} {{item[0]['outDate']==true?'out':''}} {{item[0]['isToday'] == true ? 'now' : ''}} {{item[0]['date'] < today ? 'disabled' : ''}} {{item[0]['state']==true?'selected':''}}" data-month='thisMonth'  data-Year="{{thisYear}}" data-Month1="{{thisMonth}}" data-date="{{item[0]['date'] < today ? '' :item[0]['date']}}" data-key='{{index}}' data-keyitem='0' bindtap="select_date">{{item[0]['date']}}</text>
-                        <text class=" {{item[1]['inDate']==true?'in':''}} {{item[1]['outDate']==true?'out':''}} {{item[1]['isToday'] == true ? 'now' : ''}} {{item[1]['date'] < today ? 'disabled' : ''}} {{item[1]['state']==true?'selected':''}}" data-month='thisMonth' data-Year="{{thisYear}}" data-Month1="{{thisMonth}}" data-date="{{item[1]['date'] < today ? '' :item[1]['date']}}" data-key='{{index}}' data-keyitem='1' bindtap="select_date">{{item[1]['date']}}</text>
-                        <text class=" {{item[2]['inDate']==true?'in':''}} {{item[2]['outDate']==true?'out':''}} {{item[2]['isToday'] == true ? 'now' : ''}} {{item[2]['date'] < today ? 'disabled' : ''}} {{item[2]['state']==true?'selected':''}}" data-month='thisMonth' data-Year="{{thisYear}}" data-Month1="{{thisMonth}}" data-date="{{item[2]['date'] < today ? '' :item[2]['date']}}" data-key='{{index}}' data-keyitem='2' bindtap="select_date">{{item[2]['date']}}</text>
-                        <text class=" {{item[3]['inDate']==true?'in':''}} {{item[3]['outDate']==true?'out':''}} {{item[3]['isToday'] == true ? 'now' : ''}} {{item[3]['date'] < today ? 'disabled' : ''}} {{item[3]['state']==true?'selected':''}}" data-month='thisMonth' data-Year="{{thisYear}}" data-Month1="{{thisMonth}}" data-date="{{item[3]['date'] < today ? '' :item[3]['date']}}" data-key='{{index}}' data-keyitem='3' bindtap="select_date">{{item[3]['date']}}</text>
-                        <text class=" {{item[4]['inDate']==true?'in':''}} {{item[4]['outDate']==true?'out':''}} {{item[4]['isToday'] == true ? 'now' : ''}} {{item[4]['date'] < today ? 'disabled' : ''}} {{item[4]['state']==true?'selected':''}}" data-month='thisMonth' data-Year="{{thisYear}}" data-Month1="{{thisMonth}}" data-date="{{item[4]['date'] < today ? '' :item[4]['date']}}" data-key='{{index}}' data-keyitem='4' bindtap="select_date">{{item[4]['date']}}</text>
-                        <text class=" {{item[5]['inDate']==true?'in':''}} {{item[5]['outDate']==true?'out':''}} {{outitem[5]['isToday'] == true ? 'now' : ''}} {{item[5]['date'] < today ? 'disabled' : ''}} {{item[5]['state']==true?'selected':''}}" data-month='thisMonth' data-Year="{{thisYear}}" data-Month1="{{thisMonth}}" data-date="{{item[5]['date'] < today ? '' :item[5]['date']}}" data-key='{{index}}' data-keyitem='5' bindtap="select_date">{{item[5]['date']}}</text>
-                        <text class="sunday {{item[6]['inDate']==true?'in':''}} {{item[6]['outDate']==true?'out':''}}  {{item[6]['isToday'] == true ? 'now' : ''}} {{item[6]['date'] < today ? 'disabled' : ''}} {{item[6]['state']==true?'selected':''}}" data-month='thisMonth' data-Year="{{thisYear}}" data-Month1="{{thisMonth}}" data-date="{{item[6]['date'] < today ? '' :item[6]['date']}}" data-key='{{index}}' data-keyitem='6' bindtap="select_date">{{item[6]['date']}}</text>
+                        <text class="saturday {{item[0]['inDate']==true?'in':''}} {{item[0]['outDate']==true?'out':''}} {{item[0]['isToday'] == true ? 'now' : ''}} {{item[0]['date'] < today ? 'disabled' : ''}} {{item[0]['state']==true?'selected':''}}"
+                              data-month='thisMonth' data-Year="{{thisYear}}" data-Month1="{{thisMonth}}"
+                              data-date="{{item[0]['date'] < today ? '' :item[0]['date']}}" data-key='{{index}}'
+                              data-keyitem='0' bindtap="select_date">{{item[0]['date']}}</text>
+                        <text class=" {{item[1]['inDate']==true?'in':''}} {{item[1]['outDate']==true?'out':''}} {{item[1]['isToday'] == true ? 'now' : ''}} {{item[1]['date'] < today ? 'disabled' : ''}} {{item[1]['state']==true?'selected':''}}"
+                              data-month='thisMonth' data-Year="{{thisYear}}" data-Month1="{{thisMonth}}"
+                              data-date="{{item[1]['date'] < today ? '' :item[1]['date']}}" data-key='{{index}}'
+                              data-keyitem='1' bindtap="select_date">{{item[1]['date']}}</text>
+                        <text class=" {{item[2]['inDate']==true?'in':''}} {{item[2]['outDate']==true?'out':''}} {{item[2]['isToday'] == true ? 'now' : ''}} {{item[2]['date'] < today ? 'disabled' : ''}} {{item[2]['state']==true?'selected':''}}"
+                              data-month='thisMonth' data-Year="{{thisYear}}" data-Month1="{{thisMonth}}"
+                              data-date="{{item[2]['date'] < today ? '' :item[2]['date']}}" data-key='{{index}}'
+                              data-keyitem='2' bindtap="select_date">{{item[2]['date']}}</text>
+                        <text class=" {{item[3]['inDate']==true?'in':''}} {{item[3]['outDate']==true?'out':''}} {{item[3]['isToday'] == true ? 'now' : ''}} {{item[3]['date'] < today ? 'disabled' : ''}} {{item[3]['state']==true?'selected':''}}"
+                              data-month='thisMonth' data-Year="{{thisYear}}" data-Month1="{{thisMonth}}"
+                              data-date="{{item[3]['date'] < today ? '' :item[3]['date']}}" data-key='{{index}}'
+                              data-keyitem='3' bindtap="select_date">{{item[3]['date']}}</text>
+                        <text class=" {{item[4]['inDate']==true?'in':''}} {{item[4]['outDate']==true?'out':''}} {{item[4]['isToday'] == true ? 'now' : ''}} {{item[4]['date'] < today ? 'disabled' : ''}} {{item[4]['state']==true?'selected':''}}"
+                              data-month='thisMonth' data-Year="{{thisYear}}" data-Month1="{{thisMonth}}"
+                              data-date="{{item[4]['date'] < today ? '' :item[4]['date']}}" data-key='{{index}}'
+                              data-keyitem='4' bindtap="select_date">{{item[4]['date']}}</text>
+                        <text class=" {{item[5]['inDate']==true?'in':''}} {{item[5]['outDate']==true?'out':''}} {{outitem[5]['isToday'] == true ? 'now' : ''}} {{item[5]['date'] < today ? 'disabled' : ''}} {{item[5]['state']==true?'selected':''}}"
+                              data-month='thisMonth' data-Year="{{thisYear}}" data-Month1="{{thisMonth}}"
+                              data-date="{{item[5]['date'] < today ? '' :item[5]['date']}}" data-key='{{index}}'
+                              data-keyitem='5' bindtap="select_date">{{item[5]['date']}}</text>
+                        <text class="sunday {{item[6]['inDate']==true?'in':''}} {{item[6]['outDate']==true?'out':''}}  {{item[6]['isToday'] == true ? 'now' : ''}} {{item[6]['date'] < today ? 'disabled' : ''}} {{item[6]['state']==true?'selected':''}}"
+                              data-month='thisMonth' data-Year="{{thisYear}}" data-Month1="{{thisMonth}}"
+                              data-date="{{item[6]['date'] < today ? '' :item[6]['date']}}" data-key='{{index}}'
+                              data-keyitem='6' bindtap="select_date">{{item[6]['date']}}</text>
                     </view>
                 </block>
             </view>
@@ -42,13 +63,34 @@
                 </view>
                 <block tt:for="{{nextMonthArr}}" tt:key="index">
                     <view class='week'>
-                        <text class="saturday {{item[0]['inDate']==true?'in':''}} {{item[0]['outDate']==true?'out':''}} {{item[0]['state']==true?'selected':''}}" data-month='nextMonth' data-Year="{{nextYear}}" data-Month1="{{nextMonth}}" data-date="{{item[0]['date']}}" data-key='{{index}}'  data-keyitem='0' bindtap="select_date">{{item[0]['date']}}</text>
-                        <text class="{{item[1]['inDate']==true?'in':''}} {{item[1]['outDate']==true?'out':''}} {{item[1]['state']==true?'selected':''}}" data-month='nextMonth' data-Year="{{nextYear}}" data-Month1="{{nextMonth}}" data-date="{{item[1]['date']}}" data-key='{{index}}' data-keyitem='1' bindtap="select_date">{{item[1]['date']}}</text>
-                        <text class="{{item[2]['inDate']==true?'in':''}} {{item[2]['outDate']==true?'out':''}} {{item[2]['state']==true?'selected':''}}" data-month='nextMonth' data-Year="{{nextYear}}" data-Month1="{{nextMonth}}" data-date="{{item[2]['date']}}" data-key='{{index}}' data-keyitem='2' bindtap="select_date">{{item[2]['date']}}</text>
-                        <text class="{{item[3]['inDate']==true?'in':''}} {{item[3]['outDate']==true?'out':''}} {{item[3]['state']==true?'selected':''}}" data-month='nextMonth' data-Year="{{nextYear}}" data-Month1="{{nextMonth}}" data-date="{{item[3]['date']}}" data-key='{{index}}' data-keyitem='3' bindtap="select_date">{{item[3]['date']}}</text>
-                        <text class="{{item[4]['inDate']==true?'in':''}} {{item[4]['outDate']==true?'out':''}} {{item[4]['state']==true?'selected':''}}" data-month='nextMonth' data-Year="{{nextYear}}" data-Month1="{{nextMonth}}" data-date="{{item[4]['date']}}" data-key='{{index}}' data-keyitem='4' bindtap="select_date">{{item[4]['date']}}</text>
-                        <text class="{{item[5]['inDate']==true?'in':''}} {{item[5]['outDate']==true?'out':''}} {{item[5]['state']==true?'selected':''}}" data-month='nextMonth' data-Year="{{nextYear}}" data-Month1="{{nextMonth}}" data-date="{{item[5]['date']}}" data-key='{{index}}' data-keyitem='5' bindtap="select_date">{{item[5]['date']}}</text>
-                        <text class="{{item[6]['inDate']==true?'in':''}} {{item[6]['outDate']==true?'out':''}} sunday {{item[6]['state']==true?'selected':''}}" data-month='nextMonth' data-Year="{{nextYear}}" data-Month1="{{nextMonth}}" data-date="{{item[6]['date']}}" data-key='{{index}}' data-keyitem='6' bindtap="select_date">{{item[6]['date']}}</text>
+                        <text class="saturday {{item[0]['inDate']==true?'in':''}} {{item[0]['outDate']==true?'out':''}} {{item[0]['state']==true?'selected':''}}"
+                              data-month='nextMonth' data-Year="{{nextYear}}" data-Month1="{{nextMonth}}"
+                              data-date="{{item[0]['date']}}" data-key='{{index}}' data-keyitem='0'
+                              bindtap="select_date">{{item[0]['date']}}</text>
+                        <text class="{{item[1]['inDate']==true?'in':''}} {{item[1]['outDate']==true?'out':''}} {{item[1]['state']==true?'selected':''}}"
+                              data-month='nextMonth' data-Year="{{nextYear}}" data-Month1="{{nextMonth}}"
+                              data-date="{{item[1]['date']}}" data-key='{{index}}' data-keyitem='1'
+                              bindtap="select_date">{{item[1]['date']}}</text>
+                        <text class="{{item[2]['inDate']==true?'in':''}} {{item[2]['outDate']==true?'out':''}} {{item[2]['state']==true?'selected':''}}"
+                              data-month='nextMonth' data-Year="{{nextYear}}" data-Month1="{{nextMonth}}"
+                              data-date="{{item[2]['date']}}" data-key='{{index}}' data-keyitem='2'
+                              bindtap="select_date">{{item[2]['date']}}</text>
+                        <text class="{{item[3]['inDate']==true?'in':''}} {{item[3]['outDate']==true?'out':''}} {{item[3]['state']==true?'selected':''}}"
+                              data-month='nextMonth' data-Year="{{nextYear}}" data-Month1="{{nextMonth}}"
+                              data-date="{{item[3]['date']}}" data-key='{{index}}' data-keyitem='3'
+                              bindtap="select_date">{{item[3]['date']}}</text>
+                        <text class="{{item[4]['inDate']==true?'in':''}} {{item[4]['outDate']==true?'out':''}} {{item[4]['state']==true?'selected':''}}"
+                              data-month='nextMonth' data-Year="{{nextYear}}" data-Month1="{{nextMonth}}"
+                              data-date="{{item[4]['date']}}" data-key='{{index}}' data-keyitem='4'
+                              bindtap="select_date">{{item[4]['date']}}</text>
+                        <text class="{{item[5]['inDate']==true?'in':''}} {{item[5]['outDate']==true?'out':''}} {{item[5]['state']==true?'selected':''}}"
+                              data-month='nextMonth' data-Year="{{nextYear}}" data-Month1="{{nextMonth}}"
+                              data-date="{{item[5]['date']}}" data-key='{{index}}' data-keyitem='5'
+                              bindtap="select_date">{{item[5]['date']}}</text>
+                        <text class="{{item[6]['inDate']==true?'in':''}} {{item[6]['outDate']==true?'out':''}} sunday {{item[6]['state']==true?'selected':''}}"
+                              data-month='nextMonth' data-Year="{{nextYear}}" data-Month1="{{nextMonth}}"
+                              data-date="{{item[6]['date']}}" data-key='{{index}}' data-keyitem='6'
+                              bindtap="select_date">{{item[6]['date']}}</text>
                     </view>
                 </block>
             </view>

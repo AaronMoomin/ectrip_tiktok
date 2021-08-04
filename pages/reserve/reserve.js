@@ -47,20 +47,20 @@ Page({
         isCurrentWaring: false,
         warnMessage: '',
         array: ['身份证', '护照', '军官证', '台胞证', '港澳通行证', '其他'],
-        arrayVal: ['ID_CARD', 'HUZHAO','JUNGUAN', 'TAIBAO', 'GANGAO', 'OTHER'],
+        arrayVal: ['ID_CARD', 'HUZHAO', 'JUNGUAN', 'TAIBAO', 'GANGAO', 'OTHER'],
         users: [],
         value1: 0,
         value1Show: '身份证',
         value2: 0,
-        userName: '',
+        userName: '兔斯基',
         userNameShow: '',
-        phone: '',
+        phone: '15724864113',
         phoneShow: '',
         sex: '男',
         sexShow: '男',
         isPhoneCurrentWaring: false,
         phoneWarnMessage: '',
-        idCard: '',
+        idCard: '522601198003069767',
         idCardShow: '',
         isIdCardCurrentWaring: false,
         IdCardWarnMessage: '',
@@ -72,7 +72,8 @@ Page({
         voteNum: 1,
         dateString: "",
         spot: [],
-        nickName:'',
+        nickName: '',
+        openid:'',
     },
     // 常用联系人列表查询
     async getList() {
@@ -157,7 +158,7 @@ Page({
             arrayVal, value1, phone, userName,
             idCard, visitPersons, product,
             isIdCardCurrentWaring, isPhoneCurrentWaring,
-            visitPersonsShow
+            visitPersonsShow,openid
         } = this.data
         let credentialsType = value1
         price = price * 100
@@ -214,11 +215,12 @@ Page({
         let obj = JSON.stringify({
             contactPerson: {
                 credentials: idCard,
-                credentialsType:arrayVal[credentialsType],
+                credentialsType: arrayVal[credentialsType],
                 mobile: phone,
                 name: userName
             },
             distributorProductId: product.distributorProductId,
+            openid,
             endDate: "",
             orderPrice: nowPrice,
             orderQuantity: voteNum,
@@ -229,6 +231,7 @@ Page({
         })
         console.log(JSON.parse(obj));
         let object = base64.encode(obj)
+        //?创建订单
         await request.myRequest(
             '/tiktok/mutual/createOrder',
             {
@@ -238,9 +241,94 @@ Page({
             'post'
         ).then(res => {
             tt.hideLoading()
+            tt.pay({
+                orderInfo: res.data.data.orderInfo,
+                service: 5,
+                getOrderStatus(res) {
+                    let { orderCode } = res;   // 订单号
+                    return new Promise(function (resolve, reject) {
+                        // 商户前端根据 out_order_no 请求商户后端查询微信支付订单状态
+                        tt.request({
+                            url: "/tiktok/mutual/queryOrder",
+                            method: 'get',
+                            header: {
+                                "content-type": "application/x-www-form-urlencoded"
+                            },
+                            data: {
+                                orderCode   // 必传参数 订单号
+                            },
+                            success(res) {
+                                // 商户后端查询的微信支付状态，通知收银台支付结果
+                                if (res.data.trade_state == "SUCCESS") {
+                                    // 查询微信订单返回一个 trade_state 的属性值 当它返回为 SUCCESS 时，就为成功，Promise 中 resolve中返回 code:0 方便下面拿到。
+                                    resolve({ code: 0 })
+                                }
+                            },
+                            fail(err) {
+                                reject(err);
+                            }
+                        });
+                    });
+                },
+                success: res => {
+                    if (res.code == 0) {
+                        //?支付成功
+                        console.log('支付成功', res);
+
+                        //?跳转订单页面
+                        // tt.redirectTo({
+                        //     url:"/pages/allOrder/allOrder"
+                        // })
+                    }else if(res.code == 1) {
+                        tt.showToast({
+                            title:'支付超时',
+                            icon:'fail'
+                        })
+                        console.log('支付超时', res);
+                    }else if(res.code == 2) {
+                        tt.showToast({
+                            title:'支付失败',
+                            icon:'fail'
+                        })
+                        console.log('支付失败', res);
+                    }else if(res.code == 3) {
+                        tt.showToast({
+                            title:'支付关闭',
+                            icon:'fail'
+                        })
+                        console.log('支付关闭', res);
+                    }else if(res.code == 4) {
+                        tt.showToast({
+                            title:'支付取消',
+                            icon:'fail'
+                        })
+                        console.log('支付取消', res);
+                    }
+                },
+                fail: err => {
+                    //?支付失败
+                    console.log('支付失败', err);
+                }
+            })
             console.log(res);
         }).catch(err => {
             tt.hideLoading()
+            tt.showToast({
+                title: '支付失败',
+                icon:'fail'
+            })
+            console.log(err);
+        })
+    },
+    async getOrder(orderCode) {
+        await request.myRequest(
+            '/tiktok/mutual/queryOrder',
+            {orderCode},
+            'get',
+            'application/x-www-form-urlencoded'
+        ).then(res => {
+            console.log('查询成功', res);
+        }).catch(err => {
             console.log(err);
         })
     },
@@ -796,7 +884,14 @@ Page({
      */
     onLoad: function (options) {
         options.product = JSON.parse(options.product)
-
+        tt.getStorage({
+            key:'session',
+            success:res=>{
+                this.setData({
+                    openid:res.data.openid
+                })
+            }
+        })
         let date = new Date();
         let day = date.getDate();
         let {

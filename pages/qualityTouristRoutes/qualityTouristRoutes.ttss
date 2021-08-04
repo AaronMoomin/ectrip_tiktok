@@ -129,6 +129,9 @@
 .showcaseItem .top .topNav .name{
     color:#000;
 }
+.showcaseItem .top .topNav .star{
+    color: #fcc511;
+}
 .showcaseItem .top .topNav .star text{
     color: #fcc511;
 }

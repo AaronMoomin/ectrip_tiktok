@@ -13,14 +13,14 @@
                 <view class="mapItem">营业时间: {{goods.openStartTime}}-{{goods.openEndTime}}</view>
                 <view class="mapItem">{{goods.infoAddress[0].address[0].name}}</view>
                 <view class="yd mapItem" bind:tap="open">
-                    <text class="tie">费用说明: {{goods.feeDescription}}</text>
+                    <text class="tie">预定须知</text>
                     <text class="iconfont icon-tiaozhuan"></text>
                 </view>
             </view>
             <view bind:tap="handleCollect" data-goods="{{goods}}"
                   class="{{isCollect?'collected':'collect'}}">
                 <text class="iconfont icon-xingxing"></text>
-                <text>{{isCollect?'已收藏':'收藏'}}</text>
+                <text>{{isCollect ? '已收藏' : '收藏'}}</text>
             </view>
         </view>
     </view>
@@ -59,14 +59,14 @@
             <text class="iconfont icon-tiaozhuan"></text>
         </view>
     </view>
-    <view class="instructionNav">
+    <view class="instructionNav" tt:if="{{goods.description!='' || goods.imageList.length>0}}">
         <text class="title">景区介绍</text>
         <view class="content">
             {{goods.description}}
         </view>
         <view class="contentImgShow">
             <image tt:for="{{goods.imageList}}" tt:key="{{item.uid}}"
-               src="{{item.url}}"></image>
+                   src="{{item.url}}"></image>
         </view>
     </view>
     <view class="commentNav">
@@ -109,7 +109,46 @@
                 </view>
             </view>
             <view class="weui-half-screen-dialog__bd" style="padding-top:32rpx;height:500rpx;">
-                {{goods.feeDescription}}
+                <view class="desc">
+                    <view class="name">
+                        费用说明
+                    </view>
+                    <view class="content">
+                        {{goods.feeDescription}}
+                    </view>
+                </view>
+                <view class="desc">
+                    <view class="name">
+                        重要提示
+                    </view>
+                    <view class="content">
+                        {{goods.importantDescription}}
+                    </view>
+                </view>
+                <view class="desc">
+                    <view class="name">
+                        使用提示
+                    </view>
+                    <view class="content">
+                        {{goods.useDescription}}
+                    </view>
+                </view>
+                <view class="desc">
+                    <view class="name">
+                        验证说明
+                    </view>
+                    <view class="content">
+                        {{goods.verifyDescription}}
+                    </view>
+                </view>
+                <view class="desc">
+                    <view class="name">
+                        发票说明
+                    </view>
+                    <view class="content">
+                        {{goods.invoiceDescription}}
+                    </view>
+                </view>
             </view>
         </view>
     </view>

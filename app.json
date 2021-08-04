@@ -2,8 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/ticket/ticket",
-    "pages/playReserve/playReserve",
     "pages/hotelDetail/hotelDetail",
+    "pages/playerItemShow/playerItemShow",
+    "pages/playReserve/playReserve",
     "pages/hotelSearch/hotelSearch",
     "pages/reserve/reserve",
     "pages/mine/mine",
@@ -22,7 +23,6 @@
     "pages/orderTypeShow/orderTypeShow",
     "pages/serve/serve",
     "pages/destination/destination",
-    "pages/playerItemShow/playerItemShow",
     "pages/hotList/hotList",
     "pages/discountShow/discountShow",
     "pages/specialtyStore/specialtyStore",

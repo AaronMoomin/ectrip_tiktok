@@ -7,8 +7,12 @@
                     <text class="name">马仑草原一日游</text>
                     <text>芦芽山-马伦草原,情人谷一日游</text>
                     <view class="star">
-                        <text class="iconfont icon-xingxing" tt:for="{{5}}"></text>
-                        <text class="price">4.9分</text>
+                        <i-rate
+                                size="18"
+                                disabled="true"
+                                value="4">
+                            4 分
+                        </i-rate>
                     </view>
                 </view>
             </view>
@@ -24,8 +28,12 @@
                     <text class="name">马仑草原一日游</text>
                     <text>芦芽山-马伦草原,情人谷一日游</text>
                     <view class="star">
-                        <text class="iconfont icon-xingxing" tt:for="{{5}}"></text>
-                        <text class="price">4.9分</text>
+                        <i-rate
+                                size="18"
+                                disabled="true"
+                                value="4">
+                            4 分
+                        </i-rate>
                     </view>
                 </view>
             </view>
@@ -41,8 +49,12 @@
                     <text class="name">马仑草原一日游</text>
                     <text>芦芽山-马伦草原,情人谷一日游</text>
                     <view class="star">
-                        <text class="iconfont icon-xingxing" tt:for="{{5}}"></text>
-                        <text class="price">4.9分</text>
+                        <i-rate
+                                size="18"
+                                disabled="true"
+                                value="4">
+                            4 分
+                        </i-rate>
                     </view>
                 </view>
             </view>
