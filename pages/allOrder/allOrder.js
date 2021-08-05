@@ -7,13 +7,40 @@ Page({
     data: {
         isSelect: [true, false, false, false],
         openid: '',
-        orderList:[],
+        orderList: [],
+        countDown: '30:00',
     },
-    toOrderDetail(e){
+    // 倒计时
+    countDown(startTime='2021-08-04 13:34:00') {
+
+        let start = new Date(startTime.replace(/-/g, "/")).getTime()
+        let end = start + 30 * 60000
+        var date = new Date()
+        var now = date.getTime()
+
+        var allTime = end - now
+        let m, s
+        if (allTime > 0) {
+            m = Math.floor(allTime / 1000 / 60 % 60)
+            s = Math.floor(allTime / 1000 % 60)
+
+            this.setData({
+                countDown: `${m} : ${s}`
+            })
+            setTimeout(() => {
+                this.countDown()
+            }, 1000)
+        } else {
+            this.setData({
+                countDown: '00 : 00'
+            })
+        }
+    },
+    toOrderDetail(e) {
         tt.navigateTo({
             url: "/pages/orderDetail/orderDetail?orderCode="
-                +e.currentTarget.dataset.ordercode+
-                '&productName='+e.currentTarget.dataset.productname
+                + e.currentTarget.dataset.ordercode +
+                '&productName=' + e.currentTarget.dataset.productname
         })
     },
     handleSelect(e) {
@@ -30,7 +57,7 @@ Page({
             isSelect
         })
     },
-    async getOrderList(status=0) {
+    async getOrderList(status = 0) {
         await request.myRequest(
             '/tiktok/personCenter/order/List',
             {
@@ -43,7 +70,7 @@ Page({
             let {orderList} = this.data
             orderList = res.data.data.orderList
             for (let item of orderList) {
-                item.createTime=item.createTime.split(' ')[0]
+                item.createTime = item.createTime.split(' ')[0]
             }
             console.log(res.data.data.orderList);
             this.setData({
@@ -53,7 +80,7 @@ Page({
             console.log(err);
         })
     },
-    toTicketDetail(e){
+    toTicketDetail(e) {
         let name = e.currentTarget.dataset.name;
         let id = e.currentTarget.dataset.id;
         tt.navigateTo({
@@ -65,9 +92,10 @@ Page({
      */
     onLoad: function (options) {
         this.setData({
-            openid:app.globalData.openid
+            openid: app.globalData.openid
         })
         this.getOrderList()
+        this.countDown()
     },
 
     /**

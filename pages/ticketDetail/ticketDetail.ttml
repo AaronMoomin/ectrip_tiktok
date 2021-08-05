@@ -109,7 +109,7 @@
                 </view>
             </view>
             <view class="weui-half-screen-dialog__bd" style="padding-top:32rpx;height:500rpx;">
-                <view class="desc">
+                <view class="desc" tt:if="{{goods.feeDescription}}">
                     <view class="name">
                         费用说明
                     </view>
@@ -117,7 +117,7 @@
                         {{goods.feeDescription}}
                     </view>
                 </view>
-                <view class="desc">
+                <view class="desc" tt:if="{{goods.importantDescription}}">
                     <view class="name">
                         重要提示
                     </view>
@@ -125,7 +125,7 @@
                         {{goods.importantDescription}}
                     </view>
                 </view>
-                <view class="desc">
+                <view class="desc" tt:if="{{goods.useDescription}}">
                     <view class="name">
                         使用提示
                     </view>
@@ -133,7 +133,7 @@
                         {{goods.useDescription}}
                     </view>
                 </view>
-                <view class="desc">
+                <view class="desc" tt:if="{{goods.verifyDescription}}">
                     <view class="name">
                         验证说明
                     </view>
@@ -141,7 +141,7 @@
                         {{goods.verifyDescription}}
                     </view>
                 </view>
-                <view class="desc">
+                <view class="desc" tt:if="{{goods.invoiceDescription}}">
                     <view class="name">
                         发票说明
                     </view>

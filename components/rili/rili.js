@@ -7,8 +7,6 @@ var shangY = []
 var xiaY = []
 var xianxuNZ = [];
 var xuanZheData = [];
-var windowHeight;
-var objfunction;
 Component({
     /**
      * 组件的属性列表
@@ -23,11 +21,10 @@ Component({
         year: null,//遍历的年
         month: null,//遍历的月
         day: null,
-        xianShi: null,//今天的年月
-        xianDay: null,//几天的日期
+        xianShi: null,//?今天的年月
+        xianDay: null,//?几天的日期
         xianShiZongData: [],//今后7个月遍历的日期
         jiaShu: 1,
-        animationData: ''
     },
 
     /**

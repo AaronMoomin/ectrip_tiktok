@@ -130,19 +130,38 @@
     border: 2rpx solid #ff8e54;
     color: #ff8e54;
     width: 120rpx;
+    height: 60rpx;
+    line-height: 60rpx;
     border-radius: 10rpx;
     text-align: center;
     padding: 0 10rpx;
     margin-right: 20rpx;
 }
 .contentContainer .routeItem .btnNav  .reserve{
+    display: flex;
+    flex-direction: column;
+    border: 2rpx solid #ff8e54;
     background: linear-gradient(#ff9754,#ff7356);
     color: #fff;
     font-size:22rpx;
     width: 120rpx;
+    height: 60rpx;
+    line-height: 60rpx;
     border-radius: 10rpx;
     text-align: center;
     padding: 0 10rpx;
-    line-height:40rpx;
+    margin-right: 10rpx;
+}
+.contentContainer .routeItem .btnNav  .reserve2{
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(#ff9754,#ff7356);
+    color: #fff;
+    font-size:22rpx;
+    width: 120rpx;
+    line-height: 40rpx;
+    border-radius: 10rpx;
+    text-align: center;
+    padding: 0 10rpx;
     margin-right: 10rpx;
 }

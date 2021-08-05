@@ -23,14 +23,14 @@
                 </view>
             </view>
         </view>
-        <view class="addressChooser">
-            <text class="title">入园时间</text>
-            <view class="address {{item.isSelect?'select':''}}" tt:for="{{timeChooser}}" tt:key="{{item.session}}"
-                  bind:tap="checkSession" data-session="{{item.session}}">
-                <text>{{item.start}} - {{item.end}}</text>
-                <text>{{item.session}}</text>
-            </view>
-        </view>
+<!--        <view class="addressChooser">-->
+<!--            <text class="title">入园时间</text>-->
+<!--            <view class="address {{item.isSelect?'select':''}}" tt:for="{{timeChooser}}" tt:key="{{item.session}}"-->
+<!--                  bind:tap="checkSession" data-session="{{item.session}}">-->
+<!--                <text>{{item.start}} - {{item.end}}</text>-->
+<!--                <text>{{item.session}}</text>-->
+<!--            </view>-->
+<!--        </view>-->
         <view class="numChooser">
             <view class="infos">
                 <!--                <view class="red">￥-->
@@ -162,7 +162,8 @@
                     </view>
                 </view>
                 <view class="weui-half-screen-dialog__bd" style="padding-top:32rpx;height:500rpx;">
-                    <checkbox-group bind:change="checkboxChange">
+                    <checkbox-group bind:change="checkboxChange"
+                    tt:if="visitPersons">
                         <label class="ttui-cell checkNav" tt:for="{{visitPersons}}" tt:key="{{item.id}}">
                             <view class="ttui-cell__hd">
                                 <checkbox value="{{item.id}}"
@@ -176,6 +177,7 @@
                             </view>
                         </label>
                     </checkbox-group>
+                    <view class="none" tt:else>无</view>
                 </view>
                 <view class="weui-half-screen-dialog__ft">
                     <button id="confirm" bind:tap="confirmVisitor">确定</button>

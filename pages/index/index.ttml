@@ -55,11 +55,11 @@
                    style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;"></image>
             <view class="titleNav">
                 <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" scroll-left="{{move}}">
-                    <view style="width:180rpx;height: 100rpx;display:inline-block;" bind:tap="handleAddress" class="{{isSelect[0]?'select':''}}" data-index="0">黄河</view>
-                    <view style="width:180rpx;height: 100rpx;display:inline-block;" bind:tap="handleAddress" class="{{isSelect[1]?'select':''}}" data-index="1">长江</view>
-                    <view style="width:180rpx;height: 100rpx;display:inline-block;" bind:tap="handleAddress" class="{{isSelect[2]?'select':''}}" data-index="2">太行</view>
-                    <view style="width:180rpx;height: 100rpx;display:inline-block;" bind:tap="handleAddress" class="{{isSelect[3]?'select':''}}" data-index="3">长江</view>
-                    <view style="width:180rpx;height: 100rpx;display:inline-block;" bind:tap="handleAddress" class="{{isSelect[4]?'select':''}}" data-index="4">黄河</view>
+                    <view style="width:180rpx;display:inline-block;" bind:tap="handleAddress" class="{{isSelect[0]?'select':''}}" data-index="0">黄河</view>
+                    <view style="width:180rpx;display:inline-block;" bind:tap="handleAddress" class="{{isSelect[1]?'select':''}}" data-index="1">长江</view>
+                    <view style="width:180rpx;display:inline-block;" bind:tap="handleAddress" class="{{isSelect[2]?'select':''}}" data-index="2">福建鼓浪屿</view>
+                    <view style="width:180rpx;display:inline-block;" bind:tap="handleAddress" class="{{isSelect[3]?'select':''}}" data-index="3">长江</view>
+                    <view style="width:180rpx;display:inline-block;" bind:tap="handleAddress" class="{{isSelect[4]?'select':''}}" data-index="4">黄河</view>
                 </scroll-view>
             </view>
             <view class="info1">

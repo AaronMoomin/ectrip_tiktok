@@ -73,7 +73,7 @@ Page({
         dateString: "",
         spot: [],
         nickName: '',
-        openid:'',
+        openid: '',
     },
     // 常用联系人列表查询
     async getList() {
@@ -129,9 +129,14 @@ Page({
     checkboxChange(e) {
         let {visitPersons} = this.data
         for (let person of visitPersons) {
-            for (let v of e.detail.value) {
-                if (person.id == v) {
-                    person.checked = true
+            if (e.detail.value.length == 0) {
+                person.checked = false
+            } else {
+                person.checked = false
+                for (let v of e.detail.value) {
+                    if (person.id == v) {
+                        person.checked = true;
+                    }
                 }
             }
         }
@@ -158,7 +163,7 @@ Page({
             arrayVal, value1, phone, userName,
             idCard, visitPersons, product,
             isIdCardCurrentWaring, isPhoneCurrentWaring,
-            visitPersonsShow,openid
+            visitPersonsShow, openid
         } = this.data
         let credentialsType = value1
         price = price * 100
@@ -198,6 +203,12 @@ Page({
         } else if (visitPersonsShow.length == 0) {
             tt.showToast({
                 title: '游客不能为空',
+                icon: 'fail'
+            })
+            return
+        }else if (voteNum!=this.data.visitPersonsShow.length) {
+            tt.showToast({
+                title: '游客数量不对',
                 icon: 'fail'
             })
             return
@@ -244,10 +255,10 @@ Page({
             tt.pay({
                 orderInfo: res.data.data.orderInfo,
                 service: 5,
-                getOrderStatus(res) {
-                    let { orderCode } = res;   // 订单号
+                getOrderStatus: function (res) {
+                    let {orderCode} = res;   // 订单号
                     return new Promise(function (resolve, reject) {
-                        // 商户前端根据 out_order_no 请求商户后端查询微信支付订单状态
+                        //? 商户前端根据 out_order_no 请求商户后端查询微信支付订单状态
                         tt.request({
                             url: "/tiktok/mutual/queryOrder",
                             method: 'get',
@@ -257,11 +268,11 @@ Page({
                             data: {
                                 orderCode   // 必传参数 订单号
                             },
-                            success(res) {
+                            success: function (res) {
                                 // 商户后端查询的微信支付状态，通知收银台支付结果
                                 if (res.data.trade_state == "SUCCESS") {
                                     // 查询微信订单返回一个 trade_state 的属性值 当它返回为 SUCCESS 时，就为成功，Promise 中 resolve中返回 code:0 方便下面拿到。
-                                    resolve({ code: 0 })
+                                    resolve({code: 0})
                                 }
                             },
                             fail(err) {
@@ -274,33 +285,32 @@ Page({
                     if (res.code == 0) {
                         //?支付成功
                         console.log('支付成功', res);
-
                         //?跳转订单页面
                         // tt.redirectTo({
                         //     url:"/pages/allOrder/allOrder"
                         // })
-                    }else if(res.code == 1) {
+                    } else if (res.code == 1) {
                         tt.showToast({
-                            title:'支付超时',
-                            icon:'fail'
+                            title: '支付超时',
+                            icon: 'fail'
                         })
                         console.log('支付超时', res);
-                    }else if(res.code == 2) {
+                    } else if (res.code == 2) {
                         tt.showToast({
-                            title:'支付失败',
-                            icon:'fail'
+                            title: '支付失败',
+                            icon: 'fail'
                         })
                         console.log('支付失败', res);
-                    }else if(res.code == 3) {
+                    } else if (res.code == 3) {
                         tt.showToast({
-                            title:'支付关闭',
-                            icon:'fail'
+                            title: '支付关闭',
+                            icon: 'fail'
                         })
                         console.log('支付关闭', res);
-                    }else if(res.code == 4) {
+                    } else if (res.code == 4) {
                         tt.showToast({
-                            title:'支付取消',
-                            icon:'fail'
+                            title: '支付取消',
+                            icon: 'fail'
                         })
                         console.log('支付取消', res);
                     }
@@ -315,7 +325,7 @@ Page({
             tt.hideLoading()
             tt.showToast({
                 title: '支付失败',
-                icon:'fail'
+                icon: 'fail'
             })
             console.log(err);
         })
@@ -885,10 +895,10 @@ Page({
     onLoad: function (options) {
         options.product = JSON.parse(options.product)
         tt.getStorage({
-            key:'session',
-            success:res=>{
+            key: 'session',
+            success: res => {
                 this.setData({
-                    openid:res.data.openid
+                    openid: res.data.openid
                 })
             }
         })
