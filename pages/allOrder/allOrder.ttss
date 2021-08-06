@@ -23,6 +23,7 @@
 }
 .contentContainer .routeItem {
     position: relative;
+    height: 360rpx;
     display: flex;
     padding: 20rpx;
     font-size: 26rpx;

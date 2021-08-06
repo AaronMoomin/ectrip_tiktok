@@ -119,8 +119,6 @@ T
 $pages/hotelReserve/hotelReserve.ttss,e\f\efbd01eeac304b14968860440e0637b56eb73628
 T
 $pages/routeReserve/routeReserve.ttss,a\b\ab39ef2823e21971f1cbbf58056aa64fd319e5af
-=
-utils/util.js,8\e\8ee4064285c76d2fc75da7748cc4081cd75cceae
 H
 pages/ticket/ticket.json,9\2\92d6719a42ef6b782670f12f4e995d93435d60f1
 ?
@@ -131,8 +129,6 @@ H
 +components/calculateIndex/calculateIndex.js,2\f\2f19d9c35eb71b60f5cded4efa4fa0dc482f26be
 F
 pages/hotel/hotel.ttml,3\2\329374ff5354f6a6cade170c1a8499ba851f7d53
-@
-utils/request.js,c\f\cf4ec85416dc86ce402d564215d8d06063163426
 T
 $pages/goodsAddress/goodsAddress.json,8\4\849953daa78cd0819ad7a02b286fa184e173691d
 T
@@ -143,8 +139,6 @@ N
 pages/myComment/myComment.json,3\3\339805de34f0384630580016280a646f443394d7
 N
 pages/myComment/myComment.ttss,9\e\9e10152d53804044442d47302d731d180a15772e
-V
-&pages/orderTypeShow/orderTypeShow.ttss,9\2\92e1846d5fc730be9065e76265fe65498175f9ac
 H
 pages/ticket/ticket.ttss,9\e\9e3a800cba33d7ccda3f9b993077e4694ece6946
 T
@@ -227,8 +221,6 @@ O
 components/calendar/calendar.js,7\a\7a446e16d5c308d6788d87764d4845a4e9ca517b
 J
 pages/collect/collect.ttml,6\6\6618fd407f44d92bb681f88bc61e4f498759dbf6
-V
-&pages/orderTypeShow/orderTypeShow.ttml,2\f\2fcb1ec83fd999d5804b8148c37f44799af7674d
 P
  pages/playReserve/playReserve.js,7\1\71cf5dd42c140dc8e21fe52cf917e699055e58f6
 H
@@ -261,8 +253,6 @@ P
  pages/orderDetail/orderDetail.js,e\7\e75ca5d546a17266cff4a3299b07fc79ae551190
 R
 "pages/ticketDetail/ticketDetail.js,6\2\62935aa66f28f1905f83a3fe8fc7f6f159af7da4
-6
-app.js,4\a\4a68969ef8e858229267b842dedf42ab5dde4d50
 R
 "pages/hotelDetail/hotelDetail.json,5\7\574ade00a92cbc5e7470227e2e955e35ae09c394
 R
@@ -305,3 +295,19 @@ B
 pages/mine/mine.js,4\8\4883aa83024799a195f47da649c3ff84215bbf12
 F
 pages/index/index.json,6\7\67f504ef8ca289664c90770f75e290092778b11e
+D
+pages/index/index.js,a\a\aa449e3b02f3c581f54c1555278503f2dc8da561
+J
+pages/reserve/reserve.ttss,d\2\d2cdce6d37ec2c2c7ead9bd96b8e5aa5a3d99069
+F
+pages/index/index.ttml,7\c\7ccc99912f848b05e568992e295cecb672eaafbe
+J
+pages/reserve/reserve.ttml,9\d\9d67de12779655decd77b776d98bdd7024bf7e42
+T
+$pages/ticketDetail/ticketDetail.ttml,e\8\e8d9b683c951a2ce13678e314fc3961420eae75b
+G
+components/rili/rili.js,c\4\c425ea7f5223b940877a2d379ec978d4e491c86f
+6
+app.js,4\a\4a68969ef8e858229267b842dedf42ab5dde4d50
+V
+&pages/orderTypeShow/orderTypeShow.ttml,2\f\2fcb1ec83fd999d5804b8148c37f44799af7674d

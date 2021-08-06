@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/allOrder/allOrder",
     "pages/index/index",
     "pages/ticket/ticket",
-    "pages/allOrder/allOrder",
     "pages/hotelDetail/hotelDetail",
     "pages/playerItemShow/playerItemShow",
     "pages/playReserve/playReserve",

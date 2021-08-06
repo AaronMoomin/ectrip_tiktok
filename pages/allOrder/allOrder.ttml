@@ -6,18 +6,18 @@
         <text bind:tap="handleSelect" class="{{isSelect[3]?'select':''}}" data-index="3">取消/退款</text>
     </view>
     <view class="contentContainer">
-<!--        <view class="timer">-->
-<!--            <text>收藏时间:2021年01月01日 星期一</text>-->
-<!--        </view>-->
+        <!--        <view class="timer">-->
+        <!--            <text>收藏时间:2021年01月01日 星期一</text>-->
+        <!--        </view>-->
         <view class="nothing" tt:if="{{orderList.length == 0}}">无订单</view>
         <view class="routeItem" tt:else
               tt:for="{{orderList}}" tt:key="{{item.contactPhone}}"
               bind:tap="toOrderDetail"
               data-productname="{{item.productName}}"
               data-ordercode="{{item.orderCode}}">
-<!--            <view class="imgBox">-->
-<!--                <image src="/static/images/gbtl.jpg"></image>-->
-<!--            </view>-->
+            <!--            <view class="imgBox">-->
+            <!--                <image src="/static/images/gbtl.jpg"></image>-->
+            <!--            </view>-->
             <view class="info">
                 <view class="titleNav">
                     <text class="title">{{item.goodsName}}</text>
@@ -33,15 +33,19 @@
                 </view>
             </view>
             <view class="btnNav">
-                <text class="cancel">未付款</text>
-<!--                <view class="reserve" catch:tap="toTicketDetail"-->
-<!--                      data-id="{{item.goodsId}}"-->
-<!--                      data-name="{{item.productName}}">-->
-<!--                    <text>再次预定</text>-->
-<!--                </view>-->
-                <view class="reserve2">
-                        <text>{{countDown}}</text>
-                        <text>去付款</text>
+                <text class="cancel">{{item.statusStr}}</text>
+                <view class="reserve" tt:if="{{item.statusStr!='未付款'}}"
+                      catch:tap="toTicketDetail"
+                      data-id="{{item.goodsId}}"
+                      data-name="{{item.productName}}">
+                    <text>再次预定</text>
+                </view>
+                <view class="reserve2" tt:else
+                      catch:tap="toReserve"
+                      data-orderinfo="{{item.preOrderInfo}}"
+                      data-ordercode="{{item.orderCode}}">
+                    <text>{{item.countDown}}</text>
+                    <text>去付款</text>
                 </view>
             </view>
         </view>

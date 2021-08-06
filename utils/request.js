@@ -1,11 +1,12 @@
-const api = 'http://192.168.4.146:8888'
-const api1 = 'http://192.168.4.19:8888'
+// const api = 'http://192.168.4.146:8888'
+// const api = 'http://192.168.4.19:8888'
+const api = 'https://dyxcxtest.ectrip.com'
 function myRequest(url, data = {}, method = 'GET',
                    content= "application/json") {
     // new Promise 初始化Promise实例的状态为pending
     return new Promise((resolve, reject) => {
         tt.request({
-            url: api1 + url,
+            url: api + url,
             data,
             method,
             header:{
