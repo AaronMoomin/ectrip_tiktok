@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "calculate": "/components/calculateIndex/calculateIndex"
+  }
+}

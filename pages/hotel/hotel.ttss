@@ -94,7 +94,7 @@
 
 .chooseContainer {
     display: flex;
-    height: 100rpx;
+    height: 120rpx;
     padding-bottom: 15rpx;
     margin-bottom: 20rpx;
     border-bottom: 2rpx solid #eee;
@@ -150,10 +150,12 @@
     font-size: 28rpx;
     margin-right: 10rpx;
 }
-.timeContainer{
+
+.timeContainer {
     display: flex;
 }
-.timeContainer text{
+
+.timeContainer text {
     font-size: 28rpx;
 }
 
@@ -164,14 +166,15 @@
 }
 
 .btn {
-    margin-top: 30rpx;
+    margin-top: 90rpx;
     border-radius: 40rpx;
     width: 400rpx;
     background: linear-gradient(to right, #ff9854, #ff7256);
     color: #fff;
 }
-.style-module_container__3M6IE:after{
-    border:none !important;
+
+.style-module_container__3M6IE:after {
+    border: none !important;
 }
 
 .scrollContainer {

@@ -6,6 +6,16 @@ Component({
   properties: {
     num:{
       type: 'number'
+    },
+    defaultNum:{
+      type: 'number',
+      value:1,
+      observer:function(newVal,oldVal){
+        this.setData({
+          index:newVal,
+          isDisabled: false,
+        })
+      }
     }
   },
 
@@ -17,7 +27,6 @@ Component({
     isDisabled: false,
     jiaDisabled: false,
   },
-
   /**
    * 组件的方法列表
    */
@@ -65,12 +74,15 @@ Component({
   },
   lifetimes: {
     attached() {
+      this.setData({
+        index: this.properties.defaultNum
+      })
       if (this.data.index <= 1) {
         this.setData({
-          isDisabled: true
+          isDisabled: true,
         });
       }
     }
+  },
 
-  }
 });

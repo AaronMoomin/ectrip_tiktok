@@ -1,14 +1,8 @@
 <view class="hotelContainer">
     <view class="imgShow">
         <swiper class="scrollNav" indicator-dots circular indicator-active-color="#fff">
-            <swiper-item class="scrollItem">
-                <image src="/static/images/hotelBack.png"></image>
-            </swiper-item>
-            <swiper-item class="scrollItem">
-                <image src="/static/images/gbtl.jpg"></image>
-            </swiper-item>
-            <swiper-item class="scrollItem">
-                <image src="/static/images/hotelBack.png"></image>
+            <swiper-item class="scrollItem" tt:for="{{goods.imageList}}" tt:key="{{item.uid}}">
+                <image src="{{item.url}}"></image>
             </swiper-item>
         </swiper>
     </view>
@@ -23,7 +17,7 @@
             </view>
             <view class="mapNav">
                 <view class="hotelInfo">
-                    <text class="address">山西省晋中市平遥县顺城路154号又见瓶窑园区1号楼</text>
+                    <text class="address">{{goods.infoAddress[0].address[1].name}}</text>
                     <view class="show" bind:tap="showMap">地图<text class="iconfont icon-tiaozhuan"></text>
                     </view>
                 </view>
@@ -32,7 +26,8 @@
                     <text>位于火车站附近500m</text>
                 </view>
             </view>
-            <view bind:tap="handleCollect" class="{{isCollect?'collected':'collect'}}">
+            <view bind:tap="handleCollect" data-goods="{{goods}}"
+                  class="{{isCollect?'collected':'collect'}}">
                 <text class="iconfont icon-xingxing"></text>
                 <text>{{isCollect?'已收藏':'收藏'}}</text>
             </view>
@@ -62,47 +57,41 @@
                 <text>免费取消</text>
             </view>
             <view class="hotelNav">
-                <view class="hotelItem">
+                <view class="hotelItem" tt:for="{{productList}}" tt:key="{{item.productId}}">
                     <view class="itemShow">
                         <view class="imgShow">
-                            <image src="/static/images/gbtl.jpg"></image>
+                            <image src="{{item.imageList[0].url?item.imageList[0].url:'/static/images/gbtl.jpg'}}"></image>
                         </view>
                         <view class="info">
                             <view class="title">
-                                <text>豪华标准间(含早)</text>
+                                <text>{{item.productName}}</text>
                             </view>
-                            <text class="desc">大床 有窗 一人入住</text>
+                            <view class="know" bind:tap="open3" data-rule="{{item.ruleBookDesc}}">
+                                <text>预定须知</text>
+                                <text class="iconfont icon-tiaozhuan"></text>
+                            </view>
                             <view class="priceBox">
-                                <view class="red">￥<text class="price">438</text>起
+                                <view class="red">￥<text class="price">{{item.priceList[0].price}}</text>起
                                 </view>
-                                <text class="bad">￥260</text>
+<!--                                <text class="bad">￥260</text>-->
                             </view>
                         </view>
-                        <view class="reserveBtn" bind:tap="toHotelReserve">
+                        <view class="reserveBtn" bind:tap="toHotelReserve"
+                              data-contactducumenttype="{{item.ruleBook.contactDucumentType}}"
+                              data-totalstock="{{item.stockList[0].totalStock}}"
+                              data-goods="{{goods}}"
+                              data-product="{{item}}"
+                              data-switchneedvisitor="{{item.ruleBook.switchNeedVisitor}}"
+                              data-visitorducumenttype="{{item.ruleBook.visitorDucumentType}}"
+                              data-start="{{dateGlobal}}"
+                              data-end="{{dateGlobal2}}"
+                              data-daysbetween="{{daysBetween}}"
+                              tt:if="{{item.stockList[0].totalStock>1}}">
                             <text class="yd">预定</text>
                             <text class="zxf">在线付</text>
                         </view>
-                    </view>
-                </view>
-                <view class="hotelItem">
-                    <view class="itemShow">
-                        <view class="imgShow">
-                            <image src="/static/images/gbtl.jpg"></image>
-                        </view>
-                        <view class="info">
-                            <view class="title">
-                                <text>豪华标准间(含早)</text>
-                            </view>
-                            <text class="desc">大床 有窗 一人入住</text>
-                            <view class="priceBox">
-                                <view class="red">￥<text class="price">438</text>起
-                                </view>
-                                <text class="bad">￥260</text>
-                            </view>
-                        </view>
-                        <view class="reserveBtn" bind:tap="toHotelReserve">
-                            <text class="yd">预定</text>
-                            <text class="zxf">在线付</text>
+                        <view class="reserveBtn disabled-btn" tt:else>
+                            <text>已售完</text>
                         </view>
                     </view>
                 </view>
@@ -138,7 +127,7 @@
                     </view>
                     <view class="ruleItem">
                         <text class="tie">酒店提示</text>
-                        <text class="dark">不接受18岁以下客人在无监护人陪同的情况下入住,加床及儿童政策取决于您所选房的类型</text>
+                        <text class="dark">{{goods.importantDescription}}</text>
                     </view>
                     <view class="ruleItem">
                         <text class="tie">宠物携带</text>
@@ -217,6 +206,31 @@
         </view>
         <view class="weui-half-screen-dialog__ft">
             <button class="confirmBtn" bind:tap="confirmDate">确定</button>
+        </view>
+    </view>
+</view>
+
+<view class="fadeIn" tt:if="{{dialog3}}">
+    <view class="weui-mask" bindtap="close3"></view>
+    <view class="weui-half-screen-dialog">
+        <view class="weui-half-screen-dialog__hd" style="padding: 20rpx;">
+            <view class="weui-half-screen-dialog__hd__side" bindtap="close3">
+                <view class="weui-icon-btn">关闭<text class="weui-icon-close-thin"></text>
+                </view>
+            </view>
+            <view class="weui-half-screen-dialog__hd__main">
+                <text class="weui-half-screen-dialog__title">预定须知</text>
+            </view>
+        </view>
+        <view class="weui-half-screen-dialog__bd" style="padding:32rpx;height:500rpx;">
+            <view class="desc">
+                <view class="name">
+                    预定说明
+                </view>
+                <view class="content rule">
+                    <text tt:for="{{rule}}" tt:key="{{index}}">{{index+1}}. {{item}}</text>
+                </view>
+            </view>
         </view>
     </view>
 </view>

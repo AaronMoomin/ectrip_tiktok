@@ -1,0 +1,90 @@
+.changeContainer {
+    padding: 20rpx;
+    color: #000;
+    font-size: 30rpx;
+}
+
+.changeContainer .changeNav {
+}
+
+.changeNav .peopleNav {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10rpx;
+    background: #fff;
+    padding: 20rpx;
+    border-bottom: 2rpx solid #797979;
+    margin-bottom: 20rpx;
+}
+
+.changeNav .peopleNav .head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.changeNav .peopleNav .head .title {
+    font-size: 36rpx;
+    margin-bottom: 20rpx;
+}
+
+.changeNav .peopleNav .peopleItem .item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    border-bottom: 2rpx solid #e3e3e3;
+}
+
+.changeNav .peopleNav .peopleItem .item .desc {
+    color: #797979;
+}
+
+.humanInfo .infoItem {
+    justify-content: center;
+    border-radius: 10rpx;
+    padding: 10rpx;
+    line-height: 50rpx;
+    margin: 20rpx 0;
+}
+
+.humanInfo .infoItem .infoCell {
+    display: flex;
+    font-size: 28rpx;
+}
+
+.humanInfo .infoItem .infoCell .name {
+    width: 150rpx;
+    display: flex;
+}
+
+.humanInfo .infoItem .infoCell .name .iconfont {
+    font-size: 24rpx;
+}
+
+.humanInfo .infoItem .infoCell .pickerCal {
+    display: flex;
+}
+
+.pickerCal .iconfont {
+    font-size: 24rpx;
+}
+
+.humanInfo .infoItem .infoCell input {
+    flex: 1;
+    margin-left: 60rpx;
+}
+
+.humanInfo .infoItem button::after {
+    border: none !important;
+}
+
+.confirm {
+    background: #ff6d7a;
+    color: #fff;
+}
+
+.fee_confirm {
+    background: linear-gradient(#ff9754, #ff7356);
+    color: #fff;
+}

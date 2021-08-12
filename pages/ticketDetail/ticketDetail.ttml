@@ -32,14 +32,16 @@
                 <text>立减5元</text>
                 <text>优惠券</text>
             </view>
-            <view class="desc">未使用随时可退,随买随用</view>
-            <view class="know">
+            <view class="desc" tt:if="{{item.ruleBook.switchNeedVisitor!=0}}">需要实名制信息</view>
+            <view class="know" bind:tap="open2" data-rule="{{item.ruleBookDesc}}">
                 <text>预定须知</text>
                 <text class="iconfont icon-tiaozhuan"></text>
             </view>
             <view class="reserveBtn" bind:tap="toReserve"
+                  data-contactducumenttype="{{item.ruleBook.contactDucumentType}}"
                   data-totalstock="{{item.stockList[0].totalStock}}"
                   data-product="{{item}}"
+                  data-switchneedvisitor="{{item.ruleBook.switchNeedVisitor}}"
                   tt:if="{{item.stockList[0].totalStock>1}}">
                 <text class="yd">预定</text>
                 <text class="zxf">在线付</text>
@@ -147,6 +149,30 @@
                     </view>
                     <view class="content">
                         {{goods.invoiceDescription}}
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="fadeIn" tt:if="{{dialog2}}">
+        <view class="weui-mask" bindtap="close2"></view>
+        <view class="weui-half-screen-dialog">
+            <view class="weui-half-screen-dialog__hd">
+                <view class="weui-half-screen-dialog__hd__side" bindtap="close2">
+                    <view class="weui-icon-btn">关闭<text class="weui-icon-close-thin"></text>
+                    </view>
+                </view>
+                <view class="weui-half-screen-dialog__hd__main">
+                    <text class="weui-half-screen-dialog__title">预定须知</text>
+                </view>
+            </view>
+            <view class="weui-half-screen-dialog__bd" style="padding-top:32rpx;height:500rpx;">
+                <view class="desc">
+                    <view class="name">
+                        预定说明
+                    </view>
+                    <view class="content rule">
+                        <text tt:for="{{rule}}" tt:key="{{index}}">{{index+1}}. {{item}}</text>
                     </view>
                 </view>
             </view>

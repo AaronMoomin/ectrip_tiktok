@@ -1,9 +1,16 @@
 let util = require('../../utils/util.js');
+const base64 = require("../../utils/base64.js");
+const request = require("../../utils/request");
+const app = getApp();
 Page({
     /**
      * 页面的初始数据
      */
     data: {
+        dialog3: false,//预定须知
+        rule:'',//预定须知
+        id:'',
+        openid: '',
         isCollect:false,
         name: '',//酒店名称
         yearT: '',
@@ -17,30 +24,143 @@ Page({
         dialog: false,
         selectArray:[],
         params:[],
+        goods:'',
+        productList:[],
+        productListShow:'',
     },
-    handleCollect(){
-        let {isCollect} = this.data
-        if (isCollect) {
-            tt.showToast({
-                title:'取消收藏',
-                icon: 'none'
+    async handleCollect(e) {
+        if (this.checkLogin()){
+            this.setData({
+                openid:app.globalData.openid
+            });
+            let {isCollect,openid} = this.data
+            console.log(e.currentTarget.dataset.goods);
+            let obj = JSON.stringify({
+                "categoryId": e.currentTarget.dataset.goods.categoryId,
+                "goodsId": e.currentTarget.dataset.goods.id,
+                openid,
             })
-            isCollect = false
-        }else {
-            tt.showToast({
-                title:'收藏成功',
-                icon: 'none'
+            let object = base64.encode(obj)
+            if (isCollect) {
+                tt.showToast({
+                    title: '取消收藏',
+                    icon: 'none'
+                })
+                isCollect=0
+                await request.myRequest(
+                    '/tiktok/personCenter/collection/remove',
+                    {
+                        goodsId:e.currentTarget.dataset.goods.id,
+                        openid:app.globalData.openid
+                    },
+                    'post',
+                    'application/x-www-form-urlencoded'
+                ).then(res => {
+                    console.log(res);
+                }).catch(err => {
+                    console.log(err);
+                })
+            } else {
+                tt.showToast({
+                    title: '收藏成功',
+                    icon: 'none'
+                })
+                isCollect=1
+                await request.myRequest(
+                    '/tiktok/personCenter/collection/add',
+                    {
+                        data:object,
+                        signed:'add'
+                    },
+                    'post',
+                ).then(res => {
+                    console.log(res);
+                }).catch(err => {
+                    console.log(err);
+                })
+            }
+            this.setData({
+                isCollect
             })
-            isCollect = true
         }
-        this.setData({
-            isCollect
+    },
+    async getGoodsDetail() {
+        let {id,dateGlobal,dateGlobal2} = this.data
+        let openid = app.globalData.openid
+        let obj = JSON.stringify({
+            "endDate": dateGlobal2,
+            id,
+            openid,
+            "startDate": dateGlobal
+        })
+        let object = base64.encode(obj)
+        tt.showLoading({
+            title: '加载中...'
+        })
+        await request.myRequest(
+            '/tiktok/mutual/detail',
+            {
+                data:object ,
+                signed: "酒店详情"
+            },
+            'post'
+        ).then(res=>{
+            tt.hideLoading()
+            console.log(res);
+            let {goods,productList,productListShow,isCollect} = this.data
+            res.data.data.goods.openStartTime =
+                res.data.data.goods.openStartTime.split(" ")[1]
+            res.data.data.goods.openEndTime =
+                res.data.data.goods.openEndTime.split(" ")[1]
+            res.data.data.goods.infoAddress
+                = JSON.parse(res.data.data.goods.infoAddress)
+            res.data.data.goods.imageList = JSON.parse(res.data.data.goods.imageList)
+            for (let p of res.data.data.productList) {
+                p.attributeIds = JSON.parse(p.attributeIds)
+                p.attributeIds.attributeIds =
+                    JSON.parse(p.attributeIds.attributeIds)
+                p.imageList = JSON.parse(p.imageList)
+                productList.push(p)
+            }
+            if (productList.length>=2){
+                for (let i = 0; i < 2; i++) {
+                    productListShow.push(productList[i])
+                }
+            }else {
+                productListShow = productList
+            }
+
+            this.setData({
+                goods:res.data.data.goods,
+                productList,
+                productListShow,
+                isCollect:res.data.data.isCollected
+            })
+            console.log('goods',res.data.data.goods);
+            console.log('productList',productList);
+        }).catch(err=>{
+            tt.hideLoading()
+            console.log(err);
         })
     },
-    toHotelReserve(){
-        tt.navigateTo({
-            url: '/pages/hotelReserve/hotelReserve'
-        })
+    toHotelReserve(e){
+        console.log(e);
+        if (this.checkLogin()){
+            let goods = JSON.stringify(e.currentTarget.dataset.goods)
+            let start = e.currentTarget.dataset.start
+            let end = e.currentTarget.dataset.end
+            let product = JSON.stringify(e.currentTarget.dataset.product)
+            let totalStock = e.currentTarget.dataset.totalstock
+            let switchneedvisitor = e.currentTarget.dataset.switchneedvisitor
+            let contactducumenttype = e.currentTarget.dataset.contactducumenttype
+            let visitorducumenttype = e.currentTarget.dataset.visitorducumenttype
+            let daysBetween = e.currentTarget.dataset.daysbetween
+            tt.navigateTo({
+                url: `/pages/hotelReserve/hotelReserve?product=${product}&visitorducumenttype=${visitorducumenttype}&daysbetween=${daysBetween}&goods=${goods}&start=${start}&end=${end}&totalStock=${totalStock}&switchneedvisitor=${switchneedvisitor}&contactducumenttype=${contactducumenttype}`
+            });
+        }else {
+            console.log('未登录');
+        }
     },
     bindDateChange(e) {
         let {today, tomorrow, weekT, weekN, daysBetween} = this.data
@@ -82,7 +202,9 @@ Page({
         })
     },
     confirmDate() {
-        let {today,tomorrow,daysBetween,params} = this.data
+        let {today,tomorrow,daysBetween,params,dateGlobal,dateGlobal2} = this.data
+        dateGlobal = params[0].xuanShiJian+'-'+params[0].xuanDayShi
+        dateGlobal2 = params[1].xuanShiJian+'-'+params[1].xuanDayShi
         today = params[0].xuanShiJian
         today = today.split('-')[1]
         today = `${today}月${(params[0].xuanDayShi+'').padStart(2,'0')}日`
@@ -94,6 +216,8 @@ Page({
             today,
             tomorrow,
             daysBetween,
+            dateGlobal,
+            dateGlobal2,
             dialog:false
         })
     },
@@ -112,6 +236,14 @@ Page({
             dialog2: true
         })
     },
+    open3(e) {
+        let {rule} = e.currentTarget.dataset
+        rule = rule.split('；')
+        this.setData({
+            dialog3: true,
+            rule:rule
+        });
+    },
     close() {
         this.setData({
             dialog: false
@@ -126,6 +258,110 @@ Page({
         this.setData({
             dialog2: false
         })
+    },
+    close3() {
+        this.setData({
+            dialog3: false
+        })
+    },
+    checkLogin() {
+        tt.getStorage({
+            key: 'userInfo',
+            success: res => {
+                console.log(res);
+                this.setData({
+                    nickName: res.data.nickName,
+                    avatarUrl: res.data.avatarUrl
+                })
+            },
+            fail: err => {
+                console.log(err);
+            }
+        })
+        if (this.data.nickName == "") {
+            console.log("未登录");
+            this.handleLogin()
+            return false
+        } else {
+            console.log("已登录");
+            return true
+        }
+    },
+    async login(value) {
+        let obj = JSON.stringify({
+            "anonymous_code": value.anonymousCode,
+            "appid": app.globalData.appid,
+            "code": value.code,
+            "secret": app.globalData.secret
+        })
+        let Object = base64.encode(obj)
+        let data = {
+            "data": Object,
+            "signed": "login"
+        }
+        await request.myRequest(
+            '/tiktok/serverAPI/login',
+            data,
+            "post"
+        ).then(res => {
+            console.log(res);
+            let {openid, session_key, unionid} = res.data.data
+            app.globalData.openid = openid
+            tt.setStorage({
+                key: 'session',
+                data: {
+                    openid,
+                    session_key,
+                    unionid
+                },
+                success: res => {
+                    // console.log('openid调用成功');
+                },
+                fail: err => {
+                    // console.log('openid调用失败');
+                }
+            })
+        }).catch(err => {
+            console.log(err);
+        })
+    },
+    handleLogin() {
+        tt.login({
+                force: true,
+                success: (res) => {
+                    // console.log('登录回调', res);
+                    tt.getUserInfo({
+                        withCredentials: true,
+                        success: (res1) => {
+                            this.login(res)
+                            this.setData({
+                                avatarUrl: res1.userInfo.avatarUrl,
+                                nickName: res1.userInfo.nickName
+                            })
+                            tt.setStorage({
+                                key: "userInfo",
+                                data: {
+                                    avatarUrl: res1.userInfo.avatarUrl,
+                                    nickName: res1.userInfo.nickName
+                                },
+                                success: (res) => {
+                                    console.log(`userInfo写入成功`);
+                                },
+                                fail(res) {
+                                    // console.log(`userInfo调用失败`);
+                                },
+                            });
+                        },
+                        fail(res) {
+                            console.log(`getUserInfo失败`);
+                        },
+                    });
+                },
+                fail: (err) => {
+                    console.log('取消', err);
+                }
+            }
+        )
     },
     getDaysBetween(dateString1, dateString2) {
         var startDate = Date.parse(dateString1);
@@ -170,6 +406,7 @@ Page({
         })
         this.setData({
             name: options.name,
+            id:options.id,
             dateGlobal,
             dateGlobal2,
             weekT,
@@ -178,6 +415,7 @@ Page({
             tomorrow,
             daysBetween,
         })
+        this.getGoodsDetail()
     },
     onPageScroll(e) {
     },
@@ -198,6 +436,7 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
+        tt.hideLoading()
     },
 
     /**

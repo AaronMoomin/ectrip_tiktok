@@ -1,0 +1,37 @@
+<view class="feeContainer">
+    <view class="feeNav">
+        <view class="title">问题场景</view>
+        <view class="feeItemCon">
+            <view class="feeItem">登录注册</view>
+            <view class="feeItem">登录注册</view>
+            <view class="feeItem">登录注册</view>
+            <view class="feeItem">登录注册</view>
+            <view class="feeItem">登录注册</view>
+            <view class="feeItem">登录注册</view>
+        </view>
+    </view>
+    <view class="feeNav">
+        <view class="title">反馈问题</view>
+        <textarea placeholder="文字反馈,请在这里填写"></textarea>
+    </view>
+    <view class="feeNav">
+        <view class="head">
+            <view class="title">反馈凭证</view>
+            <text class="desc">最多添加6张图片</text>
+        </view>
+        <view class="weui-uploader">
+            <view class="weui-uploader__bd">
+                <block tt:for="{{imagesList}}" tt:key="*this">
+                    <view class="weui-uploader__file">
+                        <image class="weui-uploader__img" src="{{item}}"></image>
+                    </view>
+                </block>
+                <view class="weui-uploader__input-box">
+                    <input class="weui-uploader__input js_file" type="file"
+                           accept="image/jpg,image/jpeg,image/png,image/gif" multiple="" bindtap='uploader'
+                           name="images"></input>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

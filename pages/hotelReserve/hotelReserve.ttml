@@ -2,22 +2,22 @@
     <view class="timeNav">
         <view class="start">
             <text>入住时间</text>
-            <text class="time">11月17日 周一</text>
+            <text class="time">{{start}}</text>
         </view>
         <view class="start">
-            <text>入住时间</text>
-            <text class="time">11月17日 周一</text>
+            <text>离店时间</text>
+            <text class="time">{{end}}</text>
         </view>
         <view class="duration">
-            <text>共一晚</text>
+            <text>共{{daysBetween}}晚</text>
             <text class="iconfont icon-tiaozhuan"></text>
         </view>
     </view>
     <view class="info">
         <image src="/static/images/gbtl.jpg"></image>
         <view class="infoItem">
-            <text class="name">酒店名称</text>
-            <text>大床房/1人入住/15m-30m/有窗/无早餐</text>
+            <text class="name">{{goods.name}}</text>
+            <text>{{typeStr}}</text>
             <text>位于火车站附近500m</text>
         </view>
     </view>
@@ -41,8 +41,24 @@
                        placeholder="请输入联系手机"/>
             </view>
             <view class="weui-cells__tips weui-cells__tips_warn"
-                  style="color:red;{{isPhoneCurrentWaring ? 'display:block' : 'display:none'}}">
+                  style="color:red;font-size:28rpx;{{isPhoneCurrentWaring ? 'display:block' : 'display:none'}}">
                 {{phoneWarnMessage}}
+            </view>
+        </view>
+        <view class="infoItem" tt:if="{{contactducumenttype!='[]'}}">
+            <view class="infoCell">
+                <view class="name">
+                    <picker class="pickerCal" bindchange="bindPickerChange1" range="{{array1}}">
+                        <view>{{array1[value]}}</view>
+                    </picker>
+                    <text class="iconfont icon-tiaozhuan"></text>
+                </view>
+                <input bindinput="handleIdCard" value="{{idCard}}"
+                       placeholder="请输入取票人证件号"/>
+            </view>
+            <view class="weui-cells__tips weui-cells__tips_warn"
+                  style="color:red;font-size:28rpx;{{isIdCardCurrentWaring ? 'display:block' : 'display:none'}}">
+                {{IdCardWarnMessage}}
             </view>
         </view>
         <view class="infoItem">
@@ -54,6 +70,26 @@
                     </picker>
                     <text class="iconfont icon-tiaozhuan"></text>
                 </view>
+            </view>
+            <view class="weui-cells__tips weui-cells__tips_warn"
+                  style="color:red;font-size:28rpx;letter-spacing:2rpx;{{isPeople? 'display:block' : 'display:none'}}">
+                {{peopleMessage}}
+            </view>
+        </view>
+        <view class="humanCheckNav" tt:if="{{switchneedvisitor==1}}">
+            <text class="headTitle">游客信息</text>
+            <view class="humanItem" tt:for="{{visitPersonsShow}}" tt:key="{{item.id}}">
+                <text class="num">游客{{index + 1}}</text>
+                <view class="humanItemInfo">
+                    <text class="name">{{item.name}}</text>
+                    <text class="idCard">身份证 {{item.credentials}}</text>
+                </view>
+                <text class="iconfont icon-shanchu" bind:tap="deleteVisitor"
+                      data-id="{{item.id}}"></text>
+            </view>
+            <view class="add" bind:tap="open1">
+                <text class="iconfont icon-add"></text>
+                <text>选择游客</text>
             </view>
         </view>
     </view>
@@ -90,13 +126,83 @@
 </view>
 <view class="fixedNav">
     <text>在线支付</text>
-    <view class="price">
+    <view class="price" bind:tap="open">
         <view class="red">￥
-            <text class="big">108</text>
+            <text class="big">{{nowPrice}}</text>
         </view>
-        <view class="discount">已减￥15</view>
+        <view style="color: #fff;">
+            点击查看价格明细
+        </view>
+<!--        <view class="discount">已减￥15</view>-->
     </view>
-    <view class="toReserve">
+    <view class="toReserve" bind:tap="toReserve">
         去支付
+    </view>
+</view>
+<!--每日价格-->
+<view class="fadeIn" tt:if="{{dialog}}">
+    <view class="weui-mask" bindtap="close"></view>
+    <view class="weui-half-screen-dialog">
+        <view class="weui-half-screen-dialog__hd">
+            <view class="weui-half-screen-dialog__hd__side" bindtap="close">
+            </view>
+            <view class="weui-half-screen-dialog__hd__main">
+                <text class="weui-half-screen-dialog__title">价格明细</text>
+            </view>
+        </view>
+        <view class="weui-half-screen-dialog__bd" style="height:360rpx;">
+            <view class="priceItem">
+                <text>日期</text>
+                <text>价格</text>
+            </view>
+            <view class="priceItem" tt:for="{{priceList}}" tt:key="{{item.date}}">
+                <text>{{item.date}}</text>
+                <text>￥{{roomIndex}} * {{item.price}}</text>
+            </view>
+            <view class="priceItem">
+                <text>总价</text>
+                <text class="price">￥{{nowPrice}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+
+        <!--  游客选择  -->
+<view class="fadeIn" tt:if="{{dialog1}}">
+    <view class="weui-mask" bind:tap="close1"></view>
+    <view class="weui-half-screen-dialog" style="color: #000">
+        <view class="weui-half-screen-dialog__hd">
+            <view class="weui-half-screen-dialog__hd__side" bind:tap="close1">
+                <view class="weui-icon-btn">关闭<text class="weui-icon-close-thin"></text>
+                </view>
+            </view>
+            <view class="weui-half-screen-dialog__hd__main">
+                <text class="weui-half-screen-dialog__title">选择游客</text>
+            </view>
+            <text class="iconfont icon-bianji bj"
+                  bind:tap="toVisitor"
+            ></text>
+        </view>
+        <view class="weui-half-screen-dialog__bd" style="padding-top:32rpx;height:500rpx;">
+            <checkbox-group bind:change="checkboxChange"
+                            tt:if="visitPersons">
+                <label class="ttui-cell checkNav" tt:for="{{visitPersons}}" tt:key="{{item.id}}">
+                    <view class="ttui-cell__hd">
+                        <checkbox value="{{item.id}}"
+                                  checked="{{item.checked}}" />
+                    </view>
+                    <view class="checkItemInfo">
+                        <text class="name">{{item.name}}</text>
+                        <text class="name">手机 {{item.cellphone}}</text>
+                        <text class="name">身份证 {{item.credentials}}</text>
+                        <text class="name">地址 {{item.address}}</text>
+                    </view>
+                </label>
+            </checkbox-group>
+            <view class="none" tt:else>无</view>
+        </view>
+        <view class="weui-half-screen-dialog__ft">
+            <button id="confirm" bind:tap="confirmVisitor">确定</button>
+        </view>
     </view>
 </view>

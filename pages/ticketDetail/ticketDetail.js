@@ -14,15 +14,14 @@ Page({
         productList:[],
         productListShow:[],
         slideNum:0,
-        contentHeight: '550rpx',
-        //介绍的高度
-        displayed: 'block',
         //显示
         dialog1: false,
+        dialog2: false,
         isCollect:'',
         openid:'',
         nickName:'',
         avatarUrl:'',
+        rule:'',
     },
     checkLogin() {
         tt.getStorage({
@@ -248,8 +247,10 @@ Page({
         if (this.checkLogin()){
             let product = JSON.stringify(e.currentTarget.dataset.product)
             let totalStock = e.currentTarget.dataset.totalstock
+            let switchneedvisitor = e.currentTarget.dataset.switchneedvisitor
+            let contactducumenttype = e.currentTarget.dataset.contactducumenttype
             tt.navigateTo({
-                url: `/pages/reserve/reserve?product=${product}&totalStock=${totalStock}`
+                url: `/pages/reserve/reserve?product=${product}&totalStock=${totalStock}&switchneedvisitor=${switchneedvisitor}&contactducumenttype=${contactducumenttype}`
             });
         }else {
             console.log('未登录');
@@ -261,10 +262,23 @@ Page({
             dialog1: true
         });
     },
+    open2(e) {
+        let {rule} = e.currentTarget.dataset
+        rule = rule.split('；')
+        this.setData({
+            dialog2: true,
+            rule:rule
+        });
+    },
 
     close() {
         this.setData({
             dialog1: false
+        });
+    },
+    close2() {
+        this.setData({
+            dialog2: false
         });
     },
 

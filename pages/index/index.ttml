@@ -23,7 +23,7 @@
                 </view>
                 <view class="item" bind:tap="toQualityTouristRoutes">
                     <image src="/static/images/rotate.png"></image>
-                    <text>路线</text>
+                    <text>线路</text>
                 </view>
                 <view class="item" bind:tap="toSpecialtyStore">
                     <image src="/static/images/tc.png"></image>

@@ -19,7 +19,8 @@
         <view class="chooseContainer">
             <view class="dateContainer">
                 <view class="pre">
-                    <picker mode="date" data-type="pre" value="{{dateGlobal}}" start="{{yearT}}" end="{{2099-12-31}}" bindchange="bindDateChange">
+                    <picker mode="date" data-type="pre" value="{{dateGlobal}}" start="{{yearT}}" end="{{2099-12-31}}"
+                            bindchange="bindDateChange">
                         <text>{{weekT}}\n</text>
                         <text>{{today}}</text>
                     </picker>
@@ -27,7 +28,8 @@
                 <view class="line"></view>
                 <view class="line"></view>
                 <view class="next">
-                    <picker mode="date" data-type="next" value="{{dateGlobal2}}" start="{{yearN}}" end="{{2099-12-31}}" bindchange="bindDateChange">
+                    <picker mode="date" data-type="next" value="{{dateGlobal2}}" start="{{yearN}}" end="{{2099-12-31}}"
+                            bindchange="bindDateChange">
                         <text>{{weekN}}\n</text>
                         <text>{{tomorrow}}</text>
                     </picker>
@@ -45,9 +47,16 @@
                 </view>
             </view>
         </view>
-        <input type="text" class="suggests" placeholder="试试搜索 '振华商圈'"
-        bind:confirm="toHotelSearch"></input>
-        <button class="btn" bind:tap="handleReserve">立即预定</button>
+<!--        <input type="text" class="suggests" placeholder="试试搜索 '振华商圈'"-->
+<!--               bindinput="handleContent" value="{{content}}"-->
+<!--               bind:confirm="toHotelSearch"-->
+<!--               data-start="{{dateGlobal}}"-->
+<!--               data-end="{{dateGlobal2}}"-->
+<!--               data-content="{{content}}"></input>-->
+        <button class="btn" bind:tap="toHotelSearch"
+                data-start="{{dateGlobal}}"
+                data-end="{{dateGlobal2}}">立即预定
+        </button>
     </view>
     <!--  超值特惠  -->
     <view class="hotRecommend">

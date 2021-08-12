@@ -1,7 +1,10 @@
 <view class="listContainer">
     <view class="inputBox">
         <text class="iconfont icon-sousuo"></text>
-        <input placeholder="想住哪里?"></input>
+        <input placeholder="想住哪里?"
+               bindinput="handleContent"
+               value="{{content}}"
+               bind:confirm="searchContent"></input>
     </view>
     <view class="chooseContainer">
         <select class="select" options="{{all}}" name="距离" key="city_id" bind:change="change"></select>
@@ -9,44 +12,27 @@
         <select class="select" options="{{destination}}" name="星级" key="city_id" bind:change="change"></select>
         <select class="select" options="{{days}}" name="综合排序" key="city_id" bind:change="change"></select>
     </view>
-    <view class="hotelContainer">
-        <view class="routeItem">
+    <view class="hotelContainer" tt:if="{{goodsList.length!=0}}">
+        <view class="routeItem" tt:for="{{goodsList}}" tt:key="{{item.id}}"
+              bind:tap="toHotelDetail" data-name="{{item.name}}" data-id="{{item.id}}">
             <view class="imgBox">
-                <image src="/static/images/gbtl.jpg"></image>
+                <image src="{{item.imageList[0].url?item.imageList[0].url:'/static/images/gbtl.jpg'}}"></image>
             </view>
             <view class="info">
                 <view class="titleNav">
                     <text class="star">四星</text>
-                    <text class="title">酒店名称</text>
+                    <text class="title">{{item.name}}</text>
                 </view>
-                <text class="desc">大床房/15m-20m/有无线/无早餐</text>
+                <text class="desc">{{item.imageText}}</text>
                 <text class="company">位于火车站附近500m</text>
             </view>
             <view class="price">
                 <view class="red">
-                    <text class="big">270</text>
-                    起
-                </view>
-            </view>
-        </view>
-        <view class="routeItem">
-            <view class="imgBox">
-                <image src="/static/images/gbtl.jpg"></image>
-            </view>
-            <view class="info">
-                <view class="titleNav">
-                    <text class="star">四星</text>
-                    <text class="title">酒店名称</text>
-                </view>
-                <text class="desc">大床房/15m-20m/有无线/无早餐</text>
-                <text class="company">位于火车站附近500m</text>
-            </view>
-            <view class="price">
-                <view class="red">
-                    <text class="big">270</text>
+                    <text class="big">{{item.minPrice}}</text>
                     起
                 </view>
             </view>
         </view>
     </view>
+    <view class="none" tt:else>无</view>
 </view>

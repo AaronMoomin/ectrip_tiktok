@@ -10,11 +10,15 @@
         </view>
         <view class="weui-cell">
             <view class="weui-cell__bd title">验证码</view>
-            <view class="weui-cell__ft">{{orderInfo.verifyCode}}</view>
+            <view class="weui-cell__ft">{{qrCodeDto.verifyCode}}</view>
         </view>
         <view class="weui-cell">
-            <view class="weui-cell__bd title">订单状态</view>
-            <view class="weui-cell__ft">{{orderInfo.statusStr}}</view>
+            <view class="weui-cell__bd title">二维码</view>
+            <image class="qrCode" src="{{qrCodeDto.onlyQrCodeUrl}}"></image>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd title">使用情况</view>
+            <view class="weui-cell__ft">{{status[orderInfo.status]}}</view>
         </view>
         <view class="weui-cell">
             <view class="weui-cell__bd title">下单时间</view>
@@ -35,6 +39,14 @@
         <view class="weui-cell">
             <view class="weui-cell__bd title">消费数量</view>
             <view class="weui-cell__ft">{{orderList.consumeQuantity}}</view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd title">退订数量</view>
+            <view class="weui-cell__ft">{{orderList.refundQuantity}}</view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd title">剩余数量</view>
+            <view class="weui-cell__ft">{{orderList.quantity}}</view>
         </view>
         <view class="weui-cell">
             <view class="weui-cell__bd title">金额</view>
@@ -73,6 +85,16 @@
                 <view class="weui-cell__bd title">联系电话</view>
                 <view class="weui-cell__ft">{{item.phone}}</view>
             </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd title">使用情况</view>
+                <view class="weui-cell__ft">{{status[item.status]}}</view>
+            </view>
         </view>
     </view>
+    <view class="unsubscribe"
+          bind:tap="toRefund" tt:if="{{status[orderInfo.status]=='预订成功'}}"
+          data-orderinfo="{{orderInfo}}"
+          data-orderlist="{{orderList}}"
+          data-orderPassenger="{{orderPassenger}}"
+    >退订</view>
 </view>

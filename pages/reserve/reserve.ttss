@@ -131,17 +131,20 @@
     display: flex;
     font-size:28rpx;
 }
-.detailContainer .numChooser .infos{
-    flex: 1;
+.detailContainer .numChooser .title{
+    flex:1;
+}
+.detailContainer .infos{
     display: flex;
 }
-.numChooser .infos .title{
+.detailContainer .infos .headTitle{
+    flex: 1;
     margin: 10rpx;
 }
-.numChooser .infos .red{
+.detailContainer .infos .red{
     color: #ff776e;
 }
-.numChooser .infos .red .big{
+.detailContainer .infos .red .big{
     font-size:36rpx;
 }
 .showbtn{
@@ -367,6 +370,7 @@
     display: flex;
     flex-direction: column;
     margin-right: 30rpx;
+    width: 400rpx;
 }
 .humanItem .humanItemInfo .idCard{
     color: #797979;
@@ -374,11 +378,11 @@
 .humanCheckNav .add{
     display: flex;
     margin: 0 auto;
-    font-size: 24rpx;
-    width: 140rpx;
+    font-size: 28rpx;
+    width: 200rpx;
 }
 .humanCheckNav .add .iconfont{
-    font-size: 24rpx;
+    font-size: 28rpx;
 }
 .fixedNav{
     position:fixed;

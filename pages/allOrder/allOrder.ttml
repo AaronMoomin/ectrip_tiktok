@@ -29,13 +29,20 @@
             </view>
             <view class="price">
                 <view class="red">
-                    <text class="big">￥{{item.orderPrice}}</text>
+                    <text class="big">￥{{item.orderPrice}} / </text>
                 </view>
+                <text class="cancel">{{status[item.status]}}</text>
             </view>
             <view class="btnNav">
-                <text class="cancel">{{item.statusStr}}</text>
-                <view class="reserve" tt:if="{{item.statusStr!='未付款'}}"
-                      catch:tap="toTicketDetail"
+                <view class="reserve" tt:if="{{status[item.status]=='预订成功'}}"
+                      catch:tap="toTicketChanging"
+                      data-createTime="{{item.createTime}}"
+                      data-productname="{{item.productName}}"
+                      data-ordercode="{{item.orderCode}}">
+                    <text>改签</text>
+                </view>
+                <view class="reserve" tt:if="{{status[item.status]!='未付款' && item.countDown!='00:00'}}"
+                      catch:tap="toDetail"
                       data-id="{{item.goodsId}}"
                       data-name="{{item.productName}}">
                     <text>再次预定</text>

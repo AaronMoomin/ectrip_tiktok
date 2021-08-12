@@ -1,30 +1,37 @@
 const request = require('../../utils/request')
+const util = require("../../utils/util.js");
 const app = getApp()
 Page({
     /**
      * 页面的初始数据
      */
     data: {
+        dateGlobal:'',
+        dateGlobal2:'',
         isSelect: [true, false, false],
         openid:'',
         allList:[],
         categoryIdList:[1,2,3],
     },
     handleSelect(e) {
-        let {isSelect,categoryIdList} = this.data
+        let {isSelect,categoryIdList,dateGlobal,dateGlobal2} = this.data
         let index = e.currentTarget.dataset.index
         for (let i in isSelect) {
             isSelect[i] = false
             if (index == i) {
                 isSelect[i] = !isSelect[i]
-                this.getCollectList(categoryIdList[i])
+                if (i==0){
+                    this.getCollectList(categoryIdList[i])
+                }else if (i==1){
+                    this.getCollectList(categoryIdList[i],dateGlobal,dateGlobal2)
+                }
             }
         }
         this.setData({
             isSelect
         })
     },
-    async getCollectList(categoryId=1) {
+    async getCollectList(categoryId=1,start='',end='') {
         await request.myRequest(
             '/tiktok/personCenter/collection/list',
             {
@@ -63,8 +70,15 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        let {dateGlobal,dateGlobal2} = this.data
+        dateGlobal = util.GetDateStr(0)
+        dateGlobal2 = util.GetDateStr(1)
+        console.log(dateGlobal);
+        console.log(dateGlobal2);
         this.setData({
             openid:app.globalData.openid,
+            dateGlobal,
+            dateGlobal2,
         })
         this.getCollectList()
     },

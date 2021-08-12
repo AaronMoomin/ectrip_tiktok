@@ -21,3 +21,18 @@
 .detailItem .title{
     color:#000;
 }
+.unsubscribe{
+    border-radius: 20rpx;
+    background: linear-gradient(#ff9754,#ff7356);
+    color: #fff;
+    font-size:32rpx;
+    height: 60rpx;
+    text-align: center;
+    line-height:30rpx;
+    margin-bottom: 20rpx;
+    padding-top: 30rpx;
+}
+.qrCode{
+    width: 100rpx;
+    height: 100rpx;
+}

@@ -56,6 +56,10 @@ Page({
   },
   //跳转特产商城
   toSpecialtyStore(){
+    tt.showToast({
+      title: "敬请期待"
+    })
+    return
     tt.navigateTo({
       url: "/pages/specialtyStore/specialtyStore"
     });

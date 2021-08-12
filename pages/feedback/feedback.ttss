@@ -1,0 +1,35 @@
+.feeContainer{
+    padding: 20rpx;
+    font-size:30rpx;
+    color: #000;
+}
+.feeContainer .feeNav{
+    background:#fff;
+    padding: 20rpx;
+    border-radius:10rpx;
+    margin-bottom: 20rpx;
+}
+.feeContainer .feeNav .head{
+    display: flex;
+}
+.feeContainer .feeNav .head .desc{
+    margin: 5rpx 10rpx;
+    font-size: 24rpx;
+    color: #797979;
+}
+.feeContainer .feeNav .title{
+    margin-bottom: 20rpx;
+}
+.feeNav .feeItemCon{
+    display: flex;
+    flex-wrap: wrap;
+}
+.feeNav .feeItemCon .feeItem{
+    width: 190rpx;
+    border: 2rpx solid #000;
+    height: 60rpx;
+    line-height:60rpx;
+    text-align: center;
+    border-radius: 30rpx;
+    margin: 10rpx;
+}

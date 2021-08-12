@@ -19,7 +19,7 @@
 
 .contentContainer {
     position: absolute;
-    top: 480rpx;
+    top: 440rpx;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
@@ -123,7 +123,7 @@
     width: 170rpx;
     height: 100rpx;
     margin-left: 90rpx;
-    margin-top: 50rpx;
+    /*margin-top: 50rpx;*/
 }
 
 .mapNav .hotelInfo .show text {
@@ -187,7 +187,7 @@
     border-radius: 20rpx;
     font-size: 26rpx;
     margin-bottom: 20rpx;
-    margin-top: 240rpx;
+    margin-top: 200rpx;
     padding-top: 10rpx;
     border: 2rpx solid #eee;
     background: #fff;
@@ -197,7 +197,7 @@
 .reserveHotelContainer .dateContainer {
     display: flex;
     width: 100%;
-    height: 60rpx;
+    height: 20rpx;
     line-height: 6rpx;
     padding: 20rpx;
     border-top-left-radius: 20rpx;
@@ -307,9 +307,13 @@
     height: 80rpx;
     border-radius: 10rpx;
     font-size: 24rpx;
-    border: 1rpx solid #ff6156;
+    border: 2rpx solid #ff6156;
+    margin-top: 50rpx;
 }
-
+.hotelNav .hotelItem .itemShow .disabled-btn{
+    line-height:80rpx;
+    border: 2rpx solid #797979;
+}
 .hotelNav .hotelItem .itemShow .reserveBtn .yd {
     background: #ff6156;
     color: #fff;
@@ -326,7 +330,14 @@
 .hotelNav .hotelItem .itemShow .info {
     flex: 1;
 }
-
+.hotelNav .hotelItem .info .know{
+    display: flex;
+    font-size: 22rpx;
+}
+.hotelNav .hotelItem .info .know .iconfont{
+    margin-left: 30rpx;
+    font-size: 22rpx;
+}
 .hotelNav .hotelItem .itemShow .info .title {
     /*font-size: 30rpx;*/
 }
@@ -684,4 +695,22 @@
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+.desc{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20rpx;
+}
+.desc .name{
+    font-size:32rpx;
+    font-weight: bold;
+    margin-bottom: 10rpx;
+}
+.desc .content{
+    margin: 20rpx 0;
+}
+.desc .rule{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20rpx;
 }

@@ -8,11 +8,14 @@ Page({
      * 页面的初始数据
      */
     data: {
-        price: '',
-        nowPrice: '',
+        switchneedvisitor:'',//判断实名制
+        contactducumenttype:'',//是否需要联系人信息
+        price: '',//单价
+        nowPrice: '',//总价
         product: {},
         visitPersons: [],
         visitPersonsShow: [],
+        len:'',//游客长度
         totalStock: 0,
         ticketType: [],
         needToKnow: false,
@@ -52,15 +55,15 @@ Page({
         value1: 0,
         value1Show: '身份证',
         value2: 0,
-        userName: '兔斯基',
+        userName: '伞兵一号',
         userNameShow: '',
-        phone: '15724864113',
+        phone: '15731445471',
         phoneShow: '',
         sex: '男',
         sexShow: '男',
         isPhoneCurrentWaring: false,
         phoneWarnMessage: '',
-        idCard: '522601198003069767',
+        idCard: '610404197603155734',
         idCardShow: '',
         isIdCardCurrentWaring: false,
         IdCardWarnMessage: '',
@@ -99,7 +102,10 @@ Page({
         })
     },
     confirmVisitor() {
-        let {visitPersons, visitPersonsShow} = this.data
+        let {visitPersons, visitPersonsShow,nowPrice,price,voteNum,switchneedvisitor} = this.data
+        if (switchneedvisitor==1){
+            voteNum = 0
+        }
         for (let visitPerson of visitPersons) {
             if (visitPerson.checked) {
                 if (visitPersonsShow.indexOf(visitPerson) == -1) {
@@ -108,22 +114,32 @@ Page({
                 visitPerson.checked = false
             }
         }
+        nowPrice = price*visitPersonsShow.length
         this.setData({
             visitPersons,
             visitPersonsShow,
-            dialog1: false
+            dialog1: false,
+            voteNum:visitPersonsShow.length,
+            len:visitPersonsShow.length,
+            nowPrice
         })
         console.log(visitPersonsShow);
     },
     deleteVisitor(e) {
-        let {visitPersonsShow} = this.data
+        let {visitPersonsShow,nowPrice,price,voteNum} = this.data
         for (let i in visitPersonsShow) {
             if (visitPersonsShow[i].id == e.currentTarget.dataset.id) {
                 visitPersonsShow.splice(i, 1)
             }
         }
+        let len = visitPersonsShow.length
+        voteNum = len
+        nowPrice = price*len
         this.setData({
-            visitPersonsShow
+            visitPersonsShow,
+            len,
+            voteNum,
+            nowPrice
         })
     },
     checkboxChange(e) {
@@ -200,15 +216,22 @@ Page({
                 })
             }
             return
-        } else if (visitPersonsShow.length == 0) {
+        } else if (visitPersonsShow.length == 0 && this.data.switchneedvisitor!=0) {
             tt.showToast({
                 title: '游客不能为空',
                 icon: 'fail'
             })
             return
-        }else if (voteNum!=this.data.visitPersonsShow.length) {
+        }else if (this.data.switchneedvisitor==1 && voteNum!=this.data.len) {
+            console.log('需要实名');
             tt.showToast({
                 title: '游客数量不对',
+                icon: 'fail'
+            })
+            return
+        }else if (voteNum==0) {
+            tt.showToast({
+                title: '票数不能为零',
                 icon: 'fail'
             })
             return
@@ -216,19 +239,19 @@ Page({
         let visitPerson = []
         for (let item of visitPersonsShow) {
             let perItem = {
-                credentials: item.credentials,
+                credentials: (item.credentials).replace(/\s*/g,""),
                 credentialsType: arrayVal[item.credentialsType],
-                mobile: item.cellphone,
-                name: item.name
+                mobile: (item.cellphone).replace(/\s*/g,""),
+                name: (item.name).replace(/\s*/g,"")
             }
             visitPerson.push(perItem)
         }
         let obj = JSON.stringify({
             contactPerson: {
-                credentials: idCard,
+                credentials: idCard.replace(/\s*/g,""),
                 credentialsType: arrayVal[credentialsType],
-                mobile: phone,
-                name: userName
+                mobile: phone.replace(/\s*/g,""),
+                name: userName.replace(/\s*/g,"")
             },
             distributorProductId: product.distributorProductId,
             openid,
@@ -286,9 +309,9 @@ Page({
                         //?支付成功
                         console.log('支付成功', res);
                         //?跳转订单页面
-                        // tt.redirectTo({
-                        //     url:"/pages/allOrder/allOrder"
-                        // })
+                        tt.redirectTo({
+                            url:"/pages/allOrder/allOrder"
+                        })
                     } else if (res.code == 1) {
                         tt.showToast({
                             title: '支付超时',
@@ -348,7 +371,7 @@ Page({
             '/tiktok/mutual/dailyPriceAndStock',
             {
                 endDate: "",
-                id: product.distributorProductId,
+                id: product.productId,
                 startDate: day
             },
             "get",
@@ -372,7 +395,7 @@ Page({
     },
     //获取票数
     getIndex(e) {
-        const {
+        let {
             index
         } = e.detail;
         let {
@@ -382,7 +405,7 @@ Page({
         } = this.data;
         if (voteNum > index) {
             nowPrice -= price
-        } else {
+        } else if (voteNum < index){
             nowPrice += price
         }
         nowPrice = nowPrice.toFixed(2) * 1
@@ -746,9 +769,9 @@ Page({
         });
     },
 
-    open2() {
+    open2(e) {
         this.setData({
-            needToKnow: true
+            needToKnow: true,
         });
     },
 
@@ -898,7 +921,8 @@ Page({
             key: 'session',
             success: res => {
                 this.setData({
-                    openid: res.data.openid
+                    openid: res.data.openid,
+                    switchneedvisitor:options.switchneedvisitor
                 })
             }
         })
@@ -926,7 +950,8 @@ Page({
             ticketType: options.product.attributeIds.attributeIds,
             price: options.product.priceList[0].price,
             nowPrice: options.product.priceList[0].price,
-            totalStock: options.totalStock * 1
+            totalStock: options.totalStock * 1,
+            contactducumenttype:options.contactducumenttype
         });
         let thisDay = util.GetDateStr(0)
         this.getDailyPrice(thisDay)

@@ -108,6 +108,13 @@ Page({
             }
         )
     },
+    toFeedback(){
+        if (this.checkLogin()) {
+            tt.navigateTo({
+                url: "/pages/feedback/feedback"
+            })
+        }
+    },
     toMyComment() {
         if (this.checkLogin()) {
             tt.navigateTo({

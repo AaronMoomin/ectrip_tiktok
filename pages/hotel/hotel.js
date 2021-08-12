@@ -1,9 +1,12 @@
 // pages/hotel/hotel.js
+const request = require('../../utils/request')
+const base64 = require("../../utils/base64.js")
 Page({
     /**
      * 页面的初始数据
      */
     data: {
+        goodsList:[],//商品列表
         currentIndex: 1,
         //标签index
         dateGlobal: '2021-07-06',
@@ -39,13 +42,15 @@ Page({
             url:"/pages/hotelDetail/hotelDetail?name="+e.currentTarget.dataset.name
         })
     },
-    toHotelSearch(){
+    toHotelSearch(e){
         tt.navigateTo({
-            url:"/pages/hotelSearch/hotelSearch"
+            url:"/pages/hotelSearch/hotelSearch?start="+e.currentTarget.dataset.start+
+                '&end='+e.currentTarget.dataset.end
         })
     },
     //点击预定
-    handleReserve() {
+    handleReserve(e) {
+        console.log(e);
         let {
             currentIndex,
             dateGlobal,
@@ -172,8 +177,6 @@ Page({
               console.log(err);
             }
       })
-
-
     },
 
     bindDateChange(e) {

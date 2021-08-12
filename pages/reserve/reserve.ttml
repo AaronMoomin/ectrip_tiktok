@@ -1,6 +1,11 @@
 <view class="reserveContainer">
     <view class="detailContainer">
-        <text class="headTitle">{{product.productName}}</text>
+        <view class="infos">
+            <text class="headTitle">{{product.productName}}</text>
+            <view class="red">￥
+                <text class="big">{{price}}</text>
+            </view>
+        </view>
         <view class="timeChooser">
             <text class="title">游玩日期</text>
             <view class="timeBox">
@@ -32,13 +37,8 @@
 <!--            </view>-->
 <!--        </view>-->
         <view class="numChooser">
-            <view class="infos">
-                <!--                <view class="red">￥-->
-                <!--                    <text class="big">{{nowPrice}}</text>-->
-                <!--                </view>-->
-                <text class="title">数量</text>
-            </view>
-            <calculate binditemIndex="getIndex" num="{{totalStock}}"></calculate>
+            <text class="title">数量</text>
+            <calculate binditemIndex="getIndex" num="{{totalStock}}" defaultNum="{{switchneedvisitor==1?len==0?1:len:1}}"></calculate>
         </view>
         <!--        <view class="numChooser">-->
         <!--            <view class="infos">-->
@@ -55,7 +55,7 @@
         <!--        </view>-->
     </view>
     <view class="humanInfo">
-        <text class="headTitle">取票信息</text>
+        <text class="headTitle">联系人信息</text>
         <view class="infoItem">
             <view class="infoCell">
                 <text class="name">姓名</text>
@@ -67,7 +67,7 @@
                 {{nameWarnMessage}}
             </view>
         </view>
-        <view class="infoItem">
+        <view class="infoItem" tt:if="{{contactducumenttype!='[]'}}">
             <view class="infoCell">
                 <view class="name">
                     <picker class="pickerCal" bindchange="bindPickerChange" range="{{array}}">
@@ -94,10 +94,7 @@
                 {{phoneWarnMessage}}
             </view>
         </view>
-        <view class="humanCheckNav">
-            <text class="iconfont icon-bianji bj"
-                  bind:tap="toVisitor"
-            ></text>
+        <view class="humanCheckNav" tt:if="{{switchneedvisitor==1}}">
             <text class="headTitle">游客信息</text>
             <view class="humanItem" tt:for="{{visitPersonsShow}}" tt:key="{{item.id}}">
                 <text class="num">游客{{index + 1}}</text>
@@ -120,7 +117,7 @@
                 <view class="red">￥
                     <text class="big">{{nowPrice}}</text>
                 </view>
-                <view class="discount">已减￥15</view>
+<!--                <view class="discount">已减￥15</view>-->
             </view>
             <view class="toReserve" bind:tap="toReserve">
                 去支付
@@ -160,6 +157,9 @@
                     <view class="weui-half-screen-dialog__hd__main">
                         <text class="weui-half-screen-dialog__title">选择游客</text>
                     </view>
+                    <text class="iconfont icon-bianji bj"
+                          bind:tap="toVisitor"
+                    ></text>
                 </view>
                 <view class="weui-half-screen-dialog__bd" style="padding-top:32rpx;height:500rpx;">
                     <checkbox-group bind:change="checkboxChange"

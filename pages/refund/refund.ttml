@@ -1,0 +1,120 @@
+<view class="refund_container">
+    <view class="info_item">
+        <view class="info">
+            <text>订单号</text>
+            <text class="desc">{{orderInfo.orderCode}}</text>
+        </view>
+        <view class="info">
+            <text>单价</text>
+            <text class="desc">￥{{orderList.price}}</text>
+        </view>
+        <view class="info">
+            <text>金额</text>
+            <text class="desc">￥{{orderList.totalMoney}}</text>
+        </view>
+        <view class="info">
+            <text>剩余票数</text>
+            <text class="desc">{{orderList.quantity}}</text>
+        </view>
+        <view class="info" tt:if="{{orderPassenger.length==0}}">
+            <text>退订数量</text>
+            <calculate binditemIndex="getIndex" num="{{orderList.quantity}}" defaultNum="{{orderList.quantity}}"></calculate>
+        </view>
+        <view class="refund_desc">
+            <text>退订理由</text>
+            <textarea class="desc"
+                      style="height:200rpx;font-size:26rpx;"
+                      bindinput="onTextInput"
+                      placeholder="请输入退订理由"></textarea>
+        </view>
+        <view class="info">
+            <text>退订规则</text>
+            <text class="rule_desc">{{rule}}</text>
+        </view>
+    </view>
+    <view class="info_item" tt:if="{{orderPassenger.length!=0}}">
+        <view class="humanCheckNav">
+            <view class="head">
+                <text class="headTitle">游客信息</text>
+                <text class="selectAll" bind:tap="selectAll">{{selectStr}}</text>
+            </view>
+<!--            <view class="add" bind:tap="open1">-->
+<!--                <text class="iconfont icon-add"></text>-->
+<!--                <text>选择游客</text>-->
+<!--            </view>-->
+            <view>
+                <checkbox-group bind:change="checkboxChange"
+                                tt:if="visitPersons">
+                    <label class="ttui-cell checkNav" tt:for="{{orderPassenger}}" tt:key="{{item.id}}">
+                        <view class="ttui-cell__hd">
+                            <checkbox value="{{item.id}}"
+                                      checked="{{item.checked}}" />
+                        </view>
+                        <view class="checkItemInfo">
+                            <text class="name">{{item.name}}</text>
+                            <text class="name">手机 {{item.phone}}</text>
+                            <text class="name">身份证 {{item.credentials}}</text>
+<!--                            <text class="name">地址 {{item.address}}</text>-->
+                        </view>
+                    </label>
+                </checkbox-group>
+            </view>
+        </view>
+    </view>
+</view>
+        <!--  游客选择  -->
+<view class="fadeIn" tt:if="{{dialog1}}">
+    <view class="weui-mask" bind:tap="close1"></view>
+    <view class="weui-half-screen-dialog">
+        <view class="weui-half-screen-dialog__hd">
+            <view class="weui-half-screen-dialog__hd__side" bind:tap="close1">
+                <view class="weui-icon-btn">关闭<text class="weui-icon-close-thin"></text>
+                </view>
+            </view>
+            <view class="weui-half-screen-dialog__hd__main">
+                <text class="weui-half-screen-dialog__title">选择游客</text>
+            </view>
+        </view>
+        <view class="weui-half-screen-dialog__bd" style="padding-top:32rpx;height:500rpx;">
+            <checkbox-group bind:change="checkboxChange"
+                            tt:if="visitPersons">
+                <label class="ttui-cell checkNav" tt:for="{{orderPassenger}}" tt:key="{{item.id}}">
+                    <view class="ttui-cell__hd">
+                        <checkbox value="{{item.id}}"
+                                  checked="{{item.checked}}" />
+                    </view>
+                    <view class="checkItemInfo">
+                        <text class="name">{{item.name}}</text>
+                        <text class="name">手机 {{item.cellphone}}</text>
+                        <text class="name">身份证 {{item.credentials}}</text>
+                        <text class="name">地址 {{item.address}}</text>
+                    </view>
+                </label>
+            </checkbox-group>
+            <view class="none" tt:else>无</view>
+        </view>
+        <view class="weui-half-screen-dialog__ft">
+            <button class="confirm" bind:tap="confirmVisitor">确定</button>
+        </view>
+    </view>
+</view>
+<view class="fixedNav">
+    <text>在线退订</text>
+    <view class="price">
+        <view class="red">￥
+            <text class="big">{{nowPrice}}</text>
+        </view>
+    </view>
+    <view class="toReserve" bind:tap="refund">
+        退订
+    </view>
+</view>
+<view class="fadeIn" tt:if="{{iosDialog2}}">
+    <view class="weui-mask"></view>
+    <view class="weui-dialog">
+        <view class="weui-dialog__bd">{{content}}</view>
+        <view class="weui-dialog__ft">
+            <text class="weui-dialog__btn weui-dialog__btn_primary" bindtap="close2">知道了</text>
+        </view>
+    </view>
+</view>

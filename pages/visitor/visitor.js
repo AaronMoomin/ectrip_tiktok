@@ -58,12 +58,12 @@ Page({
     async addOrUpdate(id = '') {
         let {openid, unionid, name, phone, idCard, address, sex, array, value1, peopleList} = this.data
         let obj = JSON.stringify({
-            "address": address,
-            "cellphone": phone,
-            "credentials": idCard,
+            "address": address.replace(/\s*/g,""),
+            "cellphone": phone.replace(/\s*/g,""),
+            "credentials": idCard.replace(/\s*/g,""),
             "credentialsType": value1,
             id,
-            "name": name,
+            "name": name.replace(/\s*/g,""),
             "openid": openid,
             "unionid": unionid
         })
@@ -95,7 +95,8 @@ Page({
         await request.myRequest(
             '/tiktok/personCenter/contact/remove',
             {
-                id: pid
+                id: pid,
+                openid: this.data.openid
             },
             'post',
             'application/x-www-form-urlencoded'
@@ -188,13 +189,13 @@ Page({
             })
             return
         }
-        if (address == '') {
-            tt.showToast({
-                title: '地址不能为空',
-                icon: 'none'
-            })
-            return
-        }
+        // if (address == '') {
+        //     tt.showToast({
+        //         title: '地址不能为空',
+        //         icon: 'none'
+        //     })
+        //     return
+        // }
         this.addOrUpdate()
         this.setData({
             dialog: false,

@@ -41,9 +41,9 @@
             <text class="itemName">常用旅客</text>
             <text class="iconfont icon-tiaozhuan"></text>
         </view>
-        <view class="contentItem">
+        <view class="contentItem" bind:tap="toFeedback">
             <text class="iconfont icon-travel"></text>
-            <text class="itemName">服务中心</text>
+            <text class="itemName">意见反馈</text>
             <text class="iconfont icon-tiaozhuan"></text>
         </view>
         <view class="contentItem">
@@ -71,10 +71,10 @@
             <text class="itemName">我的收藏</text>
             <text class="iconfont icon-tiaozhuan"></text>
         </view>
-        <view class="contentItem" bind:tap="toGoodsAddress">
-            <text class="iconfont icon-youjian"></text>
-            <text class="itemName">收货地址</text>
-            <text class="iconfont icon-tiaozhuan"></text>
-        </view>
+<!--        <view class="contentItem" bind:tap="toGoodsAddress">-->
+<!--            <text class="iconfont icon-youjian"></text>-->
+<!--            <text class="itemName">收货地址</text>-->
+<!--            <text class="iconfont icon-tiaozhuan"></text>-->
+<!--        </view>-->
     </view>
 </view>

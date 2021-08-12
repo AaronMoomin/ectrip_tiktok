@@ -39,6 +39,18 @@ module.exports = {
         d = d.padStart(2, '0');
         return week + " " + m + "-" + d;
     },
+    GetWeekMD: (date) => {
+        var dd = new Date(date);
+        dd.setDate(dd.getDate()); //获取AddDayCount天后的日期
+
+        let w = dd.getDay();
+        let week = weekday[w];
+        let m = dd.getMonth() + 1 + '';
+        m = m.padStart(2, '0');
+        let d = dd.getDate() + '';
+        d = d.padStart(2, '0');
+        return m + "月" + d + '日' + " " + week;
+    },
     GetWeekStr1: (date, AddDayCount) => {
         var dd = new Date(date);
         dd.setDate(dd.getDate() + AddDayCount); //获取AddDayCount天后的日期

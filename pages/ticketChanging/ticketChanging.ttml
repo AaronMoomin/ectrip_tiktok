@@ -1,0 +1,131 @@
+<view class="changeContainer">
+    <view class="changeNav">
+        <view class="peopleNav">
+            <view class="head">
+                <view class="title">联系人</view>
+                <text class="iconfont icon-bianji" bind:tap="open"
+                      data-people="{{orderInfo}}"></text>
+            </view>
+            <view class="peopleItem">
+                <view class="item">
+                    <text>姓名</text>
+                    <text class="desc">{{orderInfo.contactName}}</text>
+                </view>
+                <view class="item">
+                    <text>电话</text>
+                    <text class="desc">{{orderInfo.contactPhone}}</text>
+                </view>
+                <view class="item">
+                    <text>{{array[orderInfo.credentialsType]}}</text>
+                    <text class="desc">{{orderInfo.credentials}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="peopleNav" tt:for="{{orderPassenger}}" tt:key="{{item.id}}">
+            <view class="head">
+                <view class="title">游客{{index+1}}</view>
+                <text class="iconfont icon-bianji" bind:tap="open"
+                      data-people="{{item}}"
+                      data-index="{{index}}"></text>
+            </view>
+            <view class="peopleItem">
+                <view class="item">
+                    <text>姓名</text>
+                    <text class="desc">{{item.name}}</text>
+                </view>
+                <view class="item">
+                    <text>电话</text>
+                    <text class="desc">{{item.phone}}</text>
+                </view>
+                <view class="item">
+                    <text>{{array[item.credentialsType]}}</text>
+                    <text class="desc">{{item.credentials}}</text>
+                </view>
+            </view>
+        </view>
+        <button class="fee_confirm" bind:tap="feeChange">改签</button>
+    </view>
+</view>
+<view class="fadeIn" tt:if="{{dialog1}}">
+    <view class="weui-mask" bindtap="close"></view>
+    <view class="weui-half-screen-dialog">
+        <view class="weui-half-screen-dialog__hd">
+            <view class="weui-half-screen-dialog__hd__side" bindtap="close">
+                <view class="weui-icon-btn">关闭<text class="weui-icon-close-thin"></text>
+                </view>
+            </view>
+            <view class="weui-half-screen-dialog__hd__main">
+                <text class="weui-half-screen-dialog__title">{{isPeople?'联系人修改':'游客修改'}}</text>
+            </view>
+        </view>
+        <view class="weui-half-screen-dialog__bd humanInfo" style="height:550rpx;">
+            <view class="infoItem">
+                <view class="infoCell">
+                    <text class="name">姓名</text>
+                    <input bindinput="handleUserName" value="{{name}}"
+                           placeholder="请输入真实姓名"/>
+                </view>
+                <view class="weui-cells__tips weui-cells__tips_warn"
+                      style="color:red;font-size:22rpx; {{isNameCurrentWaring ? 'display:block' : 'display:none'}}">
+                    {{nameWarnMessage}}
+                </view>
+            </view>
+            <!--            <view class="infoItem">-->
+            <!--                <view class="infoCell">-->
+            <!--                    <text class="name" style="margin-right:60rpx;">性别</text>-->
+            <!--                    <radio-group class="radio-group" bindchange="radioChange">-->
+            <!--                        <label class="radio">-->
+            <!--                            <radio color="#ff6d7a" value="男"-->
+            <!--                                   checked="{{sex=='男'?true:false}}" />男-->
+            <!--                        </label>-->
+            <!--                        <label class="radio">-->
+            <!--                            <radio color="#ff6d7a" value="女"-->
+            <!--                                   checked="{{sex=='女'?true:false}}"/>女-->
+            <!--                        </label>-->
+            <!--                    </radio-group>-->
+            <!--                </view>-->
+            <!--            </view>-->
+            <view class="infoItem">
+                <view class="infoCell">
+                    <text class="name">手机号码</text>
+                    <input bindinput="handlePhone" value="{{phone}}"
+                           placeholder="请输入取票人号码"/>
+                </view>
+                <view class="weui-cells__tips weui-cells__tips_warn"
+                      style="color:red;font-size:22rpx;{{isPhoneCurrentWaring ? 'display:block' : 'display:none'}}">
+                    {{phoneWarnMessage}}
+                </view>
+            </view>
+            <view class="infoItem">
+                <view class="infoCell">
+                    <view class="name">
+                        <picker class="pickerCal" bindchange="bindPickerChange" range="{{array}}">
+                            <view>{{array[value1]}}</view>
+                        </picker>
+                        <text class="iconfont icon-tiaozhuan"></text>
+                    </view>
+                    <input bindinput="handleIdCard" value="{{idCard}}"
+                           placeholder="请输入取票人证件号"/>
+                </view>
+                <view class="weui-cells__tips weui-cells__tips_warn"
+                      style="color:red;font-size:22rpx;{{isIdCardCurrentWaring ? 'display:block' : 'display:none'}}">
+                    {{IdCardWarnMessage}}
+                </view>
+            </view>
+<!--            <view class="infoItem">-->
+<!--                <text class="name">地址</text>-->
+<!--                <textarea class="weui-textarea" placeholder="填写地址"-->
+<!--                          placeholder-class="weui-input__placeholder" rows="3"-->
+<!--                          bindinput="handleAddress" value="{{address}}"-->
+<!--                ></textarea>-->
+<!--                <view class="weui-cells__tips weui-cells__tips_warn"-->
+<!--                      style="color:red;{{isAddressCurrentWaring ? 'display:block' : 'display:none'}}">-->
+<!--                    {{addressWarnMessage}}-->
+<!--                </view>-->
+<!--            </view>-->
+        </view>
+        <view class="weui-half-screen-dialog__ft">
+            <button class="confirm" bind:tap="confirmEdit">确定</button>
+        </view>
+    </view>
+</view>

@@ -1,15 +1,25 @@
 const request = require('../../utils/request')
 const utils = require('../../utils/util')
+const status = require('../../utils/status')
 const app = getApp()
 Page({
     /**
      * 页面的初始数据
      */
     data: {
+        status:'',
         isSelect: [true, false, false, false],
         openid: '',
         orderList: [],
         countDown: '00:00',
+    },
+    toTicketChanging(e){
+        tt.navigateTo({
+            url: "/pages/ticketChanging/ticketChanging?ordercode="
+                + e.currentTarget.dataset.ordercode +
+                '&productName=' + e.currentTarget.dataset.productname+
+                '&createTime='+e.currentTarget.dataset.createtime
+        })
     },
     // 倒计时
     countDown(startTime, orderCode) {
@@ -102,9 +112,10 @@ Page({
                     //?支付成功
                     console.log('支付成功', res);
                     //?跳转订单页面
-                    // tt.redirectTo({
-                    //     url:"/pages/allOrder/allOrder"
-                    // })
+                    this.setData({
+                        orderList:[]
+                    })
+                    this.getOrderList()
                 } else if (res.code == 1) {
                     tt.showToast({
                         title: '支付超时',
@@ -139,6 +150,9 @@ Page({
     },
     async getOrderList(status = 0) {
         let {orderList} = this.data
+        tt.showLoading({
+            title:'加载中...'
+        })
         await request.myRequest(
             '/tiktok/personCenter/order/List',
             {
@@ -148,11 +162,18 @@ Page({
             'get',
             "application/x-www-form-urlencoded"
         ).then(res => {
-            let {orderList} = this.data
+            tt.hideLoading()
+            //隐藏导航条加载动画
+            tt.hideNavigationBarLoading();
+            //停止下拉刷新
+            tt.stopPullDownRefresh();
+            let {orderList,status} = this.data
+
             orderList = res.data.data.orderList
             console.log(orderList);
             for (let item of orderList) {
-                if (item.statusStr == '未付款') {
+                item.createTime = item.createTime.split('.')[0]
+                if (status[item.status] == "未付款") {
                     item.createTime = item.createTime.split('.')[0]
                     let start = new Date(item.createTime.replace(/-/g, "/")).getTime()
                     let day = new Date(item.createTime.replace(/-/g, "/")).getDate()
@@ -172,10 +193,15 @@ Page({
                 orderList
             })
         }).catch(err => {
+            tt.hideLoading()
+            //隐藏导航条加载动画
+            tt.hideNavigationBarLoading();
+            //停止下拉刷新
+            tt.stopPullDownRefresh();
             console.log(err);
         })
     },
-    toTicketDetail(e) {
+    toDetail(e) {
         let name = e.currentTarget.dataset.name;
         let id = e.currentTarget.dataset.id;
         tt.navigateTo({
@@ -187,7 +213,8 @@ Page({
      */
     onLoad: function (options) {
         this.setData({
-            openid: app.globalData.openid
+            openid: app.globalData.openid,
+            status:status
         })
     },
 
@@ -201,13 +228,26 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        this.getOrderList()
+        this.setData({
+            orderList:[]
+        })
+        let s = this.data.isSelect
+        for (let i in s) {
+            if (s[i]){
+                this.getOrderList(i)
+            }
+        }
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
+        tt.hideLoading()
+        //隐藏导航条加载动画
+        tt.hideNavigationBarLoading();
+        //停止下拉刷新
+        tt.stopPullDownRefresh();
     },
 
     /**
@@ -215,11 +255,25 @@ Page({
      */
     onUnload: function () {
     },
-
+    onRefresh(){
+        console.log('reload');
+        //在当前页面显示导航条加载动画
+        tt.showNavigationBarLoading();
+        this.setData({
+            orderList:[]
+        })
+        let s = this.data.isSelect
+        for (let i in s) {
+            if (s[i]){
+                this.getOrderList(i)
+            }
+        }
+    },
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
+        this.onRefresh();
     },
 
     /**
