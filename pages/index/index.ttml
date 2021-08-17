@@ -41,12 +41,6 @@
                 <swiper-item>
                     <image src="/static/images/gjyyr.png"></image>
                 </swiper-item>
-                <swiper-item>
-                    <image src="/static/images/gjyyr.png"></image>
-                </swiper-item>
-                <swiper-item>
-                    <image src="/static/images/gjyyr.png"></image>
-                </swiper-item>
             </swiper>
         </view>
         <!--  轮播 -->
@@ -55,53 +49,54 @@
                    style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;"></image>
             <view class="titleNav">
                 <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" scroll-left="{{move}}">
-                    <view style="width:180rpx;display:inline-block;" bind:tap="handleAddress" class="{{isSelect[0]?'select':''}}" data-index="0">黄河</view>
-                    <view style="width:180rpx;display:inline-block;" bind:tap="handleAddress" class="{{isSelect[1]?'select':''}}" data-index="1">长江</view>
-                    <view style="width:180rpx;display:inline-block;" bind:tap="handleAddress" class="{{isSelect[2]?'select':''}}" data-index="2">福建鼓浪屿</view>
-                    <view style="width:180rpx;display:inline-block;" bind:tap="handleAddress" class="{{isSelect[3]?'select':''}}" data-index="3">长江</view>
-                    <view style="width:180rpx;display:inline-block;" bind:tap="handleAddress" class="{{isSelect[4]?'select':''}}" data-index="4">黄河</view>
+                    <view style="width:180rpx;display:inline-block;" bind:tap="handleAddress" class="{{isSelect[0]?'select':''}}" data-index="0">金秋</view>
+                    <view style="width:180rpx;display:inline-block;" bind:tap="handleAddress" class="{{isSelect[1]?'select':''}}" data-index="1">净土</view>
+                    <view style="width:180rpx;display:inline-block;" bind:tap="handleAddress" class="{{isSelect[2]?'select':''}}" data-index="2">运河</view>
                 </scroll-view>
             </view>
             <view class="info1">
-                <text>黄河，是位于中国北方地区的大河，属世界长河之一，中国第二长河.黄河全长约5464公里，其流域面积
-                </text>
+                <text>{{contentShow}}</text>
             </view>
             <view class="ticketNav">
-                <view class="ticketItem">
+                <view class="ticketItem"
+                      bind:tap="toTicketDetail"
+                      data-id="205" data-name="阿尔山国家森林公园">
                     <view class="imgBox">
                         <text class="type">门票</text>
-                        <image src="/static/images/hotelBack.png"></image>
+                        <image src="http://img.jingqu.cn/628f7edc6729bd14e559d209851f1a11"></image>
                         <view class="location">
                             <text class="iconfont icon-travel"></text>
-                            <text>运城市运城市运城市运城市运城市</text>
+                            <text>阿尔山国家森林公园</text>
                         </view>
                     </view>
                     <view class="info">
-                        <text class="title">常规平遥乔家一日游</text>
+                        <text class="title">阿尔山国家森林公园</text>
                         <text class="desc">榜山依水,环境优美</text>
                     </view>
-                    <image class="aaa" src="/static/images/aaa.png"></image>
+<!--                    <image class="aaa" src="/static/images/aaa.png"></image>-->
                     <view class="price">
-                        <view class="red">￥<text class="big">270</text>
+                        <view class="red">￥<text class="big">275</text>
                             起</view>
                     </view>
                 </view>
-                <view class="ticketItem">
+                <view class="ticketItem"
+                      bind:tap="toTicketDetail"
+                      data-id="502" data-name="广东观音山国家森林公园门票">
                     <view class="imgBox">
                         <text class="type">门票</text>
-                        <image src="/static/images/hotelBack.png"></image>
+                        <image src="http://img.jingqu.cn/bb2f26fa6d96c035a2c1e9df7f75da3b"></image>
                         <view class="location">
                             <text class="iconfont icon-travel"></text>
-                            <text>运城市运城市运城市运城市运城市</text>
+                            <text>广东观音山国家森林公园门票</text>
                         </view>
                     </view>
                     <view class="info">
-                        <text class="title">常规平遥乔家一日游</text>
+                        <text class="title">观音山国家森林公园</text>
                         <text class="desc">榜山依水,环境优美</text>
                     </view>
-                    <image class="aaa" src="/static/images/aaa.png"></image>
+<!--                    <image class="aaa" src="/static/images/aaa.png"></image>-->
                     <view class="price">
-                        <view class="red">￥<text class="big">270</text>
+                        <view class="red">￥<text class="big">45</text>
                             起</view>
                     </view>
                 </view>
@@ -109,57 +104,47 @@
             <view class="scrollContainer">
                 <view class="scrollContent">
                     <swiper class="scrollNav" autoplay circular display-multiple-items="2" next-margin="150rpx">
-                        <swiper-item class="scrollItem">
+                        <swiper-item class="scrollItem"
+                                     bind:tap="toHotelDetail"
+                                     data-name="雪村酒店白桦居" data-id="489">
                             <text class="type">酒店</text>
-                            <image src="/static/images/hotelBack.png"></image>
+                            <image src="http://img.jingqu.cn/57e50a0d9780d88b72e23a9f74f08361"></image>
                             <view class="instruction">
-                                <text>大禹渡景区</text>
-                                <view class="red">￥<text class="big">270</text>
+                                <text>雪村酒店白桦居</text>
+                                <view class="red">￥<text class="big">888</text>
                                     起</view>
                             </view>
                         </swiper-item>
-                        <swiper-item class="scrollItem">
+                        <swiper-item class="scrollItem"
+                                     bind:tap="toHotelDetail"
+                                     data-name="雪村酒店山羊居" data-id="507">
                             <text class="type">酒店</text>
-                            <image src="/static/images/hotelBack.png"></image>
+                            <image src="http://img.jingqu.cn/936d99ce666f07f7a877c6aa6a3e2548"></image>
                             <view class="instruction">
-                                <text>大禹渡景区</text>
-                                <view class="red">￥<text class="big">270</text>
+                                <text>雪村酒店山羊居</text>
+                                <view class="red">￥<text class="big">888</text>
                                     起</view>
                             </view>
                         </swiper-item>
-                        <swiper-item class="scrollItem">
+                        <swiper-item class="scrollItem"
+                                     bind:tap="toHotelDetail"
+                                     data-name="雪村酒店赫喜阁双床房" data-id="508">
                             <text class="type">酒店</text>
-                            <image src="/static/images/hotelBack.png"></image>
+                            <image src="http://img.jingqu.cn/3d8c25a46e885db8edfef0e8f2f29f82"></image>
                             <view class="instruction">
-                                <text>大禹渡景区</text>
-                                <view class="red">￥<text class="big">270</text>
+                                <text>雪村酒店赫喜阁</text>
+                                <view class="red">￥<text class="big">1088</text>
                                     起</view>
                             </view>
                         </swiper-item>
-                        <swiper-item class="scrollItem">
+                        <swiper-item class="scrollItem"
+                                     bind:tap="toHotelDetail"
+                                     data-name="雪村酒店山羊居" data-id="507">
                             <text class="type">酒店</text>
-                            <image src="/static/images/hotelBack.png"></image>
+                            <image src="http://img.jingqu.cn/936d99ce666f07f7a877c6aa6a3e2548"></image>
                             <view class="instruction">
-                                <text>大禹渡景区</text>
-                                <view class="red">￥<text class="big">270</text>
-                                    起</view>
-                            </view>
-                        </swiper-item>
-                        <swiper-item class="scrollItem">
-                            <text class="type">酒店</text>
-                            <image src="/static/images/hotelBack.png"></image>
-                            <view class="instruction">
-                                <text>大禹渡景区</text>
-                                <view class="red">￥<text class="big">270</text>
-                                    起</view>
-                            </view>
-                        </swiper-item>
-                        <swiper-item class="scrollItem">
-                            <text class="type">酒店</text>
-                            <image src="/static/images/hotelBack.png"></image>
-                            <view class="instruction">
-                                <text>大禹渡景区</text>
-                                <view class="red">￥<text class="big">270</text>
+                                <text>雪村酒店山羊居</text>
+                                <view class="red">￥<text class="big">888</text>
                                     起</view>
                             </view>
                         </swiper-item>
@@ -169,70 +154,77 @@
         </view>
 
         <view class="hotRecommendContainer">
-            <headComponent title="热门推荐" changeContent1="门票" changeContent2="酒店" changeContent3="线路"></headComponent>
+<!--            <headComponent title="热门推荐" changeContent1="门票" changeContent2="酒店" changeContent3="线路"></headComponent>-->
+            <headComponent title="热门推荐"></headComponent>
             <view class="hotContent">
-                <view class="hotItem" bind:tap="toTicketDetail">
+                <view class="hotItem" bind:tap="toTicketDetail"
+                      data-id="205" data-name="阿尔山国家森林公园门票">
                     <text class="type">门票</text>
-                    <image src="/static/images/gbtl.jpg"></image>
+                    <image src="http://img.jingqu.cn/628f7edc6729bd14e559d209851f1a11"></image>
                     <view class="instruction">
-                        <text class="name">福建平潭岛</text>
+                        <text class="name">阿尔山国家森林公园</text>
                         <view class="priceItem">
-                            <text class="price">￥564起</text>
+                            <text class="price">￥27起</text>
                             <text class="comment">AAAA景区</text>
                         </view>
                     </view>
                 </view>
-                <view class="hotItem" bind:tap="toTicketDetail">
+                <view class="hotItem" bind:tap="toTicketDetail"
+                      data-id="476" data-name="五营国家森林公园门票">
                     <text class="type">门票</text>
-                    <image src="/static/images/gbtl.jpg"></image>
+                    <image src="http://img.jingqu.cn/21fa6429861cb40638dd6980a6a0a1a1"></image>
                     <view class="instruction">
-                        <text class="name">福建平潭岛</text>
+                        <text class="name">五营国家森林公园</text>
                         <view class="priceItem">
-                            <text class="price">￥564起</text>
+                            <text class="price">￥45起</text>
                             <text class="comment">AAAA景区</text>
                         </view>
                     </view>
                 </view>
-                <view class="hotItem" bind:tap="toTicketDetail">
+                <view class="hotItem" bind:tap="toTicketDetail"
+                      data-id="502" data-name="观音山国家森林公园门票">
                     <text class="type">门票</text>
-                    <image src="/static/images/gbtl.jpg"></image>
+                    <image src="http://img.jingqu.cn/bb2f26fa6d96c035a2c1e9df7f75da3b"></image>
                     <view class="instruction">
-                        <text class="name">福建平潭岛</text>
+                        <text class="name">观音山国家森林公园</text>
                         <view class="priceItem">
-                            <text class="price">￥564起</text>
+                            <text class="price">￥45起</text>
                             <text class="comment">AAAA景区</text>
                         </view>
                     </view>
                 </view>
-                <view class="hotItem" bind:tap="toTicketDetail">
+                <view class="hotItem" bind:tap="toTicketDetail"
+                      data-id="503" data-name="北山国家森林公园门票">
                     <text class="type">门票</text>
-                    <image src="/static/images/gbtl.jpg"></image>
+                    <image src="http://img.jingqu.cn/dc6670746a621b4ac542fd1a961bc6e2"></image>
                     <view class="instruction">
-                        <text class="name">福建平潭岛</text>
+                        <text class="name">北山国家森林公园</text>
                         <view class="priceItem">
-                            <text class="price">￥564起</text>
+                            <text class="price">￥72起</text>
                             <text class="comment">AAAA景区</text>
                         </view>
                     </view>
                 </view>
-                <view class="hotItem" bind:tap="toTicketDetail">
+                <view class="hotItem" bind:tap="toTicketDetail"
+                      data-id="505" data-name="威虎山国家森林公园门票+观光车">
                     <text class="type">门票</text>
-                    <image src="/static/images/gbtl.jpg"></image>
+                    <image src="http://img.jingqu.cn/630cc00455cc36c91b1afe13961b27d4"></image>
                     <view class="instruction">
-                        <text class="name">福建平潭岛</text>
+                        <text class="name">威虎山国家森林公园</text>
                         <view class="priceItem">
-                            <text class="price">￥564起</text>
+                            <text class="price">￥55起</text>
                             <text class="comment">AAAA景区</text>
                         </view>
                     </view>
                 </view>
-                <view class="hotItem" bind:tap="toTicketDetail">
+                <view class="hotItem" bind:tap="toTicketDetail"
+                      data-id="506" data-name="广胜寺门票">
                     <text class="type">门票</text>
-                    <image src="/static/images/gbtl.jpg"></image>
+                    <image src="http://img.jingqu.cn/469884d93dbd5ec7cf9603181f8a7cdb"></image>
                     <view class="instruction">
-                        <text class="name">福建平潭岛</text>
+                        <text class="name">广胜寺</text>
                         <view class="priceItem">
-                            <text class="price">￥564起</text>
+                            <text class="price">￥47起</text>
                             <text class="comment">AAAA景区</text>
                         </view>
                     </view>

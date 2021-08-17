@@ -1,4 +1,11 @@
 // pages/serve/serve.js
+//服务json配置
+// {
+//   "selectedIconPath": "./static/icon/serveSelected.png",
+//     "iconPath": "./static/icon/serve.png",
+//     "pagePath": "pages/serve/serve",
+//     "text": "服务"
+// },
 Page({
 
   /**

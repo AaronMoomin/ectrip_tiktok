@@ -41,10 +41,18 @@
                       data-ordercode="{{item.orderCode}}">
                     <text>改签</text>
                 </view>
+                <view class="reserve" tt:if="{{status[item.status]=='已消费' && item.commented!=1}}"
+                      catch:tap="toComment"
+                      data-id="{{item.goodsId}}"
+                      data-name="{{item.productName}}"
+                      data-ordercode="{{item.orderCode}}">
+                    <text>去评价</text>
+                </view>
                 <view class="reserve" tt:if="{{status[item.status]!='未付款' && item.countDown!='00:00'}}"
                       catch:tap="toDetail"
                       data-id="{{item.goodsId}}"
-                      data-name="{{item.productName}}">
+                      data-name="{{item.productName}}"
+                      data-categoryid="{{item.categoryId}}">
                     <text>再次预定</text>
                 </view>
                 <view class="reserve2" tt:else

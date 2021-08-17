@@ -33,3 +33,16 @@
     border-radius: 30rpx;
     margin: 10rpx;
 }
+.feeNav .feeItemCon .selected{
+    background:#fe6255;
+    color: #fff;
+    border:2rpx solid #e3e3e3;
+}
+.feeContainer .toReserve{
+    background:#fe6255;
+    color: #fff;
+    height: 80rpx;
+    text-align: center;
+    line-height:80rpx;
+    border-radius:20rpx;
+}

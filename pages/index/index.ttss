@@ -119,6 +119,7 @@
 .showImg image {
     width: 100%;
     height: 200rpx;
+    border-radius: 20rpx;
 }
 
 .addressShow {
@@ -185,6 +186,7 @@
     width: 280rpx;
     height: 240rpx;
     border-radius: 10rpx;
+    background-size: 150% 100%;
 }
 
 .ticketNav .ticketItem .imgBox .type {
@@ -212,7 +214,7 @@
     width: 100%;
     height: 40rpx;
     line-height: 40rpx;
-    text-align: center;
+    /*text-align: center;*/
     padding-left: 10rpx;
     padding-bottom: 10rpx;
     border-bottom-left-radius: 10rpx;
@@ -230,6 +232,7 @@
     padding-left: 20rpx;
     padding-top: 10rpx;
     letter-spacing: 5rpx;
+    width: 350rpx;
 }
 
 .ticketNav .ticketItem .info .title {

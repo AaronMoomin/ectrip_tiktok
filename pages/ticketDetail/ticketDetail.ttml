@@ -29,20 +29,20 @@
         <view class="ticketItem" tt:for="{{productListShow}}" tt:key="{{item.goodsId}}">
             <view class="name">{{item.productName}}</view>
             <view class="discount">
-                <text>立减5元</text>
-                <text>优惠券</text>
+<!--                <text></text>-->
             </view>
             <view class="desc" tt:if="{{item.ruleBook.switchNeedVisitor!=0}}">需要实名制信息</view>
+            <view class="desc" tt:else></view>
             <view class="know" bind:tap="open2" data-rule="{{item.ruleBookDesc}}">
                 <text>预定须知</text>
                 <text class="iconfont icon-tiaozhuan"></text>
             </view>
             <view class="reserveBtn" bind:tap="toReserve"
                   data-contactducumenttype="{{item.ruleBook.contactDucumentType}}"
-                  data-totalstock="{{item.stockList[0].totalStock}}"
+                  data-totalstock="{{item.dailyProductInfoList[0].leftStock}}"
                   data-product="{{item}}"
                   data-switchneedvisitor="{{item.ruleBook.switchNeedVisitor}}"
-                  tt:if="{{item.stockList[0].totalStock>1}}">
+                  tt:if="{{item.dailyProductInfoList[0].leftStock>1}}">
                 <text class="yd">预定</text>
                 <text class="zxf">在线付</text>
             </view>
@@ -51,7 +51,7 @@
             </view>
             <view class="price">
                 <view class="red">￥
-                    <text class="big">{{item.priceList[0].price}}</text>
+                    <text class="big">{{item.dailyProductInfoList[0].settlementPrice}}</text>
                 </view>
                 起
             </view>
@@ -78,23 +78,38 @@
                 <text class="big">4.8</text>
                 <text>很好</text>
             </view>
-            <view class="commentNum">平遥古城(1条用户评论)</view>
+            <view class="commentNum">{{name}}({{commentList.length}}条用户评论)</view>
         </view>
-        <view class="commentItem">
-            <image src="/static/images/gbtl.jpg"></image>
-            <view class="commentContent">
-                <text class="userName">zhangzh</text>
-                <view class="gradeNav">
-                    <view class="gr">
-                        <text>打分</text>
-                        <text class="red">5.0</text>
+        <view class="commentItem" tt:for="{{commentList}}" tt:key="{{item.orderCode}}">
+            <view class="content">
+                <image src="/static/images/gbtl.jpg"></image>
+                <view class="commentContent">
+                    <text class="userName">zhangzh</text>
+                    <view class="gradeNav">
+                        <view class="gr">
+                            <text>打分</text>
+                            <text class="red">{{item.remarknum}}.0</text>
+                        </view>
+                        <view class="commentNum">{{item.commentTime}}</view>
                     </view>
-                    <view class="commentNum">2020.01.06</view>
+                    <view class="comment">
+                        {{item.commentText}}
+                    </view>
                 </view>
-                <view class="comment">
-                    评价评价评价评价评价评价评价评价评价评价评价评价
-                    评价评价评价评价评价评价
-                </view>
+            </view>
+            <view class="imgBox" tt:if="{{item.commentImageList.length!=0}}">
+                <swiper circular display-multiple-items="{{item.commentImageList.length>=2?3:1}}" scroll-x
+                        class="swiper_nav">
+                    <swiper-item class="swiper_item"
+                                 tt:for="{{item.commentImageList}}"
+                                 tt:for-item="i"
+                                 tt:key="{{index}}">
+                        <image src="{{i}}"></image>
+                    </swiper-item>
+                    <swiper-item tt:if="{{item.commentImageList.length==2}}">
+                        <image></image>
+                    </swiper-item>
+                </swiper>
             </view>
         </view>
     </view>

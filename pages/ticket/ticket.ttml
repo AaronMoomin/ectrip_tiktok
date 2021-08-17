@@ -58,8 +58,8 @@
     <view class="hotRecommend">
         <view class="hotHead">
             <text class="title">热门推荐</text>
-            <text class="otherTitle">寻味福建</text>
-            <text class="otherTitle">休闲度假</text>
+<!--            <text class="otherTitle">寻味福建</text>-->
+<!--            <text class="otherTitle">休闲度假</text>-->
         </view>
         <view class="hotContent">
             <view class="hotItem" bind:tap="toTicketDetail"

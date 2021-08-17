@@ -23,7 +23,7 @@
 }
 .contentContainer .routeItem {
     position: relative;
-    height: 360rpx;
+    height: 400rpx;
     display: flex;
     padding: 20rpx;
     font-size: 26rpx;
@@ -86,6 +86,13 @@
     flex-direction: column;
     margin-bottom: 10rpx;
     color: #000;
+}
+.contentContainer .routeItem .titleNav .title{
+    /*overflow: hidden;*/
+    /*text-overflow:ellipsis;*/
+    /*white-space: nowrap;*/
+    width: 360rpx;
+    height: 80rpx;
 }
 .contentContainer .routeItem .info .desc {
     color: #52575c;

@@ -12,9 +12,9 @@
 <!--            <text class="iconfont icon-tiaozhuan to" style="width: 29rpx; height: 38rpx; display: block; box-sizing: border-box; left: 673rpx; top: 40rpx"></text>-->
         </view>
         <view class="btnBox">
-            <view class="btnItem" bind:tap="toAllOrder">
+            <view class="btnItem">
                 <image src="/static/images/hg.png"></image>
-                <text>我的订单</text>
+                <text>会员中心</text>
                 <text class="iconfont icon-tiaozhuan"></text>
             </view>
             <view class="line"></view>
@@ -25,56 +25,78 @@
             </view>
         </view>
     </view>
-    <view class="content">
-        <view class="contentItem">
-            <text class="iconfont icon-dingdan"></text>
-            <text class="itemName">我的信息</text>
-            <text class="iconfont icon-tiaozhuan"></text>
+</view>
+<view class="order">
+    <view class="tie">我的订单</view>
+    <view class="orderNav">
+        <view class="orderItem" bind:tap="toAllOrder" data-status="1">
+            <text class="iconfont icon-yizhifu"></text>
+            <text>待出行</text>
         </view>
-        <view class="contentItem">
-            <text class="iconfont icon-dingdan"></text>
-            <text class="itemName">服务中心</text>
-            <text class="iconfont icon-tiaozhuan"></text>
+        <view class="orderItem" bind:tap="toAllOrder" data-status="2">
+            <text class="iconfont icon-daizhifu"></text>
+            <text>已完成</text>
         </view>
-        <view class="contentItem" bind:tap="toVisitor">
-            <text class="iconfont icon-niandaofangwaibinrenci"></text>
-            <text class="itemName">常用旅客</text>
-            <text class="iconfont icon-tiaozhuan"></text>
+        <view class="orderItem" bind:tap="toAllOrder" data-status="3">
+            <text class="iconfont icon-yiquxiao1"></text>
+            <text>已取消</text>
         </view>
-        <view class="contentItem" bind:tap="toFeedback">
-            <text class="iconfont icon-travel"></text>
-            <text class="itemName">意见反馈</text>
-            <text class="iconfont icon-tiaozhuan"></text>
+        <view class="orderItem" bind:tap="toAllOrder" data-status="0">
+            <text class="iconfont icon-order-whole"></text>
+            <text>全部订单</text>
         </view>
-        <view class="contentItem">
-            <text class="iconfont icon-travel"></text>
-            <text class="itemName">我的行程</text>
-            <text class="iconfont icon-tiaozhuan"></text>
-        </view>
-        <view class="contentItem">
-            <text class="iconfont icon-iconfonticonfontfenxiang"></text>
-            <text class="itemName">我的活动</text>
-            <text class="iconfont icon-tiaozhuan"></text>
-        </view>
-        <view class="contentItem">
-            <text class="iconfont icon-youjian"></text>
-            <text class="itemName">救助活动</text>
-            <text class="iconfont icon-tiaozhuan"></text>
-        </view>
-        <view class="contentItem" bind:tap="toMyComment">
-            <text class="iconfont icon-youjian"></text>
-            <text class="itemName">我的评论</text>
-            <text class="iconfont icon-tiaozhuan"></text>
-        </view>
-        <view class="contentItem" bind:tap="toCollect">
-            <text class="iconfont icon-shoucang"></text>
-            <text class="itemName">我的收藏</text>
-            <text class="iconfont icon-tiaozhuan"></text>
-        </view>
-<!--        <view class="contentItem" bind:tap="toGoodsAddress">-->
-<!--            <text class="iconfont icon-youjian"></text>-->
-<!--            <text class="itemName">收货地址</text>-->
-<!--            <text class="iconfont icon-tiaozhuan"></text>-->
-<!--        </view>-->
     </view>
+</view>
+<view class="content">
+    <view class="tie">常用功能</view>
+    <!--        <view class="contentItem">-->
+    <!--            <text class="iconfont icon-dingdan"></text>-->
+    <!--            <text class="itemName">我的信息</text>-->
+    <!--            <text class="iconfont icon-tiaozhuan"></text>-->
+    <!--        </view>-->
+    <!--        <view class="contentItem">-->
+    <!--            <text class="iconfont icon-dingdan"></text>-->
+    <!--            <text class="itemName">服务中心</text>-->
+    <!--            <text class="iconfont icon-tiaozhuan"></text>-->
+    <!--        </view>-->
+    <view class="contentItem" bind:tap="toVisitor">
+        <text class="iconfont icon-niandaofangwaibinrenci"></text>
+        <text class="itemName">常用旅客</text>
+        <text class="iconfont icon-tiaozhuan"></text>
+    </view>
+    <view class="contentItem" bind:tap="toFeedbackList">
+        <text class="iconfont icon-travel"></text>
+        <text class="itemName">意见反馈</text>
+        <text class="iconfont icon-tiaozhuan"></text>
+    </view>
+    <!--        <view class="contentItem">-->
+    <!--            <text class="iconfont icon-travel"></text>-->
+    <!--            <text class="itemName">我的行程</text>-->
+    <!--            <text class="iconfont icon-tiaozhuan"></text>-->
+    <!--        </view>-->
+    <!--        <view class="contentItem">-->
+    <!--            <text class="iconfont icon-iconfonticonfontfenxiang"></text>-->
+    <!--            <text class="itemName">我的活动</text>-->
+    <!--            <text class="iconfont icon-tiaozhuan"></text>-->
+    <!--        </view>-->
+    <!--        <view class="contentItem">-->
+    <!--            <text class="iconfont icon-youjian"></text>-->
+    <!--            <text class="itemName">救助活动</text>-->
+    <!--            <text class="iconfont icon-tiaozhuan"></text>-->
+    <!--        </view>-->
+    <view class="contentItem" bind:tap="toMyComment">
+        <text class="iconfont icon-youjian"></text>
+        <text class="itemName">我的评论</text>
+        <text class="iconfont icon-tiaozhuan"></text>
+    </view>
+    <view class="contentItem" bind:tap="toCollect">
+        <text class="iconfont icon-shoucang"></text>
+        <text class="itemName">我的收藏</text>
+        <text class="iconfont icon-tiaozhuan"></text>
+    </view>
+    <!--        <view class="contentItem" bind:tap="toGoodsAddress">-->
+    <!--            <text class="iconfont icon-youjian"></text>-->
+    <!--            <text class="itemName">收货地址</text>-->
+    <!--            <text class="iconfont icon-tiaozhuan"></text>-->
+    <!--        </view>-->
 </view>

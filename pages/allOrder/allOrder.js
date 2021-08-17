@@ -201,20 +201,47 @@ Page({
             console.log(err);
         })
     },
+    toComment(e){
+        let name = e.currentTarget.dataset.name;
+        let id = e.currentTarget.dataset.id;
+        let orderCode = e.currentTarget.dataset.ordercode
+        tt.navigateTo({
+            url: `/pages/comment/comment?id=${id}&name=${name}&ordercode=${orderCode}`
+        });
+    },
     toDetail(e) {
         let name = e.currentTarget.dataset.name;
         let id = e.currentTarget.dataset.id;
-        tt.navigateTo({
-            url: `/pages/ticketDetail/ticketDetail?id=${id}&name=${name}`
-        });
+        if (e.currentTarget.dataset.categoryid==1){
+            tt.navigateTo({
+                url: `/pages/ticketDetail/ticketDetail?id=${id}&name=${name}`
+            });
+        }else if (e.currentTarget.dataset.categoryid==2){
+            tt.navigateTo({
+                url: `/pages/hotelDetail/hotelDetail?id=${id}&name=${name}`
+            });
+        }
+
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        let {isSelect} = this.data
         this.setData({
             openid: app.globalData.openid,
-            status:status
+            status:status,
+        })
+        let s = options.status || 0
+        for (let i in isSelect) {
+            isSelect[i] = false
+            if (i==s){
+                isSelect[i] = true
+                this.getOrderList(i)
+            }
+        }
+        this.setData({
+            isSelect
         })
     },
 
@@ -254,6 +281,11 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
+        tt.hideLoading()
+        //隐藏导航条加载动画
+        tt.hideNavigationBarLoading();
+        //停止下拉刷新
+        tt.stopPullDownRefresh();
     },
     onRefresh(){
         console.log('reload');

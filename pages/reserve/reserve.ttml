@@ -60,7 +60,7 @@
             <view class="infoCell">
                 <text class="name">姓名</text>
                 <input bindinput="handleUserName" value="{{userName}}"
-                       placeholder="请输入真实姓名,否则会影响出票"/>
+                       placeholder="请输入真实姓名"/>
             </view>
             <view class="weui-cells__tips weui-cells__tips_warn"
                   style="color:red;font-size:22rpx; {{isNameCurrentWaring ? 'display:block' : 'display:none'}}">
@@ -76,7 +76,7 @@
                     <text class="iconfont icon-tiaozhuan"></text>
                 </view>
                 <input bindinput="handleIdCard" value="{{idCard}}"
-                       placeholder="请输入取票人证件号"/>
+                       placeholder="请正确输入证件号,否则影响入园"/>
             </view>
             <view class="weui-cells__tips weui-cells__tips_warn"
                   style="color:red;font-size:22rpx;{{isIdCardCurrentWaring ? 'display:block' : 'display:none'}}">
@@ -87,7 +87,7 @@
             <view class="infoCell">
                 <text class="name">手机号码</text>
                 <input bindinput="handlePhone" value="{{phone}}"
-                       placeholder="请输入取票人号码"/>
+                       placeholder="请输入手机号码"/>
             </view>
             <view class="weui-cells__tips weui-cells__tips_warn"
                   style="color:red;font-size:22rpx;{{isPhoneCurrentWaring ? 'display:block' : 'display:none'}}">

@@ -1,13 +1,17 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/allOrder/allOrder",
-    "pages/hotel/hotel",
-    "pages/hotelReserve/hotelReserve",
     "pages/ticket/ticket",
-    "pages/visitor/visitor",
-    "pages/feedback/feedback",
+    "pages/hotel/hotel",
+    "pages/myComment/myComment",
     "pages/mine/mine",
+    "pages/feedbackList/feedbackList",
+    "pages/allOrder/allOrder",
+    "pages/comment/comment",
+    "pages/feedback/feedback",
+    "pages/collect/collect",
+    "pages/hotelReserve/hotelReserve",
+    "pages/visitor/visitor",
     "pages/ticketChanging/ticketChanging",
     "pages/refund/refund",
     "pages/hotelDetail/hotelDetail",
@@ -16,13 +20,10 @@
     "pages/hotelSearch/hotelSearch",
     "pages/reserve/reserve",
     "pages/orderDetail/orderDetail",
-    "pages/collect/collect",
-    "pages/myComment/myComment",
     "pages/goodsAddress/goodsAddress",
     "pages/ticketDetail/ticketDetail",
     "pages/routeReserve/routeReserve",
     "pages/hotDetail/hotDetail",
-    "pages/comment/comment",
     "pages/orderTypeShow/orderTypeShow",
     "pages/serve/serve",
     "pages/destination/destination",
@@ -37,7 +38,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#120e33",
-    "navigationBarTitleText": "鼎游信息",
+    "navigationBarTitleText": "鼎游通",
     "navigationBarTextStyle": "white"
   },
   "style": "v2",
@@ -59,12 +60,6 @@
         "iconPath": "./static/icon/destination.png",
         "pagePath": "pages/destination/destination",
         "text": "地图"
-      },
-      {
-        "selectedIconPath": "./static/icon/serveSelected.png",
-        "iconPath": "./static/icon/serve.png",
-        "pagePath": "pages/serve/serve",
-        "text": "服务"
       },
       {
         "selectedIconPath": "./static/icon/mineSelected.png",

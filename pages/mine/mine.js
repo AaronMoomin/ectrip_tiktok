@@ -37,6 +37,8 @@ Page({
             "anonymous_code": value.anonymousCode,
             "appid": app.globalData.appid,
             "code": value.code,
+            "avatarUrl": this.data.avatarUrl,
+            "nickName": this.data.nickName,
             "secret": app.globalData.secret
         })
         let Object = base64.encode(obj)
@@ -71,6 +73,12 @@ Page({
         })
     },
     handleLogin() {
+        if(this.data.avatarUrl!=''){
+            tt.showToast({
+                title:'已登录'
+            })
+            return
+        }
         tt.login({
                 force: true,
                 success: (res) => {
@@ -108,10 +116,10 @@ Page({
             }
         )
     },
-    toFeedback(){
+    toFeedbackList(){
         if (this.checkLogin()) {
             tt.navigateTo({
-                url: "/pages/feedback/feedback"
+                url: "/pages/feedbackList/feedbackList"
             })
         }
     },
@@ -136,10 +144,10 @@ Page({
             })
         }
     },
-    toAllOrder() {
+    toAllOrder(e) {
         if (this.checkLogin()) {
             tt.navigateTo({
-                url: "/pages/allOrder/allOrder"
+                url: "/pages/allOrder/allOrder?status="+e.currentTarget.dataset.status
             })
         }
     },

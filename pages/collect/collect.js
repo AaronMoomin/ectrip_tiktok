@@ -24,6 +24,8 @@ Page({
                     this.getCollectList(categoryIdList[i])
                 }else if (i==1){
                     this.getCollectList(categoryIdList[i],dateGlobal,dateGlobal2)
+                }else {
+                    this.getCollectList(categoryIdList[i])
                 }
             }
         }
@@ -57,6 +59,13 @@ Page({
         }).catch(err =>{
             console.log(err);
         })
+    },
+    toHotelDetail(e){
+        let name = e.currentTarget.dataset.name;
+        let id = e.currentTarget.dataset.id;
+        tt.navigateTo({
+            url: `/pages/hotelDetail/hotelDetail?id=${id}&name=${name}`
+        });
     },
     //跳转门票详情
     toTicketDetail(e) {

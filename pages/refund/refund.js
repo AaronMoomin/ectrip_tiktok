@@ -19,7 +19,7 @@ Page({
         rule: '',//规则
         realName: '',//实名制
         content:'',//退订信息
-        selectStr:'全选',
+        selectStr:'全不选',
     },
     async getRule() {
         await request.myRequest(
@@ -70,15 +70,13 @@ Page({
         for (let item of orderPassenger) {
             if (item.checked){
                 voteNum++
-            }else {
-                voteNum--
+                visitPersons.push({
+                    credentials: item.credentials,
+                    credentialsType: credentialstype[item.credentialsType],
+                    mobile: item.phone,
+                    name: item.name
+                })
             }
-            visitPersons.push({
-                credentials: item.credentials,
-                credentialsType: credentialstype[item.credentialsType],
-                mobile: item.phone,
-                name: item.name
-            })
         }
         let obj = JSON.stringify({
             openid,
@@ -117,23 +115,23 @@ Page({
         })
     },
     selectAll(){
-        let {orderPassenger,selectStr,nowPrice,price} = this.data
+        let {orderPassenger,selectStr,nowPrice,price,voteNum} = this.data
         console.log(orderPassenger);
-        if (selectStr=='全选'){
-            for (let item of orderPassenger) {
-                item.checked = true
-                nowPrice+=price
-            }
-            this.setData({
-                selectStr:'全不选'
-            })
-        }else {
+        if (selectStr=='全不选'){
             for (let item of orderPassenger) {
                 item.checked = false
                 nowPrice-=price
             }
             this.setData({
-                selectStr:'全选'
+                selectStr:'全选',
+            })
+        }else {
+            for (let item of orderPassenger) {
+                item.checked = true
+                nowPrice+=price
+            }
+            this.setData({
+                selectStr:'全不选',
             })
         }
 
@@ -142,7 +140,7 @@ Page({
         })
     },
     checkboxChange(e) {
-        let {orderPassenger,nowPrice,price,voteNum} = this.data
+        let {orderPassenger,nowPrice,price} = this.data
         for (let person of orderPassenger) {
             if (e.detail.value.length == 0) {
                 person.checked = false
@@ -156,11 +154,9 @@ Page({
             }
         }
         nowPrice = price*e.detail.value.length
-        voteNum = e.detail.value.length
         this.setData({
             orderPassenger,
             nowPrice,
-            voteNum
         })
     },
     confirmVisitor() {
@@ -246,7 +242,7 @@ Page({
             this.setData({
                 realName: false,
                 nowPrice: orderList.totalMoney,
-                voteNum: 1,
+                voteNum: orderPassenger.length,
             })
         } else {
             this.setData({

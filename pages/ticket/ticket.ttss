@@ -180,6 +180,7 @@
 }
 
 .hotContent .hotItem {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 43%;
@@ -199,7 +200,7 @@
     background: #fff;
     display: flex;
     flex-direction: column;
-    padding: 20rpx;
+    padding: 30rpx 20rpx;
     height: 120rpx;
 }
 
@@ -207,10 +208,13 @@
     font-weight: bold;
     font-size: 28rpx;
     color: #000;
+    height: 60rpx;
 }
 
 .hotItem .instruction .priceItem {
-    position: relative;
+    position: absolute;
+    bottom: 10rpx;
+    left: 20rpx;
     display: flex;
     font-size: 24rpx;
     margin-top: 20rpx;
@@ -221,8 +225,6 @@
 }
 
 .hotItem .instruction .priceItem .comment {
-    position: absolute;
-    right: 0;
-    bottom: 0;
     color: #797979;
+    margin-left: 60rpx;
 }

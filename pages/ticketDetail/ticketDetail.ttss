@@ -31,7 +31,7 @@
 }
 .contentContainer .title{
     font-size:28rpx;
-
+    width: 300rpx;
 }
 .contentContainer .mapNav{
     display: flex;
@@ -95,6 +95,7 @@
 .ticketNav .title{
     font-size:28rpx;
     color: #000;
+    width: 300rpx;
 }
 .ticketNav .ticketItem{
     position: relative;
@@ -104,11 +105,13 @@
 .ticketNav .ticketItem .name{
     color: #000;
     font-size: 26rpx;
+    width: 500rpx;
 }
 .ticketNav .ticketItem .discount{
     display: flex;
     font-size:20rpx;
     margin: 20rpx 5rpx;
+    height: 20rpx;
 }
 .ticketNav .ticketItem .discount text{
     border: 2rpx solid #ff6156;
@@ -118,6 +121,7 @@
 }
 .ticketNav .ticketItem .desc{
     margin: 20rpx 0;
+    height: 20rpx;
 }
 .ticketNav .ticketItem .know{
     display: flex;
@@ -224,7 +228,11 @@
 }
 .commentNav .commentItem{
     display: flex;
+    flex-direction: column;
     margin-top: 20rpx;
+}
+.commentNav .commentItem .content{
+    display: flex;
 }
 .commentNav .commentItem image{
     width: 60rpx;
@@ -247,6 +255,23 @@
 }
 .commentContent .gradeNav .commentNum{
     color: #797979;
+}
+.commentItem .imgBox {
+    color: #fff;
+    width: 80%;
+    height: 120rpx;
+    margin: 0 auto 20rpx;
+}
+.commentItem .imgBox .swiper_nav{
+    width: 100%;
+    height: 120rpx;
+}
+
+.commentItem .imgBox image {
+    width: 120rpx;
+    height: 100rpx;
+    border-radius: 10rpx;
+    margin-right: 10rpx;
 }
 .slide{
     display: flex;

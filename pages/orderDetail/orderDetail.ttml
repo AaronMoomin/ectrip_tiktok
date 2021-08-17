@@ -12,7 +12,7 @@
             <view class="weui-cell__bd title">验证码</view>
             <view class="weui-cell__ft">{{qrCodeDto.verifyCode}}</view>
         </view>
-        <view class="weui-cell">
+        <view class="weui-cell" bind:tap="open">
             <view class="weui-cell__bd title">二维码</view>
             <image class="qrCode" src="{{qrCodeDto.onlyQrCodeUrl}}"></image>
         </view>
@@ -72,7 +72,10 @@
         <text class="name">游客信息</text>
         <view tt:for="{{orderPassenger}}"
               tt:key="{{item.id}}">
-            <text class="tie">游客{{index+1}}</text>
+            <view class="weui-cell">
+                <view class="weui-cell__bd title"></view>
+                <view class="weui-cell__ft">游客{{index + 1}}</view>
+            </view>
             <view class="weui-cell">
                 <view class="weui-cell__bd title">姓名</view>
                 <view class="weui-cell__ft">{{item.name}}</view>
@@ -96,5 +99,17 @@
           data-orderinfo="{{orderInfo}}"
           data-orderlist="{{orderList}}"
           data-orderPassenger="{{orderPassenger}}"
-    >退订</view>
+    >退订
+    </view>
+</view>
+<view class="fadeIn" tt:if="{{iosDialog2}}">
+    <view class="weui-mask"></view>
+    <view class="weui-dialog">
+        <view class="weui-dialog__bd">
+            <image style="width: 300rpx;height: 300rpx;margin:0 auto;" src="{{qrCodeDto.onlyQrCodeUrl}}"></image>
+        </view>
+        <view class="weui-dialog__ft">
+            <text class="weui-dialog__btn weui-dialog__btn_primary" bindtap="close">关闭</text>
+        </view>
+    </view>
 </view>

@@ -8,7 +8,11 @@
                 options="{{options}}" key="city_id"
                 bind:change="change"></select>
     </view>
-    <map></map>
+    <map longitude="{{longitude}}"
+         latitude="{{latitude}}"
+         markers="{{markers}}"
+         show-location
+    ></map>
 </view>
 <view class="fadeIn" tt:if="{{dialog}}">
     <view class="weui-mask" bindtap="close"></view>

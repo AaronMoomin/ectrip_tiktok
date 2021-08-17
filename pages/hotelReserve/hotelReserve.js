@@ -26,13 +26,13 @@ Page({
         visitorDucumentType:'',
         daysBetween: '',
         typeStr: '',
-        userName: '兔斯基',
+        userName: '',
         isNameCurrentWaring: false,
         nameWarnMessage: '',
-        phone: '13502542299',
+        phone: '',
         isPhoneCurrentWaring: false,
         phoneWarnMessage: '',
-        idCard: '11010519751030611X',
+        idCard: '',
         idCardShow: '',
         isIdCardCurrentWaring: false,
         IdCardWarnMessage: '',
@@ -67,19 +67,6 @@ Page({
                 title: '姓名不能为空',
                 icon: 'fail'
             })
-            return
-        } else if (visitorDucumentType!=[] && idCard == '') {
-            if (isIdCardCurrentWaring) {
-                tt.showToast({
-                    title: '身份证格式错误',
-                    icon: 'fail'
-                })
-            } else {
-                tt.showToast({
-                    title: '身份证不能为空',
-                    icon: 'fail'
-                })
-            }
             return
         } else if (phone == '') {
             if (isPhoneCurrentWaring) {
@@ -235,14 +222,16 @@ Page({
             'application/x-www-form-urlencoded'
         ).then(res => {
             tt.hideLoading()
-            let priceList = res.data.data.priceList
+            let priceList = res.data.data.dailyProductInfoList
             let allPrice = 0
             let list = []
-            for (let i = 0; i < priceList.length - 1; i++) {
-                allPrice += priceList[i].price
+            for (let i = 0; i < priceList.length; i++) {
+                allPrice += priceList[i].settlementPrice
                 list.push(priceList[i])
             }
+            console.log(list);
             allPrice = allPrice * roomIndex
+            allPrice = allPrice.toFixed(2)
             this.setData({
                 nowPrice: allPrice,
                 priceList: list
@@ -437,9 +426,10 @@ Page({
         this.setData({
             typeStr
         })
+        this.getList()
         this.getDailyPrice()
         console.log(product);
-        console.log(this.data.goods);
+        console.log('res',this.data.goods);
     },
 
     /**
@@ -452,7 +442,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        this.getList()
+
     },
 
     /**

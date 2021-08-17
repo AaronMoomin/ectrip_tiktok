@@ -32,6 +32,9 @@ Page({
     // 常用联系人列表查询
     async getList() {
         let {openid} = this.data
+        tt.showLoading({
+            title: '加载中...'
+        })
         await request.myRequest(
             '/tiktok/personCenter/contact/list',
             {
@@ -40,6 +43,7 @@ Page({
             'get',
             'application/x-www-form-urlencoded'
         ).then(res => {
+            tt.hideLoading()
             let contactList = res.data.data.contactList
             let {peopleList, array} = this.data
             peopleList = contactList
@@ -51,6 +55,7 @@ Page({
             })
             console.log(this.data.peopleList);
         }).catch(err => {
+            tt.hideLoading()
             console.log(err);
         })
     },
@@ -58,12 +63,12 @@ Page({
     async addOrUpdate(id = '') {
         let {openid, unionid, name, phone, idCard, address, sex, array, value1, peopleList} = this.data
         let obj = JSON.stringify({
-            "address": address.replace(/\s*/g,""),
-            "cellphone": phone.replace(/\s*/g,""),
-            "credentials": idCard.replace(/\s*/g,""),
+            "address": address.replace(/\s*/g, ""),
+            "cellphone": phone.replace(/\s*/g, ""),
+            "credentials": idCard.replace(/\s*/g, ""),
             "credentialsType": value1,
             id,
-            "name": name.replace(/\s*/g,""),
+            "name": name.replace(/\s*/g, ""),
             "openid": openid,
             "unionid": unionid
         })
@@ -147,13 +152,13 @@ Page({
             })
             return
         }
-        if (address == '') {
-            tt.showToast({
-                title: '地址不能为空',
-                icon: 'none'
-            })
-            return
-        }
+        // if (address == '') {
+        //     tt.showToast({
+        //         title: '地址不能为空',
+        //         icon: 'none'
+        //     })
+        //     return
+        // }
         this.addOrUpdate(pid)
         this.setData({
             peopleList,
@@ -252,18 +257,10 @@ Page({
         }
     },
     handleAddress(e) {
-        if (e.detail.value == '') {
-            this.setData({
-                isAddressCurrentWaring: true,
-                addressWarnMessage: '地址不能为空',
-                address: ''
-            });
-        } else {
-            this.setData({
-                address: e.detail.value,
-                isAddressCurrentWaring: false
-            });
-        }
+        this.setData({
+            address: e.detail.value,
+            isAddressCurrentWaring: false
+        });
     },
     handleUserName(e) {
         if (e.detail.value == '') {
@@ -314,7 +311,7 @@ Page({
             idCard: '',
             sex: '男',
             value1: 0,
-            address:''
+            address: ''
         })
     },
     cancel() {
@@ -359,6 +356,7 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
+        tt.hideLoading()
     },
 
     /**

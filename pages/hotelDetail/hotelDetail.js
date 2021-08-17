@@ -26,7 +26,37 @@ Page({
         params:[],
         goods:'',
         productList:[],
-        productListShow:'',
+        productListShow:[],
+        commentList:[],
+        avatarUrl:'',
+        nickName:'',
+    },
+    async getCommentList() {
+        tt.showLoading({
+            title: "加载中..."
+        })
+        await request.myRequest(
+            '/tiktok/personCenter/comment/list',
+            {
+                goodsId:this.data.goods.id,
+                openid:app.globalData.openid
+            },
+            'get',
+            'application/x-www-form-urlencoded'
+        ).then(res=>{
+            tt.hideLoading()
+            let list = res.data.data.list
+            for (let item of list) {
+                item.commentImageList = JSON.parse(item.commentImageList)
+                item.commentTime = item.commentTime.split(' ')[0]
+            }
+            this.setData({
+                commentList:list
+            })
+            console.log(this.data.commentList);
+        }).catch(err=>{
+            console.log(err);
+        })
     },
     async handleCollect(e) {
         if (this.checkLogin()){
@@ -136,6 +166,7 @@ Page({
                 productListShow,
                 isCollect:res.data.data.isCollected
             })
+            this.getCommentList()
             console.log('goods',res.data.data.goods);
             console.log('productList',productList);
         }).catch(err=>{
@@ -292,6 +323,8 @@ Page({
             "anonymous_code": value.anonymousCode,
             "appid": app.globalData.appid,
             "code": value.code,
+            "avatarUrl": this.data.avatarUrl,
+            "nickName": this.data.nickName,
             "secret": app.globalData.secret
         })
         let Object = base64.encode(obj)
@@ -333,11 +366,11 @@ Page({
                     tt.getUserInfo({
                         withCredentials: true,
                         success: (res1) => {
-                            this.login(res)
                             this.setData({
                                 avatarUrl: res1.userInfo.avatarUrl,
                                 nickName: res1.userInfo.nickName
                             })
+                            this.login(res)
                             tt.setStorage({
                                 key: "userInfo",
                                 data: {

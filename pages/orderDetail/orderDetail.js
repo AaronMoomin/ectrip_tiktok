@@ -9,6 +9,17 @@ Page({
         orderInfo:'',
         orderPassenger:'',
         qrCodeDto:'',
+        iosDialog2:false,
+    },
+    open(){
+        this.setData({
+            iosDialog2:true
+        })
+    },
+    close(){
+        this.setData({
+            iosDialog2:false
+        })
     },
     toRefund(e){
         console.log(e);
@@ -55,6 +66,9 @@ Page({
             productName:options.productName,
             status:status
         })
+        this.getOrder();
+    },
+    onShow:function () {
         this.getOrder();
     },
     onUnload: function () {

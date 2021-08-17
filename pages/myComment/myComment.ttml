@@ -1,22 +1,25 @@
 <view class="commentContainer">
-    <view class="routeItem">
+    <view class="routeItem" tt:for="{{commentList}}" tt:key="{{item.goodsId}}">
         <view class="info">
             <view class="titleNav">
-                <text class="star">四星</text>
-                <text class="title">酒店名称</text>
+                <text class="star">{{item.remarknum}}星</text>
+                <text class="title">{{item.goodsName}}</text>
             </view>
-            <text class="desc">大床房/15m-20m/有无线/无早餐</text>
-            <text class="company">位于火车站附近500m</text>
-            <view class="imgBox">
-                <image src="/static/images/gbtl.jpg"></image>
-                <image src="/static/images/gbtl.jpg"></image>
-                <image src="/static/images/gbtl.jpg"></image>
-            </view>
-        </view>
-        <view class="price">
-            <view class="red">
-                <text class="big">270</text>
-                起
+            <text class="desc" style="font-size: 22rpx;">{{item.commentTime}}</text>
+            <text class="desc">{{item.commentText}}</text>
+            <view class="imgBox" tt:if="{{item.commentImageList.length!=0}}">
+                <swiper circular display-multiple-items="{{item.commentImageList.length>=2?3:1}}" scroll-x
+                        class="swiper_nav">
+                    <swiper-item class="swiper_item"
+                                 tt:for="{{item.commentImageList}}"
+                                 tt:for-item="i"
+                                 tt:key="{{index}}">
+                        <image src="{{i}}"></image>
+                    </swiper-item>
+                    <swiper-item tt:if="{{item.commentImageList.length==2}}">
+                        <image></image>
+                    </swiper-item>
+                </swiper>
             </view>
         </view>
     </view>

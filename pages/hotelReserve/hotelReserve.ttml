@@ -14,7 +14,7 @@
         </view>
     </view>
     <view class="info">
-        <image src="/static/images/gbtl.jpg"></image>
+        <image src="{{goods.imageList[0].url}}"></image>
         <view class="infoItem">
             <text class="name">{{goods.name}}</text>
             <text>{{typeStr}}</text>
@@ -22,7 +22,7 @@
         </view>
     </view>
     <view class="humanInfo">
-        <text class="headTitle">入住信息</text>
+        <text class="headTitle">联系人</text>
         <view class="infoItem">
             <view class="infoCell">
                 <text class="name">姓名</text>
@@ -77,9 +77,9 @@
             </view>
         </view>
         <view class="humanCheckNav" tt:if="{{switchneedvisitor==1}}">
-            <text class="headTitle">游客信息</text>
+            <text class="headTitle">入住信息</text>
             <view class="humanItem" tt:for="{{visitPersonsShow}}" tt:key="{{item.id}}">
-                <text class="num">游客{{index + 1}}</text>
+                <text class="num">入住人{{index + 1}}</text>
                 <view class="humanItemInfo">
                     <text class="name">{{item.name}}</text>
                     <text class="idCard">身份证 {{item.credentials}}</text>
@@ -99,7 +99,7 @@
             <view class="infoCell">
                 <text class="name">促销优惠</text>
                 <view class="pic">
-                    <text class="desc red">-￥10</text>
+                    <text class="desc red"></text>
                     <text class="iconfont icon-tiaozhuan"></text>
                 </view>
             </view>
@@ -157,11 +157,11 @@
             </view>
             <view class="priceItem" tt:for="{{priceList}}" tt:key="{{item.date}}">
                 <text>{{item.date}}</text>
-                <text>￥{{roomIndex}} * {{item.price}}</text>
+                <text>￥{{roomIndex}} * {{item.settlementPrice}}</text>
             </view>
             <view class="priceItem">
-                <text>总价</text>
-                <text class="price">￥{{nowPrice}}</text>
+                <text class="all">总价</text>
+                <text class="all price">￥{{nowPrice}}</text>
             </view>
         </view>
     </view>

@@ -71,7 +71,7 @@
                                 <text class="iconfont icon-tiaozhuan"></text>
                             </view>
                             <view class="priceBox">
-                                <view class="red">￥<text class="price">{{item.priceList[0].price}}</text>起
+                                <view class="red">￥<text class="price">{{item.dailyProductInfoList[0].settlementPrice}}</text>起
                                 </view>
 <!--                                <text class="bad">￥260</text>-->
                             </view>
@@ -86,7 +86,7 @@
                               data-start="{{dateGlobal}}"
                               data-end="{{dateGlobal2}}"
                               data-daysbetween="{{daysBetween}}"
-                              tt:if="{{item.stockList[0].totalStock>1}}">
+                              tt:if="{{item.dailyProductInfoList[0].leftStock>1}}">
                             <text class="yd">预定</text>
                             <text class="zxf">在线付</text>
                         </view>
@@ -171,17 +171,33 @@
                     </view>
                 </view>
                 <view class="comment">
-                    <view class="commentItem">
-                        <image src="/static/images/gbtl.jpg"></image>
-                        <view class="content">
-                            <text class="name">zhangzh</text>
-                            <view class="time">
-                                <text>打分</text>
-                                <text class="num">5.0</text>
-                                <text class="room">大床房</text>
-                                <text>2020-03-06</text>
+                    <view class="commentItem" tt:for="{{commentList}}" tt:key="{{item.orderCode}}">
+                        <view class="commentContent">
+                            <image src="/static/images/gbtl.jpg"></image>
+                            <view class="content">
+                                <text class="name">zhangzh</text>
+                                <view class="time">
+                                    <text>打分</text>
+                                    <text class="num">{{item.remarknum}}.0</text>
+                                    <text class="room">{{item.productName}}</text>
+                                    <text>{{item.commentTime}}</text>
+                                </view>
+                                <text>{{item.commentText}}</text>
                             </view>
-                            <text>评价评价评价评价评价评价评价评价评价评价</text>
+                        </view>
+                        <view class="imgBox" tt:if="{{item.commentImageList.length!=0}}">
+                            <swiper circular display-multiple-items="{{item.commentImageList.length>=2?3:1}}" scroll-x
+                                    class="swiper_nav">
+                                <swiper-item class="swiper_item"
+                                             tt:for="{{item.commentImageList}}"
+                                             tt:for-item="i"
+                                             tt:key="{{index}}">
+                                    <image src="{{i}}"></image>
+                                </swiper-item>
+                                <swiper-item tt:if="{{item.commentImageList.length==2}}">
+                                    <image></image>
+                                </swiper-item>
+                            </swiper>
                         </view>
                     </view>
                 </view>

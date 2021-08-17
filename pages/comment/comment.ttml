@@ -8,14 +8,13 @@
             <view class="mark">
                 <text bind:tap="handleSelect" class="iconfont icon-xingxing {{select[index]?'star':''}}"
                       tt:for="{{5}}" data-index="{{index}}"></text>
+                <text>{{selectIndex}}分</text>
             </view>
         </view>
         <view class="commentText">
             <textarea
-                    bindfocus="onTextFocus"
-                    bindblur="onTextBlur"
                     bindinput="onTextInput"
-                    bindconfirm="onTextConfirm"
+                    value="{{textareaValue}}"
                     placeholder="写下您的评论"
             />
         </view>
@@ -28,13 +27,13 @@
                         </view>
                     </block>
                     <view class="weui-uploader__input-box">
-                        <input class="weui-uploader__input js_file" type="file"
+                        <view class="weui-uploader__input js_file"
                                accept="image/jpg,image/jpeg,image/png,image/gif" multiple="" bindtap='uploader'
-                               name="images"></input>
+                               name="images"></view>
                     </view>
                 </view>
             </view>
         </view>
-        <view class="btn">发布</view>
+        <view class="btn" bind:tap="send">发布</view>
     </view>
 </view>

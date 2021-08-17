@@ -4,6 +4,7 @@
         "es6": true,
         "newFeature": false,
         "postcss": false,
+        "autoCompile": true,
         "mockUpdate": false,
         "minified": false,
         "nodeModules": false,

@@ -1,6 +1,8 @@
 .commentContainer {
     padding: 30rpx;
     background: #f9f9f9;
+    color: #000;
+    border-radius: 20rpx;
 }
 
 .comment {
@@ -20,6 +22,7 @@
     padding-bottom: 20rpx;
     padding-top: 20rpx;
     border-bottom: 2rpx solid #eee;
+    color: #000;
 }
 .comment .grade .mark{
     margin-left: 300rpx;
@@ -31,6 +34,7 @@
 .comment .commentText {
     padding: 10rpx;
     font-size: 26rpx;
+    color: #000;
 }
 
 .comment .photo {
