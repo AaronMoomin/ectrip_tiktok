@@ -123,7 +123,7 @@ Page({
                     //     imagesList: res.tempFilePaths
                     // })
                 }
-                let list = []
+                let {imagesList} = that.data
                 var baseImg
                 for (let i in res.tempFilePaths) {
                     tt.getFileSystemManager().readFile({
@@ -136,9 +136,9 @@ Page({
                                 data:{'base64Str':baseImg},
                                 method:'post',
                                 success:res=>{
-                                    list.push(res.data)
+                                    imagesList.push(res.data)
                                     that.setData({
-                                        imagesList: list
+                                        imagesList
                                     })
                                 },
                                 fail:err=>{
