@@ -38,6 +38,25 @@ Page({
             console.log(err);
         })
     },
+    previewImage(e) {
+        let index = e.currentTarget.dataset.index
+        let j = e.currentTarget.dataset.j
+        let {feedbackList} = this.data
+        tt.previewImage({
+            current: feedbackList[index].feedbackImageList[j],
+            urls: feedbackList[index].feedbackImageList,
+            success: res => {
+                console.log('success');
+            },
+            fail: err => {
+                tt.showModal({
+                    title: "预览失败",
+                    content: err.errMsg,
+                    showCancel: false,
+                });
+            }
+        })
+    },
     onLoad: function (options) {
 
     },

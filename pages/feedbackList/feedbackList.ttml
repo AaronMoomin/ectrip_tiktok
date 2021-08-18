@@ -8,12 +8,17 @@
             </view>
             <text class="desc">{{item.feedbackText}}</text>
             <view class="imgBox" tt:if="{{item.feedbackImageList.length!=0}}">
-                <swiper circular display-multiple-items="{{item.feedbackImageList.length>=2?3:1}}" scroll-x class="swiper_nav">
+                <swiper circular display-multiple-items="{{item.feedbackImageList.length>=2?3:1}}" scroll-x
+                        class="swiper_nav">
                     <swiper-item class="swiper_item"
-                            tt:for="{{item.feedbackImageList}}"
-                            tt:for-item="i"
-                            tt:key="{{index}}">
-                        <image src="{{i}}"></image>
+                                 tt:for="{{item.feedbackImageList}}"
+                                 tt:for-item="i"
+                                 tt:for-index="j"
+                                 tt:key="{{j}}">
+                        <image src="{{i}}"
+                               data-index="{{index}}"
+                               data-j="{{j}}"
+                               bind:tap="previewImage"></image>
                     </swiper-item>
                     <swiper-item tt:if="{{item.feedbackImageList.length==2}}">
                         <image></image>

@@ -1,14 +1,14 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/comment/comment",
+    "pages/feedback/feedback",
+    "pages/mine/mine",
     "pages/ticket/ticket",
     "pages/hotel/hotel",
     "pages/myComment/myComment",
-    "pages/mine/mine",
     "pages/feedbackList/feedbackList",
     "pages/allOrder/allOrder",
-    "pages/comment/comment",
-    "pages/feedback/feedback",
     "pages/collect/collect",
     "pages/hotelReserve/hotelReserve",
     "pages/visitor/visitor",

@@ -113,6 +113,26 @@ Page({
             console.log(err);
         })
     },
+    previewImage(e) {
+        let index = e.currentTarget.dataset.index
+        let j = e.currentTarget.dataset.j
+        let {commentList} = this.data
+        console.log(commentList);
+        tt.previewImage({
+            current: commentList[index].commentImageList[j],
+            urls: commentList[index].commentImageList,
+            success: res => {
+                console.log('success');
+            },
+            fail: err => {
+                tt.showModal({
+                    title: "预览失败",
+                    content: err.errMsg,
+                    showCancel: false,
+                });
+            }
+        })
+    },
     handleLogin() {
         tt.login({
                 force: true,

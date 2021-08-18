@@ -4,17 +4,18 @@ const app = getApp()
 Page({
     data: {
         imagesList: [],
-        isSelect:[false,false,false,false,false,false,false,false],
-        selected:['登录注册','门票','周边地图','特产','精品路线','美食','城市服务','其他'],
-        textareaValue:'',
+        base64List: [],
+        isSelect: [false, false, false, false, false, false, false, false],
+        selected: ['登录注册', '门票', '周边地图', '特产', '精品路线', '美食', '城市服务', '其他'],
+        textareaValue: '',
     },
     //选择场景
-    selectItem(e){
+    selectItem(e) {
         let {isSelect} = this.data
-        let index = e.currentTarget.dataset.index*1
+        let index = e.currentTarget.dataset.index * 1
         for (let i in isSelect) {
             isSelect[i] = false
-            if (i==index){
+            if (i == index) {
                 isSelect[i] = true
             }
         }
@@ -23,10 +24,10 @@ Page({
         })
     },
     //获取反馈问题
-    handleInput(e){
-       this.setData({
-           textareaValue:e.detail.value
-       })
+    handleInput(e) {
+        this.setData({
+            textareaValue: e.detail.value
+        })
     },
     async feeBack() {
         let {isSelect, textareaValue, imagesList} = this.data
@@ -62,11 +63,11 @@ Page({
         await request.myRequest(
             '/tiktok/personCenter/feedback/add',
             {
-                data:object,
-                signed:'feeBack'
+                data: object,
+                signed: 'feeBack'
             },
             'post'
-        ).then(res=>{
+        ).then(res => {
             tt.showToast({
                 title: '反馈成功'
             })
@@ -76,7 +77,7 @@ Page({
             console.log(err);
         })
     },
-    uploader() {
+    async uploader() {
         var that = this;
         let imagesList = [];
         let maxSize = 1024 * 1024;
@@ -86,8 +87,8 @@ Page({
             count: 6, //最多可以选择的图片总数
             sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
             sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-            success: function (res) {
-                console.log("图片列表",res);
+            success: res => {
+                console.log("图片列表", res);
                 tt.showToast({
                     title: '正在上传...',
                     icon: 'loading',
@@ -112,7 +113,7 @@ Page({
                     tt.showModal({
                         content: '最多能上传' + maxLength + '张图片',
                         showCancel: false,
-                        success: function (res) {
+                        success: res => {
                             if (res.confirm) {
                                 console.log('确定');
                             }
@@ -120,31 +121,69 @@ Page({
                     })
                 }
                 if (flag == true && res.tempFiles.length <= maxLength) {
-                    that.setData({
-                        imagesList: res.tempFilePaths
+                    // that.setData({
+                    //     imagesList: res.tempFilePaths
+                    // })
+                }
+                let list = []
+                var baseImg
+                for (let i in res.tempFilePaths) {
+                    tt.getFileSystemManager().readFile({
+                        filePath: res.tempFilePaths[i],
+                        encoding: "base64",
+                        success: res => {
+                            baseImg = 'data:image/png;base64,' + res.data
+                            tt.request({
+                                url:'http://192.168.4.19:8888/file/up',
+                                data:{'base64Str':baseImg},
+                                method:'post',
+                                success:res=>{
+                                    list.push(res.data)
+                                    that.setData({
+                                        imagesList: list
+                                    })
+                                },
+                                fail:err=>{
+                                    console.log(err);
+                                }
+                            })
+                        }
                     })
                 }
-                tt.uploadFile({
-                    url: 'http://tour.12301cn.cn/file/up.do',
-                    filePath: res.tempFilePaths[0],
-                    name: 'images',
-                    header: {
-                        "Content-Type": "multipart/form-data",
-                    },
-                    success:(res=>{
-                        console.log(res);
-                    }),
-                    fail: (err=>{
-                        console.log(err);
-                    })
-                })
             },
             fail: function (res) {
                 console.log(res);
             }
         })
     },
+    previewImage(e) {
+        let index = e.currentTarget.dataset.index
+        let {imagesList} = this.data
+        tt.previewImage({
+            current: imagesList[index],
+            urls: imagesList,
+            success: res => {
+                console.log('success');
+            },
+            fail: err => {
+                tt.showModal({
+                    title: "预览失败",
+                    content: err.errMsg,
+                    showCancel: false,
+                });
+            }
+        })
+    },
+    deleteImage(e){
+        let index = e.currentTarget.dataset.index
+        let {imagesList} = this.data
+        imagesList.splice(index,1)
+        this.setData({
+            imagesList
+        })
+    },
     onLoad: function (options) {
 
     }
-});
+})
+;

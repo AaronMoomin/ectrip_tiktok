@@ -27,8 +27,13 @@
 <!--                    </view>-->
 <!--                </view>-->
                 <block tt:for="{{imagesList}}" tt:key="{{index}}">
-                    <view class="weui-uploader__file">
-                        <image class="weui-uploader__img" src="{{item}}"></image>
+                    <view class="weui-uploader__file" style="position:relative;">
+                        <image class="weui-uploader__img" src="{{item}}"
+                               data-index="{{index}}"
+                               bind:tap="previewImage"></image>
+                        <text class="iconfont icon-guanbi" catch:tap="deleteImage"
+                              data-index="{{index}}"
+                              style="position:absolute;color:#797979;top:0px;right:0px"></text>
                     </view>
                 </block>
                 <view class="weui-uploader__input-box">

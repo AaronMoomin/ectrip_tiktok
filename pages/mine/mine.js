@@ -86,11 +86,11 @@ Page({
                     tt.getUserInfo({
                         withCredentials: true,
                         success: (res1) => {
-                            this.login(res)
                             this.setData({
                                 avatarUrl: res1.userInfo.avatarUrl,
                                 nickName: res1.userInfo.nickName
                             })
+                            this.login(res)
                             tt.setStorage({
                                 key: "userInfo",
                                 data: {

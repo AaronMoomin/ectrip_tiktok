@@ -42,6 +42,8 @@ App({
             "anonymous_code": value.anonymousCode,
             "appid": this.globalData.appid,
             "code": value.code,
+            "avatarUrl": this.globalData.avatarUrl,
+            "nickName": this.globalData.nickName,
             "secret": this.globalData.secret
         })
         let Object = base64.encode(obj)

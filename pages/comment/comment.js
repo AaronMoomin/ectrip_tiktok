@@ -79,7 +79,7 @@ Page({
     },
     uploader() {
         var that = this;
-        let imagesList = [];
+        let {imagesList} = this.data
         let maxSize = 1024 * 1024;
         let maxLength = 6;
         let flag = true;
@@ -119,28 +119,65 @@ Page({
                     })
                 }
                 if (flag == true && res.tempFiles.length <= maxLength) {
-                    that.setData({
-                        imagesList: res.tempFilePaths
+                    // that.setData({
+                    //     imagesList: res.tempFilePaths
+                    // })
+                }
+                let list = []
+                var baseImg
+                for (let i in res.tempFilePaths) {
+                    tt.getFileSystemManager().readFile({
+                        filePath: res.tempFilePaths[i],
+                        encoding: "base64",
+                        success: res => {
+                            baseImg = 'data:image/png;base64,' + res.data
+                            tt.request({
+                                url:'http://192.168.4.19:8888/file/up',
+                                data:{'base64Str':baseImg},
+                                method:'post',
+                                success:res=>{
+                                    list.push(res.data)
+                                    that.setData({
+                                        imagesList: list
+                                    })
+                                },
+                                fail:err=>{
+                                    console.log(err);
+                                }
+                            })
+                        }
                     })
                 }
-                tt.uploadFile({
-                    url: 'http://tour.12301cn.cn/file/up.do',
-                    filePath: res.tempFilePaths[0],
-                    name: 'images',
-                    header: {
-                        "Content-Type": "multipart/form-data",
-                    },
-                    success:(res=>{
-                        console.log(res);
-                    }),
-                    fail: (err=>{
-                        console.log(err);
-                    })
-                })
             },
             fail: function (res) {
                 console.log(res);
             }
+        })
+    },
+    previewImage(e) {
+        let index = e.currentTarget.dataset.index
+        let {imagesList} = this.data
+        tt.previewImage({
+            current: imagesList[index],
+            urls: imagesList,
+            success: res => {
+                console.log('success');
+            },
+            fail: err => {
+                tt.showModal({
+                    title: "预览失败",
+                    content: err.errMsg,
+                    showCancel: false,
+                });
+            }
+        })
+    },
+    deleteImage(e){
+        let index = e.currentTarget.dataset.index
+        let {imagesList} = this.data
+        imagesList.splice(index,1)
+        this.setData({
+            imagesList
         })
     },
     /**

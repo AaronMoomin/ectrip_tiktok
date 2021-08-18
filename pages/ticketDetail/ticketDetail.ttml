@@ -82,9 +82,9 @@
         </view>
         <view class="commentItem" tt:for="{{commentList}}" tt:key="{{item.orderCode}}">
             <view class="content">
-                <image src="/static/images/gbtl.jpg"></image>
+                <image src="{{item.avatarUrl}}"></image>
                 <view class="commentContent">
-                    <text class="userName">zhangzh</text>
+                    <text class="userName">{{item.nickName}}</text>
                     <view class="gradeNav">
                         <view class="gr">
                             <text>打分</text>
@@ -103,8 +103,12 @@
                     <swiper-item class="swiper_item"
                                  tt:for="{{item.commentImageList}}"
                                  tt:for-item="i"
-                                 tt:key="{{index}}">
-                        <image src="{{i}}"></image>
+                                 tt:for-index="j"
+                                 tt:key="{{j}}">
+                        <image src="{{i}}"
+                               data-index="{{index}}"
+                               data-j="{{j}}"
+                               bind:tap="previewImage"></image>
                     </swiper-item>
                     <swiper-item tt:if="{{item.commentImageList.length==2}}">
                         <image></image>
