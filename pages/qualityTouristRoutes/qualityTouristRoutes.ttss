@@ -111,6 +111,9 @@
     border-radius: 10rpx;
     margin-bottom: 20rpx;
 }
+.showcaseItem{
+    position:relative;
+}
 .showcaseItem .top{
     display: flex;
 }
@@ -145,6 +148,13 @@
     position:relative;
     color: #797979;
     margin: 20rpx 0 ;
+}
+.showcaseItem .price{
+    position:absolute;
+    color: #d22c21;
+    font-size: 28rpx;
+    right: 10rpx;
+    top: 10rpx;
 }
 .showcaseItem .down .see{
     position:absolute;

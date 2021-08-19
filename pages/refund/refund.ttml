@@ -18,7 +18,7 @@
         </view>
         <view class="info" tt:if="{{orderPassenger.length==0}}">
             <text>退订数量</text>
-            <calculate binditemIndex="getIndex" num="{{orderList.quantity}}" defaultNum="{{orderList.quantity}}"></calculate>
+            <calculate catch:itemIndex="getIndex" num="{{orderList.quantity}}" defaultNum="{{orderList.quantity}}"></calculate>
         </view>
         <view class="refund_desc">
             <text>退订理由</text>

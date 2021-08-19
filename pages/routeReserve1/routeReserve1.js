@@ -57,9 +57,9 @@ Page({
         value1: 0,
         value1Show: '身份证',
         value2: 0,
-        userName: '',
+        userName: '兔斯基',
         userNameShow: '',
-        phone: '',
+        phone: '13502542299',
         phoneShow: '',
         sex: '男',
         sexShow: '男',
@@ -918,6 +918,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        console.log(options);
         options.product = JSON.parse(options.product)
         tt.getStorage({
             key: 'session',

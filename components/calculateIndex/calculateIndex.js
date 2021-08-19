@@ -32,6 +32,7 @@ Component({
    */
   methods: {
     jian() {
+      console.log('点击了减');
       let {
         index
       } = this.data;
@@ -53,6 +54,7 @@ Component({
     },
 
     jia() {
+      console.log('点击了加');
       let {
         index
       } = this.data;
@@ -82,7 +84,11 @@ Component({
           isDisabled: true,
         });
       }
+      if (this.data.index==this.properties.num){
+        this.setData({
+          jiaDisabled: true,
+        });
+      }
     }
   },
-
 });

@@ -62,19 +62,21 @@
     <view class="routeContainer" tt:elif="{{isSelect[2]}}">
         <view class="nothing" tt:if="{{allList.length == 0}}">无收藏</view>
         <view tt:else>
-            <view class="timer">
-                <text>收藏时间:2021年01月01日 星期一</text>
-            </view>
-            <view class="showcaseItem">
+<!--            <view class="timer">-->
+<!--                <text>收藏时间:2021年01月01日 星期一</text>-->
+<!--            </view>-->
+            <view class="showcaseItem" bind:tap="toPlayDetail"
+                  data-name="{{item.name}}" data-id="{{item.id}}"
+                  tt:for="{{allList}}" tt:key="{{item.id}}">
                 <view class="top">
-                    <image src="/static/images/gbtl.jpg"></image>
+                    <image src="{{item.imageList[0].url?item.imageList[0].url:'/static/images/gbtl.jpg'}}"></image>
                     <view class="topNav">
-                        <text class="name">马仑草原一日游</text>
+                        <text class="name">{{item.name}}</text>
                         <text>芦芽山-马伦草原,情人谷一日游</text>
                         <view class="star">
                             <text class="iconfont icon-xingxing" tt:for="{{5}}"></text>
                             <text class="price">4.9分</text>
-                            <text class="red">￥564起</text>
+                            <text class="red">￥{{item.minPrice}}起</text>
                         </view>
                     </view>
                 </view>

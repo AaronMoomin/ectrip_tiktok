@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "calculate": "/components/calculateIndex/calculateIndex",
+    "calendar":"/components/calendar/calendar"
+  },
+  "navigationBarTitleText": "线路预定"
+}

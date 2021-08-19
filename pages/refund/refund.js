@@ -3,7 +3,7 @@ const base64 = require("../../utils/base64.js")
 const app = getApp()
 Page({
     data: {
-        voteNum: '',
+        voteNum: 0,
         index: '',
         price: '',
         nowPrice: '',
@@ -214,10 +214,15 @@ Page({
             price,
             nowPrice
         } = this.data;
-        if (voteNum >= index) {
+        console.log(`目前票数${voteNum}目前选中${index}`);
+        if (voteNum > index) {
+            console.log("减");
             nowPrice -= price
-        } else{
+        } else if (voteNum < index){
+            console.log('加');
             nowPrice += price
+        }else{
+            return
         }
         nowPrice = nowPrice.toFixed(2) * 1
         voteNum = index;
@@ -238,11 +243,11 @@ Page({
             orderPassenger:options.orderpassenger
         })
         let {orderInfo, orderList, orderPassenger,nowPrice} = this.data
-        if (this.data.orderPassenger.length == 0) {//?不是实名制
+        if (orderPassenger.length == 0) {//?不是实名制
             this.setData({
                 realName: false,
                 nowPrice: orderList.totalMoney,
-                voteNum: orderPassenger.length,
+                voteNum: orderList.quantity,
             })
         } else {
             this.setData({
@@ -256,7 +261,7 @@ Page({
             openid: app.globalData.openid
         })
         console.log(this.data.orderInfo);
-        console.log(this.data.orderList);
+        console.log(this.data.orderList,'111');
         console.log(this.data.orderPassenger);
         this.getRule()
     },

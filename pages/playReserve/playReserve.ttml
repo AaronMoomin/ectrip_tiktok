@@ -1,19 +1,13 @@
 <view class="reserveContainer">
     <swiper class="swiperNav"
             circular autoplay indicator-dots>
-        <swiper-item class="swiperItem">
-            <image src="/static/images/gbtl.jpg"></image>
-        </swiper-item>
-        <swiper-item class="swiperItem">
-            <image src="/static/images/sea.png"></image>
-        </swiper-item>
-        <swiper-item class="swiperItem">
-            <image src="/static/images/gbtl.jpg"></image>
+        <swiper-item class="swiperItem" tt:for="{{goods.imageList}}" tt:key="{{item.uid}}">
+            <image src="{{item.url}}"></image>
         </swiper-item>
     </swiper>
     <view class="infoContainer">
-        <text class="title">常规平遥乔家一日游</text>
-        <view class="price">￥<text class="big">270</text>
+        <text class="title">{{goods.name}}</text>
+        <view class="price">￥<text class="big">{{productList[0].dailyProductInfoList[0].settlementPrice}}</text>
         </view>
         <view bind:tap="handleCollect" data-goods="{{goods}}"
               class="{{isCollect?'collected':'collect'}}">
@@ -26,15 +20,15 @@
                 <view class="timeBox">
                     <view class="timeItem" bind:tap="{{showYesterday?'preDay':''}}">
                         <text style="{{showYesterday?'':'color:#d8dadc'}};">{{yesterday}}\n</text>
-                        <text class="price">￥270</text>
+                        <text class="price">￥{{yesterdayPrice}}</text>
                     </view>
                     <view class="timeItem select">
                         <text style="{{showDay?'':'color:#d8dadc'}};">{{today}}\n</text>
-                        <text class="price">￥270</text>
+                        <text class="price">￥{{todayPrice}}</text>
                     </view>
                     <view class="timeItem" bind:tap="{{showTomorrow?'nextDay':''}}">
                         <text style="{{showTomorrow?'':'color:#d8dadc'}};">{{tomorrow}}\n</text>
-                        <text class="price">￥270</text>
+                        <text class="price">￥{{tomorrowPrice}}</text>
                     </view>
                     <view class="more" bind:tap="open">
                         <text>更多日期</text>
@@ -43,8 +37,10 @@
                 </view>
             </view>
             <view class="goodsShow">
-                <view class="goodsItem">
-                    <text class="goodsName" style="white-space:pre-wrap">常规平遥乔家一日游</text>
+                <view class="goodsItem" bind:tap="clickProduct" data-product="{{item}}"
+                      tt:for="{{productList}}" tt:key="{{item.productId}}">
+                    <text class="goodsName"
+                          style="white-space:pre-wrap">{{item.productName}}</text>
                 </view>
             </view>
             <text class="company">太原出发·游山西供应商</text>
@@ -52,9 +48,8 @@
     </view>
     <view class="imgContainer">
         <text class="name">产品描述</text>
-        <image src="/static/images/gbtl.jpg"></image>
-        <image src="/static/images/gbtl.jpg"></image>
-        <image src="/static/images/gbtl.jpg"></image>
+        <text class="content">{{goods.description}}</text>
+        <image src="{{item.url}}" tt:for="{{goods.imageList}}" tt:key="{{item.uid}}"></image>
     </view>
     <view class="routeContainer">
         <text class="name">日程安排</text>
@@ -95,42 +90,34 @@
         <view class="feeContent">
             <text class="title">费用包含</text>
             <view class="feeItem">
-                <text class="itemName">交通 :</text>
-                <text class="desc">7.30集合7.30集合7.30集合7.30集合7.30集合7.30集合</text>
+<!--                <text class="itemName">交通 :</text>-->
+                <text class="desc">{{goods.feeDescription}}</text>
             </view>
-            <view class="feeItem">
-                <text class="itemName">交通 :</text>
-                <text class="desc">7.30集合7.30集合7.30集合7.30集合7.30集合7.30集合</text>
-            </view>
-            <view class="feeItem">
-                <text class="itemName">交通 :</text>
-                <text class="desc">7.30集合7.30集合7.30集合7.30集合7.30集合7.30集合</text>
-            </view>
-            <view class="feeItem">
-                <text class="itemName">交通 :</text>
-                <text class="desc">7.30集合7.30集合7.30集合7.30集合7.30集合7.30集合</text>
-            </view>
-            <text class="title">费用不含</text>
-            <view class="feeItem">
-                <text class="itemName">交通 :</text>
-                <text class="desc">7.30集合7.30集合7.30集合7.30集合7.30集合7.30集合</text>
-            </view>
-            <view class="feeItem">
-                <text class="itemName">交通 :</text>
-                <text class="desc">7.30集合7.30集合7.30集合7.30集合7.30集合7.30集合</text>
-            </view>
+<!--            <text class="title">费用不含</text>-->
+<!--            <view class="feeItem">-->
+<!--                <text class="itemName">交通 :</text>-->
+<!--                <text class="desc">7.30集合7.30集合7.30集合7.30集合7.30集合7.30集合</text>-->
+<!--            </view>-->
         </view>
     </view>
     <view class="feeContainer">
         <text class="name">预定须知</text>
         <view class="feeContent">
-            <text class="title">行前须知</text>
+            <text class="title">重要提示</text>
             <view class="feeItem">
-                <text class="desc">7.30集合7.30集合7.30集合7.30集合7.30集合7.30集合</text>
+                <text class="desc">{{goods.importantDescription}}</text>
             </view>
-            <text class="title">退改须知</text>
+            <text class="title">使用提示</text>
             <view class="feeItem">
-                <text class="desc">7.30集合7.30集合7.30集合7.30集合7.30集合7.30集合</text>
+                <text class="desc">{{goods.useDescription}}</text>
+            </view>
+            <text class="title">验证说明</text>
+            <view class="feeItem">
+                <text class="desc">{{goods.verifyDescription}}</text>
+            </view>
+            <text class="title">发票说明</text>
+            <view class="feeItem">
+                <text class="desc">{{goods.invoiceDescription}}</text>
             </view>
         </view>
     </view>
@@ -139,7 +126,12 @@
             <text class="iconfont icon-zixun"></text>
             <text>在线咨询</text>
         </view>
-        <view class="btn" bind:tap="toRouteReserve">立即预定</view>
+        <view class="btn"
+              data-contactducumenttype="{{product.ruleBook.contactDucumentType}}"
+              data-totalstock="{{product.dailyProductInfoList[0].leftStock}}"
+              data-product="{{product}}"
+              data-switchneedvisitor="{{product.ruleBook.switchNeedVisitor}}"
+              bind:tap="toRouteReserve">立即预定</view>
     </view>
     <!--  日期选择  -->
     <view class="fadeIn" tt:if="{{dialog}}">

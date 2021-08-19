@@ -69,12 +69,8 @@ Page({
     });
   },
 
-  // 跳转精品路线
+  // 跳转路线
   toQualityTouristRoutes() {
-    tt.showToast({
-      title: "敬请期待"
-    })
-    return
     tt.navigateTo({
       url: "/pages/qualityTouristRoutes/qualityTouristRoutes"
     });

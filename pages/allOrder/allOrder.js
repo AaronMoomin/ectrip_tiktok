@@ -220,6 +220,10 @@ Page({
             tt.navigateTo({
                 url: `/pages/hotelDetail/hotelDetail?id=${id}&name=${name}`
             });
+        }else if (e.currentTarget.dataset.categoryid==14){
+            tt.navigateTo({
+                url: `/pages/playReserve/playReserve?id=${id}`
+            });
         }
 
     },

@@ -1,0 +1,188 @@
+<view class="reserveContainer">
+    <view class="detailContainer">
+        <view class="infos">
+            <text class="headTitle">{{product.productName}}</text>
+            <view class="red">￥
+                <text class="big">{{price}}</text>
+            </view>
+        </view>
+        <view class="timeChooser">
+            <text class="title">游玩日期</text>
+            <view class="timeBox">
+                <view class="timeItem">
+                    <text style="{{showYesterday?'':'color:#d8dadc'}};"
+                          bind:tap="{{showYesterday?'preDay':''}}">{{yesterday}}</text>
+                    <!--                    <text style="{{showYesterday?'':'color:#d8dadc'}};">￥{{product.priceList[0].price}}</text>-->
+                </view>
+                <view class="timeItem select">
+                    <text style="{{showDay?'':'color:#d8dadc'}};">{{today}}</text>
+                    <!--                    <text>￥{{product.priceList[0].price}}</text>-->
+                </view>
+                <view class="timeItem" bind:tap="{{showTomorrow?'nextDay':''}}">
+                    <text style="{{showTomorrow?'':'color:#d8dadc'}};">{{tomorrow}}</text>
+                    <!--                    <text>￥{{product.priceList[0].price}}</text>-->
+                </view>
+                <view class="more" bind:tap="open">
+                    <text>更多日期</text>
+                    <text class="iconfont icon-tiaozhuan"></text>
+                </view>
+            </view>
+        </view>
+        <!--        <view class="addressChooser">-->
+        <!--            <text class="title">入园时间</text>-->
+        <!--            <view class="address {{item.isSelect?'select':''}}" tt:for="{{timeChooser}}" tt:key="{{item.session}}"-->
+        <!--                  bind:tap="checkSession" data-session="{{item.session}}">-->
+        <!--                <text>{{item.start}} - {{item.end}}</text>-->
+        <!--                <text>{{item.session}}</text>-->
+        <!--            </view>-->
+        <!--        </view>-->
+        <view class="numChooser">
+            <text class="title">数量</text>
+            <calculate binditemIndex="getIndex" num="{{totalStock}}" defaultNum="{{switchneedvisitor==1?len==0?1:len:1}}"></calculate>
+        </view>
+        <!--        <view class="numChooser">-->
+        <!--            <view class="infos">-->
+        <!--                <text class="title">儿童票</text>-->
+        <!--                <view class="red">￥-->
+        <!--                    <text class="big">225</text>-->
+        <!--                </view>-->
+        <!--            </view>-->
+        <!--            <calculate binditemIndex="getIndex"></calculate>-->
+        <!--        </view>-->
+        <!--        <view class="showbtn">-->
+        <!--            <text>展开其余3张</text>-->
+        <!--            <text class="iconfont icon-tiaozhuan"></text>-->
+        <!--        </view>-->
+    </view>
+    <view class="humanInfo">
+        <text class="headTitle">联系人信息</text>
+        <view class="infoItem">
+            <view class="infoCell">
+                <text class="name">姓名</text>
+                <input bindinput="handleUserName" value="{{userName}}"
+                       placeholder="请输入真实姓名"/>
+            </view>
+            <view class="weui-cells__tips weui-cells__tips_warn"
+                  style="color:red;font-size:22rpx; {{isNameCurrentWaring ? 'display:block' : 'display:none'}}">
+                {{nameWarnMessage}}
+            </view>
+        </view>
+        <view class="infoItem" tt:if="{{contactducumenttype!='[]'}}">
+            <view class="infoCell">
+                <view class="name">
+                    <picker class="pickerCal" bindchange="bindPickerChange" range="{{array}}">
+                        <view>{{array[value1]}}</view>
+                    </picker>
+                    <text class="iconfont icon-tiaozhuan"></text>
+                </view>
+                <input bindinput="handleIdCard" value="{{idCard}}"
+                       placeholder="请正确输入证件号,否则影响入园"/>
+            </view>
+            <view class="weui-cells__tips weui-cells__tips_warn"
+                  style="color:red;font-size:22rpx;{{isIdCardCurrentWaring ? 'display:block' : 'display:none'}}">
+                {{IdCardWarnMessage}}
+            </view>
+        </view>
+        <view class="infoItem">
+            <view class="infoCell">
+                <text class="name">手机号码</text>
+                <input bindinput="handlePhone" value="{{phone}}"
+                       placeholder="请输入手机号码"/>
+            </view>
+            <view class="weui-cells__tips weui-cells__tips_warn"
+                  style="color:red;font-size:22rpx;{{isPhoneCurrentWaring ? 'display:block' : 'display:none'}}">
+                {{phoneWarnMessage}}
+            </view>
+        </view>
+        <view class="humanCheckNav" tt:if="{{switchneedvisitor==1}}">
+            <text class="headTitle">游客信息</text>
+            <view class="humanItem" tt:for="{{visitPersonsShow}}" tt:key="{{item.id}}">
+                <text class="num">游客{{index + 1}}</text>
+                <view class="humanItemInfo">
+                    <text class="name">{{item.name}}</text>
+                    <text class="idCard">身份证 {{item.credentials}}</text>
+                </view>
+                <text class="iconfont icon-shanchu" bind:tap="deleteVisitor"
+                      data-id="{{item.id}}"></text>
+            </view>
+            <view class="add" bind:tap="open1">
+                <text class="iconfont icon-add"></text>
+                <text>选择游客</text>
+            </view>
+        </view>
+
+        <view class="fixedNav">
+            <text>在线支付</text>
+            <view class="price">
+                <view class="red">￥
+                    <text class="big">{{nowPrice}}</text>
+                </view>
+                <!--                <view class="discount">已减￥15</view>-->
+            </view>
+            <view class="toReserve" bind:tap="toReserve">
+                去支付
+            </view>
+        </view>
+        <!--  日期选择  -->
+        <view class="fadeIn" tt:if="{{dialog}}">
+            <view class="weui-mask" bind:tap="close"></view>
+            <view class="weui-half-screen-dialog">
+                <view class="weui-half-screen-dialog__hd">
+                    <view class="weui-half-screen-dialog__hd__side" bind:tap="close">
+                        <view class="weui-icon-btn">关闭<text class="weui-icon-close-thin"></text>
+                        </view>
+                    </view>
+                    <view class="weui-half-screen-dialog__hd__main">
+                        <text class="weui-half-screen-dialog__title">选择日期</text>
+                    </view>
+                </view>
+                <view class="weui-half-screen-dialog__bd" style="padding-top:32rpx;height:500rpx;">
+                    <calendar bind:change="dateChange" spot="{{spot}}" defaultTime="{{selectDay}}"></calendar>
+                </view>
+                <view class="weui-half-screen-dialog__ft">
+                    <button id="confirm" bind:tap="confirmDate">确定</button>
+                </view>
+            </view>
+        </view>
+
+        <!--  游客选择  -->
+        <view class="fadeIn" tt:if="{{dialog1}}">
+            <view class="weui-mask" bind:tap="close1"></view>
+            <view class="weui-half-screen-dialog">
+                <view class="weui-half-screen-dialog__hd">
+                    <view class="weui-half-screen-dialog__hd__side" bind:tap="close1">
+                        <view class="weui-icon-btn">关闭<text class="weui-icon-close-thin"></text>
+                        </view>
+                    </view>
+                    <view class="weui-half-screen-dialog__hd__main">
+                        <text class="weui-half-screen-dialog__title">选择游客</text>
+                    </view>
+                    <text class="iconfont icon-bianji bj"
+                          bind:tap="toVisitor"
+                    ></text>
+                </view>
+                <view class="weui-half-screen-dialog__bd" style="padding-top:32rpx;height:500rpx;">
+                    <checkbox-group bind:change="checkboxChange"
+                                    tt:if="visitPersons">
+                        <label class="ttui-cell checkNav" tt:for="{{visitPersons}}" tt:key="{{item.id}}">
+                            <view class="ttui-cell__hd">
+                                <checkbox value="{{item.id}}"
+                                          checked="{{item.checked}}" />
+                            </view>
+                            <view class="checkItemInfo">
+                                <text class="name">{{item.name}}</text>
+                                <text class="name">手机 {{item.cellphone}}</text>
+                                <text class="name">身份证 {{item.credentials}}</text>
+                                <text class="name">地址 {{item.address}}</text>
+                            </view>
+                        </label>
+                    </checkbox-group>
+                    <view class="none" tt:else>无</view>
+                </view>
+                <view class="weui-half-screen-dialog__ft">
+                    <button id="confirm" bind:tap="confirmVisitor">确定</button>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

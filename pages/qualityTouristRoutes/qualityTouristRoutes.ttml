@@ -49,11 +49,12 @@
     <view class="contentContainer">
         <text class="title">热门精选</text>
         <view class="showcaseContainer">
-            <view class="showcaseItem">
+            <view class="showcaseItem" bind:tap="toPlayReserve" data-id="{{item.id}}"
+                  tt:for="{{orderList}}" tt:key="{{item.id}}">
                 <view class="top">
-                    <image src="/static/images/gbtl.jpg"></image>
+                    <image src="{{item.imageList[0].url}}"></image>
                     <view class="topNav">
-                        <text class="name">马仑草原一日游</text>
+                        <text class="name">{{item.name}}</text>
                         <text>芦芽山-马伦草原,情人谷一日游</text>
                         <view class="star">
                             <i-rate
@@ -69,48 +70,7 @@
                     <text>1日 | 自驾游 | 约472公里</text>
                     <text class="see">查看详情</text>
                 </view>
-            </view>
-            <view class="showcaseItem">
-                <view class="top">
-                    <image src="/static/images/gbtl.jpg"></image>
-                    <view class="topNav">
-                        <text class="name">马仑草原一日游</text>
-                        <text>芦芽山-马伦草原,情人谷一日游</text>
-                        <view class="star">
-                            <i-rate
-                                    size="18"
-                                    disabled="true"
-                                    value="4">
-                                4 分
-                            </i-rate>
-                        </view>
-                    </view>
-                </view>
-                <view class="down">
-                    <text>1日 | 自驾游 | 约472公里</text>
-                    <text class="see">查看详情</text>
-                </view>
-            </view>
-            <view class="showcaseItem">
-                <view class="top">
-                    <image src="/static/images/gbtl.jpg"></image>
-                    <view class="topNav">
-                        <text class="name">马仑草原一日游</text>
-                        <text>芦芽山-马伦草原,情人谷一日游</text>
-                        <view class="star">
-                            <i-rate
-                                    size="18"
-                                    disabled="true"
-                                    value="4">
-                                4 分
-                            </i-rate>
-                        </view>
-                    </view>
-                </view>
-                <view class="down">
-                    <text>1日 | 自驾游 | 约472公里</text>
-                    <text class="see">查看详情</text>
-                </view>
+                <view class="price">￥{{item.minPrice}}</view>
             </view>
         </view>
     </view>

@@ -178,9 +178,6 @@
     border-radius: 20rpx;
     letter-spacing: 5rpx;
     padding: 0 10rpx;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow:ellipsis;
 }
 
 .goodsShow .goodsItem .goodsName {
@@ -227,6 +224,10 @@
     border-radius: 20rpx;
     display: flex;
     flex-direction: column;
+}
+.imgContainer .content{
+    font-size:28rpx;
+    color: #797979;
 }
 .imgContainer .name{
     font-size: 28rpx;

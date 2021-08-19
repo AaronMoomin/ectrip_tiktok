@@ -11,7 +11,7 @@ Page({
         isSelect: [true, false, false],
         openid:'',
         allList:[],
-        categoryIdList:[1,2,3],
+        categoryIdList:[1,2,14],
     },
     handleSelect(e) {
         let {isSelect,categoryIdList,dateGlobal,dateGlobal2} = this.data
@@ -24,7 +24,7 @@ Page({
                     this.getCollectList(categoryIdList[i])
                 }else if (i==1){
                     this.getCollectList(categoryIdList[i],dateGlobal,dateGlobal2)
-                }else {
+                }else{
                     this.getCollectList(categoryIdList[i])
                 }
             }
@@ -59,6 +59,12 @@ Page({
         }).catch(err =>{
             console.log(err);
         })
+    },
+    toPlayDetail(e){
+        let id = e.currentTarget.dataset.id;
+        tt.navigateTo({
+            url: `/pages/playReserve/playReserve?id=${id}`
+        });
     },
     toHotelDetail(e){
         let name = e.currentTarget.dataset.name;
@@ -102,7 +108,6 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        this.getCollectList()
     },
 
     /**
